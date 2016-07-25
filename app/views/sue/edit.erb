@@ -1,0 +1,707 @@
+<html lang="en">
+
+<head>
+<!-- 우편번호 API -->
+<script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('sample6_address').value = fullAddr;
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('sample6_address2').focus();
+            }
+        }).open();
+    }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--달력-->
+<script language="JavaScript" src="/date_picker.js"></script>
+
+<!--달력 끝-->
+<!-- CSS -->
+<link href="http://www.ansonika.com/annova/css/bootstrap.css" rel="stylesheet">
+<link href="http://www.ansonika.com/annova/css/style.css" rel="stylesheet">
+<link href="http://www.ansonika.com/annova/font-awesome/css/font-awesome.css" rel="stylesheet" >
+<link href="http://www.ansonika.com/annova/css/socialize-bookmarks.css" rel="stylesheet">
+<link href="http://www.ansonika.com/annova/js/fancybox/source/jquery.fancybox.css?v=2.1.4" rel="stylesheet">
+<link href="http://www.ansonika.com/annova/check_radio/skins/square/aero.css" rel="stylesheet">
+
+<!-- Toggle Switch -->
+<link rel="stylesheet" href="http://www.ansonika.com/annova/css/jquery.switch.css">
+
+<!-- Owl Carousel Assets -->
+<link href="http://www.ansonika.com/annova/css/owl.carousel.css" rel="stylesheet">
+<link href="http://www.ansonika.com/annova/css/owl.theme.css" rel="stylesheet">
+
+<!-- Google web font -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Jquery -->
+<script src="http://www.ansonika.com/annova/js/jquery-1.10.2.min.js"></script>
+<script src="http://www.ansonika.com/annova/js/jquery-ui-1.8.22.min.js"></script>
+
+<!-- Wizard-->
+<script src="http://www.ansonika.com/annova/js/jquery.wizard.js"></script>
+
+<!-- Radio and checkbox styles -->
+<script src="http://www.ansonika.com/annova/check_radio/check.min.js"></script>
+
+<!-- HTML5 and CSS3-in older browsers-->
+<script src="http://www.ansonika.com/annova/js/modernizr.custom.17475.js"></script>
+
+<!-- Support media queries for IE8 -->
+<script src="http://www.ansonika.com/annova/js/respond.min.js"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11097556-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+	<script>
+		$(document).ready(function() {
+		  $('.nav-toggle').click(function(){
+			//get collapse content selector
+			var collapse_content_selector = $(this).attr('href');					
+					
+			//make the collapse content to be shown or hide
+			var toggle_switch = $(this);
+			$(collapse_content_selector).toggle(function(){
+			  if($(this).css('display')=='none'){
+                                //change the button label to be 'Show'
+				toggle_switch.html('예시보기');
+			  }else{
+                                //change the button label to be 'Hide'
+				toggle_switch.html('닫기');
+			  }
+			});
+		  });
+				
+		});	
+	</script>
+	
+</head>
+<body style="padding-top: 0px;">
+        <div class="col-md-12 col-xs-12" style="text-align:center">
+                    <nav class="col-md-12 col-xs-12" id="top-nav" style="text-align:center">
+                               <a href='/'><img src="https://lh3.googleusercontent.com/h2qVcl6xXTDXkw8J2GEQsYL4eLrKx0zv1h8ukpe8qw=w637-h367-no" style="width:100px;float:left"></a>                            
+                                	<ul>
+                                        <li><a href="/posts/index/1" style='color:black'>질답게시판</a></li>
+                                        <li><a href="/posts/index/2" style='color:black'>유익한 사례</a></li>
+                                        <li><a href="#" style='color:black'>해우소</a></li>
+                                    </ul>
+                    </nav>
+        </div>
+        <section style="background-color:white" id="top-area">
+               	
+                  <div class="container">
+                   <div class="row" data-sr="enter bottom, over 1.5s,move 16px, scale up 20%">
+                       <div class="col-md-12 main-title">
+                       <h1 style="color:black">고소미 작성 페이지</h1><br>
+                      <p style="color:black">당신의 이야기를 들려주세요</p>
+                      </div>
+             		</div>
+                  </div>
+        </section>   
+
+<section class="container" id="main">
+
+<!-- Start Survey container -->
+<div id="survey_container">
+<style>
+.ui-widget-header {
+    background: #CFD20C;
+}
+</style>
+  	<div id="top-wizard" style="background-color:#402E1F">
+  		<strong style="color:white">Progress <span id="location"></span></strong>
+  		<div id="progressbar"></div>
+  		<div class="shadow"></div>
+  	</div><!-- end top-wizard -->
+ 
+    <!--첨부파일 끝-->
+    <form class="new_test" id="new_test" enctype="multipart/form-data"  action="/sue/update/<%=params[:id]%>" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <!--첨부파일-->
+         	
+                <!--sorting 실험 -->    
+<!-- sorting 실험 끝 -->
+    
+    	<div id="middle-wizard">
+    		<div class="step">
+    			<div class="row">
+    			    <h3 class="col-md-10">증거자료<small>(선택사항)</small></h3>
+    				<div class="col-md-6">
+    				    <div class="col-md-10" style="padding-left:0px">
+    					   <ul class="data-list">
+    						<li>
+    					        <input class="combine" id="input9" type="hidden" value="피고소인은 "/>
+                                <input multiple="multiple" name="sueimg[]" type="file" class="combine form-control"/>    				            
+                            </ul>    
+                        </div>
+                        <div class="col-md-2" style="padding-left: 0px;">
+                            <input type="submit" style="height:44px" value="사진등록" class="btn btn-success" name='check'>
+                        </div>
+                    </div>
+                    
+    			</div>
+                <p>*공연성, 특정성, 모욕 사실이 드러나는 증거자료를 올려주세요</p>                  
+                <div class='row'>
+                        
+                    <%Sueform.find(params[:id]).sueimgs.each do |x| %>
+                        <div class='col-md-2'>
+                			<div class="item"> 
+                				증거자료 : <a href="<%= x.sueimg %>" class="fancybox">
+                                <img src='<%=x.sueimg.url%>' style='height:100px;width:100%'></a>            				
+    	                        <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/sue/delete/<%= x.id %>">Destroy</a>
+                			</div>
+                        </div> 
+                    <% end %>
+                    
+                
+                </div>       		    
+    			<div class="row">
+    				<h3 class="col-md-10">고소미를 드실 분</h3>
+    				<div class="col-md-6">
+    				    <ul class="data-list">
+    						<li>
+    							<div class="styled-select">
+        							<select id="categories" class=" form-control">
+                                        <option values="">--담당관서를 선택해주세요--</option>
+                                         <option> 서울특별시</option>
+                                            <option> 강원도</option>
+                                            <option> 경기도</option>
+                                            <option> 경상북도</option>
+                                            <option> 경상남도</option>
+                                            <option> 전라북도</option>
+                                            <option> 전라남도</option>
+                                            <option> 충청북도</option>
+                                            <option> 충청남도</option>
+                                            <option> 제주도</option>
+                                            <option> 광주광역시</option>
+                                            <option> 대구광역시</option>
+                                            <option> 대전광역시</option>
+                                            <option> 부산광역시</option>
+                                            <option> 세종특별자치시</option>
+                                            <option> 울산광역시</option>
+                                            <option> 인천광역시</option>
+                                    </select> 
+                                </div>
+    						</li>
+    					</ul>
+    			    </div>
+    			    <div class="col-md-6">
+    					<div class="col-md-6" style="padding-left:0px">
+    					    <ul class="data-list">
+    							<li>
+        							<div class="styled-select">
+
+            							<select style="font-size:16px; color:#999" name="police_name" id="subcats">
+            							</select>
+        							    <script>
+        							         $('#subcats').click(function(){
+        							             if($('#subcats').val()==null){
+        							                 alert('순서지켜라');
+        							             }
+        							             else{
+        							             }            
+        							         });
+        							    </script>            							
+                                    </div>
+    							</li>
+    							
+    						</ul>
+    				    </div>
+    					<div class="col-md-6" style="padding-right:0px">
+    					    <ul class="data-list">
+    							<li>
+        							<div class="styled-select">
+            							<select style="font-size:16px; color:#999" id="sub_subcats">
+                                        </select>
+                                    </div>
+    							</li>
+    						</ul>
+    				    </div>
+    			    </div>
+    			    <div class="col-md-6">
+    					<ul class="data-list">
+    						<li>
+    						    <input type="text"  style="margin-bottom:10px" id="input13" name="you_url" class="combine form-control" placeholder="모욕을 당한 게임명 또는 인터넷 주소를 입력해주세요">
+    						</li>
+    						<li>
+    						<input class="combine" id="input10" type="hidden"value="게임 내에서 피고인의 ID는 "/>
+    						</li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    				
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li>
+    						    <input type="text" style="margin-bottom:10px" name="you_id" id="input14" class="combine  form-control" placeholder="상대방의 ID또는 닉네임을 입력해주세요">
+    						</li>
+    						<li>
+    						<input class="combine" id="input15" type="hidden"value="이고, 저의 ID는 "/>
+    						</li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    				
+    			</div>
+    			
+    			
+    			
+    			
+    			<div class="row">
+    				<h3 class="col-md-10">고소인 정보</h3>
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li><input type="text" value="<%=Sueform.find(params[:id]).my_name%>"  name="my_name" id="test_my_name" class="   form-control" placeholder="이름"></li>
+    						<li><input type="text" maxlength="11" style="margin-bottom:10px" id="test_my_phone" name="my_phone" class="   form-control" placeholder="휴대폰 번호"></li>
+    						<p>*'-'없이 숫자만 입력해주세요</p>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+                            <input class="combine" id="input15" type="hidden"value=" 입니다."/>
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    				<div class="col-md-6">
+    					<ul class="data-list floated clearfix">
+    						<li id="age" style="margin-right: 30px; width: 125px;">
+    						    <input type="text" readonly placeholder="생년월일" class="form-control" name="target_date" onClick="datePicker(event,'target_date')">
+    						</li>
+    					    <li>
+    					         <input name="gender" type="radio" class="check_radio" value="Male">
+    					         <label style="font-size:16px" class="label_gender"> 남</label>
+    					    </li>
+    					    <li>
+    					         <input name="gender" type="radio" class="required check_radio" value="Female">
+    					         <label style="font-size:16px" class="label_gender"> 여</label>
+    					    </li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>    		
+    			
+    			<div class="row">
+    				<h3 class="col-md-10">주소</h3> 
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li><input type="text" name="post_code" onclick="sample6_execDaumPostcode()" class="   form-control" type="text" id="sample6_postcode" readonly placeholder="우편번호"></li>
+    						<li><input class="  form-control" name="address1" type="text" id="sample6_address" placeholder="주소"></li>
+    						
+                  <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+                    
+    				<div class="col-md-6">
+                    
+    					<ul class="data-list">
+    						<li><input type="text" name="firstname" style="visibility:hidden" class="form-control" placeholder="주민등록번호"></li>
+    						<li><input class="   form-control" type="text"  name="address2" id="sample6_address2" placeholder="상세주소"></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+                        
+    				</div><!-- end col-md-6 -->
+    			</div>
+    			
+    			<div class="row">
+    				<div class="col-md-4 col-md-offset-4">
+    					<ul class="data-list" id="terms">
+    						<li>
+                            <strong> <a href="#" data-toggle="modal" data-target="#terms-txt">개인정보 취급 방침 및 약관</a>에 동의하십니까?</strong>
+                            <label class="switch-light switch-ios ">
+                                    <input type="checkbox" name="terms" class="   fix_ie8" value="yes">
+                                    <span>
+                                        <span class="ie8_hide">No</span>
+                                        <span>Yes</span>
+                                    </span>
+                                    <a></a>
+                            </label>
+    						</li>
+    					</ul>
+    				</div>
+    			</div>                
+                
+    		</div><!-- end step-->
+        
+    			
+    			
+                <!-- 2 -->
+    		<div class="step row">
+    		<style>
+    .styled-select {
+    border: 2px solid rgb(136, 130, 125) !important;  
+    background-color:white !important;
+    }
+    .styled-select select {
+    border: none !important;
+    }
+    		
+    		
+    input.form-control, textarea.form-control {
+    border: 2px solid rgb(136, 130, 125) !important;
+    background-color: white !important;
+    }
+    		    .strike {
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap; 
+    }
+
+    .strike > span {
+        position: relative;
+        display: inline-block;
+    }
+	
+    .strike > span:before,
+    .strike > span:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 9999px;
+        height: 1px;
+        background: #999;
+    }
+
+    .strike > span:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+
+    .strike > span:after {
+        left: 100%;
+        margin-left: 15px;
+    }
+    </style>
+    <div class="strike">
+    <span>	<a href="#collapse1" class="nav-toggle" style="margin:auto">모욕죄의 성립조건 3가지!</a></span>
+</div>
+    		<br><br>
+    			<div class="row" style="display:none" id="collapse1">
+    			    <div class="top-feature top-feature-1">
+                        <div class="clearfix">
+                            <div>
+                                <h1>모욕죄란?</h1><br><br>
+                                <p class="lead" style="text-align:center">"형법 제311조 (모욕)"</p>
+                                <p  style="text-align:center">
+                                공연히 사람을 모욕한 자는 1년 이하의 징역이나 금고또는 200만원 이하의 벌금에 처한다.
+                                사이버 모욕죄란 인터넷과 같은 사이버 공간에서 사람을 모욕함으로써 성립하는 범죄를 말한다.
+                                </p>
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
+                    <hr>
+    				<div class="top-feature top-feature-1">
+                        <div class="clearfix">
+                            <div class="pull-left">
+                                <h1 class="pull-left">고소미 성립요건 1</h1><br><br>
+                                <p class="lead">"공연성"</p>
+                                <p>인터넷 댓글로써(혹은 게임 내 채팅으로) 실명을 거론하여 특정인을 모욕하거나, 또는 닉네임을 지칭하였더라도 그 표현의<Br> 내용을 주위 사정과 종합하여 볼 때 그 표시가 특정인을 지목하는 것임을 알아차릴 수 있는 경우에는 악의적 의사 표현<Br> 한 행위자는 원칙적으로 특정인에 대한 모욕죄의 책임이 있다 할 수 있습니다.<br>
+
+                                </p>
+                            </div>
+                            <div data-sr='scale up 25%, over 1s, reset'>          
+                                <img src="http://cfile8.uf.tistory.com/image/232F384E5419148D22E5C3" style="width:300px;height:300px;box-shadow: 5px 5px 5px 0px black;" data-scroll-reveal="enter from the right and move 60px" alt="Responsive web" class="top-feature-img pull-right img-circle">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="top-feature top-feature-1">
+                        <div class="pull-left"data-sr='scale up 25%, over 1s, reset'>          
+                            <img src="http://31.media.tumblr.com/tumblr_lt0xbhdYnY1qafa6n.png" style="width:300px;height:300px;box-shadow: 5px 5px 5px 0px black;" data-scroll-reveal="enter from the right and move 60px" alt="Responsive web" class="top-feature-img pull-right img-circle">
+                        </div>
+                        <div class="clearfix">
+                            <div class="pull-right">
+                                <h1 class="pull-right">고소미 성립요건 2</h1><br><br>
+                                <p class="lead pull-right">"특정성"</p>
+                                <br><br>
+                                <p class="pull-right">인터넷 댓글로써(혹은 게임 내 채팅으로) 실명을 거론하여 특정인을 모욕하거나,</p><br>
+                                <p class="pull-right">또는 닉네임을 지칭하였더라도 그 표현의 내용을 주위 사정과 종합하여 볼 때</p><br>
+                                <p class="pull-right">그 표시가 특정인을 지목하는 것임을 알아차릴 수 있는 경우에는 </p><br>
+                                <p class="pull-right">악의적 의사 표현을 한 행위자는 원칙적으로 특정인에 </p><br>
+                                <p class="pull-right">대한 모욕죄의 책임이 있다 할 수 있습니다.</p><br>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="top-feature top-feature-1">
+                        <div class="clearfix">
+                            <div class="pull-left">
+                                <h1 class="pull-left">고소미 성립요건 3</h1><br><br>
+                                <p class="lead">"모욕성"</p>
+                                <p>모욕적 표현이라 함은 그 기준이 모호하다고 생각할 수 있습니다. 대법원에서는 모욕적 표현의 기준으로 ‘경멸적 표현’을<br> 제시하고 있습니다. 즉, 상대방을 경멸하여 나오는 표현들을 폭넓게 ‘모욕’이라 보고 있는 것입니다.<br>
+                                </p>
+                                                </div>
+ 
+                           <div data-sr='scale up 25%, over 1s, reset'>          
+                                <img src="http://cfile10.uf.tistory.com/image/174F4B43508115992A13B5" data-scroll-reveal="enter from the right and move 60px" alt="Responsive web" style="width:300px;height:300px;box-shadow: 5px 5px 5px 0px black;"class="top-feature-img pull-right img-circle">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="strike"><br><Br>
+    <span>	<a href="#collapse1" class="nav-toggle" style="margin:auto">접어두기</a></span>
+</div>        
+                </div>
+                <div class="row">
+        		    <h3 class="col-md-10">범행일시</h3>
+				    <div class="col-md-6">
+				        <div class="col-md-10" style="padding-left:0px">
+					        <ul class="data-list">
+						        <li>
+        					        <input class="combine" id="input9" type="hidden" value="본인은 "/>
+        				            <input type="text" id="input7" readonly placeholder="날짜를 입력해주세요" class="combine form-control" name="target_date">
+                                    <input class="combine" id="input10" type="hidden"value="일 "/>
+                                </li>
+                            </ul>    
+                        </div>
+                        <div class="col-md-2" style="padding-left: 0px;">
+                            <input type="button" style="height:44px" value="달력보기" class="btn btn-warning" onClick="datePicker(event,'target_date', 1)">
+                        </div>         
+                    </div>
+                    <div class="col-md-6">
+    					<ul class="data-list">
+    						<li>
+    						    <div class="styled-select">    							    
+        						    <select id="input6" class="combine form-control" >
+                                        <option value="">시간을 선택해주세요</option>
+                                        <option value="1시">1시</option>
+                                        <option value="2시">2시</option>
+                                        <option value="3시">3시</option>
+                                        <option value="4시">4시</option>
+                                        <option value="5시">5시</option>
+                                        <option value="6시">6시</option>
+                                        <option value="7시">7시</option>
+                                        <option value="8시">8시</option>
+                                        <option value="9시">9시</option>
+                                        <option value="10시">10시</option>
+                                        <option value="11시">11시</option>
+                                        <option value="12시">12시</option>
+                                        <option value="13시">13시</option>
+                                        <option value="14시">14시</option>
+                                        <option value="15시">15시</option>
+                                        <option value="16시">16시</option>
+                                        <option value="17시">17시</option>
+                                        <option value="18시">18시</option>
+                                        <option value="19시">19시</option>
+                                        <option value="20시">20시</option>
+                                        <option value="21시">21시</option>
+                                        <option value="22시">22시</option>
+                                        <option value="23시">23시</option>
+                                        <option value="24시">24시</option>
+                                    </select>
+                                </div>
+    						    <input class="combine" id="input12" type="hidden" value="경 피고인에게 수차례 모욕을 당하였습니다. 저는 "/>
+    						</li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+                </div>
+                  
+                <div class="row">
+    				<h3 class="col-md-10">특정성</h3>
+    				<div class="col-md-12">
+    					<ul class="data-list">
+    						<li><div class="form-group">
+        					<!--<input class="combine" id="input5" type="hidden"value="<특정성>"/>-->
+                                <textarea type="text" id="input1" name="test[sue_reason]" style="height:50px" class="    combine form-control" placeholder="">안암동 사는 주한결이라고 밝히며</textarea>
+                                <input class="combine" id="input2" type="hidden"value="더이상 모욕적 표현을 삼가할 것을 요청하였으나, "/>
+                            </div></li>
+    						<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>  
+                  
+    			
+        		<div class="row">
+    				<h3 class="col-md-10">공연성</h3>
+    				<div class="col-md-12">
+    					<ul class="data-list">
+    						<li><div class="form-group">
+            				    <!--<input class="combine" id="input3" type="hidden" value="<공연성>"/>-->
+                                <textarea type="text" id="input5" name="test[sue_reason]" style="height:50px" class=" combine form-control" placeholder="">피고인은 불특정 다수가 보고있는 채팅방내에서</textarea>
+                                <input class="combine" id="input11" type="hidden"value="&quot;"/>
+                            </div></li>
+    						<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+    			
+    			<div class="row">
+    			    <h3 class="col-md-10">모욕사실</h3>
+    				<div class="col-md-12">
+    					<ul class="data-list">
+    						<li><div class="form-group">
+        					    <!--<input class="combine" id="input1" type="hidden" value="<모욕사실>"/>-->
+                                <textarea type="text" id="input3"  name="test[sue_reason]" style="height:50px" class="  combine form-control" placeholder="">너희어머니 김치맛없음 ㅇㅈ?</textarea>
+                                <input class="combine" id="input4" type="hidden" value="&quot;이라며 욕설을 지속하였고, 저는 이에 심각한 정신적 피해를 받았습니다. 사이버 모욕죄가 성립하려면 특정성, 공연성, 모욕성이 성립되어야 하는 것으로 알고있습니다. "/>
+                            </div></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+    			
+        		<a style="text-align:right" href="#result" id="setVal">전송</a>
+        		
+        		<div id="result" class="row">
+        			<h3 class="col-md-10">고소 내용</h3>
+        			<div class="col-md-12">
+        				<ul class="data-list">
+        					<li><div class="form-group">
+                                <textarea type="text"  id="Voltes5"  name="sue_content" style="height:200px" class=" combine form-control" placeholder=""></textarea>
+                            </div></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+        			    </ul>
+        			</div><!-- end col-md-6 -->
+                </div>
+                
+                <div class="row">
+        		    <h3 class="col-md-10">고소취지 및 이유</h3>
+        			<div class="col-md-12">
+        				<ul class="data-list">
+        					<li><div class="form-group">
+                                <textarea type="text" id="test_sue_reason" name="sue_reason" style="height:150px" class="  form-control" placeholder="">위에 명시한 바와 같이 이 사건이 해당 성립요소들을 충족한다하여 심사숙고 후 고소하오니, 피고인을 법에따라 처벌하여 주시기 바랍니다.</textarea>
+                            </div></li>
+        					<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+        				</ul>
+        		    </div><!-- end col-md-6 -->
+        	    </div>
+                
+        	</div>
+    			<!-- end step -->
+                
+			<div class="submit step" id="complete">
+				<img style="width:200px;height:200px" src="https://lh3.googleusercontent.com/h2qVcl6xXTDXkw8J2GEQsYL4eLrKx0zv1h8ukpe8qw=w637-h367-no">
+				<h2>수고하셨습니다. 소장이 성공적으로 작성되었습니다.</h2>
+		    
+				<button type="submit" name="process" class="btn btn-success">작성확인하러 가기</button>
+			</div><!-- end submit step -->
+                
+    	</div><!-- end middle-wizard -->
+            
+		<div id="bottom-wizard">
+			<button type="button" name="backward" class="backward">이전</button>
+			<button type="button" name="forward" class="forward">다음</button>
+		</div><!-- end bottom-wizard -->
+	</form>
+      
+</div><!-- end Survey container -->
+
+
+ <hr>
+ <p class="pull-left" style="margin-top:-10px">고소미.kr</p> <p  style="margin-top:-10px" class="pull-right">&copy; 2015</p> 
+
+
+
+<!-- Modal About -->
+<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="termsLabel">개인정보 취급 방침 및 약관</h4>
+      </div>
+      <div class="modal-body">
+        <p>마 닫아라</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- OTHER JS --> 
+<script src="http://www.ansonika.com/annova/js/jquery.validate.js"></script>
+<script src="http://www.ansonika.com/annova/js/jquery.placeholder.js"></script>
+<script src="http://www.ansonika.com/annova/js/jquery.tweet.min.js"></script>
+<script src="http://www.ansonika.com/annova/js/jquery.bxslider.min.js"></script>
+<script src="http://www.ansonika.com/annova/js/quantity-bt.js"></script>
+<script src="http://www.ansonika.com/annova/js/bootstrap.min.js"></script>
+<script src="http://www.ansonika.com/annova/js/retina.js"></script>
+<script src="http://www.ansonika.com/annova/js/owl.carousel.min.js"></script>
+<script src="http://www.ansonika.com/annova/js/functions.js"></script>
+
+<!-- FANCYBOX -->
+<script src="http://www.ansonika.com/annova/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.4" type="text/javascript">
+</script> 
+<script src="http://www.ansonika.com/annova/js/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.5" type="text/javascript">
+</script> 
+<script src="http://www.ansonika.com/annova/js/fancy_func.js" type="text/javascript">
+</script> 
+
+<script>
+    $('#setVal').click(function(){
+    $('#Voltes5').val(
+      $('.combine')
+      .not('#Voltes5')
+      .map(
+        function(){
+          return $(this).val();
+     
+        })
+    
+      .get()
+      .join('') 
+      
+      
+    );
+    });
+</script>
+
+<%= render partial: "police" %>      
+
+
+<script src='/bower_components/scrollReveal.js/dist/scrollReveal.min.js'></script>
+          <script>
+            window.sr = new scrollReveal();
+          </script>
+</body>
+</html>
+

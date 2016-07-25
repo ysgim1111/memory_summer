@@ -1,0 +1,418 @@
+<style>
+.buttonBar {
+ display:none; 
+}
+.mb_YTPProgress{
+ display:none; 
+}
+
+</style>
+
+
+<!-- ========== Preloader ========== -->
+
+        <div class="preloader">
+          
+          <img src="/assets/images/loader.svg" alt="Loading...">
+        </div>
+
+        <!-- ========== Hero Cover ========== -->
+
+        <div id="home" style="background: url(/assets/images/back_hubo_2.png) no-repeat center center; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;" class="fs-video-hero landing-hero">
+
+        <div class="bg-overlay">
+            <div class="hero-content-wrapper">
+              <div class="hero-content">
+                <div class="container">
+                  <div class="row">
+                    <%if user_signed_in?%>
+                    <!-- Heading -->
+                    <div class="col-md-5 heading-wrapper wow fadeIn" data-wow-duration="1.5s">
+                      <h1 style="font-family:'Nanum Myeongjo" class="hero-lead">고소미닷컴</h1>
+                        <h1 class="h-alt subheading">소중한 권리를 간편하게 지키세요</h1>
+                      
+                      <a href="/sue/category" style="font-size:1.3em;width:278px" class="btn btn-light wow fadeIn" data-wow-duration="1.5s"><strong>고소장 작성하러가기</strong></a>
+                    </div>
+                    
+                    
+                    
+                    <!-- Signup Form -->
+                    <div style="padding:0px 20px 0px 20px;" class="col-md-offset-2 col-md-5 form-wrapper wow fadeIn" data-wow-duration="1.5s">
+                        <h3 style="font-size:2em;color:white;text-align:center"><strong><%=current_user.nickname%></strong>님 반갑습니다</h3>
+                        <br>
+                        <h5 class="lead" style="font-size:1.5em;color:white;margin-bottom:20px"># 현재 진행중인 사건 : 0개</h3>
+                        <h5 class="lead" style="font-size:1.5em;color:white"># 내가 쓴 글 : 0개</h3>
+                        <!--<h5 style="color:white"># 현재 진행중인 사건 : 개</h3>-->
+                        <br>
+                        <a href="/main/mypage" style="font-size:1.5em;width:100%;text-align:center" class="btn-ghost-light">마이페이지</a>
+                        
+                    <div class="social-signup" style="margin-top:25px">
+                      
+                    </div>
+                    
+                    <!-- / .social-signup -->
+                    </div>
+                    <!-- signup end -->
+                    
+                    
+                    
+                    <div style="padding-right:0px;" class="col-md-12 heading-wrapper wow fadeIn">
+                      <div style="padding-left:0px;padding-right:0px" id="counters" class="col-md-12 count-wrapper count-item wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".7s">
+                            <h4 class="lead">현재<span id="count-1" class="count-nbr"></span>개의 고소미<small>가 진행중입니다</small></h4>
+                      </div>
+                    </div>  
+                    
+                    
+                    <% else %>
+                    <!-- Heading -->
+                    <div style="text-align:center" class="col-md-12 heading-wrapper wow fadeIn" data-wow-duration="1.5s">
+                      <h1 style="font-family:'Nanum Myeongjo" class="hero-lead">고소미닷컴</h1>
+                        <h1 class="h-alt subheading">소중한 권리를 간편하게 지키세요</h1>
+                      <br><br>
+                      <a href="/sue/category" style="font-size:1.3em;width:278px" class="btn btn-light wow fadeIn" data-wow-duration="1.5s"><strong>고소장 작성하러가기</strong></a>
+                      <a href="/sue/category" style="font-size:1.3em;width:278px;height:50px" class="btn btn-ghost-light wow fadeIn" data-wow-duration="1.5s"><strong>로그인 또는 회원가입</strong></a>
+                        
+                    </div>
+                    
+                    <!-- Signup Form -->
+                    <div  style="display:none"class="col-md-offset-3 col-md-4 form-wrapper wow fadeIn" data-wow-duration="1.5s">
+                      <form action="/users/sign_in" accept-charset="UTF-8" method="post" class="form-group">
+                        <input name="utf8" type="hidden" value="&#x2713;" />
+                        <input type="hidden" name="authenticity_token" value="D8pigBRc3WQV521Oo1QTBTr7inDTDXENIciL8rYQrA9ML/1NPRV30XKRO44nsBV9YGv/8SHS462IeQfVMhcXHw==" />
+                        <input autofocus="autofocus" id="user_email" name="user[email]" class="form-control" type="email" placeholder="이메일" required>
+                        <input autocomplete="off" id="user_password" name="user[password]" style="margin-bottom:0px" class="form-control" type="password" placeholder="비밀번호" required>
+                        <span class="pull-right"><a href="/main/password" class="forget-pass-link">비밀번호 찾기</a></span><br>
+                        <input style="width:100%" class="btn-ghost-light" type="submit" value="로그인">
+                        
+                    </form>
+                    <style>
+                    #fb {
+                      border: 2px solid;
+                      border-color: rgba(92, 102, 123, 0.66);
+                      width:100%;
+                      color: #fff;
+                      background:rgb(50, 80, 150);
+                      border-color:rgba(92, 102, 123, 0.66);
+                      font-weight:300;
+                      text-transform:none;
+                    }
+                    #fb:hover {
+                      background:rgba(50,80,150,0.8);
+                      border-color:rgba(92, 102, 123, 0.66);
+                      color:#fff;
+                      -webkit-transition: all 0.3s;
+                      transition: all 0.3s;
+                    }
+                    .sign {
+                     margin-top:15px;
+                     color:#fff; 
+                     font-size:1.2em;
+                    }
+                    .sign:hover {
+                      color:#3B7CB7;
+                    }
+                    </style>
+                    <div class="social-signup" style="margin-top:25px" >
+                      <a href="/users/auth/facebook" class="sign">
+                        <i class="fa fa-facebook-official fa-lg"></i>
+                        Facebook으로 로그인
+                      </a><br>
+                      <a class="sign" href="/main/sign_up">
+                        <i class="fa fa-user-plus"></i>
+                        <span class="sc-lead">회원가입</span>
+                      </a>
+                    </div>
+                    
+                    
+                    <!-- / .social-signup -->
+                    </div>
+                    <!-- signup end -->
+                    <div style="padding-right:0px;text-align:center" class="col-md-12 heading-wrapper wow fadeIn">
+                      <div style="padding-left:0px;padding-right:0px" id="counters" class="col-md-12 count-wrapper count-item wow fadeIn" data-wow-duration="1.5s" data-wow-delay=".7s">
+                            <h4 class="lead">현재<span id="count-1" class="count-nbr"></span>개의 고소미<small>가 진행중입니다</small></h4>
+                      </div>
+                  </div>  
+                    <% end %>
+                    
+                    
+                    
+                    
+                    
+                  
+                    
+                    
+
+                  </div><!-- / .row -->
+                </div><!-- / .container -->
+              </div><!-- / .hero-content -->
+            </div><!-- / .hero-wrapper -->
+
+            <!-- Scroller -->
+          <a href="#features" class="scroller">
+            <span class="scroller-text">scroll down</span>
+            <span class="linea-arrows-down-double-34"></span>
+          </a>
+
+          </div><!-- / .bg-overlay -->
+        </div><!-- / .fs-video-hero -->
+        
+       
+        
+        <!-- ========== Feature - Tabs ========== -->
+        
+
+        
+        <section id="services" style="padding-top:60px;"class="container section ft-centered">
+
+          <header class="sec-heading">
+            <h2 style="font-weight:400" class="lead">법적 분쟁을 사이버 상에서 해결하세요</h2>
+            <span class="sub">사이버 모욕, 임금체불 등에 특화된 서비스를 제공합니다</span>
+          </header>
+
+          <div class="row">
+            
+            <!-- Item 1 -->
+            <div class="col-md-3 col-sm-6 mb-sm-50 ft-item ft-dark-spin wow zoomIn" data-wow-duration=".6s" data-wow-delay=".3s" style="visibility: visible; animation-duration: 0.6s; animation-delay: 0.3s; animation-name: zoomIn;">
+              <span class="et-tools"></span>
+              <h5>Web Design</h5>
+              <p>Lorem ipsum dolor sit amet, ete elit consectetur adipisicing. Omnis quae, ipsam impedit eius, vero.</p>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="col-md-3 col-sm-6 mb-sm-50 ft-item ft-dark-spin wow zoomIn" data-wow-duration=".6s" style="visibility: visible; animation-duration: 0.6s; animation-name: zoomIn;">
+              <span class="et-desktop"></span>
+              <h5>Development</h5>
+              <p>Lorem ipsum dolor sit amet, ete elit consectetur adipisicing. Omnis quae, ipsam impedit eius, vero.</p>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="col-md-3 col-sm-6 mb-sm-50 ft-item ft-dark-spin wow zoomIn" data-wow-duration=".6s" style="visibility: visible; animation-duration: 0.6s; animation-name: zoomIn;">
+              <span class="et-anchor"></span>
+              <h5>Branding</h5>
+              <p>Lorem ipsum dolor sit amet, ete elit consectetur adipisicing. Omnis quae, ipsam impedit eius, vero.</p>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="col-md-3 col-sm-6 mb-sm-50 ft-item ft-dark-spin wow zoomIn" data-wow-duration=".6s" data-wow-delay=".3s" style="visibility: visible; animation-duration: 0.6s; animation-delay: 0.3s; animation-name: zoomIn;">
+              <span class="et-strategy"></span>
+              <h5>Marketing</h5>
+              <p>Lorem ipsum dolor sit amet, ete elit consectetur adipisicing. Omnis quae, ipsam impedit eius, vero.</p>
+            </div>
+
+          </div><!-- / .row -->
+        </section>
+        
+        
+        
+        
+        <section class="container-fluid portfolio-layout portfolio-columns-fw" style="margin-top:0px;background:#F8F8F8;;" >
+         
+         <header class="sec-heading" style="margin-bottom:30px;margin-top:60px">
+                <h1 class="lead" style="color:black;font-weight:400">간편하지만 전문적입니다</h1>
+                <span class="sub">최고의 인력과 함께합니다</span>
+         </header>
+        
+          <div class="row">
+            <div id="pfolio">
+
+              <!-- Item 1 -->
+              <div class="col-md-12 portfolio-item print" style="min-height:0px">
+                <div class="col-md-12" style="padding-left:0px;padding-right:0px">
+                <figure>
+                  <!-- src="require" -->
+                  <img src="/assets/images/lawyers3.png" alt="Project Example">
+                  <figcaption>
+                    <div style="text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;" class="p-content">
+                      <a href="/main/intro" id="lawyer_button"style="font-weight: 400;border:4px solid #fff;" class="btn-ghost-light btn-small">변호사 페이지로 이동</a>
+                    </div>
+                  </figcaption>
+                </figure>
+                </div>
+              </div><!-- / .portfolio-item -->
+            </div><!-- / #pfolio -->
+          </div><!-- / .row -->
+        </section><!-- / .portfolio-columns-fw -->
+        
+        
+         <!-- ========== Services - Frame Icons ========== -->
+        <!--
+        <section id="services" class="container section ft-centered" style="padding-top:60px;padding-bottom:60px">
+
+          <header class="sec-heading" style="margin-bottom:40px">
+            <h2 style="margin-top:0px">고소가 부담스러우신가요?</h2>
+          </header>
+
+          <div class="row">
+           --> 
+          
+           <!-- <div class="col-md-12 col-sm-12 mb-sm-50 ft-item ft-dark-spin wow zoomIn" style="margin-bottom:0px" data-wow-duration=".6s" data-wow-delay=".3s">
+              <span class="et-hourglass"></span>
+              <h5>작성을 완료하면 2일 간의 유예기간이 주어집니다.</h5>
+              <p>유예기간 내에 취소를 한다면 아무일도 일어나지 않습니다.</p>
+            </div>
+
+           
+
+          </div><!-- / .row -->
+       <!-- </section><!-- / .ft-frames -->
+
+        
+        
+ <!-- ========== CTA - Contact Link ========== -->
+
+        <div class="cta-link">
+          <div class="bg-overlay">
+            
+            <div class="cta-wrapper" style="padding-top:50px;padding-bottom:50px">
+              <h3 style="margin-bottom:0px" class="h-alt wow fadeIn" data-wow-delay=".1s" data-wow-duration="1s">당신의 이야기는 아닌가요?</h3>
+            </div>
+
+          </div>
+        </div><!-- / .dark-bg .cta-link -->
+        
+        <section class="container-fluid portfolio-layout portfolio-columns-fw" style="margin-top:0px;background:#f4f4f4;" >
+         
+       
+        
+          <div class="row">
+            <div id="pfolio">
+
+              <!-- Item 1 -->
+              <div class="col-md-6 portfolio-item print" style="min-height:0px">
+                <div class="col-md-12" style="padding-left:0px;padding-right:0px">
+                <figure>
+                  <!-- src="require" -->
+                  <img src="/assets/images/find.png" alt="Project Example">
+                  <figcaption>
+                    <div class="p-content">
+                      <h4>닉네임 고소 여부 확인</h4>
+                      <a href="/main/condition" style="margin-top:15px" class="btn-ghost-light btn-small">자세히 알아보기</a>
+                    </div>
+                  </figcaption>
+                </figure>
+                </div>
+              </div><!-- / .portfolio-item -->
+              
+              
+              <!-- Item 2 -->
+               <div class="col-md-6 portfolio-item print">
+                <div class="col-md-12" style="padding-left:0px;padding-right:0px">
+                <figure>
+                  <img src="/assets/images/faq.png" alt="Project Example">
+                  <figcaption>
+                    <div class="p-content">
+                      <h4>질문답변 및 Q&A</h4>
+                      
+                      <a href="/qna/index" style="margin-top:15px" class="btn-ghost-light btn-small">게시판으로 이동</a>
+                    </div>
+                  </figcaption>
+                </figure>
+                </div>  
+              </div><!-- / .portfolio-item -->
+              
+              <!-- Item 3 -->
+               <div class="col-md-6 portfolio-item print">
+                <div class="col-md-12" style="padding-left:0px;padding-right:0px">
+                <figure>
+                  <img src="/assets/images/examples.png" alt="Project Example">
+                  <figcaption>
+                    <div class="p-content">
+                      <h4>사이버 모욕 성립요건</h4>
+                      
+                      <a href="/qna/index" style="margin-top:15px" class="btn-ghost-light btn-small">게시판으로 이동</a>
+                    </div>
+                  </figcaption>
+                </figure>
+                </div>  
+              </div><!-- / .portfolio-item -->
+              
+              
+              <!-- Item 4 -->
+               <div class="col-md-6 portfolio-item print">
+                <div class="col-md-12" style="padding-left:0px;padding-right:0px">
+                <figure>
+                  <img src="/assets/images/pmt_condition.png" alt="Project Example">
+                  <figcaption>
+                    <div class="p-content">
+                      <h4>임금체불 성립요건</h4>
+                      
+                      <a href="/qna/index" style="margin-top:15px" class="btn-ghost-light btn-small">게시판으로 이동</a>
+                    </div>
+                  </figcaption>
+                </figure>
+                </div>  
+              </div><!-- / .portfolio-item -->
+
+            
+
+            </div><!-- / #pfolio -->
+          </div><!-- / .row -->
+        </section><!-- / .portfolio-columns-fw -->
+        
+        
+         <div class="cta-link">
+          <div class="bg-overlay">
+            
+            <div class="cta-wrapper" style="padding-top:25px;padding-bottom:25px">
+            </div>
+
+          </div>
+        </div><!-- / .dark-bg .cta-link -->
+        
+        
+        
+         <header style="
+                        background: url(/assets/images/mac-coffe-photo.jpg) no-repeat center center;
+                        background-size: cover;" class="page-title pt-large pt-dark pt-plax-lg-dark">
+          <div class="container">
+              <div class="row" style="text-align:center">
+
+                <div class="col-md-12 mb-sm-100 count-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s">
+                <h1 class="lead" style="color:white">지금 바로 작성하세요</h1><br>
+                <a href="/sue/category" class="btn btn-light btn-large"><strong>고소미 작성하러 가기</strong></a>
+                
+              </div>
+              </div>
+
+            </div>
+        </header>
+
+
+<!-- == Modals == -->
+        
+        <!-- Button trigger modal -->
+
+<%#
+<!-- Modal_CompanyInfo-->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">회사 소개</h4>
+      </div>
+      <div class="modal-body">
+        저희 고소미닷컴은<br> 
+        "올바른 인터넷 문화를 지향" 이라는 슬로건 아래 '인터넷 악플 및 명예훼손'을 근절하자는 취지로 설립되었습니다. 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+%>
+
+

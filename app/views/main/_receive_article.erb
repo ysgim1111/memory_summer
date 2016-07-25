@@ -1,0 +1,58 @@
+          <table class="table table-hover table-striped text-center side_" style="margin-bottom:0px">
+            <thead>
+              <tr class="table_title">
+                <th style="width:30%" class="text-center"><i class="fa fa-trophy"></i>순위</th>
+                <th style="width:40%" class="text-center"><i class="fa fa-star"></i>유명인</th>
+                <th style="width:30%" class="text-center"><i class="fa fa-users"></i>서포터 수</th>
+              </tr>
+            </thead>
+            <tbody class="celub_support">
+            <%@celebrities.each do |x| %>
+                <tr class="">
+                   <th class="text-center">#<%=@n%></td>
+                   <th class="text-center"><%=x.ce_name%> </td>
+                   <th class="text-center"><%=x.count%>명</td>
+		            </tr>
+                <% @n = @n+1%>
+            <% end %>
+                <%#<tr class="">
+                   <th class="text-center">#2</td>
+                   <th class="text-center">G.Na님 </td>
+                   <th class="text-center">1,500명</td>
+                </tr>
+                %>
+            </tbody>
+            </table>
+            <div class="btn show_more" style="width:100%;background-color:#2C3F4C;"><i class="fa fa-angle-double-down fa-lg"></i><span>더보기</span></div>
+            <style>
+                .table_hl th{
+                    padding:40px 20px !important;
+                    color:#111;
+                }
+                .table_title th{
+                    font-size:1em;
+                    font-weight:bold;
+                    color:#B11D13;
+                }
+
+            </style>
+            <script>
+              $('.celub_support').children().first().addClass('table_hl');
+              $('.celub_support').children().first().next().addClass('table_hl');
+              $('.celub_support').children().first().next().next().addClass('table_hl');
+              var celub_sub = $('.celub_support').children().not('.table_hl')
+              celub_sub.hide();
+
+              $('.show_more').on('click', function(){
+                if( $(this).text().indexOf('더보기') > -1 ){
+                   celub_sub.show(400);
+                   $(this).children().first().removeClass('fa-angle-double-down').addClass('fa-angle-double-up');
+                   $(this).find('span').html('닫기');
+                 }
+                 else {
+                   celub_sub.hide(400);
+                   $(this).children().first().removeClass('fa-angle-double-up').addClass('fa-angle-double-down');
+                   $(this).find('span').text('더보기');
+                 }
+              })
+            </script>

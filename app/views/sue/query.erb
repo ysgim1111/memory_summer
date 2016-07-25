@@ -1,0 +1,229 @@
+ <style>
+  .btn-danger {
+    color: #fff;
+    background-color: #922521;
+    border-color: #8A201D;
+  }
+  .btn-danger:hover {
+    color: #fff;
+    background-color: #90332F;
+    border-color: #90332F;
+  }
+ </style>
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%;padding-bottom:100px" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <h1 class="lead" style="font-family:'Nanum Myeongjo'">상담하기</h1>
+                  <span class="sub">쉽고 빠르게, 그리고 정확하게</span>
+                </div>
+
+              </div>
+
+            </div>
+        </header>
+
+
+        <div style="background:#e8e8e8;">
+          <div class="section container blog-classic" style="padding-top:60px">
+            <div class="row">
+
+               <div class="col-md-12">
+
+
+                <div class="blog-post" style="background:#fff;margin-bottom:30px">
+
+                  <!-- Image -->
+
+                  <div class="bp-content sue_query_form" style="padding-bottom:20px">
+                  <form id="write_go" class="form-horizontal" action="/receive/insult" method="POST" enctype="multipart/form-data">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                    <div style="padding-right:15px;padding-left:15px" class="row">
+                      <h3 style="margin-bottom:15px"><i class="fa fa-pencil-square-o fa-lg"></i>상담하기</h3>
+                      <div class="col-md-12 comment-form" style="
+                            padding-top:15px;
+                            border-top: 1px solid #ccc;
+                            padding-left: 0px;
+                            padding-right: 0px;">
+                        <p class="comment-form_p" style='margin-bottom:5px'>*문의 후 24시간 내로 변호사의 연락을 받으실 수 있습니다</p>
+
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">수신인</p>
+                            <div class="col-md-4">
+                                <input type="text" name="receiver" class="form-control check" readonly value="info@gosomi.com">
+                            </div>
+                            <p class="col-md-2 control-label">연락받으실 이메일</p>
+                            <div class="col-md-4">
+                                <input type="email" name="giver" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">분야</p>
+                            <div class="col-md-4">
+                                <select name="title" class="form-control" id="select_check">
+                                    <option value='0'>선택해주세요</option>
+                                    <option value='명예훼손/모욕'>명예훼손 및 모욕</option>
+                                    <option value='협박'>협박</option>
+                                    <option value='사이버스토킹/사이버성희롱'>사이버스토킹/사이버성희롱</option>
+                                    <option value='기타'>기타</option>
+                                </select>
+                            </div>
+
+                            <p class="col-md-2 control-label">이름</p>
+                            <div class="col-md-4">
+                                <input type="text" name="qna_name" class="form-control name" placeholder="이름을 입력해 주세요">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                          <p class="col-md-2 control-label">휴대전화</p>
+                            <div class="col-md-4">
+                                <input type="text" maxlength="13" name="qna_phone" id="cellPhone" class="form-control cellphone" placeholder="번호를 입력해 주세요">
+                            </div>
+
+                            <p class="col-md-2 control-label">거주지</p>
+                            <div class="col-md-4">
+                                <input type="text" name="qna_address" class="form-control address" placeholder="ex)서울시,성남시">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">내용</p>
+                            <div class="col-md-10">
+                                <textarea id="sum" class="form-control check" rows="7" name="contents"placeholder="내용을 입력해 주세요"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">알게된 경로</p>
+                            <div class="col-md-10" style="padding-top:7px">
+                                <div class="col-md-3 no-gap">
+                                  <input type="radio" class="warm_word_off" name="channel" value="직접검색"> <label for="">직접검색</label>
+                                </div>
+                                <div class="col-md-3 no-gap">
+                                  <input type="radio" class="warm_word_off" name="channel" value="포털 및 커뮤니티"> <label for="">포털 및 커뮤니티</label>
+                                </div>
+                                <div class="col-md-3 no-gap">
+                                  <input type="radio" class="warm_word_off" name="channel" value="SNS"> <label for="">SNS</label>
+                                </div>
+                                <div class="col-md-3 no-gap">
+                                  <input type="radio" class="warm_word_off" name="channel" value="지인추천"> <label for="">지인추천</label>
+                                </div>
+                                <div class="col-md-3 no-gap">
+                                  <input type="radio" class="warm_word_on etc_label" name="channel" value="기타"> <label for="">기타</label>
+                                </div>
+                                <input id="etc" type="text" maxlength="30" name="contents" class="form-control validation_check check combine warm_word" required>
+                                <p style='margin-bottom:5px' class="warm_word">*30자 이내로 작성해 주세요.</p>
+                            </div>
+                        </div>
+                      </div><!-- comment-form-->
+                    </div><!--  row -->
+
+                  </div>
+                  <div class="col-md-12" style="text-align: center;background: #F3F3F3;padding-top: 15px;padding-bottom: 15px;margin-bottom: 30px;box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);">
+                  <a id="write_link" class="a_link" style="cursor:pointer"><p class="q_text"><i class="fa fa-paper-plane"></i>전송</p></a>
+                  </div><!-- send -->
+                  </form>
+                </div>
+
+               </div>
+          </div>
+          </div>
+        </div>
+
+        <style>
+          .q_text{
+            font-size:1.3em;
+            color:#777;
+          }
+           #write_link:hover .q_text{
+            color:#111;
+          }
+        </style>
+
+
+        <script type="text/javascript">
+          $(window).load(function(){
+            $('#etc').attr('disabled','true');
+            $('.etc_label').on('click',function(){
+              $('#etc').removeAttr('disabled');
+              $('#etc').focus();
+            });
+            $('.warm_word_off').on('click',function(){
+              $('#etc').attr('disabled','true');
+              $('#etc').val('');
+            });
+          })
+        </script>
+        <script>
+  function autoHypenPhone(str){
+            str = str.replace(/[^0-9]/g, '');
+            var tmp = '';
+            if( str.length < 4){
+                return str;
+            }else if(str.length < 7){
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3);
+                return tmp;
+            }else if(str.length < 11){
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 3);
+                tmp += '-';
+                tmp += str.substr(6);
+                return tmp;
+            }else{
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 4);
+                tmp += '-';
+                tmp += str.substr(7);
+                return tmp;
+            }
+            return str;
+        }
+
+var cellPhone = document.getElementById('cellPhone');
+cellPhone.onkeyup = function(event){
+        event = event || window.event;
+        var _val = this.value.trim();
+        this.value = autoHypenPhone(_val) ;
+}
+</script>
+
+<script>
+  var write_go = document.getElementById('write_go');
+  var write_link = document.getElementById('write_link');
+  var select_check = document.getElementById('select_check');
+  var check = document.getElementsByClassName('check');
+  write_link.onclick = function(){
+    if (select_check.options[select_check.selectedIndex].value === '0'){
+      alert('분야를 선택해 주세요');
+    }
+    else if (check[0].value.length < 5){
+      alert('제목을 5자 이상으로 작성해주세요');
+    }
+    else if (check[1].value.length < 15){
+      alert('내용을 15자 이상으로 작성해주세요');
+    }
+    else if
+    else {
+      if( $("input[name=channel]:checked").val() === '기타'){
+        var c = $("#etc").val();
+      }
+      else {
+        var c = $("input[name=channel]:checked").val();
+      }
+      var a = $('.name').val() + "/" + $('.cellphone').val() + "/" + $('.address').val() + "/" + c
+      var b = $('#sum').val();
+
+      $('#sum').val(a+'\r\n'+b);
+
+      write_go.submit();
+    }
+  }
+</script>

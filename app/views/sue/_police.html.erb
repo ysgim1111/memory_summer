@@ -1,0 +1,1526 @@
+  <!--경찰서 db-->
+<script>
+        //큰 행정구역
+            var Seoul = [
+                {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+                {display: "강남구", value: "강남구" },
+                {display: "강동구", value: "강동구" },
+                {display: "강북구", value: "강북구" },
+                {display: "강서구", value: "서울_강서구" },
+                {display: "관악구", value: "관악구" },
+                {display: "광진구", value: "광진구" },
+                {display: "구로구", value: "구로구" },
+                {display: "노원구", value: "노원구" },
+                {display: "도봉구", value: "도봉구" },
+                {display: "동대문구", value: "동대문구" },
+                {display: "동작구", value: "동작구" },
+                {display: "마포구", value: "마포구" },
+                {display: "서대문구", value: "서대문구" },
+                {display: "서초구", value: "서초구" },
+                {display: "성동구", value: "성동구" },
+                {display: "성북구", value: "성북구" },
+                {display: "송파구", value: "송파구" },
+                {display: "양천구", value: "양천구" },
+                {display: "영등포구", value: "영등포구" },
+                {display: "용산구", value: "용산구" },
+                {display: "은평구", value: "은평구" },
+                {display: "종로구", value: "종로구" },
+                {display: "중구", value: "서울_중구" },
+                {display: "중랑구", value: "중랑구" }];
+            
+            var Incheon = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "강화군", value: "강화군" },
+				{display: "계양구", value: "계양구" },
+				{display: "남동구", value: "남동구" },
+				{display: "남구", value: "인천_남구" },
+				{display: "부평구", value: "부평구" },
+				{display: "서구", value: "인천_서구" },
+				{display: "연수구", value: "연수구" },
+				{display: "중구", value: "인천_중구" }];
+            
+            var Gyeonggi = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "가평", value: "가평" },
+				{display: "고양", value: "고양" },
+				{display: "구리", value: "구리" },
+				{display: "과천", value: "과천" },
+				{display: "광명", value: "광명" },
+				{display: "광주", value: "광주" },
+				{display: "군포", value: "군포" },
+				{display: "김포", value: "김포" },
+				{display: "남양주", value: "남양주" },
+				{display: "동두천", value: "동두천" },
+				{display: "부천", value: "부천" },
+				{display: "성남", value: "성남" },
+				{display: "수원", value: "수원" },
+				{display: "시흥", value: "시흥" },
+				{display: "안산", value: "안산" },
+				{display: "안성", value: "안성" },
+				{display: "안양", value: "안양" },
+				{display: "양주", value: "양주" },
+				{display: "양평", value: "양평" },
+				{display: "여주", value: "여주" },
+				{display: "연천", value: "연천" },
+				{display: "오산", value: "오산" },
+				{display: "용인", value: "용인" },
+				{display: "의왕", value: "의왕" },
+				{display: "의정부", value: "의졍부" },
+				{display: "이천", value: "이천" },
+				{display: "파주", value: "파주" },
+				{display: "평택", value: "평택" },
+				{display: "포천", value: "포천" },
+				{display: "하남", value: "하남" },
+				{display: "화성", value: "화성" }];
+            
+			var Daejeon = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+			    {display: "대덕구", value: "대덕구" },
+				{display: "서구", value: "대전_서구" },
+				{display: "중구", value: "대전_중구" }];
+				
+			var Chungbuk = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "괴산", value: "괴산" },
+				{display: "단양", value: "단양" },
+				{display: "보은", value: "보은" },
+				{display: "영동", value: "영동" },
+				{display: "옥천", value: "옥천" },
+				{display: "음성", value: "음성" },
+				{display: "제천", value: "제천" },
+				{display: "진천", value: "진천" },
+				{display: "청주", value: "청주" },
+				{display: "충주", value: "충주" }];
+			
+			    
+			var Chungnam = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "공주", value: "공주" },
+				{display: "금산", value: "금산" },
+				{display: "논산", value: "논산" },
+				{display: "당진", value: "당진" },
+				{display: "보령", value: "보령" },
+				{display: "부여", value: "부여" },
+				{display: "서산", value: "서산" },
+				{display: "서천", value: "서천" },
+				{display: "세종특별시", value: "세종특별시" },
+				{display: "아산", value: "아산" },
+				{display: "예산", value: "예산" },
+				{display: "천안", value: "천안" },
+				{display: "청양", value: "청양" },
+				{display: "홍성", value: "홍성" }];
+				
+			var Gwangju = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+			    {display: "광산구", value: "광산구" },
+			    {display: "남구", value: "광주_남구" },
+				{display: "동구", value: "광주_동구" },
+				{display: "북구", value: "광주_북구" },
+				{display: "서구", value: "광주_서구" }];
+				
+			var Jeonbuk = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+			    {display: "고창", value: "고창" },
+			    {display: "군산", value: "군산" },
+			    {display: "김제", value: "김제" },
+			    {display: "남원", value: "남원" },
+			    {display: "무주", value: "무주" },
+			    {display: "부안", value: "부안" },
+			    {display: "순창", value: "순창" },
+			    {display: "완주", value: "완주" },
+			    {display: "익산", value: "익산" },
+			    {display: "임실", value: "임실" },
+			    {display: "장수", value: "장수" },
+			    {display: "전주", value: "전주" },
+			    {display: "정읍", value: "정읍" },
+			    {display: "진안", value: "진안" }];
+			
+			var Jeonnam = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "강진", value: "강진" },
+				{display: "고흥", value: "고흥" },
+				{display: "곡성", value: "곡성" },
+				{display: "광양", value: "광양" },
+				{display: "구례", value: "구례" },
+				{display: "나주", value: "나주" },
+				{display: "담양", value: "담양" },
+				{display: "목포", value: "목포" },
+				{display: "무안", value: "무안" },
+				{display: "보성", value: "보성" },
+				{display: "순천", value: "순천" },
+				{display: "여수", value: "여수" },
+				{display: "영광", value: "영광" },
+				{display: "영암", value: "영암" },
+				{display: "완도", value: "완도" },
+				{display: "장성", value: "장성" },
+				{display: "장흥", value: "장흥" },
+				{display: "진도", value: "진도" },
+				{display: "함평", value: "함평" },
+				{display: "해남", value: "해남" },
+				{display: "화순", value: "화순" }];
+			    
+			
+				
+			var Gangwon = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "강릉", value: "강릉" },
+				{display: "고성", value: "고성" },
+				{display: "동해", value: "동해" },
+				{display: "삼척", value: "삼척" },
+				{display: "속초", value: "속초" },
+				{display: "양구", value: "양구" },
+				{display: "영월", value: "영월" },
+				{display: "원주", value: "원주" },
+				{display: "인제", value: "인제" },
+				{display: "정선", value: "정선" },
+				{display: "철원", value: "철원" },
+				{display: "춘천", value: "춘천" },
+				{display: "태백", value: "태백" },
+				{display: "평창", value: "평창" },
+				{display: "홍천", value: "홍천" },
+				{display: "화천", value: "화천" },
+				{display: "횡성", value: "횡성" }];
+			
+			var Kyeongbuk = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "경산", value: "경산" },
+				{display: "경주", value: "경주" },
+				{display: "고령", value: "고령" },
+				{display: "구미", value: "구미" },
+				{display: "군위", value: "군위" },
+				{display: "김천", value: "김천" },
+				{display: "문경", value: "문경" },
+				{display: "봉화", value: "봉화" },
+				{display: "상주", value: "상주" },
+				{display: "성주", value: "성주" },
+				{display: "안동", value: "안동" },
+				{display: "영덕", value: "영덕" },
+				{display: "영양", value: "영양" },
+				{display: "영주", value: "영주" },
+				{display: "영천", value: "영천" },
+				{display: "예천", value: "예천" },
+				{display: "울릉", value: "울릉" },
+				{display: "울진", value: "울진" },
+				{display: "의성", value: "의성" },
+				{display: "청도", value: "청도" },
+				{display: "청송", value: "청송" },
+				{display: "칠곡", value: "칠곡" },
+				{display: "포항", value: "포항" }];
+//대구에 경북꺼있음.추가해야함, 세종에 조치원도	, 광주 전남도
+			
+			var Daegu = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "남구", value: "대구_남구" },
+				{display: "달서구", value: "달서구" },
+				{display: "달성군", value: "달성군" },
+				{display: "동구", value: "대구_동구" },
+				{display: "북구", value: "대구_북구" },
+				{display: "서구", value: "대구_서구" },
+				{display: "수성구", value: "수성구" },
+				{display: "중구", value: "대구_중구" }];
+				
+			var Ulsan = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "남구", value: "울산_남구" },
+				{display: "동구", value: "울산_동구" },
+				{display: "울주군", value: "울주군" },
+				{display: "중구", value: "울산_중구" }];
+				
+			var Busan = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "강서구", value: "부산_강서구" },
+				{display: "금정구", value: "금정구" },
+				{display: "남구", value: "부산_남구" },
+				{display: "동구", value: "부산_동구" },
+				{display: "동래구", value: "동래구" },
+				{display: "부산진구", value: "부산진구" },
+				{display: "북구", value: "부산_북구" },
+				{display: "사상구", value: "사상구" },
+				{display: "사하구", value: "사하구" },
+				{display: "서구", value: "부산_서구" },
+				{display: "연제구", value: "연제구" },
+				{display: "영도구", value: "영도구" },
+				{display: "중구", value: "부산_중구" },
+				{display: "해운대구", value: "해운대구" },
+				{display: "기장군", value: "기장군" }];	
+				
+			var Gyeongnam = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "거제", value: "거제" },
+				{display: "거창", value: "거창" },
+				{display: "고성", value: "고성" },
+				{display: "김해", value: "김해" },
+				{display: "남해", value: "남해" },
+				{display: "창원(마산)", value: "창원_마산" },
+				{display: "창원(진해)", value: "창원_진해" },
+				{display: "창원(의창)", value: "창원_의창" },
+				{display: "밀양", value: "밀양" },
+				{display: "사천", value: "사천" },
+				{display: "산청", value: "산청" },
+				{display: "양산", value: "양산" },
+				{display: "의령", value: "의령" },
+				{display: "진주", value: "진주" },
+				{display: "창녕", value: "창녕" },
+				{display: "통영", value: "통영" },
+				{display: "하동", value: "하동" },
+				{display: "함안", value: "함안" },
+				{display: "함양", value: "함양" },
+				{display: "합천", value: "합천" }];
+		
+				
+			var Jeju = [
+			    {display: "지역을 선택해주세요", value: "지역을 선택해주세요" },
+				{display: "제주시", value: "제주시" },
+				{display: "서귀포시", value: "서귀포시" }];
+			//세부 
+			//서울
+			var gangnam = [
+				{display: "수서경찰서", value: "수서경찰서" },
+				{display: "강남경찰서", value: "강남경찰서" }];
+			var gangdong = [
+				{display: "강동경찰서", value: "강동경찰서" }];
+			var gangbuk = [
+				{display: "강북경찰서", value: "강북경찰서" }];	
+			var seoul_gangseo = [
+				{display: "강서경찰서", value: "강서경찰서" }];
+			var gwanak = [
+				{display: "관악경찰서", value: "관악경찰서" },
+				{display: "금천경찰서", value: "금천경찰서" }];
+			var gwangjin = [
+				{display: "동부경찰서", value: "동부경찰서" }];
+			var guro = [
+				{display: "구로경찰서", value: "구로경찰서" }];
+			var noone = [
+				{display: "노원경찰서", value: "노원경찰서" }];
+			var dobong = [
+				{display: "도봉경찰서", value: "도봉경찰서" }];
+			var dongdaemun = [
+				{display: "동대문경찰서", value: "동대문경찰서" }];
+			var dongjak = [
+				{display: "동작경찰서", value: "동작경찰서" }];
+			var mapo = [
+				{display: "마포경찰서", value: "마포경찰서" }];
+			var seodaemun = [
+				{display: "서대문경찰서", value: "서대문경찰서" }];
+			var seocho = [
+			    {display: "방배경찰서", value: "방배경찰서" },
+				{display: "서초경찰서", value: "서초경찰서" }];
+			var seongdong = [
+				{display: "성동경찰서", value: "성동경찰서" }];
+			var seongbuk = [
+			    {display: "성북경찰서", value: "성북경찰서" },
+				{display: "종암경찰서", value: "종암경찰서" }];
+			var songpa = [
+				{display: "송파경찰서", value: "송파경찰서" }];
+			var yangcheon = [
+				{display: "양천경찰서", value: "양천경찰서" }];
+			var yeongdeungpo = [
+				{display: "영등포경찰서", value: "영등포경찰서" }];
+			var yongsan = [
+				{display: "용산경찰서", value: "용산경찰서" }];
+			var eunpyeong = [
+			    {display: "서울서부경찰서", value: "서울서부경찰서" },
+				{display: "은평경찰서", value: "은평경찰서" }];
+			var jongro = [
+			    {display: "종로경찰서", value: "종로경찰서" },
+			    {display: "혜화경찰서", value: "혜화경찰서" }];
+			var seoul_junggu = [
+			    {display: "남대문경찰서", value: "남대문경찰서" },
+			    {display: "서울중부경찰서", value: "서울중부경찰서" }];
+			var jungrang = [
+				{display: "중랑경찰서", value: "중랑경찰서" }];
+			//대구
+			var daegu_namgu = [
+				{display: "대구남부경찰서", value: "대구남부경찰서" }];
+			var dalseo = [
+				{display: "달서경찰서", value: "달서경찰서" },
+				{display: "성서경찰서", value: "성서경찰서" }];
+			var dalseonggun = [
+				{display: "달성경찰서", value: "달성경찰서" }];
+			var daegu_donggu = [
+				{display: "대구동부경찰서", value: "대구동부경찰서" }];
+			var daegu_bukgu = [
+				{display: "대구북부경찰서", value: "대구북부경찰서" },
+				{display: "대구강북경찰서", value: "대구강북경찰서" }];
+			var daegu_seogu = [
+				{display: "대구서부경찰서", value: "대구서부경찰서" }];
+			var suseong = [
+				{display: "수성경찰서", value: "수성경찰서" }];
+			var daegu_junggu = [
+				{display: "대구중부경찰서", value: "대구중부경찰서" }];
+			
+			
+			
+		    //부산
+		    var busan_gangseo = [
+				{display: "강서경찰서", value: "강서경찰서" }];
+			var geumjeong = [
+				{display: "금정경찰서", value: "금정경찰서" }];
+			var busan_namgu = [
+				{display: "부산남부경찰서", value: "부산남부경찰서" }];
+			var dongrae = [
+				{display: "동래경찰서", value: "동래경찰서" }];
+			var busan_donggu = [
+				{display: "부산동부경찰서", value: "부산동부경찰서" }];
+			var busanjin = [
+				{display: "부산진경찰서", value: "부산진경찰서" }];
+			var busan_bukgu = [
+				{display: "부산북부경찰서", value: "부산북부경찰서" }];
+			var sasang = [
+				{display: "사상경찰서", value: "사상경찰서" }];
+			var saha = [
+				{display: "사하경찰서", value: "사하경찰서" }];
+			var busan_seogu = [
+				{display: "부산서부경찰서", value: "부산서부경찰서" }];
+			var yeongdo = [
+				{display: "영도경찰서", value: "영도경찰서" }];
+			var yeonje = [
+				{display: "연제경찰서", value: "연제경찰서" }];
+			var busan_junggu = [
+				{display: "부산중부경찰서", value: "부산중부경찰서" }];
+			var haeundae = [
+				{display: "해운대경찰서", value: "해운대경찰서" }];
+			var gijang = [
+				{display: "기장경찰서", value: "기장경찰서" }];
+		    
+			//인천
+			var ganghwa = [
+				{display: "강화경찰서", value: "강화경찰서" }];
+			var gyeyang = [
+				{display: "계양경찰서", value: "계양경찰서" }];
+			var namdong = [
+				{display: "인천남동경찰서", value: "인천남동경찰서" }];
+			var incheon_namgu = [
+				{display: "인천남부경찰서", value: "인천남부경찰서" }];
+			var bupyeong = [
+				{display: "부평경찰서", value: "부평경찰서" },
+				{display: "삼산경찰서", value: "삼산경찰서" }];
+			var incheon_seogu = [
+				{display: "인천서부경찰서", value: "인천서부경찰서" }];
+			var yeonsu = [
+				{display: "연수경찰서", value: "연수경찰서" }];
+			var incheon_junggu = [
+				{display: "인천중부경찰서", value: "인천지방경찰서" }];
+			//광주
+			var gwangsan = [
+				{display: "광산경찰서", value: "광산경찰서" }];
+			var gwangju_namgu = [
+				{display: "광주남부경찰서", value: "광주남부경찰서" }];
+			var gwangju_donggu = [
+				{display: "광주동부경찰서", value: "광주동부경찰서" }];
+			var gwangju_bukgu = [
+				{display: "광주북부경찰서", value: "광주북부경찰서" }];
+			var gwangju_seogu = [
+				{display: "광주서부경찰서", value: "광주서부경찰서" }];
+		    //전북
+		    var gochang = [
+				{display: "고창경찰서", value: "고창경찰서" }];
+			var gunsan = [
+				{display: "군산경찰서", value: "군산경찰서" }];
+			var gimje = [
+				{display: "김제경찰서", value: "김제경찰서" }];
+			var namwon = [
+				{display: "남원경찰서", value: "남원경찰서" }];
+			var muju = [
+				{display: "무주경찰서", value: "무주경찰서" }];
+			var buan = [
+				{display: "부안경찰서", value: "부안경찰서" }];
+			var sunchang = [
+				{display: "순창경찰서", value: "순창경찰서" }];
+			var wanju = [
+				{display: "완주경찰서", value: "완주경찰서" }];
+			var iksan = [
+				{display: "익산경찰서", value: "익산경찰서" }];
+			var imsil = [
+				{display: "임실경찰서", value: "임실경찰서" }];
+			var jangsu = [
+				{display: "장수경찰서", value: "장수경찰서" }];
+			var jeonju = [
+				{display: "덕진경찰서", value: "덕진경찰서" },
+				{display: "완산경찰서", value: "완산경찰서" }];
+			var jeongeub = [
+				{display: "정읍경찰서", value: "정읍경찰서" }];
+			var jinan = [
+				{display: "진안경찰서", value: "진안경찰서" }];
+		    //전남
+		    var gangjin = [
+				{display: "강진경찰서", value: "강진경찰서" }];
+			var goheung = [
+				{display: "고흥경찰서", value: "고흥경찰서" }];
+			var gokseong = [
+				{display: "곡성경찰서", value: "곡성경찰서" }];
+			var gwangyang = [
+				{display: "광양경찰서", value: "광양경찰서" }];
+			var gurye = [
+				{display: "구례경찰서", value: "구례경찰서" }];
+			var naju = [
+				{display: "나주경찰서", value: "나주경찰서" }];
+			var damyang = [
+				{display: "담양경찰서", value: "담양경찰서" }];
+			var mokpo = [
+				{display: "목포경찰서", value: "목포경찰서" }];
+			var muan = [
+				{display: "무안경찰서", value: "무안경찰서" }];
+			var boseong = [
+				{display: "보성경찰서", value: "보성경찰서" }];
+			var suncheon = [
+				{display: "순천경찰서", value: "순천경찰서" }];
+			var yeosoo = [
+				{display: "여수경찰서", value: "여수경찰서" }];
+			var yeonggwang = [
+				{display: "영광경찰서", value: "영광경찰서" }];
+			var yeongam = [
+				{display: "영암경찰서", value: "영암경찰서" }];
+			var wando = [
+				{display: "완도경찰서", value: "완도경찰서" }];
+			var jangseong = [
+				{display: "장성경찰서", value: "장성경찰서" }];
+			var jangheung = [
+				{display: "장흥경찰서", value: "장흥경찰서" }];
+			var jindo = [
+				{display: "진도경찰서", value: "진도경찰서" }];
+			var hampyeong = [
+				{display: "함평경찰서", value: "함평경찰서" }];
+            var hwasun = [
+				{display: "화순경찰서", value: "화순경찰서" }];
+			var haenam = [
+				{display: "해남경찰서", value: "해남경찰서" }];
+			//경북
+			var gyeongsan = [
+				{display: "경산경찰서", value: "경산경찰서" }];
+			var gyeongju = [
+				{display: "경주경찰서", value: "경주경찰서" }];
+			var goryeong = [
+				{display: "고령경찰서", value: "고령경찰서" }];
+			var gumi = [
+				{display: "구미경찰서", value: "구미경찰서" }];
+			var gunwi = [
+				{display: "군위경찰서", value: "군위경찰서" }];
+			var gimcheon = [
+				{display: "김천경찰서", value: "김천경찰서" }];
+			var mungyeong = [
+				{display: "문경경찰서", value: "문경경찰서" }];
+			var bonghwa = [
+				{display: "봉화경찰서", value: "봉화경찰서" }];
+			var sangjoo = [
+				{display: "상주경찰서", value: "상주경찰서" }];
+			var seongjoo = [
+				{display: "성주경찰서", value: "성주경찰서" }];
+			var andong = [
+				{display: "안동경찰서", value: "안동경찰서" }];
+			var yeongdeok = [
+				{display: "영덕경찰서", value: "영덕경찰서" }];
+			var yeongyang = [
+				{display: "영양경찰서", value: "영양경찰서" }];
+			var yeongjoo = [
+				{display: "영주경찰서", value: "영주경찰서" }];
+			var yeongcheon = [
+				{display: "영천경찰서", value: "영천경찰서" }];
+			var ulneung = [
+				{display: "울릉경찰서", value: "울릉경찰서" }];
+			var yecheon = [
+				{display: "예천경찰서", value: "예천경찰서" }];
+			var uljin = [
+				{display: "울진경찰서", value: "울진경찰서" }];
+			var uiseong = [
+				{display: "의성경찰서", value: "의성경찰서" }];
+			var cheongdo = [
+				{display: "청도경찰서", value: "청도경찰서" }];
+			var cheongsong = [
+				{display: "청송경찰서", value: "청송경찰서" }];
+			var chilgok = [
+				{display: "칠곡경찰서", value: "칠곡경찰서" }];
+			var pohang = [
+				{display: "포항북부경찰서", value: "포항북부경찰서" },
+				{display: "포항남부경찰서", value: "포항남부경찰서" }];
+			//경남 
+			var geoje = [
+				{display: "거제경찰서", value: "거제경찰서" }];
+			var geochang = [
+				{display: "거창경찰서", value: "거창경찰서" }];
+			var goseong = [
+				{display: "고성경찰서", value: "고성경찰서" }];
+			var gimhae = [
+				{display: "김해중부경찰서", value: "김해중부경찰서" },
+				{display: "김해서부경찰서", value: "김해서부경찰서" }];
+			var namhae = [
+				{display: "남해경찰서", value: "남해경찰서" }];
+			var changwon_masan = [
+				{display: "마산동부경찰서", value: "마산동부경찰서" },
+				{display: "마산중부경찰서", value: "마산중부경찰서" }];
+			var milyang = [
+				{display: "밀양경찰서", value: "밀양경찰서" }];
+			var sacheon = [
+				{display: "사천경찰서", value: "사천경찰서" }];
+			var sancheong = [
+				{display: "산청경찰서", value: "산청경찰서" }];
+			var yangsan = [
+				{display: "양산경찰서", value: "양산경찰서" }];
+			var uiryeong = [
+				{display: "의령경찰서", value: "의령경찰서" }];
+			var jinju = [
+				{display: "진주경찰서", value: "진주경찰서" }];
+			var changwon_jinhae = [
+				{display: "진해경찰서", value: "진해경찰서" }];
+			var changnyeong = [
+				{display: "창녕경찰서", value: "창녕경찰서" }];
+			var changwon_uichang = [
+				{display: "창원서부경찰서", value: "창원서부경찰서" },
+				{display: "창원중부경찰서", value: "창원중부경찰서" }];
+			var tongyeong = [
+				{display: "통영경찰서", value: "통영경찰서" }];
+			var hadong = [
+				{display: "하동경찰서", value: "하동경찰서" }];
+			var haman = [
+				{display: "함안경찰서", value: "함안경찰서" }];
+			var hamyang = [
+				{display: "함양경찰서", value: "함양경찰서" }];
+			var habcheon = [
+				{display: "합천경찰서", value: "합천경찰서" }];
+			//경기도	
+			var gapyeong = [
+				{display: "가평경찰서", value: "가평경찰서" }];
+			var goyang = [
+				{display: "고양경찰서", value: "고양경찰서" },
+				{display: "일산경찰서", value: "일산경찰서" }];
+			var gwacheon = [
+				{display: "과천경찰서", value: "과천경찰서" }];
+			var gwangmyeong = [
+				{display: "광명경찰서", value: "광명경찰서" }];
+			var gyeonggi_gwangju = [
+				{display: "광주경찰서", value: "광주경찰서" }];
+			var guri = [
+				{display: "구리경찰서", value: "구리경찰서" }];
+			var gunpo = [
+				{display: "군포경찰서", value: "군포경찰서" }];
+			var gimpo = [
+				{display: "김포경찰서", value: "김포경찰서" }];
+			var namyangjoo = [
+				{display: "남양주경찰서", value: "남양주경찰서" }];
+			var dongducheon = [
+				{display: "동두천경찰서", value: "동두천경찰서" }];
+			var boocheon = [
+			    {display: "부천소사경찰서", value: "부천소사경찰서" },
+			    {display: "부천오정경찰서", value: "부천오정경찰서" },
+				{display: "부천원미경찰서", value: "부천원미경찰서" }];
+			var seongnam = [
+				{display: "분당경찰서", value: "분당경찰서" },
+				{display: "성남수정경찰서", value: "성남수정경찰서" },
+				{display: "성남중원경찰서", value: "성남중원경찰서" }];
+			var soowon = [
+			    {display: "수원서부경찰청", value: "수원서부경찰청" },
+				{display: "수원중부경찰서", value: "수원중부경찰서" },
+				{display: "수원남부경찰서", value: "수원남부경찰서" }];
+			var siheung = [
+				{display: "시흥경찰서", value: "시흥경찰서" }];
+			var ansan = [
+			    {display: "안산단원경찰서", value: "안산단원경찰서" },
+				{display: "안산상록경찰서", value: "안산상록경찰서" }];
+			var anseong = [
+				{display: "안성경찰서", value: "안성경찰서" }];
+			var anyang = [
+				{display: "안양동안경찰서", value: "안양동안경찰서" },
+				{display: "안양만안경찰서", value: "안양만안경찰서" }];
+			var yangjoo = [
+				{display: "양주경찰서", value: "양주경찰서" }];
+			var yangpyeong = [
+				{display: "양평경찰서", value: "양평경찰서" }];
+			var yeoju = [
+				{display: "여주경찰서", value: "여주경찰서" }];
+			var yeoncheon = [
+				{display: "연천경찰서", value: "연천경찰서" }];
+			var uiwang = [
+				{display: "의왕경찰서", value: "의왕경찰서" }];
+			var hwaseong = [
+				{display: "화성서부경찰서", value: "화성서부경찰서" }];
+			var osan = [
+				{display: "화성동부경찰서", value: "화성동부경찰서" }];
+			var yongin = [
+			    {display: "용인서부경찰서", value: "용인서부경찰서" },
+				{display: "용인동부경찰서", value: "용인동부경찰서" }];
+			var uijeongbu = [
+				{display: "의정부경찰서", value: "의정부경찰서" }];
+			var icheon = [
+				{display: "이천경찰서", value: "이천경찰서" }];
+			var paju = [
+				{display: "파주경찰서", value: "파주경찰서" }];
+			var pyeongtaek = [
+				{display: "평택경찰서", value: "평택경찰서" }];
+			var pocheon = [
+				{display: "포천경찰서", value: "포천경찰서" }];
+			var hanam = [
+				{display: "하남경찰서", value: "하남경찰서" }];
+			//대전
+			var daejeon_junggu = [
+				{display: "대전중부경찰서", value: "대전중부경찰서" }];
+			var daeduk = [
+				{display: "대전동부경찰서", value: "대전동부경찰서" },
+				{display: "대전대덕경찰서", value: "대전대덕경찰서" }];
+			var daejeon_seogu = [
+				{display: "대전둔산경찰서", value: "대전둔산경찰서" },
+				{display: "대전서부경찰서", value: "대전서부경찰서" }];
+			//울산
+			var ulsan_namgu = [
+				{display: "울산남부경찰서", value: "울산남부경찰서" }];
+			var ulsan_donggu = [
+				{display: "울산동부경찰서", value: "울산동부경찰서" }];
+			var ulsan_ulju = [
+				{display: "울주경찰서", value: "울주경찰서" }];
+			var ulsan_junggu = [
+				{display: "울산중부경찰서", value: "울산중부경찰서" }];
+			//강원
+			var gangneung = [
+				{display: "강릉경찰서", value: "강릉경찰서" }];
+			var goseong = [
+				{display: "고성경찰서", value: "고성경찰서" }];
+			var donghae = [
+				{display: "동해경찰서", value: "동해경찰서" }];
+			var samcheok = [
+				{display: "삼척경찰서", value: "삼척경찰서" }];
+			var sokcho = [
+				{display: "속초경찰서", value: "속초경찰서" }];
+			var yanggoo = [
+				{display: "양구경찰서", value: "양구경찰서" }];
+			var yeongwol = [
+				{display: "영월경찰서", value: "영월경찰서" }];
+			var wonjoo = [
+				{display: "원주경찰서", value: "원주경찰서" }];
+			var inje = [
+				{display: "인제경찰서", value: "인제경찰서" }];
+			var jeongseon = [
+				{display: "정선경찰서", value: "정선경찰서" }];
+			var cheolwon = [
+				{display: "철원경찰서", value: "철원경찰서" }];
+			var chooncheon = [
+				{display: "춘천경찰서", value: "춘천경찰서" }];
+			var taebaek = [
+				{display: "태백경찰서", value: "태백경찰서" }];
+			var pyeongchang = [
+				{display: "평창경찰서", value: "평창경찰서" }];
+			var hongcheon = [
+				{display: "홍천경찰서", value: "홍천경찰서" }];
+			var hwacheon = [
+				{display: "화천경찰서", value: "화천경찰서" }];
+			var hoengseong = [
+				{display: "횡성경찰서", value: "횡성경찰서" }];
+			//충북
+			var cheongjoo = [
+				{display: "청주흥덕경찰서", value: "청주흥덕경찰서" },
+				{display: "청주상당경찰서", value: "청주상당경찰서" },
+				{display: "청주청원경찰서", value: "청주청원경찰서" }];
+			var chungjoo = [
+				{display: "충주경찰서", value: "충주경찰서" }];
+			var jecheon = [
+				{display: "제천경찰서", value: "제천경찰서" }];
+			var eumseong = [
+				{display: "음성경찰서", value: "음성경찰서" }];
+			var yeongdong = [
+				{display: "영동경찰서", value: "영동경찰서" }];
+			var goesan = [
+				{display: "괴산경찰서", value: "괴산경찰서" }];
+			var danyang = [
+				{display: "단양경찰서", value: "단양경찰서" }];
+			var boeun = [
+				{display: "보은경찰서", value: "보은경찰서" }];
+			var okcheon = [
+				{display: "옥천경찰서", value: "옥천경찰서" }];
+			var jincheon = [
+				{display: "진천경찰서", value: "진천경찰서" }];
+			
+			//충남
+			var gongju = [
+				{display: "공주경찰서", value: "공주경찰서" }];
+			var geumsan = [
+				{display: "금산경찰서", value: "금산경찰서" }];  
+			var nonsan = [
+				{display: "논산경찰서", value: "논산경찰서" }];
+			var dangjin = [
+				{display: "당진경찰서", value: "당진경찰서" }];
+			var boryung = [
+				{display: "보령경찰서", value: "보령경찰서" }];
+			var buyeo = [
+				{display: "부여경찰서", value: "부여경찰서" }];
+			var seosan = [
+				{display: "서산경찰서", value: "서산경찰서" }];
+			var seocheon = [
+				{display: "서천경찰서", value: "서천경찰서" }];
+			var sejong = [
+				{display: "세종경찰서", value: "세종경찰서" }];
+			var asan = [
+				{display: "아산경찰서", value: "아산경찰서" }];
+			var yesan = [
+				{display: "에산경찰서", value: "예산경찰서" }];
+			var cheonan = [
+				{display: "천안서북경찰서", value: "천안서북경찰서" },
+				{display: "천안동남경찰서", value: "천안동남경찰서" }];
+			var cheongyang = [
+				{display: "청양경찰서", value: "청양경찰서" }];
+			var hongseong = [
+				{display: "홍성경찰서", value: "홍성경찰서" }];
+		
+            //제주
+            var seoguipo = [
+				{display: "서귀포경찰서", value: "서귀포경찰서" }];
+			var jejusi = [
+				{display: "제주동부경찰서", value: "제주동부경찰서" },
+				{display: "제주서부경찰서", value: "제주서부경찰서" }];
+				
+				
+                $("#categories").change(function() {
+                   					 var parent = $(this).val();
+                						switch(parent){
+                						    case '서울특별시':
+                								 list(Seoul); 
+                								break;   
+                						    case '강원도':
+                								 list(Gangwon);
+                								break;
+                							case '경기도':
+                								 list(Gyeonggi);
+                								break;
+                							case '경상북도':
+                								 list(Kyeongbuk);
+                								break;
+                							case '경상남도':
+                								 list(Gyeongnam);
+                								break;
+                							case '전라북도':
+                								 list(Jeonbuk);
+                								break; 
+                							case '전라남도':
+                								 list(Jeonnam);
+                								break;  
+                							case '충청북도':
+                								 list(Chungbuk);
+                								break;   
+                							case '충청남도':
+                								 list(Chungnam);
+                								break;   
+                							case '제주도':
+                								 list(Jeju);
+                								break;   
+                							case '광주광역시':
+                								 list(Gwangju);
+                								break;   
+                							case '대구광역시':
+                								 list(Daegu);
+                								break; 
+                							case '대전광역시':
+                								 list(Daejeon);
+                								break;   
+                							case '부산광역시':
+                								 list(Busan);
+                								break;  
+                							case '세종특별자치시':
+                								 list(Sejong);
+                								break;   
+                							case '울산광역시':
+                								 list(Ulsan);
+                								break;   
+                							case '인천광역시':
+                								 list(Incheon);
+                								break;   
+                							
+                							default: //default child option is blank
+                								$("#subcats").html('');  
+                								break;
+                							   }
+                });
+                $("#subcats").change(function() {
+                   					 var parent = $(this).val();
+                						switch(parent){
+                						    //서울
+                						    case '강남구':
+                								 sub_list(gangnam);
+                								break;
+                							case '강동구':
+                								 sub_list(gangdong);
+                								break;
+                							case '강북구':
+                								 sub_list(gangbuk);
+                								break;
+                							case '서울_강서구':
+                								 sub_list(seoul_gangseo);
+                								break;       
+                							case '관악구':
+                								 sub_list(gwanak);
+                								break;
+                							case '광진구':
+                								 sub_list(gwangjin);
+                								break;
+                							case '구로구':
+                								 sub_list(guro);
+                								break;
+                							case '노원구':
+                								 sub_list(noone);
+                								break;
+                							case '도봉구':
+                								 sub_list(dobong);
+                								break;
+                							case '동대문구':
+                								 sub_list(dongdaemun);
+                								break;
+                							case '동작구':
+                								 sub_list(dongjak);
+                								break;
+                							case '마포구':
+                								 sub_list(mapo);
+                								break;
+                							case '서대문구':
+                								 sub_list(seodaemun);
+                								break;
+                							case '서초구':
+                								 sub_list(seocho);
+                								break;
+                							case '성동구':
+                								 sub_list(seongdong);
+                								break;
+                							case '성북구':
+                								 sub_list(seongbuk);
+                								break;
+                							case '송파구':
+                								 sub_list(songpa);
+                								break;
+                							case '양천구':
+                								 sub_list(yangcheon);
+                								break;
+                							case '영등포구':
+                								 sub_list(yeongdeungpo);
+                								break;
+                							case '용산구':
+                								 sub_list(yongsan);
+                								break;
+                							case '은평구':
+                								 sub_list(eunpyeong);
+                								break;
+                							case '종로구':
+                								 sub_list(jongro);
+                								break;
+                							case '서울_중구':
+                								 sub_list(seoul_junggu);
+                								break;
+                							case '중랑구':
+                								 sub_list(jungrang);
+                								break;
+                							//인천
+                							case '강화군':
+                								 sub_list(ganghwa);
+                								break;
+                							case '계양구':
+                								 sub_list(gyeyang);
+                								break;
+                							case '남동구':
+                								 sub_list(namdong);
+                								break;
+                							case '인천_남구':
+                								 sub_list(incheon_namgu);
+                								break;
+                							case '부평구':
+                								 sub_list(bupyeong);
+                								break;
+                							case '인천_서구':
+                								 sub_list(incheon_seogu);
+                								break;
+                							case '연수구':
+                								 sub_list(yeonsu);
+                								break;
+                							case '인천_중구':
+                								 sub_list(incheon_junggu);
+                								break;
+                							// 경기
+                							case '가평':
+                								 sub_list(gapyeong);
+                								break; 
+                							case '고양':
+                								 sub_list(goyang);
+                								break;
+                							case '구리':
+                								 sub_list(guri);
+                								break;
+                							case '과천':
+                								 sub_list(gwacheon);
+                								break;
+                							case '광명':
+                								 sub_list(gwangmyeong);
+                								break;
+                							case '광주':
+                								 sub_list(gyeonggi_gwangju);
+                								break;
+                							case '군포':
+                								 sub_list(gunp);
+                								break;
+                							case '김포':
+                								 sub_list(gimpo);
+                								break;
+                							case '남양주':
+                								 sub_list(namyangjoo);
+                								break;
+                							case '동두천':
+                								 sub_list(dongducheon);
+                								break;
+                							case '부천':
+                								 sub_list(boocheon);
+                								break;
+                							case '성남':
+                								 sub_list(seongnam);
+                								break;
+                							case '수원':
+                								 sub_list(soowon);
+                								break;
+                							case '시흥':
+                								 sub_list(siheung);
+                								break;
+                						    case '안산':
+                								 sub_list(ansan);
+                								break;
+                							case '안성':
+                								 sub_list(anseong);
+                								break;
+                							case '안양':
+                								 sub_list(anyang);
+                								break;
+                							case '양주':
+                								 sub_list(yangjoo);
+                								break;
+                							case '양평':
+                								 sub_list(yangpyeong);
+                								break;
+                							case '여주':
+                								 sub_list(yeoju);
+                								break;
+                							case '연천':
+                								 sub_list(yeoncheon);
+                								break;
+                							case '오산':
+                								 sub_list(osan);
+                								break;
+                							case '용인':
+                								 sub_list(yongin);
+                								break;
+                							case '의왕':
+                								 sub_list(uiwang);
+                								break;
+                							case '의정부':
+                								 sub_list(uijeongbu);
+                								break;
+                							case '이천':
+                								 sub_list(icheon);
+                								break;
+                							case '파주':
+                								 sub_list(paju);
+                								break;
+                							case '평택':
+                								 sub_list(pyeongtaek);
+                								break;
+                							case '포천':
+                								 sub_list(pocheon);
+                								break;
+                							case '하남':
+                								 sub_list(hanam);
+                								break;
+                							case '화성':
+                								 sub_list(hwaseong);
+                								break;
+                							//대전
+                							case '대덕구':
+                								 sub_list(daeduk);
+                								break;
+                							case '대전_서구':
+                								 sub_list(daejeon_seogu);
+                								break;
+                							case '대전_중구':
+                								 sub_list(daejeon_junggu);
+                								break;
+                							//충북
+                							case '괴산':
+                								 sub_list(goesan);
+                								break;
+                							case '단양':
+                								 sub_list(danyang);
+                								break;
+                							case '보은':
+                								 sub_list(boeun);
+                								break;
+                							case '영동':
+                								 sub_list(yeongdong);
+                								break;
+                							case '옥천':
+                								 sub_list(okcheon);
+                								break;
+                							case '음성':
+                								 sub_list(eumseong);
+                								break;
+                							case '제천':
+                								 sub_list(jecheon);
+                								break;
+                							case '진천':
+                								 sub_list(jincheon);
+                								break;
+                							case '청주':
+                								 sub_list(cheongjoo);
+                								break;
+                							case '충주':
+                								 sub_list(chungjoo);
+                								break;
+                							//충남
+                							case '공주':
+                								 sub_list(gongju);
+                								break;
+                							case '금산':
+                								 sub_list(geumsan);
+                								break;
+                							case '논산':
+                								 sub_list(nonsan);
+                								break;
+                							case '당진':
+                								 sub_list(dangjin);
+                								break;
+                							case '보령':
+                								 sub_list(boryung);
+                								break;
+                							case '부여':
+                								 sub_list(buyeo);
+                								break;
+                							case '서산':
+                								 sub_list(seosan);
+                								break;
+                							case '서천':
+                								 sub_list(seosan);
+                								break;
+                							case '세종특별시':
+                								 sub_list(sejong);
+                								break;
+                							case '아산':
+                								 sub_list(asan);
+                								break;
+                							case '예산':
+                								 sub_list(yesan);
+                								break;
+                							case '천안':
+                								 sub_list(cheonan);
+                								break;
+                							case '청양':
+                								 sub_list(cheongyang);
+                								break;
+                							case '홍성':
+                								 sub_list(hongseong);
+                								break;
+                							//광주
+                							case '광산구':
+                								 sub_list(gwangsan);
+                								break;
+                							case '광주_남구':
+                								 sub_list(gwangju_namgu);
+                								break;
+                							case '광주_동구':
+                								 sub_list(gwangju_donggu);
+                								break;
+                							case '광주_북구':
+                								 sub_list(gwangju_bukgu);
+                								break;
+                							case '광주_서구':
+                								 sub_list(gwangju_seogu);
+                								break;
+                							//전북
+                							case '고창':
+                								 sub_list(gochang);
+                								break;
+                							case '군산':
+                								 sub_list(gunsan);
+                								break;
+                							case '김제':
+                								 sub_list(gimje);
+                								break;
+                							case '남원':
+                								 sub_list(namwon);
+                								break;
+                							case '무주':
+                								 sub_list(muju);
+                								break;
+                							case '부안':
+                								 sub_list(buan);
+                								break;
+                							case '순창':
+                								 sub_list(sunchang);
+                								break;
+                							case '완주':
+                								 sub_list(wanju);
+                								break;
+                							case '익산':
+                								 sub_list(iksan);
+                								break;
+                							case '임실':
+                								 sub_list(imsil);
+                								break;
+                							case '장수':
+                								 sub_list(jangsu);
+                								break;
+                							case '전주':
+                								 sub_list(jeonju);
+                								break;
+                							case '정읍':
+                								 sub_list(jeongeub);
+                								break;
+                							case '진안':
+                								 sub_list(jinan);
+                								break;
+                							//전남
+                						    case '강진':
+                								 sub_list(gangjin);
+                								break;
+                							case '고흥':
+                								 sub_list(goheung);
+                								break;
+                							case '곡성':
+                								 sub_list(gokseong);
+                								break;
+                							case '광양':
+                								 sub_list(gwangyang);
+                								break;
+                							case '구례':
+                								 sub_list(gurye);
+                								break;
+                							case '나주':
+                								 sub_list(naju);
+                								break;
+                							case '담양':
+                								 sub_list(damyang);
+                								break;
+                							case '목포':
+                								 sub_list(mokpo);
+                								break;
+                							case '무안':
+                								 sub_list(muan);
+                								break;
+                							case '보성':
+                								 sub_list(boseong);
+                								break;
+                							case '순천':
+                								 sub_list(suncheon);
+                								break;
+                							case '여수':
+                								 sub_list(yeosoo);
+                								break;
+                							case '영광':
+                								 sub_list(yeonggwang);
+                								break;
+                							case '영암':
+                								 sub_list(yeongam);
+                								break;
+                							case '완도':
+                								 sub_list(wando);
+                								break;
+                							case '장성':
+                								 sub_list(jangseong);
+                								break;
+                							case '장흥':
+                								 sub_list(jangheung);
+                								break;
+                							case '진도':
+                								 sub_list(jindo);
+                								break
+                							case '함평':
+                								 sub_list(hampyeong);
+                								break;
+                							case '해남':
+                								 sub_list(hanam);
+                								break;
+                							case '화순':
+                								 sub_list(hwasun);
+                								break;
+                							//강원
+                							case '강릉':
+                								 sub_list(gangneung);
+                								break;
+                							case '고성':
+                								 sub_list(goseong);
+                								break;
+                							case '동해':
+                								 sub_list(donghae);
+                								break;
+                							case '삼척':
+                								 sub_list(samcheok);
+                								break;
+                							case '속초':
+                								 sub_list(sokcho);
+                								break;
+                							case '양구':
+                								 sub_list(yanggoo);
+                								break;
+                							case '영월':
+                								 sub_list(yeongwol);
+                								break;
+                							case '원주':
+                								 sub_list(wonjoo);
+                								break;
+                							case '인제':
+                								 sub_list(inje);
+                								break;
+                							case '정선':
+                								 sub_list(jeongseon);
+                								break;
+                							case '철원':
+                								 sub_list(cheolwon);
+                								break;
+                							case '춘천':
+                								 sub_list(chooncheon);
+                								break;
+                							case '태백':
+                								 sub_list(taebaek);
+                								break;
+                							case '평창':
+                								 sub_list(pyeongchang);
+                								break;
+                							case '홍천':
+                								 sub_list(hongcheon);
+                								break;
+                							case '화천':
+                								 sub_list(hwacheon);
+                								break;
+                							case '횡성':
+                								 sub_list(hoengseong);
+                								break;
+                							//경북
+                							case '경산':
+                								 sub_list(gyeongsan);
+                								break;
+                							case '경주':
+                								 sub_list(gyeongju);
+                								break;
+                							case '고령':
+                								 sub_list(goryeong);
+                								break;
+                							case '구미':
+                								 sub_list(gumi);
+                								break;
+                							case '군위':
+                								 sub_list(gunwi);
+                								break;
+                							case '김천':
+                								 sub_list(gimcheon);
+                								break;
+                							case '문경':
+                								 sub_list(mungyeong);
+                								break;
+                							case '봉화':
+                								 sub_list(bonghwa);
+                								break;
+                							case '상주':
+                								 sub_list(sangjoo);
+                								break;
+                							case '성주':
+                								 sub_list(seongjoo);
+                								break;
+                							case '안동':
+                								 sub_list(andong);
+                								break;
+                							case '영덕':
+                								 sub_list(yeongdeok);
+                								break;
+                							case '영양':
+                								 sub_list(yeongyang);
+                								break;
+                							case '영주':
+                								 sub_list(yeongjoo);
+                								break;
+                							case '영천':
+                								 sub_list(yeongcheon);
+                								break;
+                							case '예천':
+                								 sub_list(yecheon);
+                								break;
+                							case '울릉':
+                								 sub_list(ulneung);
+                								break;
+                							case '울진':
+                								 sub_list(uljin);
+                								break;
+                							case '의성':
+                								 sub_list(uiseong);
+                								break;
+                							case '청도':
+                								 sub_list(cheongdo);
+                								break;
+                							case '청송':
+                								 sub_list(cheongsong);
+                								break;
+                							case '칠곡':
+                								 sub_list(chilgok);
+                								break;
+                							case '포항':
+                								 sub_list(pohang);
+                								break;
+                							//대구
+                							case '대구_남구':
+                								 sub_list(daegu_namgu);
+                								break;
+                							case '달서구':
+                								 sub_list(dalseo);
+                								break;
+                							case '달성군':
+                								 sub_list(dalseonggun);
+                								break;
+                							case '대구_동구':
+                								 sub_list(daegu_donggu);
+                								break;
+                							case '대구_북구':
+                								 sub_list(daegu_bukgu);
+                								break;
+                							case '대구_서구':
+                								 sub_list(daegu_seogu);
+                								break;
+                							case '수성구':
+                								 sub_list(suseong);
+                								break;
+                							case '대구_중구':
+                								 sub_list(daegu_junggu);
+                								break;
+                							//울산
+                						    case '울산_남구':
+                								 sub_list(ulsan_namgu);
+                								break;
+                							case '울산_동구':
+                								 sub_list(ulsan_donggu);
+                								break;
+                							case '울주군':
+                								 sub_list(ulsan_ulju);
+                								break;
+                							case '울산_중구':
+                								 sub_list(ulsan_junggu);
+                								break;
+                							//부산
+                							case '부산_강서구':
+                								 sub_list(busan_gangseo);
+                								break;
+                							case '금정구':
+                								 sub_list(geumjeong);
+                								break;
+                							case '부산_남구':
+                								 sub_list(busan_namgu);
+                								break;
+                							case '부산_동구':
+                								 sub_list(busan_donggu);
+                								break;
+                							case '동래구':
+                								 sub_list(dongrae);
+                								break;
+                							case '부산진구':
+                								 sub_list(busanjin);
+                								break;	
+                							case '부산_북구':
+                								 sub_list(busan_bukgu);
+                								break;
+                							case '사상구':
+                								 sub_list(sasang);
+                								break;
+                							case '사하구':
+                								 sub_list(saha);
+                								break;
+                							case '부산_서구':
+                								 sub_list(busan_seogu);
+                								break;
+                							case '연제구':
+                								 sub_list(yeonje);
+                								break;
+                							case '영도구':
+                								 sub_list(yeongdo);
+                								break;
+                							case '부산_중구':
+                								 sub_list(busan_junggu);
+                								break;
+                							case '해운대구':
+                								 sub_list(haeundae);
+                								break;
+                							case '기장군':
+                								 sub_list(gijang);
+                								break;
+                							//경남
+                							case '거제':
+                								 sub_list(geoje);
+                								break;
+                							case '거창':
+                								 sub_list(geochang);
+                								break;
+                							case '고성':
+                								 sub_list(goseong);
+                								break;
+                							case '김해':
+                								 sub_list(gimhae);
+                								break;
+                							case '남해':
+                								 sub_list(namhae);
+                								break;
+                							case '창원_마산':
+                								 sub_list(changwon_masan);
+                								break;
+                							case '창원_진해':
+                								 sub_list(changwon_jinhae);
+                								break;
+                							case '창원_의창':
+                								 sub_list(changwon_uichang);
+                								break;
+                							case '밀양':
+                								 sub_list(milyang);
+                								break;
+                							case '사천':
+                								 sub_list(sacheon);
+                								break;
+                							case '산청':
+                								 sub_list(sancheong);
+                								break;
+                							case '양산':
+                								 sub_list(yangsan);
+                								break;
+                							case '의령':
+                								 sub_list(uiryeong);
+                								break;
+                							case '진주':
+                								 sub_list(jinju);
+                								break;
+                							case '창녕':
+                								 sub_list(changnyeong);
+                								break;
+                							case '통영':
+                								 sub_list(tongyeong);
+                								break;
+                							case '하동':
+                								 sub_list(hadong);
+                								break;
+                							case '함안':
+                								 sub_list(haman);
+                								break;
+                							case '함양':
+                								 sub_list(hamyang);
+                								break;
+                							case '합천':
+                								 sub_list(habcheon);
+                								break;
+                							//제주
+                							case '제주시':
+                								 sub_list(jejusi);
+                								break;
+                							case '서귀포시':
+                								 sub_list(seog);
+                								break;
+                							//끝
+                							default: //default child option is blank
+                								$("#sub_subcats").html('');  
+                								break;
+                							   }
+                });
+                
+                
+				function list(array_list){
+					$("#subcats").html(""); //reset child options
+					$(array_list).each(function (i) { //populate child options
+					$("#subcats").append("<option value=\""+array_list[i].value+"\">"+array_list[i].display+"</option>");
+					});
+				}
+				function sub_list(sub_array_list){
+					$("#sub_subcats").html(""); //reset child options
+					$(sub_array_list).each(function (i) { //populate child options
+					$("#sub_subcats").append("<option value=\""+sub_array_list[i].value+"\">"+sub_array_list[i].display+"</option>");
+					});
+				}
+</script>
+<!--경찰서 db-->

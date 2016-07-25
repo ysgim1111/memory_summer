@@ -1,0 +1,62 @@
+<h2>Forgot your password?</h2>
+
+<form class="new_user" id="new_user" action="/users/password" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="RSK1Nll4+dXIUnXM4Kk2XzpNOLTjzhHmczuNo2dUJFw4uNBz6vhTi1CXol0Ts4Ri16RhR3plSl/sLFtv2DGK7w==" />
+  
+
+  <div class="field">
+    <label for="user_email">Email</label><br />
+    <input autofocus="autofocus" type="email" value="" name="user[email]" id="user_email" />
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Send me reset password instructions" />
+  </div>
+</form>
+  <a href="/users/sign_in">Log in</a><br />
+
+  <a href="/users/sign_up">Sign up</a><br />
+
+
+  <a href="/users/confirmation/new">Didn&#39;t receive confirmation instructions?</a><br />
+
+
+    <a href="/users/auth/facebook">Sign in with Facebook</a><br />
+
+
+		<div class="text-center" style="background:#f3f3f3">
+      <div class="container">
+       <div class="browser-support text-center" style="text-align:center">
+        <div data-scroll-reveal="enter from the bottom and move 30px">
+            
+            <div style="text-algin:center" data-href="https://www.facebook.com/ovenapp" data-layout="standard" data-action="like" data-share="true" data-show-faces="true" data-width="100" class="fb-like">
+            </div>
+        </div>
+   
+  </div>
+  
+  
+  
+  
+  
+  
+  
+
+
+<h2>Forgot your password?</h2>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+

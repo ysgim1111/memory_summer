@@ -1,0 +1,92 @@
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%;padding-bottom:100px" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12" style="text-align:center">
+                  <a href="/qna/index"><h1 class="lead" style="font-family:'Nanum Myeongjo'">따뜻한 한마디 </h1></a>
+                  <span class="subheading">그동안 모여진<br class="mb_line_break"> 따뜻한 한마디를 보고 가세요.</span>
+                </div>
+              </div>
+            </div>
+        </header>
+        <div style="background:#e8e8e8;">
+          <div class="section container blog-classic" style="padding-top:60px">
+            <div class="row">
+               <div class="col-md-12">
+                <div class="blog-post" style="background:#fff;margin-bottom:0px">
+                  <!-- Image -->
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:20px">
+                    <div class="row" style="text-align:center">
+                        <div class="col-md-12 sidebar">
+                          
+                        </div>
+                    </div>
+                  </div>
+                  <div class="table-responsive" id="my-receives" >  
+                  <%= render "main/receive" %>
+                  </div>
+                    <div class="col-md-12" style="text-align:center;">
+                      
+                      
+                      
+                      
+                           <nav class="blog-pagination">
+                                <ul class="pagination">
+                                  <li>
+                                    <a id='minus5' aria-label="Previous">
+                                      <span aria-hidden="true"><i class="fa fa-angle-double-left"></i></span>
+                                    </a>
+                                  </li>
+                                </ul>
+                                <%page=((params[:id].to_i-1)/20).to_i+1%>
+                                <%@b.each do |y|%>
+                                  <%if y.modulo(20)==1%><ul id='page<%=y/20+1%>' 
+                                  style='<%if page==y/20+1%><%else%>display:none<%end%>;transition:1s' class="pagination allpage">
+                                  <%end%>
+                                    <li><a <%if y==params[:id].to_i%> style='color:#777'<%end%> href='/main/warmheart/<%=y%>'><%=y%></a></li>
+                                  <%if y.modulo(20)==0 || y==@b.count%></ul><%end%>            
+                                <%end%>
+                                <ul class="pagination">                
+                                  <li>
+                                    <a id='plus5' aria-label="Next">
+                                      <span aria-hidden="true"><i class="fa fa-angle-double-right"></i></span>
+                                    </a>
+                                    <script>
+                                      var n=<%=page%>
+                                      $('#minus5').click(function() {
+                                          if(n==1){
+                                          n=1
+                                          }else{
+                                          n=n-1
+                                          }
+                                          $('.allpage')
+                                            .css({display:'none'})
+                                          $('#page'+n)
+                                            .css({display:''});
+                                      })                
+                                      $('#plus5').click(function() {
+                                          if(n==<%=(@b.count-1)/20.to_i+1%>){
+                                          n=<%=(@b.count-1)/20.to_i+1%>
+                                          }else{
+                                          n=n+1
+                                          }                        
+                                          $('.allpage')
+                                            .css({display:'none'})
+                                          $('#page'+n)
+                                            .css({display:''});
+                                      });  
+                                    </script>
+                                  </li>
+                                </ul>
+                             </nav>
+                    </div>
+          </div><!-- / .row -->
+          <%#
+                  <div class="col-md-12" style="text-align: center;background: #F3F3F3;padding-top: 15px;padding-bottom: 15px;margin-bottom: 30px;box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);">
+                  <a style="font-weight: bold;color: black;width:100%;font-size: 1em;" href="/main/index"><i class="fa fa-reply"></i> 메인페이지로 </a>
+                  </div>
+                  %>
+                </div>
+               </div>
+          </div>
+          </div>
+        </div>

@@ -1,0 +1,18 @@
+// Place all the styles related to the sue controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.tbl_basic {width:100%;}
+.tbl_basic th {text-align:center;}
+.tbl_basic .fir th, .tbl_basic .fir td {border-top:none;}
+.tbl_type_basic {border-top:1px solid #111;border-bottom:1px solid #bcbcb8;}
+.intxt_rig {float:left;padding:0 5px;line-height:21px;}
+
+.tbl_type_basic td input {float:left;padding:3px 5px 0;border:1px solid #dbdbdb;height:19px;line-height:19px;}
+.tbl_type_basic input.txt {float:left;width:435px;}
+.tbl_type_basic input.digit {width:60px;}
+.tbl_type_basic input.short_txt {width:90px;}
+.tbl_type_basic th, .tbl_type_basic td {border-top:1px solid #e1e1e1;}
+.tbl_type_basic th {width:150px;color:#959595;font-weight:bold;background-color:#f5f5f5;text-indent:15px;line-height:35px;text-align:left;}
+.tbl_type_basic td {padding:10px 15px;}
+	#uaddr1 {margin-bottom:5px;}
+	

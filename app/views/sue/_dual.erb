@@ -1,0 +1,55 @@
+<h3 class="col-md-10" style="margin-top:0px;margin-bottom:30px">제출하려는 서식을 선택해 주세요</h3>
+
+    				<div class="col-md-10">
+    					<ul class="data-list floated clearfix">
+    					    <li style="margin-bottom:22px;width:100%" id="check1" class="sue_sort">
+    					         <input name="sue_sort" type="radio" class="check_radio" value="진정">
+    					         <label style="font-size:2em;font-weight:400" id="checking1" class="label_gender">진정서</label>
+    					         <p style="padding-left:50px">진정이란 억울하고 부당한 대우를 당했으니 <strong>조사</strong>를 해달라는 신청의 의미이며 바로 처벌에 들어가기보다 우선 <strong>도움</strong>을 받겠다는 성격이 강합니다.
+    					           진정서를 제출하면 수사기관은 범죄사실의 존부를 확인하고 범죄의 사실관계가 명백하면 수사를 개시합니다.</p>
+    					    </li>
+    					    <li style="margin-bottom:22px;width:100%" id="check2" class="sue_sort">
+    					         <input name="sue_sort" type="radio" class="required check_radio" value="고소">
+    					         <label style="font-size:2em;font-weight:400" id="checking2" class="label_gender">고소장</label>
+    					         <p style="padding-left:50px">고소는 특정한 점이 법의 위반이므로 <strong>처벌</strong>을 요청하는 것입니다.
+    					         처벌의 의사를 구하는 것으로, 수사기관에 접수하는 즉시 수사가 개시됩니다.
+    					         </p>
+    					    </li>
+    					</ul>
+    				</div><!-- end col-md-10 -->
+    			</div>
+    	  </div>
+    	  <script>
+    	  $(window).load(function(){
+    	    $('#check2').children().first().addClass('checked');
+    	    $('input[name="sue_sort"]').val('고소');
+    	    $('#check1').find('ins').click(function(){
+    	      $('input[name="sue_sort"]').val('진정');
+    	      $('#check2').children().first().removeClass('checked');
+    	      $('#check1').children().first().addClass('checked');
+    	      $( "h3:contains('고소')" ).each(function(){
+    	        $(this).html($(this).html().replace('고소','진정'));
+    	      });
+    	      var change = $( "textarea:contains('고소')" ).html().replace(/\고소/g, '진정');
+    	      $("textarea").html(change);
+    	      $('#sue_context').val($('#sue_context').val().replace(/\고소/g, '진정'));
+    	      $('#sue_context').val($('#sue_context').val().replace(/\피고/g, '피진정'));
+    	      $('#go_write').attr('onclick','auto_write_jj();');
+    	    });
+
+    	    $('#check2').find('ins').click(function(){
+    	      $('input[name="sue_sort"]').val('고소');
+    	      $('#check1').children().first().removeClass('checked');
+    	      $('#check2').children().first().addClass('checked');
+
+    	      $( "h3:contains('진정')" ).each(function(){
+    	        $(this).html($(this).html().replace('진정','고소'));
+    	      });
+    	      var change = $( "textarea:contains('진정')" ).html().replace(/\진정/g, '고소');
+    	      $( "textarea:contains('진정')" ).html(change);
+    	      $('#sue_context').val($('#sue_context').val().replace(/\피진정/g, '피고'));
+    	      $('#sue_context').val($('#sue_context').val().replace(/\진정/g, '고소'));
+    	      $('#go_write').attr('onclick','auto_write_gs();');
+    	    });
+    	  })
+    	  </script>

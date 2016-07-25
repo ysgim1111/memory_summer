@@ -1,0 +1,116 @@
+<!-- ========== Page Title ========== -->
+
+        <header style="background:url(<%= image_url('log.jpg') %>);background-size:cover;background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                    <h1 class="title" style="font-family:'Nanum Myeongjo'">비밀번호 찾기</h1>
+                    <span class="subheading">소중한 권리를 간편하게 지키세요</span>
+                </div>
+                
+              </div>
+
+            </div>
+        </header>
+        
+        
+        
+        
+        
+         <!-- ========== Sign_up Form ========== -->
+
+        <div class="login-2" style="background:#e8e8e8;">
+          <div class="bg-overlay">
+            
+            <div class="container">
+              <div class="row ws-m">
+                <div class="col-md-offset-3 col-md-6">
+
+                  <div class="form-wrapper">
+                    <div class="form-content" style="padding-bottom: 0px;margin-top: 60px;">
+                      <h3 class="form-header">비밀번호 찾기</h3>
+
+                      <form action="/users/password" accept-charset="UTF-8" method="post">
+                        <input name="utf8" type="hidden" value="✓">
+                        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					
+					
+					
+                        <!-- Email -->
+                        <div class="form-group">
+                          <label for="username-login-2">이메일</label>
+                          <input autofocus="autofocus" type="email" id="user_email" name="user[email]" class="form-control" placeholder="이메일을 입력하세요" required>
+                        </div>
+                        
+                       
+                        <!-- Submit -->
+                        <input style="width:100%;margin-top:30"type="submit" value="비밀번호 재발송" class="btn">
+                      
+                      </form>
+                    <span class="cards-header">또는</span>
+                    </div><!-- / .form-content -->
+                    <!-- Social Signup -->
+                   <div class="social-signup">
+                      <a style="width:100%" href="/users/auth/facebook" class="social-card fb-card">
+                        <span class="sc-lead">Facebook</span>
+                        <span class="sc-info">페이스북으로 가입하기</span>
+                        <i class="fa fa-facebook"></i>
+                      </a>
+                    </div><!-- / .social-signup -->
+                  </div><!-- / .form-wrapper -->
+
+                  
+                  <!--<a href="#" class="email-signup pull-right">Signup with email</a>-->
+
+
+                </div><!-- / .col-md-6 -->
+              </div><!-- / .row -->
+            </div><!-- / .container -->
+
+          </div><!-- / .bg-overlay -->
+        </div><!-- / .bg-login -->
+
+
+<!--<div class="container">
+<div class="row">
+<div class="col-md-2">
+</div>
+<div class="col-md-8" style="margin-top:2em; margin-bottom:5em">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">비밀번호 찾기</h3>
+  </div>
+  <div class="panel-body">
+				<form class="new_user cd-form" id="new_user" action="/users/password" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="IzX9KXVLb6eg2lqhdCYF+X89UeimvI8J4pWDoxgQePper5hsxsvF+TgfjTCHPLfEktQIGz8X1LB9glVvp3XWSQ==" />
+					<p class="fieldset" style="margin-top: 0px;">
+						<label class="image-replace cd-email" for="user_email">E-mail</label>
+						<input autofocus="autofocus" class="full-width has-padding has-border" id="user_email" name="user[email]" type="email" placeholder="E-mail" required>
+					</p><br>
+					<a href="/users/sign_up">Sign up</a><br />
+
+
+  <a href="/users/confirmation/new">Didn&#39;t receive confirmation instructions?</a><br /><br>
+					<div class="col-md-12" style="text-align:center;padding-left: 0px;padding-right: 0px;">
+						<button style="background-color: #2f889a" type="submit" class="btn btn-primary btn-lg btn-block">비밀번호 재발송</button><br />
+						</div>
+						
+				</form>
+						<div class="col-md-12" style="text-align:center;padding-left:28px;padding-right:28px">
+						<a href="/users/auth/facebook" style="text-decoration:none"><button style="background-color: #285E8E;"type="button" class="btn btn-primary btn-lg btn-block">페이스북으로 로그인하기</button></a><br />
+						</div>
+				<script> 
+				  $('#gogogo').click(function() {
+				    document.forms['new_user'].submit();
+				  });
+				</script>
+			
+
+  </div>
+</div>
+</div>
+<div class="col-md-2">
+</div>
+</div>
+</div>
+-->

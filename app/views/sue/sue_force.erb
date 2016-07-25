@@ -1,0 +1,851 @@
+<%dbdb=Sueform.find(params[:id])%>
+<%= render 'sue/forward' %>
+
+<section class="container" id="main" style="padding-bottom:0px">
+
+<!-- Start Survey container -->
+<div id="survey_container" style="margin-top:100px">
+<style>
+.ui-widget-header {
+    background: #CFD20C;
+}
+</style>
+	<style>
+    .styled-select {
+    border: 2px solid rgb(136, 130, 125) !important;
+    background-color:white !important;
+    }
+    .styled-select select {
+    border: none !important;
+    }
+
+
+    input.form-control, textarea.form-control {
+    border: 2px solid rgb(136, 130, 125);
+    background-color: white !important;
+    }
+    		    .strike {
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .strike > span {
+        position: relative;
+        display: inline-block;
+    }
+
+    .strike > span:before,
+    .strike > span:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 9999px;
+        height: 1px;
+        background: #777;
+    }
+
+    .strike > span:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+
+    .strike > span:after {
+        left: 100%;
+        margin-left: 15px;
+    }
+    </style>
+
+
+  	<div id="top-wizard" style="background-color:#402E1F">
+  		<strong style="color:white">Progress<span id="location"></span></strong>
+  		<div id="progressbar"></div>
+  		<div class="shadow"></div>
+  	</div><!-- end top-wizard -->
+
+
+    <!--첨부파일 끝-->
+    <form class="new_test" id="police_form" enctype="multipart/form-data"  action="/sue/create1/<%=params[:id]%>" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <!--첨부파일-->
+
+<!-- sorting 실험 끝 -->
+
+    	<div id="middle-wizard">
+
+
+
+
+    	  <div class="step">
+    	    <div class="row">
+    				<h3 class="col-md-10" style="margin-top:0px;margin-bottom:30px">제출하려는 서식을 선택해 주세요</h3>
+
+    				<div class="col-md-10">
+    					<ul class="data-list floated clearfix">
+    					    <li style="margin-bottom:22px;width:100%" id="check1" class="sue_sort">
+    					         <input name="sue_sort" type="radio" class="check_radio" value="진정">
+    					         <label style="font-size:2em;font-weight:400" id="checking1"class="label_gender">진정서</label>
+    					         <p style="padding-left:50px">진정이란 억울하고 부당한 대우를 당했으니 <strong>조사</strong>를 해달라는 신청의 의미이며 바로 처벌에 들어가기보다 우선 <strong>도움</strong>을 받겠다는 성격이 강합니다.
+    					           진정서를 제출하면 수사기관은 범죄사실의 존부를 확인하고 범죄의 사실관계가 명백하면 수사를 개시합니다.</p>
+    					    </li>
+    					    <li style="margin-bottom:22px;width:100%" id="check2" class="sue_sort">
+    					         <input name="sue_sort" type="radio" class="check_radio" value="고소">
+    					         <label style="font-size:2em;font-weight:400" id="checking2" class="label_gender">고소장</label>
+    					         <p style="padding-left:50px">고소는 특정한 점이 법의 위반이므로 <strong>처벌</strong>을 요청하는 것입니다.
+    					         처벌의 의사를 구하는 것으로, 수사기관에 접수하는 즉시 수사가 개시됩니다.
+    					         </p>
+    					    </li>
+    					</ul>
+    				</div><!-- end col-md-10 -->
+    			</div>
+    	  </div>
+    	  <script>
+    	  $(window).load(function(){
+    	    $('#check2').children().first().addClass('checked');
+    	    $('input[name="sue_sort"]').val('고소');
+    	    $('#check1').find('ins').click(function(){
+    	      $('input[name="sue_sort"]').val('진정');
+    	      $('#check2').children().first().removeClass('checked');
+    	      $('#check1').children().first().addClass('checked');
+
+    	      $( "h3:contains('고소')" ).each(function(){
+    	        $(this).html($(this).html().replace('고소','진정'));
+    	      });
+            var change = $( "textarea:contains('고소')" ).html().replace(/\고소/g, '진정');
+            $("textarea").html(change);
+            $('#sue_context').val($('#sue_context').val().replace(/\고소/g, '진정'));
+            $('#sue_context').val($('#sue_context').val().replace(/\피고/g, '피진정'));
+
+    	    });
+
+    	    $('#check2').find('ins').click(function(){
+    	      $('input[name="sue_sort"]').val('고소');
+    	      $('#check1').children().first().removeClass('checked');
+    	      $('#check2').children().first().addClass('checked');
+
+    	      $( "h3:contains('진정')" ).each(function(){
+    	        $(this).html($(this).html().replace('진정','고소'));
+    	      });
+            var change = $( "textarea:contains('진정')" ).html().replace(/\진정/g, '고소');
+    	      $( "textarea:contains('진정')" ).html(change);
+    	      $('#sue_context').val($('#sue_context').val().replace(/\피진정/g, '피고'));
+    	      $('#sue_context').val($('#sue_context').val().replace(/\진정/g, '고소'));
+    	      $('#test_sue_reason').html($('#test_sue_reason').html().replace(/진정/g,'고소'));
+    	    });
+    	  })
+    	  </script>
+
+    		<div class="step">
+          <p style="text-align:center">*합의금을 목적으로 하는 고소라 판단될 경우 고소인이 처벌 받을 수 있고, 사안이 경미한 경우 고소가 각하될 수 있습니다 </p>
+    			<div class="row">
+    				<h3 class="col-md-10">피고소인 정보</h3>
+
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li>
+    						    <input type="text" style="margin-bottom:10px" name="you_id" id="input2" class="required  form-control" placeholder="상대방의 이름 또는 닉네임을 입력해주세요 ex)홍길동">
+    						</li>
+
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li><input type="text" maxlength="13" style="margin-bottom: 25px;" name="you_phone" class="form-control cellPhone" placeholder="연락처"></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+
+    			<div class="row">
+    				<h3 class="col-md-10">피고소인 주소</h3>
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li><input type="text" name="you_address" onclick="you_sample6_execDaumPostcode()" class="form-control" type="text" id="you_sample6_postcode" readonly placeholder="우편번호 찾기"></li>
+    						<li><input onclick="you_sample6_execDaumPostcode()" class="form-control" name="you_address1" type="text" id="you_sample6_address" placeholder="주소"></li>
+
+                  <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+
+    				<div class="col-md-6">
+
+    					<ul class="data-list">
+    						<li><input type="text" name="firstname" style="visibility:hidden" class="form-control" placeholder=""></li>
+    						<li><input class="form-control" type="text"  name="you_address2" id="you_sample6_address2" placeholder="상세주소"></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+
+    				</div><!-- end col-md-6 -->
+    			</div>
+
+
+    			<div class="row">
+    				<div class="col-md-6">
+    				  <h3 style="padding-right:0px; padding-left:0px;" class="col-md-12">고소인 정보</h3>
+    					<ul class="data-list">
+    						<li><input type="text"  name="my_name" id="input3" class="required form-control" placeholder="본인의 이름을 입력해 주세요."></li>
+    						<li><input type="text" maxlength="13" style="margin-bottom: 25px;" name="my_phone" class="required form-control cellPhone" placeholder="휴대폰 번호"></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+
+    				<div class="col-md-6">
+    				  <h3 style="padding-right:0px; padding-left:0px;" class="col-md-12">생년월일</h3>
+    					<ul class="data-list floated clearfix">
+    					  <div class="col-md-12" style="padding-right:0px;padding-left:0px;/* margin-bottom:25px; */">
+    					  <div style="padding-right:0px;padding-left:0px;/* margin-bottom: 0px; */" class="col-md-4">
+    						<li style="width:100%;margin-bottom: 25px;" class="styled-select">
+        						    <select style="margin-bottom: 25px;font-weight:300;padding-left: 15px;" name="birth_year" id="year"class="required form-control">
+                                        <option value="">연도</option>
+                        </select>
+    						</li>
+    						</div>
+    						<script>
+    						  var year = document.getElementById('year');
+    						  for(var i = 0;i<100;i++){
+    						    a =  document.createElement('option');
+    						    a.value = 2015-i;
+    						    a.innerText = 2015-i + '년';
+    						    year.appendChild(a);
+    						  }
+    						</script>
+    					  <div style="/* margin-bottom: 25px; */padding-right:0px;" class="col-md-4">
+    						<li style="width:100%;margin-bottom: 25px;" class="styled-select">
+        						    <select style="font-weight:300" name="birth_month"id="month" class="required form-control">
+                                        <option value="">월</option>
+                        </select>
+    						</li>
+    						</div>
+    						<script>
+    						  var month = document.getElementById('month');
+    						  for(var i = 1;i<13;i++){
+    						    a =  document.createElement('option');
+    						    a.value = i;
+    						    a.innerText = i + '월';
+    						    month.appendChild(a);
+    						  }
+    						</script>
+    						<div style="/* margin-bottom: 25px; */padding-right:0px;" class="col-md-4">
+    						<li style="width:100%;margin-bottom: 25px;" class="styled-select">
+        						    <select style="font-weight:300" id="day" name="birth_day" class="required form-control">
+                                        <option value="">일</option>
+                        </select>
+    						</li>
+    						</div>
+    						<script>
+    						  var day = document.getElementById('day');
+    						  for(var i = 1;i<32;i++){
+    						    a =  document.createElement('option');
+    						    a.value = i;
+    						    a.innerText = i + '일';
+    						    day.appendChild(a);
+    						  }
+    						</script>
+    						</div>
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+
+
+
+    				<div class="row">
+    				<h3 class="col-md-10">주소</h3>
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li><input type="text" name="post_code" onclick="sample6_execDaumPostcode()" class="form-control" type="text" id="sample6_postcode" readonly placeholder="우편번호 찾기"></li>
+    						<li><input onclick="sample6_execDaumPostcode()" class="required  form-control" name="address1" type="text" id="sample6_address" placeholder="주소"></li>
+    						<!-- 요섭이 하이-->
+                  <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+
+    				<div class="col-md-6">
+
+    					<ul class="data-list">
+    						<li><input type="text" name="firstname" style="visibility:hidden" class="form-control" placeholder=""></li>
+    						<li><input class="required form-control" type="text"  name="address2" id="sample6_address2" placeholder="상세주소"></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+
+    				</div><!-- end col-md-6 -->
+    			</div>
+
+
+
+
+    			<div class="row">
+    				<h3 class="col-md-10">담당 관서
+    				<a style="text-align:center" class="btn btn-primary" onclick="open5();">
+    				   <i class="fa fa-search fa-lg"></i>담당관서 검색</a></h3>
+
+    				<script>
+
+    				    function open5(){
+    				                    alert('도로명 주소로 검색해 주세요');
+                                        window.open('http://www.police.go.kr/portal/bbs/list.do?bbsId=B0000132&option1=1&menuNo=200223', '_blank', 'width=800, height=1000, resizable=no');
+
+                                    }
+    				</script>
+    				  <div class="col-md-6">
+    				      <ul class="data-list">
+    						<li>
+    							<input type="text"  name="police_name" class="required form-control" placeholder="자신의 주소에 맞는 담당관서 검색 후 작성 해주세요.">
+    						</li>
+    					  </ul>
+    			    </div>
+    			</div>
+
+
+    			<div class="row">
+    				<div class="col-md-4 col-md-offset-4">
+    					<ul class="data-list" id="terms">
+    						<li>
+                            <strong> <a href="/main/terms" target="_blank">개인정보 취급 방침 및 약관</a>에 동의하십니까? </strong>
+                            <label class="switch-light switch-ios ">
+                                    <input type="checkbox" name="terms" class="required   fix_ie8" value="yes">
+                                    <span>
+                                        <span class="ie8_hide">No</span>
+                                        <span>Yes</span>
+                                    </span>
+                                    <a></a>
+                            </label>
+    						</li>
+    					</ul>
+    				</div>
+    			</div>
+
+
+
+
+
+
+    		</div><!-- end step-->
+
+
+
+                <!-- 2 -->
+    		<div class="step row">
+
+    <script>
+        var condition = document.getElementById('condition3');
+        condition.onclick= function(){
+            window.open('../../main/condition', '_blank');
+        }
+    </script>
+
+    <div class="row">
+    				<h3 class="col-md-10">피고소인과의 관계 유무</h3>
+
+    				<div class="col-md-12">
+    					<ul class="data-list floated clearfix">
+    					    <div id="hi">
+    					    <li style="margin-bottom:22px" id="check_realation_1" class="relation_true_etc">
+    					         <input  name="gender" type="radio" class="check_radio" value="yes">
+    					         <label style="font-size:16px;font-weight:400" class="label_gender"> 있음</label>
+    					    </li>
+    					    </div>
+    					    <li style="margin-bottom:22px" id="check_realation_2" class="relation_true">
+    					         <input name="gender" type="radio" class="check_radio" value="no">
+    					         <label style="font-size:16px;font-weight:400" class="label_gender"> 없음</label>
+    					    </li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+                            <input type="text"  name="my_duo_relation" id="relation_etc" class="combine form-control duo" placeholder="본인과의 관계를 입력해 주세요 ex)전 남자친구,전 여자친구,선배 등">
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+    			<script>
+    			  $(window).load(function(){
+
+             $('#relation_etc').hide();
+        	    $('#check_realation_1').find('ins').on('click', function(event){
+        	        $('#relation_etc').addClass('auto_required');
+        	        $('#relation_etc').show();
+                  $('#relation_etc').focus();
+        	    })
+
+        	    $('#check_realation_2').find('ins').on('click', function(event){
+        	      $('#relation_etc').removeClass('auto_required');
+        	      $('#relation_etc').hide();
+        	      $('#relation_etc').val('');
+        	    })
+        	  })
+    			</script>
+
+
+    			<div class="row">
+    				<h3 class="col-md-10">협박이유</h3>
+    				<div class="col-md-12">
+    					<ul class="data-list">
+    						<li>
+    						  <div class="form-group">
+                    <textarea type="text" id="force_reason" style="height:100px" class="auto_required  form-control" placeholder="">피고소인이 다시 교제할 것을 요구하였으나 고소인 본인이 거절</textarea>
+                  </div>
+                </li>
+    						<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+
+
+
+
+    			<div class="row" id="after_num">
+					<h3 class="col-md-10 wizard-header">협박 횟수</h3>
+
+
+					<div class="col-md-6">
+						<ul class="data-list">
+							<li>
+							<div class="qty-buttons">
+								<input type="button" id="num_up" value="1" class="qtyplus" name="quantity">
+								<input id="quantity"  type="text" name="quantity" value="1" class="qty form-control" placeholder="1">
+								<input type="button" id="num_down" value="1" class="qtyminus" name="quantity"><span>횟수를 설정해 주세요</span>
+							</div>
+							</li>
+						</ul>
+					</div><!-- end col-md-6 -->
+				</div>
+    		<script>
+    		$(window).load(function(){
+
+    		  var a = 'datePicker(event,"target_date",'
+    		  var b = $( "input[name$='target_date']" ).length;
+    		  var c = ')';
+    		  var e = a+(b-1)+c;
+    		  $('#temporary').hide();
+    		  $('.loan_num').find('input:button').attr('onClick',e);
+
+
+    		  $('#num_up').on('click',function(){
+
+    		      var b = $( "input[name$='target_date']" ).length;
+    		      var copy = $('#temporary').clone();
+    		      copy.removeAttr('id').addClass('loan_num').find('input:button').attr('onClick',a+b+c);
+    		      copy.find('#remit_date').addClass('real_date auto_required');
+    		      copy.find('#temporary_method').addClass('method');
+    		      copy.find('#publicity').addClass('force_text auto_required');
+    		      copy.find('select').addClass('auto_required');
+    		      copy.show();
+              $('.loan_num').last().after(copy);
+    		  });
+    		  $('#num_down').on('click',function(){
+    		    if ($(this).val() < 1 ) {
+    		        $('#num_down').val(1);
+    		        $('#quantity').val(1);
+    		        $('#num_up').val(1);
+    		        alert('1회 이하로 설정할 수 없습니다');
+    		        return false;
+    		      }
+    		    else {
+    		      $('.loan_num').last().remove();
+    		    }
+    		  });
+
+
+    		})
+    		</script>
+
+    			<div class="row" id="temporary">
+    				<div class="col-md-6">
+            <h3 class="col-md-10" style="padding-left:0px">협박 매체</h3>
+						<ul class="data-list">
+							<li>
+							<div class="styled-select">
+								<select class="form-control" id="temporary_method" name="country">
+									<option value="" selected="">매체를 선택해주세요</option>
+									<option value="통화">통화</option>
+									<option value="문자">문자</option>
+									<option value="SNS 메시지">SNS 메시지</option>
+									<option value="카카오톡">카카오톡</option>
+									<option value="대면">대면</option>
+								</select>
+							</div>
+							</li>
+						</ul>
+					</div><!-- end col-md-6 -->
+
+
+					<div class="col-md-6">
+    				  <h3 class="col-md-10" style="padding-left:0px">협박 날짜</h3>
+				        <div class="col-md-10" style="padding-left:0px">
+					        <ul class="data-list">
+						        <li>
+        				        <input type="text" id="remit_date" readonly placeholder="날짜를 입력해주세요" class="combine form-control" name="target_date">
+                    </li>
+                  </ul>
+                  </div>
+                  <div class="col-md-2" style="padding-left: 0px;">
+                            <input type="button" style="height:44px" value="달력보기" class="btn btn-warning" onClick="datePicker(event,'target_date', 1)">
+                  </div>
+          </div>
+
+          	<div class="col-md-12">
+    				  <h3 class="col-md-10" style="padding-left:0px">협박 내용</h3>
+    					<ul class="data-list">
+    						<li>
+    						  <div class="form-group">
+            				    <!--<input class="combine" id="input3" type="hidden" value="<공연성>"/>-->
+                                <textarea type="text" id="publicity" name="test[sue_reason]" style="height:44px" class="combine form-control" placeholder="">너 밤길 조심해라</textarea>
+                  </div>
+                </li>
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+
+    		<div class="row loan_num">
+					<div class="col-md-6">
+            <h3 class="col-md-10" style="padding-left:0px">협박매체</h3>
+						<ul class="data-list">
+							<li>
+							<div class="styled-select">
+								<select class="auto_required form-control method" name="country">
+									<option value="" selected="">매체를 선택해주세요</option>
+									<option value="통화">통화</option>
+									<option value="문자">문자</option>
+									<option value="SNS 메시지">SNS 메시지</option>
+									<option value="카카오톡">카카오톡</option>
+									<option value="대면">대면</option>
+								</select>
+							</div>
+							</li>
+						</ul>
+					</div><!-- end col-md-6 -->
+
+
+					<div class="col-md-6">
+    				  <h3 class="col-md-10" style="padding-left:0px">협박날짜</h3>
+				        <div class="col-md-10" style="padding-left:0px">
+					        <ul class="data-list">
+						        <li>
+        				        <input type="text" id="remit_date" readonly placeholder="날짜를 입력해주세요" class="auto_required real_date required form-control" name="target_date">
+                    </li>
+                  </ul>
+                  </div>
+                  <div class="col-md-2" style="padding-left: 0px;">
+                            <input type="button" style="height:44px" value="달력보기" class="btn btn-warning" onClick="datePicker(event,'target_date')">
+                  </div>
+          </div>
+
+
+          	<div class="col-md-12">
+    				  <h3 class="col-md-10" style="padding-left:0px">협박 내용</h3>
+    					<ul class="data-list">
+    						<li>
+    						  <div class="form-group">
+            				    <!--<input class="combine" id="input3" type="hidden" value="<공연성>"/>-->
+                                <textarea type="text" id="publicity" name="test[sue_reason]" style="height:44px" class="auto_required force_text required form-control" placeholder="">너 밤길 조심해라</textarea>
+                                <input class="combine" id="input11" type="hidden" value="&quot;">
+                  </div>
+                </li>
+    					</ul>
+    				</div><!-- end col-md-6 -->
+
+
+				</div>
+
+
+    			<div class="row">
+    				<h3 class="col-md-10">피해상황</h3>
+    				<div class="col-md-12">
+    					<ul class="data-list">
+    						<li>
+    						  <div class="form-group">
+                    <textarea type="text" id="force_situation" style="height:100px" class="auto_required form-control" placeholder="">ex) 극심한 정신적인 고통으로 인한 신경쇠약으로 정신과적 치료, 정신적인 고통으로 인해 출근을 못하고 있는 상황 등</textarea>
+                  </div>
+                </li>
+    						<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+
+
+
+
+    			<div class="strike">
+                <span><a onclick="auto_write_gsm();" id="go_write" style="text-align:center;font-weight:300;" class="btn btn-success">
+                    <i class="fa fa-magic fa-lg"></i>소장자동완성</a></span>
+          </div>
+
+        		<div id="result" class="row">
+        			<h3 class="col-md-10">고소 취지</h3>
+        			<div class="col-md-12">
+        				<ul class="data-list">
+        					<li><div class="form-group">
+                                <textarea type="text"  id="sue_context"  name="sue_content" style="height:200px" class=" required form-control" placeholder="소장자동완성 버튼을 클릭해주세요"></textarea>
+                            </div></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+        			    </ul>
+        			</div><!-- end col-md-6 -->
+                </div>
+
+                <div class="row">
+        		    <h3 class="col-md-10">고소 내용</h3>
+        			<div class="col-md-12">
+        				<ul class="data-list">
+        					<li><div class="form-group">
+                                <textarea type="text" id="test_sue_reason" name="sue_reason" style="height:150px" class="required  form-control" placeholder="">고소인은 피고소인을 협박죄로 고소하오니 철저히 수사하여 의법조치하여 주시기 바랍니다.</textarea>
+                            </div></li>
+        					<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+        				</ul>
+        		    </div><!-- end col-md-6 -->
+        	    </div>
+
+        	    <div class="row">
+        				<h3 class="col-md-10">증거자료</h3>
+
+        				<div class="col-md-6">
+        					<ul class="data-list floated clearfix">
+        					    <div id="hi">
+        					    <li style="margin-bottom:22px" id="check1">
+        					         <input name="evidence" type="radio" class="required check_radio" value="yes">
+        					         <label style="font-size:16px;font-weight:400" class="label_gender"> 제출</label>
+        					    </li>
+        					    </div>
+        					    <li style="margin-bottom:22px" id="check2">
+        					         <input name="evidence" type="radio" class="check_radio" value="no">
+        					         <label style="font-size:16px;font-weight:400" class="label_gender"> 제출 안함</label>
+        					    </li>
+                                <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+                               <%# <input type="text"  name="my_duo_relation" id="input6" class="combine form-control duo" placeholder="본인과의 관계를 입력해 주세요 ex)친구,학교선배">%>
+        					</ul>
+        				</div><!-- end col-md-6 -->
+        			</div>
+
+
+
+        	     <div align='center' class="row">
+
+              <hr style="margin:15px 0;">
+              <div class="row">
+        		    <h3 style="margin-top:0px" class="col-md-12">본인 서명</h3>
+        			<div class="col-md-12">
+        				<ul class="data-list">
+              <div>
+              <canvas id="canvas" width="200" height="100" style="border:2px solid rgb(136, 130, 125)">
+              </canvas>
+              <div><a id="id_clear" style="width: 204px;border-radius:0px;text-align:center;font-weight:300;" class="btn btn-success">
+              <i class="fa fa-eraser fa-lg"></i>서명 다시하기</a></div>
+              </div>
+                <div id="copyarea"></div>
+        				</ul>
+        		    </div><!-- end col-md-6 -->
+        	    </div>
+
+
+
+
+            </div><br>
+
+
+        	</div>
+    			<!-- end step -->
+
+			<%= render "sue/submit" %>
+
+    	</div><!-- end middle-wizard -->
+
+		<div id="bottom-wizard">
+			<button type="button" name="backward" class="backward">이전</button>
+			<button type="button" name="forward" class="forward">���음</button>
+		</div><!-- end bottom-wizard -->
+	</form>
+
+</div><!-- end Survey container -->
+</section>
+<script>
+    $('.forward').on('click',function(){
+        $('input.form-control').css('border','2px solid rgb(136, 130, 125)');
+        $('h3.col-md-10').css('color','rgb(17, 17, 17)');
+        console.log('foward진입');
+        $('.step').each(function(){
+            console.log('step');
+            if ($(this).css('display') === 'block') {
+              var b = 1;
+                console.log('if진입');
+
+                $(this).find('.required').each(function(){
+                    if ( !$(this).val() ){
+                        $('html, body').animate({
+                            scrollTop: $(this).offset().top-100
+                        }, 1000);
+                        $(this).css('border','2px solid rgb(227, 79, 79)');
+                        $(this).closest('.row').find('h3').css('color','rgb(227, 79, 79)');
+                        alert('채우지 않은 부분이 있습니다');
+                        b = 0;
+                        return false;
+                    }
+                })
+                if (b === 0){
+                   return false;
+                }
+                else {
+                    $(this).find('.data-list.floated.clearfix').find('[type=radio]').each(function(){
+                      if ( !$(this).closest('ul').find('div').hasClass('checked') ) {
+                          $('html, body').animate({
+                              scrollTop: $(this).closest('.row').parent().find('h3').offset().top-100
+                          }, 1000);
+                          $(this).closest('.row').find('h3').css('color','rgb(227, 79, 79)');
+                          alert('체크하지 않은 부분이 있습니다');
+                          return false;
+                      }
+                    })
+                }
+            }
+        })
+    })
+    // $('#testing').parentsUntil('.row').find('h3')
+</script>
+<script>
+$(document).ready(function(){
+ var canvas = document.getElementById('canvas');
+ //canvas.width = screen.width;
+ var context = canvas.getContext('2d');
+ context.lineWidth=2;
+ context.lineCap="round";
+
+ $(canvas).bind({"touchstart mousedown": function(event){
+
+  event.preventDefault();
+
+  if(event.type == 'touchstart'){
+   event = event.originalEvent.targetTouches[0];
+  }
+
+  $(this).data("flag", "1");
+  var position = $(this).offset();
+  var x = event.pageX - position.left;
+  var y = event.pageY - position.top;
+  console.log("start x: " + x + ", y: " + y);
+  context.beginPath();
+  context.moveTo(x,y);
+
+ }, "mousemove touchmove" : function(event) {
+
+  event.preventDefault();
+
+  if(event.type == 'touchmove'){
+   event = event.originalEvent.targetTouches[0];
+  }
+
+  var flag = $(this).data("flag");
+  if(flag == 1){
+   var position = $(this).offset();
+   var x = event.pageX - position.left;
+   var y = event.pageY - position.top;
+
+   //console.log("move x: " + x + ", y: " + y);
+  }
+  context.lineTo(x, y);
+  context.stroke();
+ }, "mouseup touchend mouseleave" : function(event) {
+
+  event.preventDefault();
+
+  console.log("type: " + event.type);
+  if(event.type == 'touchend'){
+   event = event.originalEvent.changedTouches[0];
+  }
+
+  $(this).data("flag", "0");
+  var position = $(this).offset();
+
+  var x = event.pageX - position.left;
+  var y = event.pageY - position.top;
+
+  console.log("end: " + x + ", y: " + y);
+
+//  context.lineTo(x, y);
+//  context.stroke();
+ }
+
+ });
+
+ $("#id_clear").click(function(){
+  canvas.width = canvas.width;
+  context.lineWidth=2;
+  context.lineCap="round";
+ });
+
+ var submit = document.getElementById('go');
+ var form = document.getElementById('police_form');
+    submit.onclick = function(){
+
+        //var imageData = context.getImageData(0,0,canvas.width, canvas.height);
+        //var data = imageData.data;
+
+      console.log(canvas.width + ": " + canvas.height);
+
+      var canvasCopy = document.createElement("canvas");
+      var copyContext = canvasCopy.getContext("2d");
+
+      var w = 80;
+      var h = 50;
+      canvasCopy.width = w;
+      canvasCopy.height = h;
+
+      copyContext.drawImage(canvas, 0, 0, w, h);
+
+
+      var pngUrl = canvas.toDataURL();
+      var copyPngUrl = canvasCopy.toDataURL();
+
+      console.log("원본이미지 사이즈: " + pngUrl.length);
+      console.log("스몰이미지 사이즈: " + copyPngUrl.length);
+
+      console.log("url type: " + typeof(copyPngUrl));
+      console.log("스몰이미지 url: " + copyPngUrl);
+      console.log("스몰이미지 url: " + copyPngUrl.replace("data:image/png;base64,", ""));
+
+    //  $("<img>", {
+
+    //   src: pngUrl
+
+    //  }).appendTo("#copyarea");
+
+      $("<img>", {
+
+       src: copyPngUrl,
+       onload: function(){console.log("img loaded..");}
+
+      }).appendTo("#copyarea");
+
+      delete canvasCopy;
+
+      var apclass = document.getElementById('copyarea');
+      apclass.firstElementChild.setAttribute('id','sig');
+
+        var sig_src = document.getElementById('sig_src');
+        var src = apclass.firstElementChild.getAttribute('src');
+        sig_src.value = src;
+
+
+        var file_check = document.getElementsByClassName('file');
+        var total = 0;
+        /*for (var i = 0;i<file_check.length;i++){
+
+           if ( file_check[i].files[0] ) {
+             total = total + file_check[i].files[0].size;
+              }
+        }
+       console.log(total);
+        if (total > 200000){
+            alert('파일 각각의 크기는 3MB를 넘을 수 없습니다');
+          }
+          else {
+            form.submit();
+          }
+
+          */
+
+
+
+      form.submit();
+    }
+});
+</script>
+
+<%= render "sue/backward_force" %>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ko"> 
+<head>
+  
+  <title>고소미닷컴</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>고소미닷컴 </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/favicon.ico" />
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="/assets/styles/vendor/bootstrap.min.css">
+        <!-- Fonts -->
+        
+        <link rel="stylesheet" href="/assets/fonts/et-lineicons/css/style.css">
+        <link rel="stylesheet" href="/assets/fonts/linea-font/css/linea-font.css">
+        <link rel="stylesheet" href="/assets/fonts/fontawesome/css/font-awesome.min.css">
+        <!-- Slider -->
+        <link rel="stylesheet" href="/assets/styles/vendor/slick.css">
+        <!-- Lightbox -->
+        <link rel="stylesheet" href="/assets/styles/vendor/magnific-popup.css">
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="/assets/styles/vendor/animate.css">
+        <!-- BG Video -->
+        <link rel="stylesheet" href="/assets/styles/vendor/jquery.mb.YTPlayer.min.css">
+
+
+        <!-- Definity CSS -->
+        <link rel="stylesheet" href="/assets/styles/main_hws.css">
+        <link rel="stylesheet" href="/assets/styles/responsive.css">
+
+        <!-- JS -->
+        <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <!-- Image Upload -->
+        <script src="/js/infobox.js"></script>
+        <script src="/js/jquery-2.1.1.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <!-- end -->
+        
+        <!-- summernote -->
+        <!-- include summernote css/js-->
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+        <link href="/summernote.css" rel="stylesheet">
+        <script src="/summernote.min.js"></script>
+        <!-- summernote end -->
+        
+        
+        <!-- include libraries(jQuery, bootstrap, fontawesome) -->
+<script src="//code.jquery.com/jquery-1.9.1.min.js"></script> 
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet"> 
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+        
+        
+
+
+
+<style type="text/css">
+
+/*
+This was made by João Sardinha
+Visit me at http://johnsardine.com/
+
+The table style doesnt contain images, it contains gradients for browsers who support them as well as round corners and drop shadows.
+
+It has been tested in all major browsers.
+
+This table style is based on Simple Little Table By Orman Clark,
+you can download a PSD version of this at his website, PremiumPixels.
+http://www.premiumpixels.com/simple-little-table-psd/
+
+PLEASE CONTINUE READING AS THIS CONTAINS IMPORTANT NOTES
+
+*/
+
+/*
+Im reseting this style for optimal view using Eric Meyer's CSS Reset - http://meyerweb.com/eric/tools/css/reset/
+
+/*------------------------------------------------------------------ */
+
+/*This is not important*/
+/*body{
+	font-family:Arial, Helvetica, sans-serif;
+	background: url(background.jpg);
+	margin:0 auto;
+	width:520px;
+}
+a:link {
+	color: #666;
+	font-weight: bold;
+	text-decoration:none;
+}
+a:visited {
+	color: #666;
+	font-weight:bold;
+	text-decoration:none;
+}
+a:active,
+a:hover {
+	color: #bd5a35;
+	text-decoration:underline;
+}
+
+
+/*
+Table Style - This is what you want
+------------------------------------------------------------------ */
+.popular {
+ line-height: 1.8em; 
+}
+.popular li a {
+	color: #666;
+	font-weight: bold;
+	text-decoration:none;
+}
+
+.popular li a:hover {
+	color: #8C8C8C;
+	text-decoration:underline;
+}
+
+.ul_back {
+  background: #FBFBFB;
+  padding-top: 15px;
+}
+
+.table_top {
+ text-shadow: none;
+ color:white;
+}
+
+table a:link {
+	color: #666;
+	font-weight: bold;
+	text-decoration:none;
+}
+table a:visited {
+	color: #666;
+	font-weight:bold;
+	text-decoration:none;
+}
+table a:active,
+table a:hover {
+	color: #8C8C8C;
+	text-decoration:underline;
+}
+table {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#666;
+	font-size:12px;
+	text-shadow: 1px 1px 0px #fff;
+	background:#eaebec;
+	border:#ccc 1px solid;
+
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+
+	-moz-box-shadow: 0 1px 2px #d1d1d1;
+	-webkit-box-shadow: 0 1px 2px #d1d1d1;
+	box-shadow: 0 1px 2px #d1d1d1;
+}
+table th {
+	padding:18px 18px 18px 18px;
+	/*border-top:1px solid #fafafa;*/
+	border-bottom:1px solid #e0e0e0;
+
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#345391), to(#345391));
+	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+
+table th:first-child{
+	text-align: center;
+	padding-left:20px;
+}
+table tr:first-child th:first-child{
+	-moz-border-radius-topleft:3px;
+	-webkit-border-top-left-radius:3px;
+	border-top-left-radius:3px;
+}
+table tr:first-child th:last-child{
+	-moz-border-radius-topright:3px;
+	-webkit-border-top-right-radius:3px;
+	border-top-right-radius:3px;
+}
+table tr{
+	text-align: left;
+	padding-left:20px;
+}
+table tr td:first-child{
+	text-align: center;
+	padding-left:20px;
+	border-left: 0;
+}
+table tr td {
+	padding:18px;
+	border-top: 1px solid #ffffff;
+	border-bottom:1px solid #e0e0e0;
+	/*border-left: 1px solid #e0e0e0;*/
+	
+	background: #fafafa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+#reading td {
+  padding:18px;
+	border-top: 1px solid #ffffff;
+	border-bottom:1px solid #e0e0e0;
+	/*border-left: 1px solid #e0e0e0;*/
+	
+	background: #fafafa;
+	background: -webkit-gradient(linear, left top, left bottom, from(#CCF5FA), to(#CCF5FA));
+	background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table tr.even td{
+	background: #f6f6f6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+	background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+table tr:last-child td{
+	border-bottom:0;
+}
+table tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-left-radius:3px;
+}
+table tr:last-child td:last-child{
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-bottom-right-radius:3px;
+	border-bottom-right-radius:3px;
+}
+table tr:hover td{
+	background: #f2f2f2;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+	background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);	
+}
+#date {
+  text-align:center;
+}
+#cider {
+  text-align:center; 
+}
+</style>
+<!-- 리플달기  -->
+<script type="text/javascript">
+
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+
+</script>
+<!-- 리플달기 스크립트 -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar" style="border-top: 5px solid #345391">
+
+ <!-- ========== Navigation ========== -->
+
+        <!--<nav class="navbar navbar-default navbar-fixed-top mega navbar-trans navbar-fw">
+          <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Logo -->
+            <!--<a class="navbar-brand" href="http://sosososososososo-greativejoo-1.c9.io/"><img class="navbar-logo" src="/assets/images/logo.png" alt="Definity - Logo"></a>-->
+            
+         <!-- </div>
+
+          <!-- Navbar Links -->
+          <!--<div id="navbar" class="navbar-collapse collapse page-scroll navbar-right">
+            <ul class="nav navbar-nav">
+              
+              <li><a style="font-size: 1.0em;" href="/posts/index/3">사례 게시판<span class="sr-only"></span></a></li>
+              <%if user_signed_in?%>
+              <li><a style="font-size: 1.0em;" href="/users/sign_out">로그아웃<span class="sr-only"></span></a></li>
+              <% else %>
+              <li><a style="font-size: 1.0em;" href="/main/sign_up">회원가입<span class="sr-only"></span></a></li>
+              <% end %>
+            </ul><!-- / .nav .navbar-nav -->              
+         <!-- </div><!--/.navbar-collapse -->
+       <!-- </nav><!-- / .navbar -->
+
+ <!-- ========== Page Title ========== -->
+        <header>
+          <div class="bg-overlay">
+           <div class="container" style="padding: 15px;0px;15px;0px;">
+             <div class="row" >
+                <div style="text-align:left;background:white;border-bottom: 1px dashed grey;padding-bottom:15px;padding-left:0px" class="col-md-12">
+                <a style="color:black;text-decoration:none"href="#" data-filter=".community">무엇이든 풀고가세요 - 해우소</a>
+                <% if user_signed_in? %>
+                <a style="color:black;text-decoration:none;float:right;padding-left:15px" href="#" data-filter=".community">마이페이지 </a>
+                <a style="color:black;text-decoration:none;float:right;" href="#" data-filter=".community"><img src="/assets/images/lv_30.png">  <%=current_user.nickname%>님 반갑습니다.</a>
+                <% else %>
+                <a style="color:black;text-decoration:none;float:right;padding-left:15px" href="#" data-filter=".community">로그인 </a>
+                <a style="color:black;text-decoration:none;float:right;" href="#" data-filter=".community">회원가입</a>
+                <% end %>
+               
+                </div>
+             </div>
+           </div>
+         </div>
+        </header>
+        <header>
+          <div class="container">
+            <div class="row">
+              <div style="padding-left:0px;padding-bottom:15px" class="col-md-8" >
+                <a href="/hws/index"><img style="height:80px" src="/assets/images/hws_logo.png"></a>
+              </div>
+              <div class="col-md-4" style="text-align:right;padding-top: 25px;padding-bottom: 25px;">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-6">
+                  <input type="search" placeholder="Search ..." class="form-control">
+                </div>
+                <div class="col-md-2"  style="padding-top: 10px;">
+                      <button class="inside-input-btn"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!-- ========== Page Title ========== -->
+        <header>
+          <div class="bg-overlay">
+           <div class="container">
+             <div class="row">
+                <ul style="list-style:none;padding-left:0px" id="pfolio-filters" class="custom_hws">
+                  <div class="row">
+                  <!--<div class="col-md-12">
+                  <li class="active"><img class="navbar-logo" src="/assets/images/logo.png"></li>-->
+                  </div>
+                  <div class="col-lg-4" style="padding-right:0px;padding-left:0px">
+                  <li><a style="text-decoration:none" href="#" data-filter=".game"><!--<span class="et-tools"></span>--> 고소미닷컴 바로가기</a></li>
+                  </div>
+                  <div class="col-lg-4" style="padding-left:0px;padding-right:0px">
+                  <li><a style="text-decoration:none" href="#" data-filter=".community"> 베스트 사이다</a></li>
+                  </div>
+                  <div class="col-lg-4" style="padding-left:0px;padding-right:0px">
+                  <li><a style="text-decoration:none" href="#" data-filter=".sns">내가 쓴 글</a></li>
+                  </div>
+                  
+                  </div>
+                </ul>
+             </div>
+           </div>
+         </div>
+        </header>
+        
+        
+
+        <div style="padding-top:60px;padding-right:0px;padding-left:0px" id="blog" class="section container blog-classic">
+          <div class="row">
+ <!-- ========== Sidebar ========== -->
+
+            <aside class="col-md-3 sidebar mb-sm-160" style="padding-left:0px">
+            
+            
+               <div class="col-md-12" role="alert">
+                
+                <div class="col-md-12 alert alert-danger alert-dismissible" style="margin-bottom: 0px; border-color: #C184F2;;
+    background: red;color:white" role="alert">
+                  
+                  <strong>공지사항</strong>
+                  <!--<hr style="margin-top:15px;margin-bottom:15px">-->
+                  
+                </div>
+                <div class="col-md-12 ul_back">
+                  <ul class="popular" style="list-style-type:square;list-style-type: square;padding-left: 25px;">
+                    <% if @n.nil?%>
+                    <li><a href="#">공지사항이 없습니다.</a></li>
+                    <!-- 있으면? -->
+                    <% else %>
+                      <% @n.each do |x|%>
+                      <li><a href="/hws/show/<%=x.id%>"><%= x.title %></a></li>
+                      <% end %>
+                    <% end %>
+                    </ul>
+                </div>
+              </div>
+              
+
+              
+              <div class="col-md-12" role="alert">
+                
+                <div class="col-md-12 alert alert-info alert-dismissible" style="margin-bottom: 0px;color:white;border-color: #7ED6E8;background:blue" role="alert">
+                  
+                  <strong>오늘의 사이다</strong> 
+                  <!--<hr style="margin-top:15px;margin-bottom:15px">-->
+                  
+                </div>
+                
+                <div class="col-md-12 ul_back">
+                  <ul class="popular" style="list-style-type:square;list-style-type: square;padding-left: 25px;">
+                      
+                    <% unless @a.nil?%>
+                        <% @a.each do |x|%>
+                        <li><a href="/hws/show/<%=x.id%>"><%= x.title %></a></li>
+                        <% end %>
+                    <!-- 있으면? -->
+                    <% else %>
+                      <li><a href="#">아직 작성한 글이 없습니다</a></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="col-md-12" role="alert">
+                
+                <div class="col-md-12 alert alert-success alert-dismissible" style="background: green;margin-bottom: 0px;color: white;border-color: #E87ECC;" role="alert">
+                  
+                  <strong>내가쓴 글</strong> 
+                  <!--<hr style="margin-top:15px;margin-bottom:15px">-->
+                  
+                </div>
+                <div class="col-md-12 ul_back">
+                  <ul class="popular" style="list-style-type:square;list-style-type: square;padding-left: 25px;">
+                    <!-- 만약 쓴 글이 없으면?-->
+                    <% m = Hw.where(:writer => current_user.nickname).take(5) %>
+                    <% if m.nil?%>
+                    <li><a href="#">아직 작성한 글이 없습니다</a></li>
+                    <!-- 있으면? -->
+                    <% else %>
+                      <% m.each do |x| %>
+                      <li><a href="/hws/show/<%=x.id%>"><%=x.title %>(<%=x.hwscomments.count %>)</a></li>
+                      <% end %>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+              
+              
+             
+              <div class="col-md-12" role="alert">
+                
+                <div class="col-md-12 alert alert-warning alert-dismissible" style="margin-bottom: 0px;background: orange;border-color: #E8C57E;color:white" role="alert">
+                  
+                  <strong>최근 댓글</strong>
+                  <!--<hr style="margin-top:15px;margin-bottom:15px">-->
+                  
+                </div>
+                <div class="col-md-12 ul_back">
+                  <ul class="popular" style="list-style-type:square;list-style-type: square;padding-left: 25px;">
+                    <% r = Hwscomment.take(5) %>
+                    <% if r.nil?%>
+                    <li><a href="#">최근 댓글이 없습니다.</a></li>
+                    <!-- 있으면? -->
+                    <% else %>
+                      <% r.each do |x|%>
+                      <li><a href="/hws/show/<%=x.hw.id%>"><%=x.content %></a></li>
+                      <% end %>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+              
+             
+              
+
+              <div class="col-md-12" role="alert">
+                
+                <div class="col-md-12 alert alert-success alert-dismissible" style="margin-top:15px; background: white;border-color: black;color:black" 
+                role="alert">
+                  
+                  <strong>해우소인 채팅</strong>
+                  <!--<hr style="margin-top:15px;margin-bottom:15px">-->
+                  
+                </div>
+                
+              </div>
+              
+
+              <!-- Categories - Widget -->
+              <!--<div class="col-md-12 ws-s categories-widget">
+                <h5 class="header-widget">Categories</h5>
+
+                <!-- Item 1 -->
+               <!-- <div class="widget-item">
+                  <a href="#">Web Design - <span>15</span></a>
+                </div>
+
+                <!-- Item 2 -->
+              <!--  <div class="widget-item">
+                  <a href="#">Graphic Design - <span>6</span></a>
+                </div>
+
+                <!-- Item 3 -->
+              <!--   <div class="widget-item">
+                  <a href="#">iOS Development - <span>12</span></a>
+                </div>
+
+                <!-- Item 4 -->
+            <!--     <div class="widget-item">
+                  <a href="#">Other - <span>3</span></a>
+                </div>
+
+              </div><!-- / .categories-widget -->
+
+              
+
+
+             
+            </aside><!-- / .sidebar -->
+
+            

@@ -1,0 +1,469 @@
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment.js"></script>
+<link href="/assets/styles/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- canvas-to-blob.min.js is only needed if you wish to resize images before upload.
+     This must be loaded before fileinput.min.js -->
+<script src="/assets/js/canvas-to-blob.js" type="text/javascript"></script>
+<script src="/assets/js/fileinput.js"></script>
+<!-- bootstrap.js below is only needed if you wish to the feature of viewing details
+     of text file preview via modal dialog -->
+<!-- optionally if you need translation for your language then include 
+    locale file as mentioned below -->
+<!--<script src="path/to/js/fileinput_locale_<lang>.js"></script>-->
+<link rel="stylesheet" href="/assets/button.css">
+<%dbdb=Sueform.find(params[:id])%>
+
+<style>
+	a:link:after, a:visited:after {
+		content:" ";
+		
+	}
+	@media all {
+	.page-break	{ display: none; }
+  }
+
+	@media print {
+	.page-break	{ display: block; page-break-before: always; }
+	#Header, #Footer { display: none !important; }
+	}
+	@page{margin:20px auto;}
+	html, body{
+  min-height: 100%;
+}
+body{
+  position: relative;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.9); /*dim the background*/
+}	
+</style>
+  <!-- ========== Page Title ========== -->
+        <header id='aa5'style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <h1 class="title" style="font-family:'Nanum Myeongjo'">고소미 작성이 완료되었습니다</h1>
+                  <span class="subheading">내용을 확인하세요</span>
+                </div>
+                
+              </div>
+
+            </div>
+        </header>
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-md-2"></div>
+
+    	<div class="col-md-8" id="aa">
+   						<h1 style="text-align:center;font-size:3em"> 고소장 </h1>
+   						<br><br>
+			<form class="form-horizontal" action="/sue/complete" enctype="multipart/form-data"> 
+				  <!--표시단위-->
+				  <div id='c2'>
+					  <table class="tbl_basic tbl_type_basic">
+					        <h1> 1. 고소인</h1>
+									<tbody>
+										
+										<tr class="fir">
+											<th>성명</th> 
+											<td><%=dbdb.my_name%> (게임 내 닉네임 : <%=dbdb.my_game_name%> )</td>
+											
+										</tr>
+											
+										<tr>
+											<th>생년월일</th>
+											  <td><%=dbdb.birth_year%>-<%=dbdb.birth_month%>-<%=dbdb.birth_day%>
+											  </td>
+										</tr>	
+										<tr>
+											<th>
+												주소
+											</th>
+											<td>
+												<%=dbdb.address1%> <%=dbdb.address2%> 우편번호 : <%=dbdb.post_code%>
+											</td>
+											</tr>
+											<tr>
+											<th>휴대폰</th>
+											<td>
+												<%=dbdb.my_phone%>
+																		</td>
+										</tr>
+														</tbody>
+								</table>
+								<!--<p class="intxt_bt" style="color:grey">*법정 대리인이 대신 고소를 할때에는 그에 상응하는 서류가 필요합니다.</p>-->
+					      <!--표시단위 끝-->    <br><br>
+					         <table class="tbl_basic tbl_type_basic">
+					        <h1> 2. 피고소인</h1>
+									<tbody>
+									
+										<tr class="fir">
+											<th>성명</th>
+											  <td>피고소인 불상(게임 내 닉네임 : <%=dbdb.you_id%>)
+											  </td>
+										</tr>
+										
+															
+										<tr>
+											<th>
+												게임 명
+											</th>
+											<td>
+												<%=dbdb.you_url%>
+											</td>
+											
+										</tr>
+														</tbody>
+								</table>
+					     <!--3번째-->
+					     <br><br>
+					     <table class="tbl_basic tbl_type_basic">
+					        <h1>3. 고소취지 및 이유</h1>
+									<tbody>
+										
+											
+															
+										<tr class="fir">
+											<th >
+												내용
+											</th>
+											<td style="white-space: pre-wrap;"><%=dbdb.sue_reason%></td>
+										</tr>
+														</tbody>
+								</table>
+					     <!--4번째--><br><br>
+					     <div class="page-break"></div>
+					     <table class="tbl_basic tbl_type_basic">
+					        <h1> 4. 범죄 사실</h1>
+									<tbody>
+									
+										
+										<tr class="fir">
+											<th>
+												내용
+											</th>
+											<td style="white-space: pre-wrap;"><%=dbdb.sue_content%></td>
+										</tr>
+														</tbody>
+								</table>
+					     <!--5번째-->
+					     <br><br>
+								<!--6번째-->
+								<table id="ev" class="tbl_basic tbl_type_basic ">
+					        <h1 id="evh1">5. 입증방법 <small>증거자료를 첨부하였습니다</small></h1>
+									<tbody>
+		
+										<tr class="fir">
+		
+					
+											<th></th> 
+											<td> 
+							                    <%dbdb.sueimgs.each do |x| %>
+							                      <div class='col-md-6'>
+							                			<div class="item"> 
+							                				 <a media="print" target="_blank" href="<%= x.sueimg %>" class="fancybox">
+							                                <img class='img_go' src='<%=x.sueimg.url%>'></a>            				
+							                			</div>
+							                      </div> 
+							                    <% end %>					
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+								
+					                    <!--파일 업로드-->
+					                    
+					                    
+										   <div class="checkbox" style="font-size:15px; margin-top:30px;text-align:center">
+											  <!--<label>
+											    <input type="checkbox" value="">
+													본 고소장에 기재한 내용은 고소인이 알고 있는 지식과 경험을 바탕으로 모두 사실대로 작성하였으며, 
+																   만일 허위사실을 고소하였을 때에는 형법 제156조에 의해 무고죄로 처벌받을 것임을 서약합니다.
+											  </label>-->
+											  <h3> <%= dbdb.created_at.strftime("%Y년 %m월 %d일")%></h3>
+											  <h3 style="display: inline-block;"> 고소인 <%=dbdb.my_name%> 서명 : </h3>
+											  <img style="display: inline-block;" src="<%=dbdb.sig_src%>">
+											  <h1> <%=dbdb.police_name%> 귀중</h1>
+											</div>
+															
+															
+						<h1 style="text-align:center"></h1>
+					</div>
+					<div class="page-break"></div>
+					<!--print img -->
+					       <% dbdb.sueimgs.each do |x| %>	
+					       <h1 class="img_print">증거자료</h1>
+					       <hr class="img_print"style="margin-bottom:10px">
+					       	<img style="margin-bottom:10px" class='img_print' src='<%=x.sueimg.url%>'>
+					       <% end %>
+					       
+					       <!--print img -->
+					<div id="aa3"class="pull-right">
+                      <span class="btn-group">
+                      <a href="/sue/edit_test/<%=params[:id]%>" style="background-color: #286090; border-color: #204d74;" class='btn btn-primary'><i class="fa fa-edit fa-lg"></i>수정</a>
+                      <a href="/sue/deletes/<%=params[:id]%>" class='btn btn-danger'>
+                      	<i class="fa fa-trash-o fa-lg"></i>삭제</a>
+                      </span>
+                      
+                	</div>
+				</div>
+
+                <!--업로드 끝-->
+        <div id='aa2' style="text-align:center;" class="step row">
+                <!--<a href="javascript: window.print();" >화면인쇄</a>		
+                <button type="submit" style="width:400px; height:50px; margin-right:50px;margin-top:50px" class="btn btn-default">인쇄하기</button>-->
+					
+                    <a id='c1'  style="width:400px; height:50px; margin-right:50px;margin-top:50px;padding-top:15px; margin-bottom:60px" class="btn btn-default">인쇄하기</a>
+                    
+                    <a style="width:400px; height:50px;margin-top:50px;padding-top:15px;color:white;margin-bottom:60px" class="nav-toggle btn btn-success btn-open">자동접수</a>	             
+    	
+    	<div class="row collapse" id="pricing_md">
+	    				<!-- ========== Pricing Tables - 3col ========== -->
+
+        <div class="gray-bg">
+          <section class="container section pricing-tables" style="padding-top:60px">
+
+            <div class="row">
+              
+              <!-- Table 1 -->
+              <div class="col-md-6">
+ 
+  
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        
+        <div id="temporary">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Browse&hellip; <input type="file" multiple>
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+          </div>
+        <div class="col-md-6 upload" style="padding-right:40px;padding-left:40px">
+          <span class="help-block">
+                Try selecting one or more files and watch the feedback
+          </span>
+          <div id="upload">
+           <a class="btn btn-warning" id="delete">초기화</a><a id="adding" class="btn btn-success">추가</a>
+            
+            <h4>Input Groups</h4>
+            <div id="id_group" class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Browse&hellip; <input type="file" multiple>
+                    </span>
+                </span>
+                <input type="text" class="form-control" readonly>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+</div>
+              </div><!-- / .col-md-4 -->
+<script>
+  $('#temporary').css({display:'none'});
+  $('#delete').click(function(){
+    $('.input-group').remove();
+    var a = $('#temporary').clone();
+    a.attr('id', 'id_group').attr('class','input-group').css({display:''});
+    $('.upload').append(a);
+    
+  });
+  
+  $('#adding').click(function(){
+    var b = document.getElementsByClassName('input-group');
+    if (b.length < 5){
+    $('.upload').append($('#id_group').clone());
+    }
+    else {
+      alert('최대 5개까지만 업로드할 수 있습니다');
+    }
+  });
+  
+  
+</script>
+<style>
+	
+	.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+</style>
+<script>
+	$(document).on('change', '.btn-file :file', function() {
+  var input = $(this),
+      numFiles = input.get(0).files ? input.get(0).files.length : 1,
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+  input.trigger('fileselect', [numFiles, label]);
+});
+
+$(document).ready( function() {
+    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = numFiles > 1 ? numFiles + ' files selected' : label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+        
+    });
+});
+</script>
+              
+
+              <!-- Table 2 -->
+              <div class="col-md-6">
+                <div class="p-table pt-featured">
+				<!-- Star -->
+                  <div class="banner">
+                    <span class="star"><i class="fa fa-star"></i></span>
+                  </div>	
+                  <!-- Header -->
+                  <h4>고급</h4>
+                  <div class="price">
+                    <span class="currency">₩</span>
+                    <span class="value">50,000</span>
+                    <span class="type"></span>
+                  </div>
+                  <p class="desc">전문인력과 함께</p>
+                  <hr>
+
+                  <!-- Items -->
+                  <ul class="p-items">
+                    <li><b>소장 대리접수</b> </li>
+                    <!--<li><b>2일간의 유예기간</b></li>-->
+                    <li><b>전담 변호사의 지속적인 개인상담</b></li>
+                    <!--<li><b>법적대리인(변호사)의 합의대행</b></li>-->
+                  </ul>
+                   <hr>
+
+                  <button class="btn-ghost" data-title="고급" data-price="50000">구매하기</button>
+                </div><!-- / .p-table -->
+              </div><!-- / .col-md-4 -->
+
+            </div><!-- / .row -->
+          </section><!-- / .container -->
+        </div><!-- / .gray-bg -->
+
+
+	  	</div>
+  			</form>  
+  		</div>
+   		<div class="col-md-2"></div>
+ 	 </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".btn-open").click(function(){
+        $(".collapse").collapse('toggle');
+    });
+    
+});
+</script>
+
+<script>
+$('.img_go')
+        .css({height:'200px',width:'100%'}); 
+$('.img_print')
+        .css({display:'none'});
+  var div = document.createElement('div');
+  var body = document.getElementById('page-top');
+  body.appendChild(div);
+  
+  
+  $('#c1').click(function() {
+  	div.className = 'overlay';
+    $('#aa1')
+        .css({display:'none'});
+    $('#aa2')
+        .css({display:'none'});
+    $('#aa3')
+        .css({display:'none'});
+    $('#aa4')
+        .css({display:'none'});
+    $('#aa5')
+        .css({display:'none'});
+    $('#ev').css({display:'none'});
+    $('#evh1').css({display:'none'});
+    $('.img_print')
+        .css({display:'',height:'auto',width:'auto'}); 
+    console.log($('.img_go').css('width'));
+ 	window.print();   
+ 	$('.img_print').css({display:'none'});
+      $('.img_go')
+        .css({height:'200px',width:'100%'});
+    $('#aa1')
+        .css({display:''});
+      $('#aa2')
+        .css({display:''});
+      $('#aa3')
+        .css({display:''});
+      $('#aa4')
+        .css({display:''});
+      $('#aa5')
+        .css({display:''});
+      $('#ev').css({display:''}); 
+      $('#evh1').css({display:''});
+      div.className = '';
+  });
+  
+//iamport payment
+$('.btn-ghost').click(function() {
+	var $this = $(this);
+	var price = $this.data('price'),
+			title = $this.data('title');
+	
+	IMP.init('imp35106516');
+	IMP.request_pay({
+		pay_method : 'card', // 'card':신용카드, 'trans':실시간계좌이체, 'vbank':가상계좌, 'phone':휴대폰소액결제
+    merchant_uid : 'merchant_' + new Date().getTime(),
+    name : title,
+    amount : price,
+    buyer_email : 'iamport@siot.do',
+    buyer_name : '구매자이름',
+    buyer_tel : '070-8658-8870',
+    buyer_addr : '서울특별시 강남구 삼성동',
+    buyer_postcode : '123-456'
+	}, function(rsp) {
+		if ( !rsp.success ) {
+			alert('결제를 취소하셨습니다.');
+			location.reload();
+		}
+	})
+	
+	return false;
+})
+</script>
+

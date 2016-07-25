@@ -1,0 +1,734 @@
+<style>
+.navbar-trans .navbar-logo {
+  content: url(<%= image_url('logo_default.png') %>);
+}
+.buttonBar {
+ display:none;
+}
+.mb_YTPProgress{
+ display:none;
+}
+.row {
+  margin-right:0px !important;
+  margin-left:0px !important;
+}
+.container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.portfolio-columns-fw .row {
+  margin-right:-15px;
+  margin-left:-15px;
+}
+  #fb {
+                      border: 2px solid;
+                      border-color: rgba(92, 102, 123, 0.66);
+                      width:100%;
+                      color: #fff;
+                      background:rgb(50, 80, 150);
+                      border-color:rgba(92, 102, 123, 0.66);
+                      font-weight:300;
+                      text-transform:none;
+                    }
+                    #fb:hover {
+                      background:rgba(50,80,150,0.8);
+                      border-color:rgba(92, 102, 123, 0.66);
+                      color:#fff;
+                      -webkit-transition: all 0.3s;
+                      transition: all 0.3s;
+                    }
+                    .sign {
+                     margin-top:15px;
+                     color:#fff;
+                     font-size:1.2em;
+                    }
+                    .sign:hover {
+                      color:#3B7CB7;
+                    }
+</style>
+
+
+        <style>
+          .back_gray {
+            color:#B11D13;
+          }
+          .back_white {
+            color:#fff !important;
+          }
+          .quote_heading {
+            color:#fff;
+            font-size:1.3em;
+            text-align:left;
+            letter-spacing:.03em !important;
+          }
+          .quote_article {
+            color:#fff;
+            font-size:1.2em;
+            text-align:left;
+            letter-spacing:.05em !important;
+          }
+          .quote_article_main {
+            color:#fff;
+            font-size:1.2em;
+            letter-spacing:.05em !important;
+            text-align:left;
+          }
+          .quote_article_sub {
+            color:#777;
+            font-size:.9em;
+            text-align:center;
+            letter-spacing:.05em !important;
+          }
+          .dividing_line {
+            margin-top:30px;
+            margin-bottom:60px;
+          }
+          .spacing_adj {
+            letter-spacing:.05em !important;
+            font-size:1.5em;
+          }
+
+        </style>
+<%#<span id="close_neon" class="" data-wow-duration="1.5s" data-wow-delay=".7s" style="width:100%;position: fixed;color:white;font-size:2em;     left: 0;     right:-30px;     bottom: 10px; margin:auto;text-align: left;z-index: 2001;margin-bottom:0px;max-height:50px;border-radius:4px;margin-top:0px" aria-hidden="true">×</span>%>
+<!-- ========== Preloader ========== -->
+        <div class="preloader">
+          <img src="<%=image_path("loader.svg")%>" alt="Loading...">
+        </div>
+        <!-- ========== Hero Cover ========== -->
+
+        <div id="home" style="
+        background-repeat: no-repeat;
+  background-position: center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;" class="fs-video-hero landing-hero">
+
+        <div class="bg-overlay">
+            <div class="hero-content-wrapper">
+              <div class="hero-content">
+                <div class="container ft-cards">
+                  <div class="row" style="margin-top:0px">
+                    <%if user_signed_in?%>
+                    <%= render 'four_buttons' %>
+                    <!-- current_user Form -->
+                    <div style="padding:20px" class="col-md-5 form-wrapper " data-wow-duration="1.5s">
+                        <h3 style="font-size:2em;color:white;text-align:center"><strong><%=current_user.nickname%></strong>님 반갑습니다</h3>
+                        <br>
+                        <h5 class="lead" style="font-size:1.5em;color:white;margin-bottom:20px">
+                        # 현재 진행중인 사건 : <%=current_user.sueforms.count %>개</h3>
+                        <h5 class="lead" style="font-size:1.5em;color:white">
+                        # 제보 수 : <%=@c.count %>개</h3>
+                        <!--<h5 style="color:white"># 현재 진행중인 사건 : 개</h3>-->
+                        <br>
+                        <a href="/main/mypage" style="font-size:1.5em;width:100%;text-align:center" class="btn-ghost-light">마이페이지</a>
+
+                    <div class="social-signup" style="margin-top:25px"></div>
+                    <!-- / .social-signup -->
+                    </div>
+                    <!-- signup end -->
+                    <% else %>
+                    <%= render 'four_buttons' %>
+
+                    <!-- Signup Form -->
+                      <div class="col-md-4 form-wrapper " data-wow-duration="1.5s" data-wow-delay=".7s" style="visibility: visible; animation-duration: 1.5s; animation-name: fadeIn;padding-left: 20px;padding-right: 20px;padding-top: 20px;padding-bottom: 20px;border-radius:2px" >
+                        <div id="sign_in">
+                        <form action="/users/sign_in" accept-charset="UTF-8" method="post" class="form-group">
+                          <input name="utf8" type="hidden" value="✓">
+                          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                          <input style="margin-top:55px"  id="user_email" name="user[email]" class="form-control" type="email" placeholder="이메일" required="">
+                          <input autocomplete="off" id="user_password" name="user[password]" class="form-control" type="password" placeholder="비밀번호" required="">
+
+                          <div class="col-md-6" style="padding-left: 0px;padding-right: 0px;margin-bottom:55px">
+                          <input style="text-align: center;width:100%;padding-left: 10px;padding-right: 10px;border-radius:4px;" class="btn btn-danger" type="submit" value="로그인">
+                          </div>
+                          <div class="col-md-6" style="text-align: center;padding-top: 8px;padding-bottom: 9px;margin-bottom:55px">
+                          <a id="up_go"style="width:100%;color:#fff;">또는 <span style="font-weight:500;cursor:pointer">가입</span></a>
+                          </div>
+
+                        </form>
+
+                        <div class="social-signup" style="margin-top:25px">
+                          <a href="/users/auth/facebook" class="sign">
+                            <i class="fa fa-facebook-official fa-lg"></i>
+                            Facebook으로 로그인
+                          </a><br>
+                          <a class="sign" href="/main/password">
+                            <i class="fa fa-exclamation-circle fa-lg"></i>
+                            <span class="sc-lead">비밀번호 찾기</span>
+                          </a>
+                          <p style="visibility:hidden;margin-bottom:0px">고소미닷컴에 가입함으로써 서비스 약관 및 개인정보보호 정책에 동의하게 됩니다.</p>
+                        </div>
+
+
+                        </div>
+
+
+                        <div id="sign_up">
+                        <form action="/users" accept-charset="UTF-8" method="post" class="form-group">
+                          <input name="utf8" type="hidden" value="✓">
+                          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                          <input  id="user_email" name="user[email]" class="form-control" type="email" placeholder="이메일" required="">
+
+                          <input autocomplete="off" id="user_nickname" name="user[nickname]" class="form-control" type="text" placeholder="닉네임" required="">
+
+                          <input autocomplete="off" id="user_passwords" name="user[password]" class="form-control" type="password" placeholder="비밀번호" onkeyup="checkPass(); return false;" required="">
+                          <span id="confirmMessage" class="confirmMessage"></span>
+                          <input autocomplete="off" id="user_password_confirmation" name="user[password_confirmation]" class="form-control" type="password" placeholder="비밀번호 확인" required="" onkeyup="checkPass(); return false;">
+
+                          <div class="col-md-6" style="padding-left: 0px;padding-right: 0px;">
+                          <input style="text-align: center;width:100%;padding-left: 10px;padding-right: 10px;border-radius:4px;" class="btn btn-danger" type="submit" value="회원가입">
+                          </div>
+                          <div class="col-md-6" style="text-align: center;padding-top: 8px;padding-bottom: 9px;">
+                          <a id="in_go"style="width:100%;color:#fff;">또는 <span style="font-weight:500;cursor:pointer">로그인</span></a>
+                          </div>
+
+                        </form>
+                         <div class="social-signup" style="margin-top:25px">
+                           <p style="margin-bottom:0px">고소미닷컴에 가입함으로써 <a href="/main/terms">서비스 약관</a> 및 <a href="/main/terms">개인정보보호 정책</a>에 동의하게 됩니다.</p>
+                          <a href="/users/auth/facebook" class="sign">
+                            <i class="fa fa-facebook-official fa-lg"></i>
+                            Facebook으로 회원가입
+                          </a><br>
+                          <a class="sign" href="/main/password">
+                            <i class="fa fa-exclamation-circle fa-lg"></i>
+                            <span class="sc-lead">비밀번호 찾기</span>
+                          </a>
+                        </div>
+
+                        </div>
+
+                        <style>
+                          .form-group input {
+                            border-radius:2px;
+                          }
+                          .btn-danger {
+                            color: #fff;
+                            background-color: #922521;
+                            border-color: #8A201D;
+                          }
+                          .btn-danger:hover {
+                            color: #fff;
+                            background-color: #90332F;
+                            border-color: #90332F;
+                          }
+
+                          .btn-success:hover {
+                            color: #fff;
+                            background-color: #449d44;
+                            border-color: #398439;
+                          }
+                          .btn-primary {
+                            border-radius:4px;
+                            color: #fff;
+                            background-color: #337ab7;
+                            border-color: #2e6da4;
+                          }
+                          .btn-primary:hover {
+                              color: #fff;
+                              background-color: #286090;
+                              border-color: #204d74;
+                          }
+                        </style>
+
+
+
+                      <!-- / .social-signup -->
+                      </div>
+                      <div class="col-md-1"></div>
+
+
+        <style>
+         #community span {
+          background: rgba(17,17,17,0.5);
+         }
+         #community:hover span {
+           -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+          border: 1px solid #cccccc;
+          background: rgba(119,119,119,0.5);
+          color: #fff;
+         }
+         #sns span {
+          background: rgba(17,17,17,0.5);
+         }
+         #sns:hover span {
+         -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+          border: 1px solid #cccccc;
+          background: rgba(119,119,119,0.5);
+          color: #fff;
+         }
+
+        </style>
+
+
+
+        <% end %>
+
+
+                  </div><!-- / .row -->
+                </div><!-- / .container -->
+              </div><!-- / .hero-content -->
+            </div><!-- / .hero-wrapper -->
+          </div><!-- / .bg-overlay -->
+
+        </div><!-- / .fs-video-hero -->
+
+        <div class="ft-centered" style="background:url(<%= image_path('back_2.png'); %>);border-top:5px #2b1006 outset;border-bottom:5px outset">
+           <section class="testimonials-3col">
+             <div class="row section" style="padding-top:0px;padding-bottom:30px">
+               <header class="sec-heading" style="margin-bottom:30px;">
+
+                 <div class="col-md-4 col-md-push-4 text-center consumer_image no-gap">
+                   <img class="cs_image" src="<%= image_path('consumer_logo_medal2.png') %>" alt=""/>
+                 </div>
+
+                 <div class="col-md-4 col-md-pull-4 consumer_image_left no-gap">
+                   <h2 class="cs_heading sub">형사부문 소비자만족도 1위</h2><br>
+                  <img src="<%=image_path('yeyul.png')%>" alt="예율로고" class="yeyul_logo">
+                  <div style="margin-top:0px;" class="col-md-12 heading-wrapper no-gap">
+                     <div id="counters" class="col-md-12 count-wrapper count-item" style="padding-left:0px;padding-right:0px">
+                           <h2>누적상담 횟수 : <span id="count-1" class="count-nbr"></span></h2>
+                     </div>
+                  </div>
+                 </div>
+                 <div class="col-md-4 consumer_image_right no-gap">
+                   <h2 class="sub">담당분야<br><br><span class="sub_sub cs_sub">[명예훼손/모욕/사이버스토킹/협박]</span></h2>
+                 </div>
+
+               </header>
+             </div><!-- / .row -->
+           </section><!-- / .container -->
+         </div>
+
+
+         <!-- ========== Team Layout - 4 Columns ========== -->
+
+         <div class="gray-bg" style="background:#ffffff">
+           <section class="section team-4col ft-centered" style="padding:0px 0px;">
+             <div class="row blog-classic">
+               <div class="col-md-12 no-gap " style="color:#fff">
+                 <header class="bad_reply_right page-title pt-large pt-dark pt-plax-lg-dark pt-plax-lg-dark_2 mb_side_pd_0">
+                 <div class="row no-margin" style="text-align:center">
+
+                   <div class="col-md-12 mb-sm-100 count-item  quote_frame" style="margin-bottom:60px" data-wow-duration="1s" data-wow-delay=".3s">
+                     <h1 class="lead" style="color:white">변호사 소개</h1><br>
+                     <h1 class="spacing_adj"><br class="mb_line_break">최고의 인력과 함께합니다</h1>
+
+                           <div class="row lawyer_4cols">
+                             <div class="col-md-3" style="text-align:center">
+                               <div class="col-md-12">
+                                 <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('ryu_1.png') %>">
+                                 <h3><i class="fa fa-suitcase"></i> 류태근 변호사</h3>
+                                 <a target="_blank" href="/main/류태근 변호사.erb">자세히 보기</a>
+                               </div>
+                             </div>
+                             <div class="col-md-3" style="text-align:center">
+                               <div class="col-md-12">
+                                 <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('son_1.png') %>">
+                                 <h3><i class="fa fa-suitcase"></i> 손수혁 변호사 </h3>
+                                 <a target="_blank" href="/main/손수혁 변호사.erb">자세히 보기</a>
+                              </div>
+                             </div>
+                             <div class="col-md-3" style="text-align:center">
+                               <div class="col-md-12">
+                                 <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('park_1.png') %>">
+                                 <h3><i class="fa fa-suitcase"></i> 박건일 변호사 </h3>
+                                 <a target="_blank" href="/main/박건일 변호사.erb">자세히 보기</a>
+                               </div>
+                             </div>
+                             <div class="col-md-3" style="text-align:center">
+                               <div class="col-md-12">
+                                 <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('choi_1.png') %>">
+                                 <h3><i class="fa fa-suitcase"></i> 최용문 변호사 </h3>
+                                 <a target="_blank" href="/main/최용문 변호사.erb">자세히 보기</a>
+                               </div>
+                             </div>
+                           </div><!-- .row -->
+
+                           <div class="row lawyer_4cols">
+                             <div class="col-md-6 no-gap">
+                                  <h3 class="sub lawyer_feature">#명예훼손 및 모욕죄 담당 변호사</h3>
+                                  <div class="text-left" style="text-align:center">
+                                     <h3 style="padding:0px;"> <i class="fa fa-caret-square-o-right" style="position:relative"></i>합리적인 수임료</h3>
+                                     <h3 style="padding:0px;"> <i class="fa fa-caret-square-o-right" style="position:relative"></i>유명인 악플 및 평판 관리대행</h3>
+                                  </div>
+                             </div>
+                             <br class="mb_line_break"><br class="mb_line_break">
+                             <div class="col-md-6 no-gap">
+                                  <h3 class="sub lawyer_feature">#대검찰청 악플 대응 방안</h3>
+                                  <div class="text-left">
+                                    <i class="fa fa-caret-square-o-right"></i> <h3> 모욕죄에 해당하는 악성 댓글 원칙적으로 엄정 처벌</h3>
+                                    <i class="fa fa-caret-square-o-right" style="margin-top:10px;"></i> <h3> 특정인에 대한 비하·욕설 등이 포함된 악성 댓글 원칙적으로 기소</h3>
+                                  </div>
+                             </div>
+                           </div><!-- .row -->
+                     </div>
+                   </div>
+                 </header>
+               </div>
+             </div><!-- / .row blog-classic-->
+           </section><!-- / .contianer -->
+         </div><!-- / gray-bg -->
+
+
+
+
+       <div id="testimonials" class="gray-bg ft-centered" style="background:#ffffff">
+          <section class="testimonials-3col">
+            <div class="row section" style="padding-top:60px;">
+              <header class="sec-heading" style="margin-bottom:30px;">
+                <span class="sub"><ins>명예훼손과 모욕죄 소송</ins>에 특화된 <br class="mb_line_break">법률서비스를 제공합니다</span>
+              </header>
+              <div class="col-md-6 testimonials_left no-gap">
+              <!-- Item 1 -->
+              <div class="col-md-6 col-sm-12 mb-sm-50">
+                <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
+                  <!-- Item 1 -->
+                  <div class="ft-item">
+                  <div class="ft-dark-spin">
+                  <span class="fa fa-pencil"></span>
+                  </div>
+                  </div>
+                  <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>고소장 작성</strong></span></p>
+                  <blockquote>
+
+                    <p style="letter-spacing: -1px;"><span style="color:black"><strong>사실관계가 복잡한 경우</strong></span><br><br>
+                    전문적인 고소장 작성<br>
+                    무고죄 예방<br>
+                    민사소송을 고려한 고소장 작성<br></p>
+
+                  </blockquote>
+                  <a href="/sue/category" style="text-decoration:none;color:#999">
+                  <span class="et-quote t-icon"></span>
+                  <p>자세히 보기</p></a>
+                  </a>
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+
+              <!-- Item 2 -->
+              <div class="col-md-6 col-sm-12 mb-sm-50 ">
+                <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
+                  <!-- Item 1 -->
+                  <div class="ft-item">
+                  <div class="ft-dark-spin">
+                  <span class="fa fa-magic"></span>
+                  </div>
+                  </div>
+                  <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>고소 대행</strong></span></p>
+                  <blockquote>
+
+                    <p style="letter-spacing: -1px;"><span style="color:black"><strong>고소부터 손해배상까지 포괄</strong></span><br><br>
+                    증거 자료 수집 및 가공<br>
+                    고소장 작성<br>
+                    합의 대행 및 민사소송<br></p>
+
+                  </blockquote>
+                  <a href="/main/lawyer.erb" style="text-decoration:none;color:#999">
+                    <span class="et-quote t-icon"></span><p>자세히 보기</p></a>
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+            </div>
+            <div class="col-md-6 no-gap">
+              <!-- Item 3 -->
+              <div class="col-md-6 col-sm-12 mb-sm-50 ">
+                <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
+                  <!-- Item 1 -->
+                  <div class="ft-item">
+                  <div class="ft-dark-spin">
+                  <span class="fa fa-briefcase"></span>
+                  </div>
+                  </div>
+                  <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>합의 대행</strong></span></p>
+                  <blockquote>
+                    <p style="letter-spacing: -1px;"><span style="color:black"><strong>기 고소 사건 합의 대행<br>
+                    이미 고소가 진행된 경우<br>
+                    피고소인이 다수인 경우</strong></span><br>
+                    전문 합의 대행<br>
+                    필요시 민사소송 진행</p>
+                  </blockquote>
+                  <a href="/main/lawyer.erb" style="text-decoration:none;color:#999"><span class="et-quote t-icon"></span><p>자세히 보기</p></a>
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+
+              <!-- Item 4 -->
+              <div class="col-md-6 col-sm-12 mb-sm-50">
+                <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
+                  <!-- Item 1 -->
+                  <div class="ft-item">
+                  <div class="ft-dark-spin">
+                  <span class="fa fa-balance-scale"></span>
+                  </div>
+                  </div>
+                  <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>민사 소송</strong></span></p>
+                  <blockquote>
+
+                    <p style="letter-spacing: -1px;"><span style="color:black"><strong>가해자와 일부 합의한 경우</strong></span><br><br>
+                    피고소인이 다수인 경우<br>
+                    최적의 손해배상액 측정<br>
+                    손해배상 소송 진행
+                    <br>
+                    </p>
+
+                  </blockquote>
+                  <a href="/main/lawyer.erb" style="text-decoration:none;color:#999"><span class="et-quote t-icon"></span><p>자세히 보기</p></a>
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+              </div>
+            </div><!-- / .row -->
+          </section><!-- / .container -->
+        </div>
+
+        <div class="col-md-12" style="padding: 0px 45px;">
+          <hr style="border: 1px solid #ccc">
+          <hr style="border: 1px solid #ccc;margin-top:1.5px;">
+        </div>
+
+         <!-- ========== Feature - Tabs ========== -->
+        <section id="features" class="container" style="background:#fff;">
+          <div class="row blog-classic no-margin">
+            <div class="col-md-12 no-gap bad_reply_left" style="padding-top:60px">
+              <header class="sec-heading" style="margin-bottom:0px">
+                <h2 style="font-weight:400" class="lead">악플수집 서비스</h2>
+              </header>
+
+              <div class="col-md-12 testimonials-3col ft-centered no-gap" style="padding:0 15px;">
+
+                <div class="col-md-4 col-sm-12 mb-sm-50 bad_reply_3cols">
+                  <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
+                    <!-- Item 1 -->
+                    <div class="ft-item" >
+                    <div class="ft-dark-spin">
+                    <span class="fa fa-bullhorn"></span>
+                    </div>
+                    </div>
+                    <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>1. 악플제보/수집</strong></span></p>
+                    <blockquote>
+
+                      <p style="letter-spacing: -1px;"><span style="color:black"><strong><span style="color:#795548">악플 자동 수집 봇</span>을 통한 자료 수집<br><br>
+                      팬들의 제보를 통한 악플러 자료 수집</strong></span></p>
+
+                    </blockquote>
+                    </a>
+                    <i class="reply_progress fa fa-arrow-right"></i>
+                  </div><!-- / .t-item -->
+                </div><!-- / .col-md-6 -->
+
+                <!-- Item 2 -->
+                <div class="col-md-4 col-sm-12 mb-sm-50 bad_reply_3cols">
+                  <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
+                    <!-- Item 1 -->
+                    <div class="ft-item">
+                    <div class="ft-dark-spin">
+                    <span class="fa fa-magic"></span>
+                    </div>
+                    </div>
+                    <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>2. 데이터 가공</strong></span></p>
+                    <blockquote>
+
+                      <p style="letter-spacing: -1px;"><span style="color:black"><strong>피해자 요청시 수집된 자료 가공<br>
+                      중복 및 허위 자료 제거<br>
+                      빈도수, 수위 별 가해자 목록 정리<br>
+                      </strong></span></p>
+
+                    </blockquote>
+                    <i class="reply_progress fa fa-arrow-right"></i>
+                  </div><!-- / .t-item -->
+                </div><!-- / .col-md-4 -->
+
+                <!-- Item 2 -->
+                <div class="col-md-4 col-sm-12 mb-sm-50 bad_reply_3cols">
+                  <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
+                    <!-- Item 1 -->
+                    <div class="ft-item">
+                    <div class="ft-dark-spin">
+                    <span class="fa fa-send"></span>
+                    </div>
+                    </div>
+                    <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>3. 전달</strong></span></p>
+                    <blockquote>
+
+                      <p style="letter-spacing: -1px;"><span style="color:black"><strong>피해자에게 전달<br><br> 고소장 작성 및 제출</strong></span><br>
+                    </blockquote>
+                  </div><!-- / .t-item -->
+                </div><!-- / .col-md-4 -->
+              </div>
+              <div class="col-md-12 text-center" style="margin-bottom:60px;">
+                <h3 class="sub" style="margin-top:45px;margin-bottom:-15px;">고소미닷컴은 주요 인터넷 커뮤니티의<br class="mb_line_break"> 악플을 자동으로 수집하는<br><ins>악플 수집 프로그램</ins>을 보유하고 있습니다.</h3>
+                <div class="col-md-6 col-md-offset-3 ft-img-container" style="text-align:center;">
+                              <img src="<%= image_url('reply_bot.png') %>" style="width:100%" class="ft-img">
+                </div>
+                <div class="col-md-6 col-md-offset-3 text-center">
+                  <div class="col-md-12">
+                      <a href="/sue/query" style="width:100%" class="btn">서비스 신청하기</a>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- col-md-12 -->
+          </div><!-- row -->
+        </section>
+        <div class="cta-link">
+          <div class="bg-overlay">
+
+            <div class="cta-wrapper" style="padding-top:25px;padding-bottom:25px">
+            </div>
+
+          </div>
+        </div>
+         <header style="
+                        background: url(<%= image_url('mac-coffe-photo.jpg') %>) no-repeat center center;
+                        background-size: cover;" class="page-title pt-large pt-dark pt-plax-lg-dark mb_side_pd_0">
+          <div class="container">
+              <div class="row" style="text-align:center;padding: 0 15px;">
+
+                <div class="col-md-12 mb-sm-100 count-item no-gap" data-wow-duration="1s" data-wow-delay=".3s">
+                  <h1 class="lead" style="color:white"><i class="fa fa-exclamation-triangle"></i>고소미닷컴은</h1><br>
+                <p class="sub_sub"style="color:white">온라인 상에서 발생하는 명예훼손 및 모욕, 협박, <br class="mb_line_break">사이버 스토킹 등의 <b>범죄를 억제</b>하고자 합니다.<br><br class="mb_line_break"> 고소미닷컴은 당사자간의 <b>원만한 문제 해결</b>을 최우선으로 생각하지만
+                  <b>지속적인 피해</b>로 고통받는 사람들을 위해<br class="mb_line_break"> <b>고소장 자동완성</b> 서비스를 제공하고 있습니다.<br>
+
+                  </h3><br>
+                  <p class="sub" style="color:#fff">고소는 그 자체로서 중한 무게감을 지니므로<br class="mb_line_break"> 신중히 결정하시기 바랍니다.</p>
+                <h1 class="lead" style="color:white"></h1><br>
+
+                <a href="/main/lawyer" class="btn btn-ghost-light btn-large main_bottom_lawyer"><strong>변호사 상담하기</strong></a>
+                <a href="/sue/choice" class="btn btn-light btn-large main_bottom_write"><strong>고소장 작성하기</strong></a>
+
+              </div>
+              </div>
+
+            </div>
+        </header>
+
+
+
+<script type="text/javascript">
+        $(window).load(function(){
+          LawyerHeight(); //변호사 소개 페이지 화면 높이 조정
+          ConsumerLogoHeight(); //로고 이미지 높이 조절
+          ReplyStatus(); // 악플 제보현황
+          ReplyProgress(); // 악플서비스 진행과정
+          ReplyRefresh(); // 새로고침
+          PassCheck(); // 비밀번호 확인
+        });
+        // 변호사 소개 페이지 화면 높이 조정
+          function LawyerHeight(){
+            var standard_height = parseInt($('.lawyer_side_left').height()) - 31;
+            if (standard_height > 1000 ){
+              standard_height = standard_height - 300;
+            }
+            console.log(standard_height);
+            $('.lawyer_side_right').css('height',standard_height);
+          }
+        // 변호사 소개 페이지 화면 높이 조정
+        // 악플 소개 페이지 화면 높이 조절
+          function BadReplyHeight(){
+            var standard_height2 = parseInt($('.bad_reply_left').height());
+            standard_height2 = standard_height2 + 200;
+            console.log(standard_height2);
+            $('.bad_reply_right').css('height',standard_height2);
+          }
+        // 악플 소개 페이지 화면 높이 조절
+        // 소비자 만족도 이미지 조절
+        function ConsumerLogoHeight() {
+          var standard_height3 = parseInt($('.consumer_image').height());
+          var consumer_left = parseInt($('.consumer_image_left').height());
+          var consumer_right = parseInt($('.consumer_image_right').height());
+          sum1 = (standard_height3-consumer_left)/2;
+          sum2 = (standard_height3-consumer_right)/2;
+          console.log('logo',standard_height3);
+          $('.consumer_image_left').css('padding-top',sum1).css('padding-bottom',sum1);
+          $('.consumer_image_right').css('padding-top',sum2).css('padding-bottom',sum2);
+
+        }
+        // 소비자 만족도 이미지 조절
+        // 악플 제보현황
+          function ReplyStatus() {
+            var status = parseInt($('.fire_status_celub').val(), 10) + 2030 ;
+            var clock,countup;
+                    clock = $('.clock_celub').FlipClock(2030, {
+                        clockFace: 'Counter',
+                        minimumDigits: 5,
+                    });
+                    countup = setInterval(function() {
+                        clock.increment();
+                            if(clock.getTime().time > status-1) {
+                            clock.stop();
+                            clearInterval(countup);
+                            }
+                    }, 70);
+
+            }
+        // 악플 제보현황
+        //
+        // 악플서비스 진행과정
+          function ReplyProgress() {
+          /*  $('.cd-breadcrumb li').first().addClass("current");
+            $('.bread').not($('.bread').first()).hide();
+            $('.bread').css('margin-top','0px').css('font-size','1em');
+            $('.cd-breadcrumb li').on('click', function(){
+              $('.cd-breadcrumb li').not($(this)).removeClass("current");
+              if (!$(this).hasClass("current")){
+                $(this).addClass("current");
+                var sample = "bread_";
+                $('.bread').hide();
+                var test = "h2[class*="+sample + $(this).attr('name');
+                $(test).show();
+              }
+              else {
+                $(this).removeClass("current");
+              }
+            });
+          */
+            var col_height = parseInt($('.bad_reply_left').find('.t-item').height())
+            var col_width = parseInt($('.bad_reply_3cols').find('.t-item').width())
+            $('.reply_progress').css('top',(col_height/2)+50);
+          }
+        // 악플서비스 진행과정
+        // 새로고침
+          function ReplyRefresh(){
+
+          $('#refresh').on('click',function(){
+
+
+            $('#refresh').find('i').addClass("fa-spin");
+
+              setTimeout(function(){
+                $('#refresh').find('i').removeClass("fa-spin");
+              }, 1000)
+
+          })
+          }
+        // 새로고침
+        // 비밀번호 체크
+            function PassCheck(){
+            //Store the password field objects into variables ...
+            var user_password = document.getElementById('user_passwords');
+            var user_password_confirmation = document.getElementById('user_password_confirmation');
+            //Store the Confimation Message Object ...
+            var message = document.getElementById('confirmMessage');
+            //Set the colors we will be using ...
+            var goodColor = "#66cc66";
+            var badColor = "#ff6666";
+            //Compare the values in the password field
+            //and the confirmation field
+            if(user_password.value == user_password_confirmation.value){
+                //The passwords match.
+                //Set the color to the good color and inform
+                //the user that they have entered the correct password
+                user_password_confirmation.style.backgroundColor = goodColor;
+                message.style.color = goodColor;
+                message.innerHTML = "비밀번호가 일치합니다!"
+            }else{
+                //The passwords do not match.
+                //Set the color to the bad color and
+                //notify the user.
+                user_password_confirmation.style.backgroundColor = badColor;
+                message.style.color = badColor;
+                message.innerHTML = "비밀번호가 일치하지 않습니다!"
+
+            }
+          }
+        //비밀번호 체크
+</script>

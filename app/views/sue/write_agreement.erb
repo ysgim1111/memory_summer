@@ -1,0 +1,470 @@
+<link rel="stylesheet" href="/assets/button.css">
+<!--달력-->
+<script language="JavaScript" src="/date_picker.js"></script>
+<!--달력 끝-->
+<style>
+	a:link:after, a:visited:after {
+		content:" ";
+		
+	}
+	@media all {
+	.page-break	{ display: none; }
+  }
+
+	@media print {
+	.page-break	{ display: block; page-break-before: always; }
+	#Header, #Footer { display: none !important; }
+	@page {
+    size: 330mm 427mm;
+    margin: 14mm;
+  }
+  .container {
+    width: 1170px;
+  }
+	}
+	@page{margin:20px auto;}
+	html, body{
+  min-height: 100%;
+}
+body{
+  position: relative;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.9); /*dim the background*/
+}	
+</style>
+<style>
+					#edit {
+						background:#337ab7;
+						border-color: #2e6da4;
+					}
+					#edit:hover {
+						background:#276192;
+					}
+					
+</style>
+  <!-- ========== Page Title ========== -->
+        <header id='aa5' style="background:url(https://gosomi.com/assets/consultation-6ef4f5b233ead016dbd45e8d6b1133ad23d97fcdf3caefd2318d783e1e799e76.jpg);background-size:cover;background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <h1 class="lead" style="font-family:'Nanum Myeongjo'">합의서<br class="mb_line_break"> 샘플</h1>
+                  <span class="sub">명예훼손 및 모욕죄 합의서 양식</span>
+                </div>
+                
+              </div>
+
+            </div>
+        </header>
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-md-2"></div>
+
+    	<div class="col-md-8 side_pd_45 print_form mb_side_pd_15" id="aa">
+   						<h1 class="form_header" style="text-align:center;margin-top:50px;"> 합&nbsp; &nbsp;&nbsp; &nbsp;의&nbsp; &nbsp;&nbsp; &nbsp;서 </h1>
+   						<br><br>
+				  <!--표시단위-->
+				  <div id='c2'>
+				  <h5>해당 사건에 대하여 가해자와 피해자는 아래와 같이 합의한다.</h5>
+				  	<h1 class="table_heading">1. 고소인</h1> 
+				  	<!-- desktop -->
+					  <table class="table table-bordered table_contents" >
+					  <form enctype="multipart/form-data" accept-charset="UTF-8" method="post" action="/sue/new_agreement/<%=params[:id]%>">
+								<tbody> 
+								<tr class="hidden-sm hidden-xs"> <th scope="row" class="text-center width_20">성명</th> <td id="my_name" class="text-center width_30"><input type="text" name="my_name" placeholder="홍길동"></td> <th scope="row" class="width_20 text-center">생년월일</th> <td class="text-center width_30"><input type="text" name="my_birth" placeholder="910406"></td> </tr> 
+								
+								<!-- 2rows line_break -->
+								<tr class="visible-sm"> <th scope="row" class="text-center width_20">성명</th> <td id="my_name" colspan="3"><input type="text" name="my_name" placeholder="홍길동"></td> </tr> 
+								<tr class="visible-sm"> <th scope="row" class="text-center width_20">생년월일</th> <td  colspan="3"><input type="text" name="my_birth" placeholder="910406"></td> </tr> 
+								<!-- 2rows line_break -->
+								
+								<tr class="hidden-xs"> <th scope="row" class="text-center">주소</th> <td colspan="3"><span id="my_address"><input type="text" name="address" placeholder="OO시 OO구 OO동"> </span></td> </tr> 
+								<tr class="hidden-xs"> <th scope="row" class="text-center">연락처</th> <td colspan="3" id="my_phone"><input type="text" name="my_phone" placeholder="010-0000-0000"></td> </tr> 
+								</tbody> 
+								
+						</table>
+						<!-- desktop -->
+						<!-- mobile -->
+						<table class="table table-bordered table_contents visible-xs" >
+								<tbody> 
+								
+								<tr class="visible-xs"> <th scope="row" class="text-center width_20">성명</th></tr>
+								<tr class="visible-xs"> <td class="text-center"><input type="text" name="my_name" placeholder="홍길동"></td> </tr> 
+								<tr class="visible-xs"> <th scope="row" class="text-center width_20">생년월일</th></tr>
+								<tr class="visible-xs"><td class="text-center"><input type="text" name="my_birth" placeholder="910406"></td> </tr>
+								
+								<tr class="visible-xs"> <th scope="row" class="text-center">주소</th></tr> 
+								<tr class="visible-xs"><td class="text-center"><input type="text" name="my_address" placeholder="OO시 OO구 OO동"></span> </td> </tr> 
+								<tr class="visible-xs"> <th scope="row" class="text-center">연락처</th> </tr>
+								<tr class="visible-xs"> <td class="text-center" id="my_phone"><input type="text" name="my_phone" placeholder="010-0000-0000"></td> </tr>	
+								</tbody> 
+						</table>
+						<!-- mobile -->
+						
+						
+						
+							<style>
+								.table-bordered:tr, th, td {
+									border:1px solid #111;
+								}
+								.width_20 {
+									width:20%;
+								}
+								.width_30 {
+									width:30%;
+								}
+								.table_contents {
+									font-size:1.5em;
+									color:#111;
+									border: 2px solid #111;
+									font-family: 'Nanum Myeongjo';
+								}
+								.normal_contents {
+									font-size:1.5em;
+									color:#111;
+									font-family: 'Nanum Myeongjo';
+								}
+								#aa {
+									border: 2px solid #111;
+									margin-top: 30px;
+								}
+								
+							</style>
+							
+								<!--<p class="intxt_bt" style="color:grey">*법정 대리인이 대신 고소를 할때에는 그에 상응하는 서류가 필요합니다.</p>-->
+					      <!--표시단위 끝-->    <br><br>
+								
+								<h1 class="table_heading">2. 피고소인</h1> 
+					  <table class="table table-bordered table_contents" >
+								<tbody> 
+								
+									
+								<!-- desktop version -->
+									<tr class="hidden-sm hidden-xs"> <th scope="row" class="text-center width_20">성명</th> <td id="you_name" class="text-center width_30"><input type="text" name="you_name" placeholder="임꺽정"></td> <th scope="row" class="width_20 text-center">생년월일</th> <td class="text-center width_30"><input type="text" name="you_birth" placeholder="910406"></td> </tr> 
+								
+								<!--2 row line_break -->
+								<tr class="visible-sm"> <th scope="row" class="text-center width_20">성명</th> <td colspan="3"><input type="text" name="you_name" placeholder="임꺽정"></td> </tr> 
+								<tr class="visible-sm"> <th scope="row" class="text-center width_20">생년월일</th> <td colspan="3"><input type="text" name="you_birth" placeholder="910406"></td> </tr>
+								<!--2 row line_break -->
+								<tr class="hidden-xs"> 
+									<th scope="row" class="text-center">주소</th> 
+									<td colspan="3">
+													<input type="text" name="you_address" placeholder="OO시 OO구 OO동">
+									</td> 
+								</tr>
+								<tr class="hidden-xs"> 
+									<th scope="row" class="text-center">연락처</th> 
+									<td colspan="3" id="my_phone">
+													<input type="text" name="you_phone" placeholder="010-0000-0000">
+									</td> 
+								</tr>	
+								</tbody> 
+								
+							</table>
+							<!-- desktop version -->
+							<table class="table table-bordered table_contents visible-xs text-center" >
+								<tbody> 
+								<!-- mobile -->
+								<tr class="visible-xs"> <th scope="row" class="text-center width_20">성명</th></tr>
+								<tr class="visible-xs"> <td><input type="text" name="you_name" placeholder="임꺽정"></td> </tr> 
+								<tr class="visible-xs"> <th scope="row" class="text-center width_20">생년월일</th></tr>
+								<tr class="visible-xs"><td><input type="text" name="you_you_birth" placeholder="910406"></td> </tr>
+								<tr class="visible-xs"> <th scope="row" class="text-center">주소</th></tr> 
+								<tr class="visible-xs"><td>													
+								<input type="text" name="you_address" placeholder="OO시 OO구 OO동">
+													</span> </td> </tr> 
+								<tr class="visible-xs">
+								<tr class="visible-xs"> <th scope="row" class="text-center">연락처</th> </tr>
+								<tr class="visible-xs"> <td id="my_phone"><input type="text" name="you_phone" placeholder="010-0000-0000">
+															</td> </tr>	
+								<!-- mobile -->
+								</tbody> 
+								
+							</table>
+					     <!--3번째-->
+					     <br><br>
+					        <h1 class="table_heading">3. 합의내용</h1>
+					        <textarea type="text" name="content" style="height:150px" class="form-control" placeholder="">(1)가해자는 피해보상의 일부로서 金	        원을 피해자에게 지급하고, 피해자는 위 금원을 지급받고 가해자의 형사 및 민사 책임을 묻지 않는다.
+
+(2)위와 같은 합의내용을 확실하게 하기 위해 이 합의서를 3부 작성하여, 1부는 수사기관 또는 법원에 제출하고 나머지는 가해자 측과 피해자 측에게
+각 1부씩 교부한다. </textarea>
+					     <!--4번째--><br>
+					     
+					  <div class="checkbox" style="font-size:15px; margin-top:30px;text-align:center">
+											  <div class="col-md-10" style="padding-left:0px">
+					              <ul class="data-list" style="padding-left:0px">
+						            <li>
+        				        <input type="text" id="input4" readonly placeholder="날짜를 입력해주세요" class="auto_required form-control text-center" name="target_date">
+                          </li>
+                          </ul>    
+                        </div>
+                        <div class="col-md-2" style="padding-left:0px;padding-right:0px">
+                            <input type="button" style="height:44px;width:100%;" value="달력보기" class="btn btn-warning" onClick="datePicker(event,'target_date')">
+                        </div>         
+							  <h1> <input type="text" name="police" placeholder="ex)성북">경찰서(검찰청) 귀중</h1>
+ 						</div>
+ 						
+ 						</form>
+						<h1 style="text-align:center"></h1>
+					</div>
+					<!--print img -->
+					
+		</div><!--col-md-8-->
+		<div class="col-md-2"></div>
+		
+		<div class="col-md-8 col-md-offset-2 no-gap form_bottom">
+			<!--print img -->
+		</div>
+		</div><!--row-->
+</div><!-- container-fluid -->
+                <!--업로드 끝-->
+        <div id='aa2' style="text-align:center;">
+        	<div class="step row">
+		        	<div class="col-md-12">
+						  <div class="col-md-2"></div>
+							  <div class="col-md-8 no-gap">	
+							       <a id="c1" style="width:100%;height:50px;margin-top:50px;padding-top:15px;margin-bottom:60px" class="btn btn-default">인쇄하기</a>
+							  </div>
+						  <div class="col-md-2"></div>
+					  </div>
+			    </div><!-- step row -->
+    		
+  		</div><!-- aa2 .container-->
+  		
+  	 						<script>
+		              	$('#sue_write').click(function(){
+		              		$('#important').val(1);
+		              		$('#pmt_check').val('no');
+		              		$('#sue_form').submit();
+		              	})
+		              	
+		              	$('#sue_with').click(function(){
+		              		$('#important').val(2);
+		              		$('#pmt_check').val('no');
+		              		$('#sue_form').submit();
+		              	})
+		            </script>	
+  		
+   		<style>
+   			.further {
+   				display: block;
+			    margin-bottom: 30px;
+			    padding: 7px 0 7px 20px;
+			    border-left: 1px solid #777;
+			    text-align:left;
+   			}
+   			.hd {
+   				display: block;
+   			  color: #ececec;
+   			}
+   			.hd_sub {
+   				display: block;
+   			  color: #999;
+   			}
+   		</style>
+ 	 
+
+
+
+
+
+<script>
+  var tem = document.getElementById('temporary');
+  $('#temporary').css({display:'none'});
+  $('#delete').click(function(){
+    $('.input-group').remove();
+    var a = $('#temporary').clone();
+    a.children().first().attr('class','input-group-btn trial');
+    a.attr('class', 'input-group').attr('id','id_group').css({display:''}).children().first().children().children().attr('type','file');
+    $('.upload').append(a);
+    refresh();
+  });
+  
+  $('#adding').click(function(){
+    var b = document.getElementsByClassName('input-group');
+    if (b.length < 5){
+    var c = $('#temporary').clone()
+    c.children().first().attr('class','input-group-btn trial');
+    c.attr('class', 'input-group').attr('id','id_group').css({display:''}).children().first().children().children().attr('type','file');
+    $('.upload').append(c);
+    refresh();
+    }
+    
+    else {
+      alert('최대 5개까지만 업로드할 수 있습니다');
+    }
+  });
+  
+</script>
+<script>
+$(document).ready(function(){
+    $(".btn-open").click(function(){
+        $(".collapse").collapse('toggle');
+    });
+    
+});
+</script>
+
+<script>
+$('.img_go')
+        .css({height:'200px',width:'100%'}); 
+$('.img_print')
+        .css({display:'none'});
+  var div = document.createElement('div');
+  var body = document.getElementById('page-top');
+  
+  body.appendChild(div);
+  
+  $('#c1').click(function() {
+  	div.className = 'overlay';
+    $('#aa1')
+        .css({display:'none'});
+    $('#aa2')
+        .css({display:'none'});
+    $('#aa3')
+        .css({display:'none'});
+    $('#aa4')
+        .css({display:'none'});
+    $('#aa5')
+        .css({display:'none'});
+    $('#aa').removeClass('side_pd_45').attr('id','');
+    $('#ev').css({display:'none'});
+    $('#evh1').css({display:'none'});
+    $('.img_print').css({display:'',height:'auto',width:'auto'}); 
+    console.log($('.img_go').css('width'));
+	 	window.print();   
+	 	$('.img_print').css({display:'none'});
+	  $('.img_go').css({height:'200px',width:'100%'});
+	  $('.print_form').attr('id','aa').addClass('side_pd_45');
+	    $('#aa1')
+	        .css({display:''});
+	      $('#aa2')
+	        .css({display:''});
+	      $('#aa3')
+	        .css({display:''});
+	      $('#aa4')
+	        .css({display:''});
+	      $('#aa5')
+	        .css({display:''});
+	      $('#ev').css({display:''}); 
+	      $('#evh1').css({display:''});
+	      div.className = '';
+  });
+ 
+//iamport payment
+$('#sue_go').click(function() {
+	var file_check = document.getElementsByClassName('file'); 
+	var a = 1;  
+        for (var i = 0;i<file_check.length;i++){
+          
+           if ( !(typeof file_check[i].files[0] == 'undefined') ) {
+               if (file_check[i].files[0].size > 30000) {
+                 console.log(file_check[i].files[0].size);
+                   
+                   alert('파일 각각의 크기는 3MB를 넘을 수 없습니다' + '\r\n' +'초과된 파일 이름 : '+ file_check[i].files[0].name);
+                   a = 0;
+                   alert(a);
+               }
+            }
+        }
+        
+        if (a==1) {
+            var $this = $(this);
+				var price = $this.data('price'),
+						title = $this.data('title');
+				IMP.init('imp35106516');
+				IMP.request_pay({
+					pay_method : 'card', // 'card':신용카드, 'trans':실시간계좌이체, 'vbank':가상계좌, 'phone':휴대폰소액결제
+			    merchant_uid : 'merchant_' + new Date().getTime(),
+			    name : title,
+			    amount : price,
+			    buyer_email : 'iamport@siot.do',
+			    buyer_name : $('#my_name').text(),
+			    buyer_tel : $('#my_phone').text(),
+			    buyer_addr : $('#address').text(),
+			    buyer_postcode : $('#post_code').text()
+				}, function(rsp) {
+					if ( !rsp.success ) {
+						alert('결제를 취소하셨습니다.');
+						location.reload();
+					}
+				})
+				
+				return false;
+            
+            
+        }
+	return false;
+})
+
+</script>
+
+<script>
+	function my_page(){
+		location.href="/main/mypage";
+	}
+</script>
+
+
+
+<style>
+	
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+</style>
+
+<script>
+var refresh = function(){
+	$(':file').change(function(){
+
+	var filename = $(this).val().split('\\').pop();
+	var thumbext = this.value; //파일을 추가한 input 박스의 값
+
+	thumbext = thumbext.slice(thumbext.indexOf(".") + 1).toLowerCase(); //파일 확장자를 잘라내고, 비교를 위해 소문자로 만듭니다.
+
+	if(thumbext != "jpg" && thumbext != "png" &&  thumbext != "bmp"){ //확장자를 확인합니다.
+
+		alert('썸네일은 이미지 파일(jpg, png, gif, bmp)만 등록 가능합니다.');
+
+		return false;
+	}
+	else {
+		alert(filename + '가 등록되었습니다');
+		this.parentElement.parentElement.nextElementSibling.value = filename;
+	}
+	
+	
+	
+});
+}
+
+
+</script>
+

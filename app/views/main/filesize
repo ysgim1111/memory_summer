@@ -1,0 +1,46 @@
+<br><br><br><br><br><br>
+<script>
+function validateFiles(inputFile) {
+  var maxExceededMessage = "This file exceeds the maximum allowed file size (2 MB)";
+  var extErrorMessage = "Only image file with extension: .jpg, .jpeg, .gif or .png is allowed";
+  var allowedExtension = ["jpg", "jpeg", "gif", "png"];
+  
+  var extName;
+  var maxFileSize = $(inputFile).data('max-file-size');
+  var sizeExceeded = false;
+  var extError = false;
+  
+  $.each(inputFile.files, function() {
+    if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) {sizeExceeded=true;};
+    extName = this.name.split('.').pop();
+    if ($.inArray(extName, allowedExtension) == -1) {extError=true;};
+  });
+  if (sizeExceeded) {
+    window.alert(maxExceededMessage);
+    $(inputFile).val('');
+  };
+  
+  if (extError) {
+    window.alert(extErrorMessage);
+    $(inputFile).val('');
+  };
+}    
+</script>
+
+<div> 
+<form enctype="multipart/form-data" action="/main/createimg" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="7XdZZE6Z9+ieWRHUvP1gNZOSIPhaOH0F0a//F5h0zY04nXbhbc5jTPfPdELL74O2Zm9EMSc42GBgibDfBhk6wg==" />
+    <input onchange="validateFiles(this);" data-max-file-size="2097152" multiple='multiple' type="file" name="sueimg[]"/>
+    <input type="submit" name="commit" value="Create" /> 
+</form>
+</div>
+<div>
+    <%Sueimg.all.each do |x|%>
+        <div style='display:inline-block;width:70%'>
+            <%=x.errors[:sueimg]%>
+          <img src='<%=x.blogimg.url%>' style='width:100%'>
+          <a href='/main/imgdelete/<%=x.id%>'>[x]</a>
+        </div>
+    <%end%>
+</div>
+<div></div>

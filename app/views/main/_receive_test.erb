@@ -1,0 +1,32 @@
+          <table class="table table-hover table-striped" style="margin-bottom:0px"> 
+            <thead> 
+              <tr> 
+                <th style="width:15%" class="text-center">닉네임</th> 
+                <th style="width:15%" class="text-center">장소</th> 
+                <th style="width:55%"class="text-center"></i>한마디 전하기</th>
+                <th style="width:20%" class="text-center">제보 이유</th>
+              </tr> 
+            </thead>
+            <tbody> 
+            <% @receives.reverse.each do |x|%>
+                <tr> 
+                   <% if x.you_nickname.to_s.length <= 3%>
+                   <th class="text-center"><%=x.you_nickname[0..1]+ "*"*(x.you_nickname.to_s.length-2) %></td>
+                   <% elsif x.you_nickname.to_s.length <= 6%>
+                   <th class="text-center"><%=x.you_nickname[0..2]+ "*"*(x.you_nickname.to_s.length-3) %></td>
+                   <% elsif x.you_nickname.to_s.length <= 16%>
+                   <th class="text-center"><%=x.you_nickname[0..3]+ "*"*(x.you_nickname.to_s.length-4) %></td>
+                   <% elsif x.you_nickname.to_s.length <= 32%>
+                   <th class="text-center"><%=x.you_nickname[0..8]+ "*"*(x.you_nickname.to_s.length-9) %></td>
+                   <% end %>
+                   <td class="text-center"><%=x.category %>(<%=x.location%>)</td>
+                     <%if x.cate == "celebrity" %>
+                     <td class="text-center"><%=x.content %>님에 대한 악플러 제보입니다.</td>
+                     <% else %>
+                     <td class="text-center"><%=x.content %></td>
+                     <% end %>
+                   <td class="text-center"><%=x.reason %></td>
+                </tr> 
+            <% end %>  
+            </tbody>
+            </table>

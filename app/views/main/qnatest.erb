@@ -1,0 +1,159 @@
+<style>
+.section {
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    color: #fff;
+    background-color: #504E4E;
+}
+.btn, .btn-ghost, .btn-ghost-light, .btn-text, .btn-text-light, .btn-light{
+   background: #FFF;  
+}
+#search{ 
+    left: 2px;
+    padding: 6px 10px 5px 8px;
+    color: rgb(0, 0, 0);
+    font: 12px/12px Guilim, 굴림, sans-serif;
+    background-position: 100% 0%;
+    border: solid 1px;
+}
+</style>
+
+        <!-- ========== Page Title ========== -->
+
+        <header class="page-title pt-large pt-dark pt-plax-lg-dark" data-stellar-background-ratio="0.4" style="padding-bottom: 80px; padding-top: 80px; background-position: 0px 0px;">
+          <div class="container">
+              <div class="row">
+
+                <div class="col-sm-6">
+                  <h1>F.A.Q.</h1>
+                  <span class="subheading">자주 묻는 질문입니다.</span>
+                </div>
+              </div>
+
+            </div>
+        </header>
+
+        <!-- ========== FAQ Layout - 1 ========== -->
+
+<div class="container">
+  <div class="col-md-10 wrap_content" style="border:1px solid #e0e0e0; margin-top:100px; margin-bottom:100px;">
+    <div class="col-md-12" style="margin-top:10px">
+      <table class="table table-condensed table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">번호</th>
+            <th>분류</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            <th class="text-center"><a href="?&sst=wr_datetime&sod=desc">날짜</a></th>
+            <th class="text-center"><a href="?&sst=wr_hit&sod=desc">조회</a></th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="success">
+            <td class="text-center"><span class="glyphicon glyphicon-exclamation-sign text-danger"></span></td>
+            <td></td> 
+            <td><a href="/posts/master/1"><strong>고소와 진정의 차이</strong></a></td>
+            <td><a href="javascript:;" onclick="javascript:showSideView(this, 'manya', &quot;마냐&quot;);" title="마냐"> <span class="text-muted"><strong>운영자</strong></span></a></td>
+            <td class="text-center">09-20</td>
+            <td class="text-center">17</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="clearfix">
+        <span class="btn-group"></span>
+          <div class="pull-right">
+            <a href="/posts/new/1" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> 글쓰기</a>
+          </div>
+      </div>
+      <!-- 여기 검색엔진 -->
+      <form action='/posts/index/1' method='post'>
+        <select name="filter" class="form-control input-sm auto" style="float:left;width:100px">
+          <option value="title">제목</option>
+          <option value="content">내용</option>
+          <option value="writer">글쓴이</option>
+        </select>
+        <input type='text' value='' name='search' class="form-control input-sm" maxlength='15' style='float:left; width:200px'>
+        <input type='hidden' value='' name='cate'>
+        <input type='hidden' value='go' name='go'>
+        <span class="input-group-btn" style="width:30px">
+          <button type="submit" class="btn btn-sm btn-primary" id="search">검색</button>  
+        </span>
+      </form>
+      <div style="text-align:right">
+        <ul class="pagination">
+            <li class=""><a id='g1'>1</a></li>
+            <form id='gg1' style='display:inline-block' action='/posts/index/1' method='post'>
+                <input type='hidden' value='1' name='c'>
+                <input type='hidden' value='' name='cate'>
+                <input type='hidden' value='' name='search'> 
+                <input type='hidden' value='go' name='go'>
+            </form>
+            <script> 
+              $('#g1').click(function() {
+                document.forms['gg1'].submit();
+              });
+            </script>
+          <li><a id='next'>&gt;</a></li>
+          <form id='nextgo' style='display:inline-block' action='/posts/index/1' method='post'>
+              <input type='hidden' value='1' name='c'>
+              <input type='hidden' value='' name='cate'>
+              <input type='hidden' value='' name='search'> 
+              <input type='hidden' value='go' name='go'>
+          </form>
+          <script> 
+            $('#next').click(function() {
+              document.forms['nextgo'].submit();
+            });
+          </script>
+        </ul>        
+      </div>
+    </div>
+  </div><!--/.col-md-10-->
+  <div style='right:3%;width:17%;position:fixed'>  
+    <ul class="nav nav-pills nav-stacked">
+          <li class="active">
+        <a href id='1' data-toggle="tab">분류</a>
+          <ul>
+            <li><a id='x' href='#'>- 고소 성립 요건</a></li>
+            <li><a id='y' href='#'>- 고소 미성립 사례</a></li>
+          </ul>
+        </li>
+        <script>
+          $('#1').click(function() {
+            location.assign('/posts/index/1');
+          });
+        </script>
+        <form id="xform" action='/posts/index/1' method='post'>
+          <input type='hidden' value='x' name='cate'>
+        </form>                    
+        <script> 
+          $('#x').click(function() {
+            document.forms['xform'].submit();
+          }); 
+        </script>
+        <form id="yform" action='/posts/index/1' method='post'>
+          <input type='hidden' value='y' name='cate'>
+        </form>                    
+        <script> 
+          $('#y').click(function() {
+            document.forms['yform'].submit();
+          });
+        </script>        
+        <form id="xform" action='/posts/index/1' method='post'>
+          <input type='hidden' value='x' name='cate'>
+        </form>                    
+        <script> 
+          $('#x').click(function() {
+            document.forms['xform'].submit();
+          }); 
+        </script>
+        <form id="yform" action='/posts/index/1' method='post'>
+          <input type='hidden' value='y' name='cate'>
+        </form>                    
+      </ul><br> 
+  </div>
+  <hr/>
+</div><!--/.container-->

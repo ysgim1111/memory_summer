@@ -1,0 +1,95 @@
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%;padding-bottom:100px" class="page-title pt-large pt-dark pt-plax-lg-dark mb_side_pd_0">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <a href="/qna/index"><h1 class="lead" style="font-family:'Nanum Myeongjo'">요주의 인물 검색 </h1></a>
+                  <span class="sub">게임,커뮤니티,SNS 등에서 쓰이는 <br class="mb_line_break">닉네임(혹은 이름)의 관심도를 확인할 수 있습니다</span>
+                </div>
+                <div class="col-md-12" style="margin-top:50px">
+                <form action="/main/sue_check"  method="GET" id="search-form">
+                    <div class="col-md-2"></div>
+                     <div class="col-md-6">
+                     <input name="search" style="margin-bottom:15px" type="text" placeholder="찾고 싶은 닉네임 혹은 이름을 입력하세요." class="form-control">
+                     </div>
+                     <div class="col-md-2">
+                     <button style="width:100%" class="btn"><i class="fa fa-search"></i>검색</button>
+                     </div>
+                     <div class="col-md-2">
+                     </div>
+                </form>
+               </div>
+              </div>
+            </div>
+        </header>
+        <div style="background:#e8e8e8;">
+          <div class="section container blog-classic" style="padding-top:60px">
+            <div class="row">
+               <div class="col-md-12">
+                <div class="blog-post" style="background:#fff;margin-bottom:0px">
+                  <!-- Image -->
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:20px">
+                    <div class="row" style="text-align:center">
+                        <div class="col-md-12 sidebar">
+                          <h1 style="margin-bottom:10px"><i class="fa fa-search"></i>요주의 인물 검색 결과</h1>
+                          <hr style="margin-bottom:20px">
+                          <h3 style="font-weight:bold">고소미닷컴을 통해 접수된 내용만 확인이 가능합니다. </h3>
+                          <%if @s.present? || @r.present? %>
+                          <h4>해당 아이디의 관심도는 <%=(@s.count.to_i*5) + (@r.count.to_i*3) %>점 이며
+                          <a id="rdetail"><%=@r.count %></a>건의 관심제보와 <a id="sdetail">
+                          <%=@s.count%></a>건의 고소장이 작성되었습니다. </h4>
+                          <br>
+                          <div class="col-md-12" style="border-left:3px solid #BB6D32;;margin-left:15px;text-align:left;margin-bottom:15px">
+                            <% if @r.present? %>
+                              
+                                <% @r.each do |x| %>
+                                <% if x.cate =='insult' %>
+                              <h3 style="margin-top:10px"><span class="fa fa-tag"></span><%=x.location %> </h3>
+                              <p style="margin-bottom:0px"><%= time_ago_in_words(x.created_at) %> 전에 작성됨 <span class="specific fa fa-chevron-circle-down"></span></p>
+                              <p class="warm_word" style="padding-left:15px;margin-bottom:0px"><span class="fa fa-smile-o"></span>제보이유 - 
+                              <%=x.reason %></p>
+                              <p class="warm_word" style="padding-left:15px;margin-bottom:0px"><span class="fa fa-heartbeat"></span>남기고 싶은 한마디 - 
+                              <%=x.content %></p>
+                              <p class="warm_word" style="padding-left:15px;margin-bottom:0px"><span class="fa fa-flag"></span><%=x.id%></p>
+                              <a data-toggle="modal" data-target="#query" href="#"><p class="warm_word" style="padding-left:15px;margin-bottom:0px;color:#B51C36"><span class="fa fa-ban"></span>삭제 요청</p></a>
+                              
+                                <% else %>
+                                <h3 style="margin-top:10px"><span class="fa fa-tag"></span>악성 댓글 </h3>
+                                <p style="margin-bottom:0px"><%= time_ago_in_words(x.created_at) %> 전에 작성됨 <span class="specific fa fa-chevron-circle-down"></span></p>
+                                <p class="warm_word" style="padding-left:15px;margin-bottom:0px"><span class="fa fa-heartbeat"></span>사건 장소 - 
+                                <%=x.location %></p>
+                                <p class="warm_word" style="padding-left:15px;margin-bottom:0px"><span class="fa fa-flag"></span><%=x.id%></p>
+                                <a data-toggle="modal" data-target="#query" href="#"><p class="warm_word" style="padding-left:15px;margin-bottom:0px;color:#B51C36"><span class="fa fa-ban"></span>삭제 요청</p></a>
+                                <% end %>
+                                <% end %>
+                            <% end %>
+                            <% else %>
+                           <h1><i class="fa fa-question-circle fa-4x"></i></h1>
+                           <h4>현재 해당 닉네임의 관심도는 <b>0</b>입니다. </h4>
+                            <% end  %>  
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <script>
+                      $('.warm_word').hide();
+                      $('.specific').css('cursor','pointer');
+                      $('.specific').on('click',function(){
+                        if ( $(this).hasClass('fa-chevron-circle-down') ){
+                          $('.warm_word').show(400);
+                          $(this).removeClass('fa-chevron-circle-down').addClass('fa-chevron-circle-up')
+                        }
+                        else {
+                          $('.warm_word').hide(400);
+                          $(this).removeClass('fa-chevron-circle-up').addClass('fa-chevron-circle-down')
+                        }
+                      })
+                  </script>
+                  <div class="col-md-12" style="text-align: center;background: #F3F3F3;padding-top: 15px;padding-bottom: 15px;margin-bottom: 30px;box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);">
+                  <a style="font-weight: bold;color: black;width:100%;font-size: 1em;" href="/main/index"><i class="fa fa-reply"></i> 메인페이지로 </a>
+                  </div>
+                </div>
+               </div>
+          </div>
+          </div>
+        </div>

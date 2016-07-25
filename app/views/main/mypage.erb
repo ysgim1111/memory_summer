@@ -1,0 +1,282 @@
+<link rel="stylesheet" href="/assets/styles/main_qna.css">
+<link rel="stylesheet" href="/assets/styles/responsive.css">
+<style>
+#comment_div{
+  background: #fff;
+  margin-bottom: 100px;
+  border: none;
+}
+.comment-info {
+ margin-top: 0px; 
+}
+.comment-content {
+ margin-top: 0px;
+ margin-left: 30px;
+}
+.bp-comment {
+  padding-top: 30px;
+}
+ .q_text {
+     font-size:1.3em;
+     margin-bottom:0px;
+ }
+ .more {
+         visibility: hidden; 
+        }
+        .bp-content:hover .more{
+         visibility: visible; 
+        }
+        .date {
+         margin-bottom:0px !important;
+        }
+        .box_contents {
+         font-size:1.2em;
+         margin-bottom:0px !important;  
+        }
+        .title {
+         font-size:3.5em; 
+        }
+        
+    @media (max-width: 600px) {
+    h1 {
+      font-size:2em;
+    }
+    h3 {
+      font-size:0.9em; 
+    }
+    h4 {
+      font-size:0.8em;
+      letter-spacing:1px;
+    }
+    #law_name {
+     font-size:0.75em; 
+    }
+    .firm_name {
+      width:100%; 
+    }
+    .title {
+      font-size:2em; 
+    }
+    .subheading {
+      font-size:1em !important;
+      letter-spacing:2px !important;
+    }
+    
+  }
+  
+                          .btn-danger {
+                            color: #fff;
+                            background-color: #922521;
+                            border-color: #8A201D;
+                          }
+                          .btn-danger:hover {
+                            color: #fff;
+                            background-color: #90332F;
+                            border-color: #90332F;
+                          }
+</style>
+  
+<!--네비 바 끝 -->
+ <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <a href="/main/mypage"><h1 class="title" style="font-family:'Nanum Myeongjo'">My Page</h1></a>
+                  <span class="subheading">내 문서와 질문을 관리할 수 있습니다</span>
+                </div>
+                
+              </div>
+
+            </div>
+ </header>
+<!-- -->
+<div style="background: #e8e8e8;">
+<div style="padding-top:60px" id="blog" class="section container blog-classic">
+    <div class="row blog-classic" >
+        <!-- ========== Sidebar col-md-3 ========== -->
+
+            <%= render "main/sidebar" %>
+        
+          <!-- ========== Blog Posts ========== -->
+          <div id="pfolio" class="col-md-9">
+             
+              
+                   <!-- 게시글-->
+                   
+                   
+              <div class="col-lg-12 portfolio-item" style="width: 100%;">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px;border-left:none">
+                  <div class="bp-content" style="padding: 30px 45px 30px 45px">
+                  
+                    <div class="row">
+                      <div class="col-md-12" style="padding-top:20px">
+                          <h2 style="margin-top:0px;margin-bottom:10px;display:inline-block"><i class="fa fa-bar-chart fa-large"></i>
+                          통계
+                          </h2>
+                        
+                        <hr style="margin-top:10px;margin-bottom:10px">
+                    <%db=Sueform.where(:user_id => current_user.id)%>                    
+                    <h4 class="qna_text">신고횟수 : <%=db.count%>회 </h4>
+                    <h4 class="qna_text">고소미작성 횟수 : <%=db.count%>회 </h4>
+                    <h4 class="qna_text">클린지수 : 123 </h4>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- / .bp-content -->
+                
+                
+                <script>
+                  $('.msg_text').hide();
+                  $('#show_text').on('click',function(){
+                    if($('.msg_text').css('display') === 'none'){
+                    $(this).text('닫기');
+                    $('.msg_text').show();
+                    }
+                    else{
+                    $(this).text('내용보기');
+                    $('.msg_text').hide();  
+                    }
+                  })
+                </script>
+                
+              
+              </div><!-- / .content-first -->
+              
+              
+              <div class="col-lg-12 portfolio-item content_1st" style="width: 100%;">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px;border-left:none">
+                  <div class="bp-content" style="padding: 30px 45px 30px 45px">
+                    <div class="row">
+                      <div class="col-md-12" style="padding-top:20px">
+                          <h2 style="margin-top:0px;margin-bottom:10px;display:inline-block"><i class="fa fa-balance-scale fa-large"></i>
+                          제보한 사건<br class="mb_line_break">
+                          <small>현재 <%=@r.count%>건을 제보하였습니다.</small></h2>
+                        <hr style="margin-top:10px;margin-bottom:10px">
+                        <div class="col-md-12" style="border-left:3px solid #BB6D32;;margin-left:15px;text-align:left;margin-bottom:15px">
+                            <% if @r.present? %>
+                              <% @r.each do |x| %>
+                          
+                            <h3 style="margin-top:10px;"><%=x.you_nickname%> <small><span class="fa fa-tag"></span><%=x.location %></small></h3>
+                            <p style="margin-bottom:0px"><%= time_ago_in_words(x.created_at) %> 전에 작성됨 <span class="specific fa fa-chevron-circle-down"></span></p>
+                            <p class="warm_word" style="padding-left:15px;margin-bottom:0px"><span class="fa fa-smile-o"></span>제보이유 - 
+                            <%=x.reason %></p>
+                            <p class="warm_word" style="padding-left:15px;margin-bottom:0px"><span class="fa fa-heartbeat"></span>따뜻한 한마디 - 
+                            <%=x.content %></p>
+                              <% end %>
+                            <% end %>
+                        </div> 
+                      </div>
+                    </div>
+                  </div><!-- / .bp-content -->
+                </div>
+                <script>
+                    $(window).load(function(){
+                      $('.warm_word').hide();
+                      $('.specific').css('cursor','pointer');
+                      $('.specific').on('click',function(){
+                        if ( $(this).hasClass('fa-chevron-circle-down') ){
+                          $('.warm_word').show(400);
+                          $(this).removeClass('fa-chevron-circle-down').addClass('fa-chevron-circle-up')
+                        }
+                        else {
+                          $('.warm_word').hide(400);
+                          $(this).removeClass('fa-chevron-circle-up').addClass('fa-chevron-circle-down')
+                        }
+                      })
+                    })
+                  </script>
+                
+                <script>
+                  $('.msg_text').hide();
+                  $('#show_text').on('click',function(){
+                    if($('.msg_text').css('display') === 'none'){
+                    $(this).text('닫기');
+                    $('.msg_text').show();
+                    }
+                    else{
+                    $(this).text('내용보기');
+                    $('.msg_text').hide();  
+                    }
+                  })
+                </script>
+                
+              
+              </div><!-- / .content-first -->
+              
+              
+              <div class="col-lg-12 portfolio-item content_2nd" style="width: 100%;">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px;border-left:none">
+                  <div class="bp-content" style="padding: 30px 45px 30px 45px">
+                  
+                    <div class="row">
+                      <div class="col-md-12" style="padding-top:20px">
+                          <h2 style="margin-top:0px;margin-bottom:10px;display:inline-block"><i class="fa fa-balance-scale fa-large"></i>
+                          진행중인 사건 <br class="mb_line_break">
+                          <small>현재 <%=@s.count%>개의 고소장을 작성하였습니다.</small>
+                          </h2>
+                        
+                        <hr style="margin-top:10px;margin-bottom:10px">
+                        
+                        <%if @s.present? %>
+                        <!--만약 you_id가 비었다면 나타나지 않게. -->
+                          <%@s.each do |s| %>  
+                          <div style="margin-top: 0px;">
+                          <h2 style="text-align:center;padding-top: 20px;margin-top: 0px;"><i class="fa fa-legal"></i><strong> <%=s.law_kind %></strong></h2>
+                          
+                          <p class="mb_align_center"><i class="fa fa-user-secret"></i> 피고소인 : <%=s.you_id%></p>
+                          
+                          <p class="mb_align_center"><i class="fa fa-flag"></i> 발생장소 : <%=s.location %></p> 
+                          <a class="btn" style="width:100%" href="/sue/show/<%=s.id%>">소장 다시보기</a>
+                          </div>
+                          <hr style="margin-top:50px;margin-bottom:50px">
+                          <% end %>
+                          
+                        <% else %>
+                        <h4 class="qna_text">현재 진행중인 문서가 없습니다 </h4>
+                        <% end %>  
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- / .bp-post -->
+
+              </div><!-- / .blog-content -->
+              
+              </div><!-- pfolio .col-md-9 -->
+            </div><!-- /row -->
+          </div><!-- .section container -->
+        </div>
+
+<style> 
+.my_document {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius:10px;
+}
+.my_document:hover {
+  background: #ececec;
+}
+.my_document span{
+  float:right;
+  opacity:0;
+}
+.my_document:hover span{
+  opacity:1;
+}
+</style>
+
+
+<script>
+  $('.content_1st').show();
+  $('.content_2nd').hide();
+
+  $('.num_1').on('click',function(event){
+    $('.content_2nd').hide();
+    $('.content_1st').show();
+  })
+  $('.num_2').on('click',function(event){
+    $('.content_1st').hide();
+    $('.content_2nd').show();
+  })
+</script>

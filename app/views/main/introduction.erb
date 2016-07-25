@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="page-header clearfix"><h1>Introduce<small> 고소미.KR</small></h1></div>
+
+    <div id="setting" class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+              <li id="linkProfile" class="active"><a href="#aboutus" data-toggle="tab">About Us</a></li>
+              <li id="linkChangePassword"><a href="#contact" data-toggle="tab">Contact</a></li>
+              <!--<li id="linkEmail"><a href="#confirmEmail" data-toggle="tab">이메일 인증 또는 변경</a></li>
+              <li id="linkUpgrade"><a href="#upgrade" data-toggle="tab">게시글 관리</a></li>-->
+            </ul><br>
+        </div>
+        
+        <div class="col-md-9"><div style="" class="tab-content">
+            <div id="aboutus" class="tab-pane fade in active">
+                <div class="row">
+                <img src="https://goo.gl/syfQcb" style="width:800px;height:auto">
+                </div>
+            </div>
+            <div id="contact" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-heading"><h4>피드백 환영!</h4></div>
+                <div class="panel-body">
+                  
+                  <p> @gosomi.kr</p>
+                  <p> 모든 피드백과 제휴문의를 받습니다</p>                  
+                </div>
+              </div>
+              <script>
+              $(".guide_to_activate").on("click", function(){
+            	$('.active').removeClass('active');
+            	$('#linkEmail').addClass('active');
+              })
+              </script>
+            </div>
+             <!-- 
+            <div id="confirmEmail" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-heading"><h4>이메일 인증 또는 변경</h4>
+                </div>
+                <div class="panel-body">
+                  <form id="emailForm" onsubmit="return false;" class="col-md-12">
+                    <div class="form-group has-feedback has-success">
+                      <label>인증된 이메일 주소</label>
+                      <input type="email" disabled value="" class="form-control">
+                      <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    </div><hr>
+                    <div class="form-group">
+                      <label for="emailInput">이메일 주소 인증받기</label>
+                      <div class="input-group">
+                        <input id="emailInput" type="email" placeholder="example@address.com" maxlength="64" required value="" class="form-control">
+                        <span class="input-group-btn">
+                          <button type="submit" class="btn btn-primary">인증메일 전송</button>
+                        </span>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>-->
+            <!--
+            <div id="changePassword" class="tab-pane fade">
+              <div class="panel panel-default">
+                <div class="panel-heading"><h4>내 계정 정보</h4></div>
+                <div class="panel-body">
+                  <form action="/main/nickup" method="post">
+                    <div class="form-group">
+                      <label for="usernameInput">유저 이름</label>
+                      <div class="input-group">
+                        <input id="user-nickname" name="nickname" type="text" placeholder="Username" required value="" maxlength="64" class="form-control">
+                        <span class="input-group-btn">
+                          <button id='bbbb' type="submit" class="btn btn-primary">닉네임 변경하기</button>
+                        </span>
+                      </div>
+                      <p class="help-block"><small>한 글자 이상의 사용자 이름을 입력해주세요</small></p>
+                    </div>
+                    <label for="usernameInput"> &nbsp;&nbsp;<span style="color:green"> [착한놈]</span> 클린지수 : 1234 게시글 수 :123 </label>
+                  </form>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading"><h4>비밀번호 변경</h4>
+              </div>
+              <div class="panel-body">
+                <div class="form-group field">
+                  <label for="user_current_password">기존 비밀번호</label>
+                  <input name="user[current_password]" autofocus="autofocus" id="user_current_password" type="password" placeholder="" required maxlength="32" pattern="^[A-Za-z0-9`~!@#$%^&amp;*\(\)_\-\+={}\[\]\|:;&quot;'&lt;&gt;,.\?\/\\]{6,32}$" class="form-control">
+                </div>
+                <div class="form-group field">
+                  <label for="user_password">새로운 비밀번호</label>
+                  <input autocomplete="off" name="user[password]" id="user_password" type="password" placeholder="" required maxlength="32" minlength="8" pattern="^[A-Za-z0-9`~!@#$%^&amp;*\(\)_\-\+={}\[\]\|:;&quot;'&lt;&gt;,.\?\/\\]{6,32}$" class="form-control">
+                  <p class="help-block">
+                    <small>8~32자의 영문 대/소문자,숫자,특수문자 혼용가능</small>
+                  </p>
+                </div>
+                <div class="form-group field">
+                  <label for="user_password_confirmation">새로운 비밀번호 확인</label>
+                  <input autocomplete="off" name="user[password_confirmation]" id="user_password_confirmation" type="password" placeholder="" required minlength="8" maxlength="32" pattern="^[A-Za-z0-9`~!@#$%^&amp;*\(\)_\-\+={}\[\]\|:;&quot;'&lt;&gt;,.\?\/\\]{6,32}$" class="form-control">
+                </div><br>
+                <div class="clearfix actions">
+                  <input type="submit" name="commit" value="비밀번호 변경" class="btn btn-success pull-right">
+                </div><br>
+              </div>
+            </div>
+        </div>
+        -->
+        
+        
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+

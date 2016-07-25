@@ -1,0 +1,63 @@
+        
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%;padding-bottom:100px" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <a href="/qna/index"><h1 class="lead" style="font-family:'Nanum Myeongjo'">요주의 인물 검색 </h1></a>
+                  <span class="subheading">게임,커뮤니티,SNS 등에서 쓰이는 닉네임(혹은 이름)의<br class="mb_line_break"> 관심도를 확인할 수 있습니다</span>
+                </div>
+                <div class="col-md-12" style="margin-top:50px">
+                <form action="/main/sue_check"  method="GET" id="search-form">
+                    <div class="col-md-2"></div>
+                   
+                     <div class="col-md-6">
+                     <input name="search" style="margin-bottom:15px" type="text" placeholder="본인의 닉네임 혹은 이름을 입력하세요." class="form-control">
+                     </div>
+                     <div class="col-md-2">
+                     <button class="btn"><i class="fa fa-search"></i>검색</button>
+                     </div>
+                     <div class="col-md-2">
+                     </div>
+                </form>
+               </div>
+              </div>
+            </div>
+        </header>
+        <div style="background:#e8e8e8;">
+          <div class="section container blog-classic" style="padding-top:60px">
+            <div class="row">
+               <div class="col-md-12">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px">
+                  <!-- Image -->
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:20px">
+                    <div class="row" style="text-align:center">
+                      <div class="col-md-12 sidebar">
+                        <h1 style="margin-bottom:10px"><i class="fa fa-search"></i> 고소사실 검색 결과</h1>
+                        <hr style="margin-bottom:20px">
+                        <h3 style="font-weight:bold">
+                        
+                        고소미닷컴을 통해 접수된 내용만 확인이 가능합니다. </h3>
+                        <%if @s.present? || @r.present? %>
+                        <h4>해당 아이디로 접수된 비매너 신고는 <a id="rdetail"><%=@r.count %></a>건이며 <a id="sdetail">
+                        <%=@s.count%></a>건의 고소장이 작성되었습니다. </h4>
+                          <br>
+                        <% else %>
+                          <h1><i class="fa fa-question-circle fa-4x"></i></h1>
+                         <h4>현재 해당 닉네임으로 진행중인 사건이 없습니다. </h4>
+                        <%end  %>
+                        <div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12" style="text-align: center;background: #F3F3F3;padding-top: 15px;padding-bottom: 15px;margin-bottom: 30px;box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);">
+                  <a style="font-weight: bold;color: black;width:100%;font-size: 1em;" href="/main/index"><i class="fa fa-reply"></i> 메인페이지로 </a>
+                  </div>
+                </div>
+               </div>
+          </div>
+          </div>
+        </div>
+
+        

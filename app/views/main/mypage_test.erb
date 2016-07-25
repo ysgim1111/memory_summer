@@ -1,0 +1,243 @@
+<link rel="stylesheet" href="/assets/styles/main_qna.css">
+<link rel="stylesheet" href="/assets/styles/responsive.css">
+<style>
+#comment_div{
+  background: #fff;
+  margin-bottom: 100px;
+  border: none;
+}
+.comment-info {
+ margin-top: 0px; 
+}
+.comment-content {
+ margin-top: 0px;
+ margin-left: 30px;
+}
+.bp-comment {
+  padding-top: 30px;
+}
+ .q_text {
+     font-size:1.3em;
+     margin-bottom:0px;
+ }
+ .more {
+         visibility: hidden; 
+        }
+        .bp-content:hover .more{
+         visibility: visible; 
+        }
+        .date {
+         margin-bottom:0px !important;
+        }
+        .box_contents {
+         font-size:1.2em;
+         margin-bottom:0px !important;  
+        }
+        .title {
+         font-size:3.5em; 
+        }
+        
+    @media (max-width: 600px) {
+    h1 {
+      font-size:2em;
+    }
+    h3 {
+      font-size:0.9em; 
+    }
+    h4 {
+      font-size:0.8em;
+      letter-spacing:1px;
+    }
+    #law_name {
+     font-size:0.75em; 
+    }
+    .firm_name {
+      width:100%; 
+    }
+    .title {
+      font-size:2em; 
+    }
+    .subheading {
+      font-size:1em !important;
+      letter-spacing:2px !important;
+    }
+    
+  }
+</style>
+  
+<!--네비 바 끝 -->
+ <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <a href="/main/mypage"><h1 class="title" style="font-family:'Nanum Myeongjo'">My Page</h1></a>
+                  <span class="subheading">내 문서와 질문을 관리할 수 있습니다</span>
+                </div>
+                
+              </div>
+
+            </div>
+ </header>
+<!-- -->
+<div style="background: #e8e8e8;">
+<div style="padding-top:60px" id="blog" class="section container blog-classic">
+    <div class="row blog-classic" >
+        <!-- ========== Sidebar col-md-3 ========== -->
+
+            <%= render "main/sidebar" %>
+        
+          <!-- ========== Blog Posts ========== -->
+          <div id="pfolio" class="col-md-9">
+             
+              
+                   <!-- 게시글-->
+                <div class="col-lg-12 portfolio-item case" style="width: 100%;padding-right:45px">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px;border-left:none">
+                  <div class="bp-content" style="padding: 30px 45px 30px 45px">
+                  
+                    <div class="row">
+                      <div class="col-md-12" style="padding-top:20px">
+                          <h2 style="margin-top:0px;margin-bottom:10px;display:inline-block"><i class="fa fa-balance-scale fa-large"></i>
+                          진행중인 사건 <small>현재 <%=@s.count%>개의 문서가 진행중입니다</small>
+                          </h2>
+                        
+                        <hr style="margin-top:10px;margin-bottom:10px">
+                        
+                        <%if @s.present? %>
+                        
+                        <h4 class="qna_text"> </h4>
+                        <!--만약 you_id가 비었다면 나타나지 않게. -->
+                          <%@s.each do |s| %>  
+                          <h2 style="text-align:center"><i class="fa fa-legal"></i><strong> 사이버 모욕 OR 임금체불</strong></h2>
+                          
+                          <p><i class="fa fa-user-secret"></i> 피고소인 : <%=s.you_id%></p>
+                          
+                          <p><i class="fa fa-flag"></i> 서비스구분 : 접수 대행 or  직접 접수</p>
+                          <!--여기서 check 값이 바뀌면 발송 완료로 표시-->
+                          <br>
+                          <a class="btn" style="width:100%" href="/sue/show/<%=s.id%>">소장 다시보기</a>
+                          <hr>
+                          <% end %>
+                          
+                        <% else %>
+                        <h4 class="qna_text">현재 진행중인 문서가 없습니다 </h4>
+                          
+                        <% end %>
+                        <hr style="margin-top:15px;margin-bottom:15px">
+                        <%if @s.present? %>
+                        
+                        <!--만약 you_id가 비었다면 나타나지 않게. -->
+                          <%@s.each do |s| %>  
+                          <h2 style="text-align:center;"><i class="fa fa-legal"></i><strong> 사이버 모욕 OR 임금체불</strong></h2>
+                          
+                          <p><i class="fa fa-user-secret"></i> 피고소인 : <%=s.you_id%></p>
+                          
+                          <p><i class="fa fa-flag"></i> 서비스구분 : 접수 대행 or  직접 접수
+                          <!--여기서 check 값이 바뀌면 발송 완료로 표시-->
+                          <br>
+                          <a class="btn" style="width:100%" href="/sue/show/<%=s.id%>">소장 다시보기</a>
+                          <hr>
+                          <% end %>
+                          
+                        <% else %>
+                        <h4 class="qna_text">현재 진행중인 문서가 없습니다 </h4>
+                          
+                        <% end %>  
+                        
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div><!-- / .bp-content -->
+                
+                
+                
+                <div class="blog-post" style="background:#fff;margin-bottom:30px;border-left:none">
+                  <div class="bp-content" style="padding: 30px 45px 30px 45px">
+                  
+                    <div class="row">
+                      <div class="col-md-12" style="padding-top:20px">
+                          <h2 style="margin-top:0px;margin-bottom:10px;display:inline-block"><i class="fa fa-bar-chart fa-large"></i>
+                          통계
+                          </h2>
+                        
+                        <hr style="margin-top:10px;margin-bottom:10px">
+                        <%sueform=0%>
+                    <%db=Sueform.where(:user_id => current_user.id)%>                    
+                    <h4 class="qna_text">진행한 고소미 개수 : <%=db.count%>개 </h4>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- / .bp-content -->
+                
+                
+                
+              </div><!-- / .blog-post -->
+              
+              
+              <div class="col-lg-12 portfolio-item document" style="width: 100%;padding-right:45px">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px;border-left:none">
+                  <div class="bp-content" style="padding: 30px 45px 30px 45px">
+                  
+                    <div class="row">
+                      <div class="col-md-12" style="padding-top:20px">
+                          <h2 style="margin-top:0px;margin-bottom:10px;display:inline-block"><i class="fa fa-pencil-square-o fa-large"></i>
+                          내가 쓴 글
+                          </h2>
+                        <p style="display:inline-block"><i class="fa fa-hashtag"></i>Q&A게시판</p>
+                        
+                        <hr style="margin-top:10px;margin-bottom:10px">
+                        <% if @q.present?%>
+                          <% @q.each do |qna| %>
+                          <a href="/qna/show/<%=qna.id %>">
+                          <h3 class="qna_text my_document"><i class="fa fa-question-circle"></i><%=qna.title%> <small>#<%=qna.category%></small><span>댓글 <%=qna.qnacomments.count%> 개</span></h3>
+                          </a>
+                          <% end %>
+                        <% else %>
+                        <p> 작성한 글이 없습니다.</p>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- / .bp-content -->
+                
+              </div><!-- / .blog-post -->
+              
+              
+            </div>
+</div>
+
+<style> 
+.my_document {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius:10px;
+}
+.my_document:hover {
+  background: #ececec;
+}
+.my_document span{
+  float:right;
+  opacity:0;
+}
+.my_document:hover span{
+  opacity:1;
+}
+</style>
+
+
+</div>  
+
+
+</div>
+<script>
+  var s = document.getElementsByClassName('document')
+  s[0].style.display = 'none';
+  var a = document.getElementById('go_document');
+  a.onclick = function(){
+    s[0].style.display = '';
+  }
+</script>
+

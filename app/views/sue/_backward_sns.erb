@@ -1,0 +1,264 @@
+<!-- Copyright -->
+        <footer style="clear:both" id="aa4">
+          <div class="copyright">
+            <div class="container footer-social-links">
+              <div class="row">
+                <div class="col-md-12">
+                <div class="col-md-3"></div>
+                <ul style="padding-top:0px;padding-bottom:0px">
+                  
+                  <div class="col-md-3">
+                  <li><a href="/main/terms">회사소개 및 약관</a></li>
+                  </div>
+                  
+                  <div class="col-md-3">
+                  <li><a data-toggle="modal" data-target="#query" href="#">문의하기</a></li>
+                  </div>
+                  
+                </ul>
+                <div class="col-md-3"></div>
+                </div>
+                <div class="col-md-6">
+                  <small style="float:left;color:#777;">&copy; 2016 고소미닷컴 <a class="no-style-link" href="http://themeforest.net/user/octarinethemes" target="_blank"></a></small>
+                </div>
+
+                <div class="col-md-6">
+                  <small style="float:right"><a href="#page-top" class="pull-right to-the-top">To the top<i class="fa fa-angle-up"></i></a></small>
+                </div>
+                <div style="color:#777;"class="contact">
+        상호명 : 고소미닷컴 |
+       	사업자번호 : 618-72-00055 |
+                </div>
+
+              </div><!-- / .row -->
+            </div><!-- / .container -->
+          </div><!-- / .copyright -->
+        </footer><!-- / .footer-contact -->
+        
+        
+        <!-- == Modals == -->
+        
+        <!-- Button trigger modal -->
+
+<%#
+<!-- Modal_CompanyInfo-->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">회사 소개</h4>
+      </div>
+      <div class="modal-body">
+        저희 고소미닷컴은<br> 
+        "올바른 인터넷 문화를 지향" 이라는 슬로건 아래 '인터넷 악플 및 명예훼손'을 근절하자는 취지로 설립되었습니다. 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+%>
+
+<!-- Modal Query-->
+<div class="modal fade" id="query" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">피드백&제휴문의</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/main/email_send" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">받는사람:</label>
+            <input type="text" name="receiver" readonly value="info@gosomi.com" class="form-control" id="recipient-name">
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="control-label">보내는사람:</label>
+            <input type="text" name="giver" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">제목:</label>
+            <input type="text" name="title" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">내용:</label>
+            <textarea name="contents" rows="6" class="form-control" id="message-text"></textarea>
+          </div>
+        
+      </div>
+              
+      <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-primary">보내기</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- OTHER JS --> 
+<script src="/annova/jquery.validate.js"></script>
+<script src="/annova/jquery.placeholder.js"></script>
+<script src="/annova/jquery.tweet.min.js"></script>
+<script src="/annova/jquery.bxslider.min.js"></script>
+<script src="/annova/quantity-bt.js"></script>
+<script src="/annova/bootstrap.min.js"></script>
+<script src="/annova/retina.js"></script>
+<script src="/annova/owl.carousel.min.js"></script>
+<script src="/annova/functions.js"></script>
+
+<!-- FANCYBOX -->
+<script src="/annova/jquery.fancybox.pack.js" type="text/javascript">
+</script> 
+<script src="/annova/jquery.fancybox-media.js" type="text/javascript">
+</script> 
+<script src="/annova/fancy_func.js" type="text/javascript">
+</script> 
+
+<script>
+/*$('.sns_select').find('div').hasClass('checked') && $('.spec_select').find('div').hasClass('checked') && !$('.auto_required').val()*/
+    			   function auto_write_gsm(){
+    			     var final_check = $(".auto_required").map(function() {
+                   return $(this).val();
+                 }).get();
+                if( $.inArray( '', final_check )>=0 || ( !$('.spec_select').find('div').hasClass('checked') && !$('#spec_sns_etc').val() )  ){
+                  alert('체크하지 않은 부분이 있습니다');
+    			        return false;
+                }
+                else {
+                   var spec = '';
+                   var sns = '';
+                   var dual = $('.sue_sort').find('div.checked').find('input').val();
+        			     
+        			     if ( !$('.sns_select').find('div.checked').find('input').val() ){
+        			       var sns = $('#sns_etc').val();
+        			     }
+        			     else {
+        			       var sns = $('.sns_select').find('div.checked').find('input').val();
+        			     }
+        			     
+        			     if ( !$('.spec_select').find('div.checked').find('input').val() ){
+        			       var spec = $('#spec_sns_etc').val();
+        			     }
+        			     else {
+        			       var spec = $('.spec_select').find('div.checked').find('input').val();
+        			     }
+          			   var you_name = $('#input2').val();
+          			   var my_name = $('#input3').val();
+          			   var day = $('#input4').val();
+          			   var hour = $('#input5').val();
+          			   var relationship = $('#input6').val();
+          			   var insult = $('#insult').val();
+          			   var input_spec = $('#input_spec').val();
+          			   var publicity = $('#publicity').val();
+          			   if ( $('#check_realation_2').find('div').hasClass('checked') ){
+          			     var relationship = "";
+          			   }
+          			   else {
+          			     var check_value = $('#relation_etc').val();
+          			     var relationship = '본인은 피'+dual+'인을 ' + check_value +'(으)로서 알게되었습니다.'
+          			   }
+        			       $('#sue_context').val('1. "'+ sns +'"'+ '내에서 피'+dual+'인의 대화명은 ' + '"'+ you_name + '"'+' 이고 저의 이름은 ' + '"'+ my_name +'"' + ' 입니다.'  + '\r\n' + relationship + ' 피'+dual+'인은 '+ day +'일 '+hour+'경 자신의 '+sns+'계정에 '+ spec +'"'+ insult +'"'+ '라고 게시하였습니다.'+ '\r\n' + '2. 피'+dual+'인이 이 사건 게시물을 게시하였을 때, 이 사건 게시물은 '+ publicity +'와 더불어 지인들에게 공연히 퍼져가고 있었습니다.' + '그리고 저는 이에 심각한 정신적 피해를 받았습니다.' +'\r\n'+'3. '+'따라서 피'+dual+'인을 귀서에 '+dual+'하오니 철저히 조사하시어 처벌하여 주시기 바랍니다.');
+        			      location.href = "#go_write";
+        			      alert('작성이 완료되었습니다. 내용을 확인해주세요');
+        			      $('#sue_context').focus();
+                    }
+    			   
+    			   }
+  
+</script>
+
+<!--휴대폰 -->
+<script>
+function autoHypenPhone(str){
+            str = str.replace(/[^0-9]/g, '');
+            var tmp = '';
+            if( str.length < 4){
+                return str;
+            }else if(str.length < 7){
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3);
+                return tmp;
+            }else if(str.length < 11){
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 3);
+                tmp += '-';
+                tmp += str.substr(6);
+                return tmp;
+            }else{              
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 4);
+                tmp += '-';
+                tmp += str.substr(7);
+                return tmp;
+            }
+            return str;
+        }
+
+var cellPhone = document.getElementById('cellPhone');
+cellPhone.onkeyup = function(event){
+        event = event || window.event;
+        var _val = this.value.trim();
+        this.value = autoHypenPhone(_val) ;
+}
+
+</script>
+
+
+
+<script>
+
+var script = document.createElement('script');
+script.src = "/assets/js/sue.js";
+document.getElementsByTagName('head')[0].appendChild(script);
+
+                 
+</script>
+<script>
+
+  jQuery(function ($) {
+    var target = $('#target');
+    $('.shoot-loading').click(function () {
+      if (target.hasClass('loading')) {
+        target.loadingOverlay('remove');
+      } else {
+        target.loadingOverlay();
+        $(target).css('margin-top', '50px');
+        $('.shoot-loading').css('display','none');
+      };
+      var sue_sort = $('.sue_sort').find('.checked').find('input').val();
+      var evidence_sort = $("input[name=evidence_sub]:checked").val();
+      $('.sue_sort_value').val(sue_sort);
+      $('.evidence_check').val(evidence_sort);
+      $('#police_form').submit();
+      return false;
+    });
+    
+  });
+
+  </script>
+  
+  <script>
+	
+
+//script구문 내부에 해당 메소드를 입력합니다.
+$(function() {
+    $( "#testDatepicker" ).datepicker({
+    });
+});
+	</script>
+</body>
+</html>
+
+
+
+

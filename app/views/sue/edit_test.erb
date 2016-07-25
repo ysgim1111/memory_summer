@@ -1,0 +1,494 @@
+<%dbdb=Sueform.find(params[:id])%>
+<%= render 'sue/forward' %>
+<section class="container" id="main" style="padding-bottom:0px">
+
+<!-- Start Survey container -->
+<div id="survey_container" style="margin-top:100px">
+<style>
+.ui-widget-header {
+    background: #CFD20C;
+}
+</style>
+
+
+  	<div id="top-wizard" style="background-color:#402E1F">
+  		<strong style="color:white">Progress<span id="location"></span></strong>
+  		<div id="progressbar"></div>
+  		<div class="shadow"></div>
+  	</div><!-- end top-wizard -->
+ 						
+ 
+    <!--첨부파일 끝-->
+    <form class="new_test" id="police_form" enctype="multipart/form-data"  action="/sue/edit_confirm/<%=params[:id]%>" accept-charset="UTF-8" method="post">
+    <!--첨부파일-->
+         	
+                <!--sorting 실험 -->    
+<!-- sorting 실험 끝 -->
+    
+    	<div id="middle-wizard">
+    		<div class="step">
+                
+    			<div class="row">
+    				<h3 class="col-md-10">피고소인 정보</h3>
+    				
+    			   
+    			    <div class="col-md-6">
+    					<ul class="data-list">
+    						<li>
+    						    <input type="text"  style="margin-bottom:10px" id="input1" name="you_url" class="combine form-control" placeholder="모욕을 당한 게임명을 입력해 주세요 ex)리그오브레전드" value="<%=dbdb.you_url%>">
+    						</li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    				
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li>
+    						    <input type="text" style="margin-bottom:10px" name="you_id" id="input2" class="combine  form-control" placeholder="상대방의 ID또는 캐릭터명을 입력해주세요" value="<%=dbdb.you_id%>">
+    						</li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    				
+    			</div>
+    			
+    			
+    			
+    			<div class="row">
+    				<h3 class="col-md-10">고소인 정보</h3>
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li><input type="text"  value="<%=dbdb.my_name%>" name="my_name" class="combine form-control" placeholder="본인의 이름을 입력해 주세요."></li>
+    						<li><input type="text"  value="<%=dbdb.my_game_name%>" name="my_game_name" id="input3" class="combine form-control" placeholder="본인의 캐릭터명을 입력해 주세요."></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    				
+    				<div class="col-md-6">
+    					<ul class="data-list floated clearfix">
+    						<li id="age" style="margin-right: 30px; width: 125px;">
+    						    <input type="text" value="" readonly placeholder="생년월일" class="form-control" name="target_date" onClick="datePicker(event,'target_date')">
+    						</li>
+    					    <li>
+    					         <input name="gender" type="radio" class="check_radio" value="Male">
+    					         <label style="font-size:16px" class="label_gender"> 남</label>
+    					    </li>
+    					    <li>
+    					         <input name="gender" type="radio" class="required check_radio" value="Female">
+    					         <label style="font-size:16px" class="label_gender"> 여</label>
+    					    </li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+                            <input type="text" value="<%=dbdb.my_phone%>" maxlength="13" style="margin-bottom:10px" id="cellPhone" name="my_phone" class="form-control" placeholder="휴대폰 번호">
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>    					
+    			
+    			<div class="row">
+    				<h3 class="col-md-10">주소</h3> 
+    				<div class="col-md-6">
+    					<ul class="data-list">
+    						<li><input type="text" value="<%=dbdb.post_code%>" name="post_code" onclick="sample6_execDaumPostcode()" class="form-control" type="text" id="sample6_postcode" readonly placeholder="우편번호"></li>
+    						<li><input value="<%=dbdb.address1%>" onclick="sample6_execDaumPostcode()" class="  form-control" name="address1" type="text" id="sample6_address" placeholder="주소"></li>
+    						
+                  <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+                    
+    				<div class="col-md-6">
+                    
+    					<ul class="data-list">
+    						<li><input type="text" name="firstname" style="visibility:hidden" class="form-control" placeholder=""></li>
+    						<li><input value="<%=dbdb.you_url%>" class="form-control" type="text"  name="address2" id="sample6_address2" placeholder="상세주소"></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+                        
+    				</div><!-- end col-md-6 -->
+    			</div>
+    			
+    			
+    			<div class="row">
+        		    <h3 class="col-md-10">범행일시</h3>
+				    <div class="col-md-6">
+				        <div class="col-md-10" style="padding-left:0px">
+					        <ul class="data-list">
+						        <li>
+        				        <input type="text" id="input4" readonly placeholder="날짜를 입력해주세요" class="combine form-control" name="target_date">
+                                </li>
+                            </ul>    
+                        </div>
+                        <div class="col-md-2" style="padding-left: 0px;">
+                            <input type="button" style="height:44px" value="달력보기" class="btn btn-warning" onClick="datePicker(event,'target_date', 1)">
+                        </div>         
+                    </div>
+                    <div class="col-md-6">
+    					<ul class="data-list">
+    						<li>
+    						    <div class="styled-select">    							    
+        						    <select style="font-weight:300" id="input5" class="combine form-control" >
+                                        <option value="">시간을 선택해주세요</option>
+                                        <option value="1시">1시</option>
+                                        <option value="2시">2시</option>
+                                        <option value="3시">3시</option>
+                                        <option value="4시">4시</option>
+                                        <option value="5시">5시</option>
+                                        <option value="6시">6시</option>
+                                        <option value="7시">7시</option>
+                                        <option value="8시">8시</option>
+                                        <option value="9시">9시</option>
+                                        <option value="10시">10시</option>
+                                        <option value="11시">11시</option>
+                                        <option value="12시">12시</option>
+                                        <option value="13시">13시</option>
+                                        <option value="14시">14시</option>
+                                        <option value="15시">15시</option>
+                                        <option value="16시">16시</option>
+                                        <option value="17시">17시</option>
+                                        <option value="18시">18시</option>
+                                        <option value="19시">19시</option>
+                                        <option value="20시">20시</option>
+                                        <option value="21시">21시</option>
+                                        <option value="22시">22시</option>
+                                        <option value="23시">23시</option>
+                                        <option value="24시">24시</option>
+                                    </select>
+                                </div>
+    						</li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+                </div>
+    			
+    			
+    			
+    			<div class="row">
+    				<h3 class="col-md-10">담당 관서 
+    				<a style="text-align:center" class="btn btn-primary" onclick="open5();">
+    				   <i class="fa fa-search fa-lg"></i>담당관서 검색</a></h3> 
+    				
+    				<script>
+    				   
+    				    function open5(){
+    				                    alert('도로명 주소로 검색해 주세요');
+                                        window.open('http://www.police.go.kr/portal/bbs/list.do?bbsId=B0000132&option1=1&menuNo=200223', '_blank', 'width=800, height=1000, resizable=no');
+                                        
+                                    }
+    				</script>
+    				  <div class="col-md-6">
+    				      <ul class="data-list">
+    						<li>
+    							<input type="text"  name="police_name" class="combine form-control" placeholder="담당관서 검색 후 적어주세요">
+    						</li>
+    					  </ul>
+    			    </div>
+    			    
+    			    
+    			</div>
+    			
+    			
+    			
+    			
+    			
+    			<div class="row">
+    				<div class="col-md-4 col-md-offset-4">
+    					<ul class="data-list" id="terms">
+    						<li>
+                            <strong> <a href="#" data-toggle="modal" data-target="#terms-txt">개인정보 취급 방침 및 약관</a>에 동의하십니까?</strong>
+                            <label class="switch-light switch-ios ">
+                                    <input type="checkbox" name="terms" class="   fix_ie8" value="yes">
+                                    <span>
+                                        <span class="ie8_hide">No</span>
+                                        <span>Yes</span>
+                                    </span>
+                                    <a></a>
+                            </label>
+    						</li>
+    					</ul>
+    				</div>
+    			</div>    
+    			
+    			
+    			
+    			
+    			
+                
+    		</div><!-- end step-->
+        
+    			
+    			
+                <!-- 2 -->
+    		<div class="step row">
+    		<style>
+    .styled-select {
+    border: 2px solid rgb(136, 130, 125) !important;  
+    background-color:white !important;
+    }
+    .styled-select select {
+    border: none !important;
+    }
+    		
+    		
+    input.form-control, textarea.form-control {
+    border: 2px solid rgb(136, 130, 125); 
+    background-color: white !important;
+    }
+    		    .strike {
+        display: block;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap; 
+    }
+
+    .strike > span {
+        position: relative;
+        display: inline-block;
+    }
+	
+    .strike > span:before,
+    .strike > span:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 9999px;
+        height: 1px;
+        background: #777;
+    }
+
+    .strike > span:before {
+        right: 100%;
+        margin-right: 15px;
+    }
+
+    .strike > span:after {
+        left: 100%;
+        margin-left: 15px;
+    }
+    </style>
+    <div class="strike">
+    <span><a id="condition3" target="_blank" style="text-align:center;font-weight:300;" class="btn btn-primary"><i class="fa fa-lightbulb-o fa-lg"></i> 모욕죄의 성립요건 3가지!</a></span>
+    </div>
+    <script>
+        var condition = document.getElementById('condition3');
+        condition.onclick= function(){
+            window.open('../../main/condition', '_blank'); 
+        }
+    </script>
+                <div class="row">
+    				<h3 class="col-md-10">함께 플레이한 지인 여부</h3>
+    				
+    				<div class="col-md-6">
+    					<ul class="data-list floated clearfix">
+    					    <div id="hi">
+    					    <li style="margin-bottom:22px" id="check1">
+    					         <input  name="gender" type="radio" class="check_radio" value="yes">
+    					         <label style="font-size:16px;font-weight:400" class="label_gender"> 예</label>
+    					    </li>
+    					    </div>
+    					    <li style="margin-bottom:22px" id="check2">
+    					         <input name="gender" type="radio" class="required check_radio" value="no">
+    					         <label style="font-size:16px;font-weight:400" class="label_gender"> 아니요</label>
+    					    </li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+                            <input type="text"  name="my_duo_relation" id="input6" class="combine form-control duo" placeholder="본인과의 관계를 입력해 주세요 ex)친구,학교선배">
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    				
+    				<div class="col-md-6 duo">
+    					<ul class="data-list">
+    						<li><input type="text"  style="visibility:hidden" class="combine form-control" ></li>
+    						<li><input type="text"  name="my_duo_nickname" id="input7" class="combine form-control" placeholder="지인의 닉네임을 입력해 주세요"></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    				
+    				
+    			</div>   	
+                  
+                <div class="row">
+    				<h3 class="col-md-10">특정성</h3>
+    				<div class="col-md-12">
+    					<ul class="data-list">
+    						<li><div class="form-group">
+        					<!--<input class="combine" id="input5" type="hidden"value="<특정성>"/>-->
+                                <textarea type="text" id="input_spec" name="test[sue_reason]" style="height:50px" class="    combine form-control" placeholder="">안암동 사는 주한결이라고 밝히며</textarea>
+                            </div></li>
+    						<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>  
+                  
+    			
+        		<div class="row">
+    				<h3 class="col-md-10">공연성</h3>
+    				<div class="col-md-12">
+    					<ul class="data-list">
+    						<li><div class="form-group">
+            				    <!--<input class="combine" id="input3" type="hidden" value="<공연성>"/>-->
+                                <textarea type="text" id="publicity" name="test[sue_reason]" style="height:50px" class=" combine form-control" placeholder="">피고인은 불특정 다수가 보고있는 채팅방내에서</textarea>
+                                <input class="combine" id="input11" type="hidden"value="&quot;"/>
+                            </div></li>
+    						<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+    			
+    			<div class="row">
+    			    <h3 class="col-md-10">모욕사실</h3>
+    				<div class="col-md-12">
+    					<ul class="data-list">
+    						<li><div class="form-group">
+        					    <!--<input class="combine" id="input1" type="hidden" value="<모욕사실>"/>-->
+                                <textarea type="text" id="insult"  name="test[sue_reason]" style="height:50px" class="  combine form-control" placeholder="">너 정말 못생겼다!</textarea>
+                            </div></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+    			
+    			
+    			
+    			
+    			
+    			<div class="strike">
+                <span><a onclick="auto_write();" id="go_write" style="text-align:center;font-weight:300;" class="btn btn-success">
+                    <i class="fa fa-magic fa-lg"></i>소장자동완성</a></span>
+                </div>
+        		
+        		
+        		
+        		
+        		
+        		
+        		<div id="result" class="row">
+        			<h3 class="col-md-10">고소 내용</h3>
+        			<div class="col-md-12">
+        				<ul class="data-list">
+        					<li><div class="form-group">
+                                <textarea type="text"  id="sue_context"  name="sue_content" style="height:200px" class=" combine form-control" placeholder="소장자동완성 버튼을 클릭해주세요"></textarea>
+                            </div></li>
+                            <input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+        			    </ul>
+        			</div><!-- end col-md-6 -->
+                </div>
+                
+                <div class="row">
+        		    <h3 class="col-md-10">고소취지 및 이유</h3>
+        			<div class="col-md-12">
+        				<ul class="data-list">
+        					<li><div class="form-group">
+                                <textarea type="text" id="test_sue_reason" name="sue_reason" style="height:150px" class="  form-control" placeholder="">위에 명시한 바와 같이 이 사건이 해당 성립요소들을 충족한다하여 심사숙고 후 고소하오니, 피고인을 법에따라 처벌하여 주시기 바랍니다.</textarea>
+                            </div></li>
+        					<input id="website" name="website" type="text" value="" ><!-- Leave for security protection, read docs for details -->
+        				</ul>
+        		    </div><!-- end col-md-6 -->
+        	    </div>
+        	    
+        	    
+        	     <div align='center' class="row">
+              <link href="/css/fileinput.min.css" rel="stylesheet">
+              <div class="form-group">
+                      <h3 class="col-md-12">증거자료</h3>
+                      <div class='row'>
+  	                    <% dbdb.sueimgs.each do |x| %>
+  	                      <div class='col-md-2'>
+    	                			<div class="item"> 
+    	                				 <a href="<%= x.sueimg %>" class="fancybox">
+    	                         <img src='<%=x.sueimg.url%>' style='height:100px;width:100%'></a> 
+      	                       <a data-confirm="선택한 사진을 삭제합니다." href="/sue/delete/<%= x.id %>">삭제</a>
+    	                			</div>
+  	                      </div> 
+  	                    <% end %>	
+  	                   </div>
+                      <input name='sueimg[]' type="file" class="file" multiple='multiple' data-show-upload="false" data-show-caption="false" data-show-remove="false" data-browse-label="사진 등록" onchange="check_file()">
+                      <p class="help-block">*공연성, 특정성, 모욕 사실이 드러나는 증거자료를 올려주세요</p>
+              </div>
+              <script type='text/javascript'>
+              
+              $(document).ready(function(){
+                  $.when(
+                      $.getScript('/js/jquery-ui.min.js'),
+                      $.getScript('/js/jquery-ui-touch-punch.js'),  
+                      $.getScript('/js/jquery.placeholder.js'),
+                      $.getScript('/js/jquery.touchSwipe.min.js'),
+                      $.getScript('/js/jquery.slimscroll.min.js'),
+                      $.getScript('/js/jquery.tagsinput.min.js'),
+                      $.getScript('/js/bootstrap-datepicker.js'),
+                      $.getScript('/js/jquery.visible.js'),
+                      $.getScript('/js/fileinput.min.js'),
+                      $.getScript('/js/add_check.js'),
+              
+                      $.Deferred(function( deferred ){
+                            $( deferred.resolve );
+                      })
+                  ).done(function(){
+                      $.getScript('/js/app.js');
+                  });
+                  $.when(
+                      $.getScript('/js/bootstrap.js'),
+                      $.Deferred(function( deferred ){
+                            $( deferred.resolve );
+                      })
+                  ).done(function(){
+                      $.getScript('/culture/confirm_team_name.js');
+                  });
+              });
+              </script>
+            </div><br>
+               
+        	</div>
+    			<!-- end step -->
+                
+			<div class="submit step" id="complete">
+				<img style="width:50%;" src="/assets/images/gosomi_logo.png">
+				<h2 style="margin-top:30px">수정을 완료하시겠습니까?</h2>
+				<a style="display: inline-block;width: 40%;margin-top:20px;font-size:2em;/* margin-right: 20px; */" 
+				href="/sue/show/<%=params[:id]%>" id="stop" class="btn btn-danger shoot-loading"><i class="fa fa-reply"></i>취소</a>
+				
+				<button style="display: inline-block;width: 40%;margin-top:20px;font-size:2em;margin-left: 20px;" type="submit" name="process" id="go" class="btn btn-success shoot-loading"><i class="fa fa-send"></i>확인</button>
+				
+				<input type="checkbox" id="css-input" style="display:none" checked />
+				<div id="target">
+				    </div>
+			</div><!-- end submit step -->
+                
+    	</div><!-- end middle-wizard -->
+            
+		<div id="bottom-wizard">
+			<button type="button" name="backward" class="backward">이전</button>
+			<button type="button" name="forward" class="forward">다음</button>
+		</div><!-- end bottom-wizard -->
+	</form>
+      
+</div><!-- end Survey container -->
+</section>
+<script>
+    var submit = document.getElementById('go');
+    submit.onclick = function(){
+        
+    }
+    /*(function (win, doc) {
+    'use strict';
+    if (!doc.querySelectorAll || !win.addEventListener) {
+        // doesn't cut the mustard.
+        return;
+    }
+    var forms = doc.querySelectorAll('form[method="post"]'),
+        formcount = forms.length,
+        i,
+        submitting = false,
+        checkForm = function (ev) {
+            if (submitting) {
+                ev.preventDefault();
+            } else {
+                submitting = true;
+                this.appendChild(doc.createElement('progress'));
+            }
+        };
+    for (i = 0; i < formcount; i = i + 1) {
+        forms[i].addEventListener('submit', checkForm, false);
+    }
+}(this, this.document));*/
+</script>
+
+<%= render "sue/backward" %>
+
+                

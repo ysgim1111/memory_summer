@@ -1,0 +1,141 @@
+
+        
+        
+        
+        
+        <!-- ========== Page Title ========== -->
+
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg) no-repeat center center;
+        background-size:cover;
+        background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <a style="cursor:pointer" id="qna_go"><h1 class="lead" style="font-family:'Nanum Myeongjo'">요주의 인물 제보</h1></a>
+                  <span class="sub">쉽고 빠르게, 그리고 정확하게</span>
+                </div>
+                
+              </div>
+
+            </div>
+        </header>
+        
+        
+        
+        
+        <!-- ========== Features - Cards ========== -->
+
+        <div class="gray-bg">
+        <header class="sec-heading" style="padding-top: 60px;margin-bottom:0px">
+                <h2 class="lead" style="font-weight:500">신고하실 분야를 선택하세요</h2>
+                <span class="subheading"></span>
+        </header>
+          <section class="container ft-cards">
+            
+            <div class="row section" style="padding-top:60px">
+            
+              <!-- Item 1 -->
+              <div class="col-md-6 mb-sm-50 container section ft-centered" style="padding-top:0px">
+                
+              <div class="col-md-12 col-sm-12 mb-sm-50 ft-item ft-dark-spin wow zoomIn" style="margin-bottom:0px" data-wow-duration=".6s" data-wow-delay=".3s">
+              <form action="/receive/gosomi" enctype="multipart/form-data" method="POST">
+                  <span style="font-size:65px" class="fa fa-user"></span>
+                 
+                  <h2>요주의 인물 제보</h2>
+                  <hr>
+                  <br>
+                  <br>
+                  <p>게임,커뮤니티,SNS 등 사이버 상의 분쟁</p>
+                  <br>
+                  <hr>
+                  <input type="text" name="choice" value="insult" style="display:none">
+        			    <button style="text-align: center;width:100%;margin-top:20px;color: white;padding-top:8px" class="btn">선택</button>
+              </form>
+              </div>
+            
+            
+            
+                  </div>
+        <style>
+         #community span {
+          background: rgba(17,17,17,0.5); 
+         }
+         #community:hover span {
+           -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+          border: 1px solid #cccccc;
+          background: rgba(119,119,119,0.5);
+          color: #fff;
+         }
+         #sns span {
+          background: rgba(17,17,17,0.5); 
+         }
+         #sns:hover span {
+         -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+          border: 1px solid #cccccc;
+          background: rgba(119,119,119,0.5);
+          color: #fff;
+         }
+        
+        </style>
+        
+        
+        
+        <!-- Item 2 -->
+              <div class="col-md-6 mb-sm-50 container section ft-centered" style="padding-top:0px">
+                
+                
+                <div class="col-md-12 col-sm-12 mb-sm-50 ft-item ft-dark-spin wow zoomIn" style="margin-bottom:0px" data-wow-duration=".6s" data-wow-delay=".3s">
+                <form action="/receive/gosomi_celub" enctype="multipart/form-data" method="POST">
+                  <span style="font-size:60px"class="fa fa-star"></span>
+                  
+                  <h2>악성댓글 신고</h2>
+                  <hr>
+                  <br>
+                  <p>유명인 혹은 공인을 향한 악성댓글</p>
+                  <p>해당 인물의 요청 시 수집된 자료 제공</p>
+                  <br>
+                  <hr>
+                  <input type="text" name="choice" value="forgery" style="display:none">
+                  <button style="text-align: center;width:100%;margin-top:20px;color: white;padding-top:8px" class="btn">선택</button>
+                </form>
+                </div>
+            
+             
+            
+                  </div>
+                  
+                  
+          </section>
+        </div><!-- / .gray-bg -->
+        
+		      </section>
+		      
+		    </div>
+		  <script>
+		  var cm = document.getElementById('cm');
+		  var pm = document.getElementById('pm');
+		  $('#cm').css({display:'none'});
+		  $('#pm').css({display:'none'});
+		  
+		    $('#cm_choose').click(function(){
+		      
+		      $('#pm').css({display:'none'});
+		      $('#cm').css({display:''});
+		    })
+		    
+		    $('#pm_choose').click(function(){
+		      $('#cm').css({display:'none'});
+		      $('#pm').css({display:''});
+		    })
+		  </script>
+		  
+		  
+		   <!-- 
+                  et-wallet
+                  linea-ecommerce-banknotes
+                  linea-ecommerce-dollar
+                  linea-ecommerce-receipt-won
+                -->

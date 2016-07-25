@@ -1,0 +1,301 @@
+/* --------------------------------------------------
+	8.0 Navigation
+-------------------------------------------------- */
+.navbar {
+  margin-bottom: 0;
+  min-height: 75px;
+  border-bottom: 1px solid #ececec;
+  border-radius: 0;
+  background: #fff;
+}
+
+.navbar .navbar-header {
+  width: 42%;
+  margin-top: 6px;
+}
+
+.navbar .navbar-header .navbar-brand {
+  padding: 15px 0;
+  margin-left: 0;
+}
+
+.navbar .navbar-nav {
+  margin-top: 12px;
+}
+
+.navbar .navbar-nav li a {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #ececec;
+  letter-spacing: 2px;
+  -webkit-transition: color 0.5s;
+          transition: color 0.5s;
+}
+
+.navbar .navbar-nav li a:focus {
+  color: #777;
+}
+
+.navbar .navbar-nav li a:hover {
+  background: none;
+  color: #111;
+}
+
+.navbar .navbar-nav .active a {
+  background: none;
+  color: #111;
+  -webkit-transition: color 0.5s;
+          transition: color 0.5s;
+}
+
+.navbar .navbar-nav .active a:hover,
+.navbar .navbar-nav .active a:focus,
+.navbar .navbar-nav .active a:visited {
+  background: none;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-toggle {
+  background: none;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-toggle:hover,
+.navbar .navbar-nav .dropdown .dropdown-toggle:focus,
+.navbar .navbar-nav .dropdown .dropdown-toggle:visited {
+  background: none;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu {
+  margin-top: 12px;
+  padding: 20px 0 10px 0;
+  border: 1px solid #ececec;
+  border-radius: 0;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.93);
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu li {
+  min-width: 150px;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu li a {
+  display: block;
+  padding: 11px 40px 11px 25px;
+  letter-spacing: 0.5px;
+  line-height: 0.8em;
+  border-left: 3px solid rgba(17, 17, 17, 0);
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu li a:hover {
+  padding-left: 35px;
+  padding-right: 30px;
+  background: rgba(17, 17, 17, 0.05);
+  border-left: 3px solid #111;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu li a i {
+  padding-right: 5px;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu .dropdown-header {
+  padding: 0 25px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.8em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-menu .divider {
+  margin-left: 25px;
+  margin-right: 25px;
+  background-color: #ddd;
+}
+
+.navbar .navbar-nav .dropdown .search-dropdown {
+  padding-top: 10px;
+}
+
+.navbar .navbar-nav .dropdown .search-dropdown li {
+  padding: 0 15px;
+}
+
+.navbar .navbar-nav .dropdown .search-dropdown li form input[type="search"] {
+  border-radius: 0;
+  font-size: .9em;
+  letter-spacing: 1.5px;
+}
+
+.navbar .navbar-nav .dropdown .search-dropdown li form input[type="search"]:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #111;
+}
+
+/* ---- Navbar Inverse (Dark) ---- */
+.navbar-inverse {
+  border-bottom: 1px solid #222;
+  background: #111;
+}
+
+.navbar-inverse .navbar-nav li a {
+  color: #777;
+}
+
+.navbar-inverse .navbar-nav li a:hover {
+  color: #ececec;
+}
+
+.navbar-inverse .navbar-nav .active a {
+  color: #ececec;
+}
+
+.navbar-inverse .navbar-nav .dropdown .dropdown-menu {
+  background: rgba(17, 17, 17, 0.95);
+  border-color: #222;
+}
+
+.navbar-inverse .navbar-nav .dropdown .dropdown-menu li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #ececec;
+}
+
+.navbar-inverse .navbar-nav .dropdown .dropdown-menu .dropdown-header {
+  color: #ececec;
+}
+
+.navbar-inverse .navbar-nav .dropdown .dropdown-menu .divider {
+  background-color: #444;
+}
+
+.navbar-inverse .navbar-nav .dropdown .search-dropdown li form input[type="search"]:focus {
+  border-color: #ececec;
+}
+
+/* ---- Mega Menu ---- */
+.mega .nav,
+.mega .collapse,
+.mega .dropup,
+.mega .dropdown {
+  position: static;
+}
+
+.mega .container {
+  position: relative;
+}
+
+.mega .dropdown-menu {
+  left: auto;
+}
+
+.mega .mega-content {
+  padding: 20px 30px;
+}
+
+.mega .dropdown.mega-fw .dropdown-menu {
+  left: 0;
+  right: 0;
+}
+
+/* ---- Navbar Utility ---- */
+.navbar-trans {
+  border-bottom: none;
+  background: transparent;
+  -webkit-transition: background 0.3s;
+          transition: background 0.3s;
+}
+
+.navbar-trans .navbar-logo {
+  content: url(/assets/images/logo.png);
+}
+
+.navbar-trans .navbar-logo-dark {
+  content: url(/assets/images/logo.png);
+}
+
+.navbar-trans:not(.navbar-inverse) .navbar-nav li a:focus,
+.navbar-trans:not(.navbar-inverse) .navbar-nav li a:hover {
+  color: #111;
+}
+
+.navbar-trans:not(.navbar-inverse) .navbar-nav .active a {
+  color: #ececec;
+}
+
+.navbar-trans:not(.navbar-inverse) .navbar-nav .active a:hover {
+  color: #111;
+}
+
+.navbar-trans:not(.navbar-inverse) .navbar-nav .dropdown .dropdown-menu li a:hover {
+  color: #111;
+}
+
+.navbar-trans:not(.navbar-inverse) .navbar-nav .open .dropdown-toggle {
+  color: #ececec;
+}
+
+.navbar-trans-dark .navbar-nav > li > a:focus,
+.navbar-trans-dark .navbar-nav > li > a:hover {
+  color: #111 !important;
+}
+
+.navbar-trans-dark .navbar-nav .active > a {
+  color: #111 !important;
+}
+
+.navbar-trans-dark .navbar-nav .active > a:hover {
+  color: #111 !important;
+}
+
+.navbar-trans-dark .navbar-nav .open .dropdown-toggle {
+  color: #111 !important;
+}
+
+.navbar-small {
+  min-height: 50px;
+  color: #111;
+}
+
+.navbar-small .navbar-header {
+  margin-top: 0;
+  padding: 0;
+}
+
+.navbar-small .navbar-header .navbar-brand {
+  padding: 9px 0;
+}
+
+.navbar-small .navbar-nav {
+  margin-top: 0;
+  color: #777 !important;
+}
+.navbar-small .navbar-nav li a {
+  color: #777;
+  -webkit-transition: color 0.5s;
+          transition: color 0.5s;
+}
+
+
+.navbar-small .navbar-nav li a:focus {
+  color: #777;
+}
+
+.navbar-small .navbar-nav li a:hover {
+  background: none;
+  color: #111;
+}
+
+.navbar-small .navbar-nav .dropdown .dropdown-menu {
+  margin-top: 0;
+}
+
+.navbar-fw .navbar-header {
+  margin-left: 50px;
+  width: 25%;
+}
+
+.navbar-fw .navbar-right {
+  margin-right: 50px;
+}

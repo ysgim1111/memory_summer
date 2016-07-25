@@ -1,0 +1,4 @@
+<%dbdb=Sueform.where(:user_id => current_user.id)%>
+<%dbdb.all.each do |x|%>
+    <h1><a href='/sue/show/<%=x.id%>'>[<%=x.address1%>]</a> <a href='/sue/deletes/<%=x.id%>'>[x]</a> <a href='/sue/edit/<%=x.id%>'>[edit]</a></h1>
+<%end%>

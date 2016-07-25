@@ -1,0 +1,278 @@
+
+<html lang="en">
+
+<head>
+<!-- 우편번호 API -->
+<script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('sample6_address').value = fullAddr;
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('sample6_address2').focus();
+
+            }
+        }).open();
+    }
+
+    function you_sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('you_sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('you_sample6_address').value = fullAddr;
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('you_sample6_address2').focus();
+
+            }
+        }).open();
+    }
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-70497564-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--달력-->
+<script language="JavaScript" src="/date_picker.js"></script>
+
+<!--달력 끝-->
+
+<!-- Definity CSS -->
+        <link rel="stylesheet" href="/assets/styles/main_sue.css">
+        <link rel="stylesheet" href="/assets/styles/responsive.css">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="/annova/bootstrap.min.css">
+
+<!-- CSS -->
+<link href="/annova/style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="/annova/socialize-bookmarks.css" rel="stylesheet">
+<link href="/annova/jquery.fancybox.css" rel="stylesheet">
+<link href="/annova/aero.css" rel="stylesheet">
+
+
+<!-- Toggle Switch -->
+<link rel="stylesheet" href="/annova/jquery.switch.css">
+
+<!-- Owl Carousel Assets -->
+<link href="/annova/owl.carousel.css" rel="stylesheet">
+<link href="/annova/owl.theme.css" rel="stylesheet">
+
+<!-- Google web font -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Jquery -->
+<script src="/annova/jquery-1.10.2.min.js"></script>
+<script src="/annova/jquery-ui-1.8.22.min.js"></script>
+
+
+<!-- Wizard-->
+<script src="/annova/jquery.wizard.js"></script>
+
+<!-- Radio and checkbox styles -->
+<script src="/annova/check.min.js"></script>
+
+<!-- HTML5 and CSS3-in older browsers-->
+<script src="/annova/modernizr.custom.17475.js"></script>
+
+<!-- Support media queries for IE8 -->
+<script src="/annova/respond.min.js"></script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11097556-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+	<script>
+		$(document).ready(function() {
+		  $('.nav-toggle').click(function(){
+			//get collapse content selector
+			var collapse_content_selector = $(this).attr('href');
+
+			//make the collapse content to be shown or hide
+			var toggle_switch = $(this);
+			$(collapse_content_selector).toggle(function(){
+			  if($(this).css('display')=='none'){
+                                //change the button label to be 'Show'
+				toggle_switch.html('예시보기');
+			  }else{
+                                //change the button label to be 'Hide'
+				toggle_switch.html('접어두기');
+			  }
+			});
+		  });
+
+		});
+	</script>
+
+	<!-- tab script -->
+	<script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+  </script>
+
+<!--nav style-->
+
+<script src="/assets/js/loading.js"></script>
+<link rel="stylesheet" href="/assets/styles/loading.css">
+</head>
+
+<body data-spy="scroll" data-target=".navbar" style="background: #f8f8f8;">
+
+
+      <!-- ========== Navigation ========== -->
+
+        <nav class="navbar navbar-default navbar-fixed-top mega navbar-trans navbar-fw">
+          <div class="navbar-header page-scroll">
+            <button onclick="toggle_visibility('nav_close');" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!-- Logo -->
+            <a class="navbar-brand" id="go_main" style="cursor:pointer"><img class="navbar-logo" src="//goo.gl/xyjgP9" alt="Definity - Logo c9입니다"></a>
+          </div>
+           <!-- Navbar Links -->
+          <div id="nav_close" class="navbar-collapse collapse page-scroll navbar-right">
+            <ul class="nav navbar-nav">
+              <li><a style="font-size: 1.0em;" href="/receive/gosomi_celub">유명인 악플러 제보<span class="sr-only"></span></a></li>
+              <li><a style="font-size: 1.0em;" href="/receive/gosomi_choice">요주의 인물 제보<span class="sr-only"></span></a></li>
+              <li><a style="font-size: 1.0em;" href="/main/sue_check">요주의 인물 검색<span class="sr-only"></span></a></li>
+              <li><a style="font-size: 1.0em;" href="/sue/category">고소장 작성<span class="sr-only"></span></a></li>
+              <li><a style="font-size: 1.0em;cursor:pointer" href="/main/lawyer">변호사 상담<span class="sr-only"></span></a></li>
+              <%#
+              <li><a style="font-size: 1.0em;" href="/qna/index">법률 상담<span class="sr-only"></span></a></li>
+              %>
+              <!--<li><a style="font-size: 1.0em;" href="/hws/index">해우소<span class="sr-only"></span></a></li>-->
+              <%if user_signed_in?%>
+              <li><a style="font-size: 1.0em;cursor:pointer" id="nav_logout">로그아웃<span class="sr-only"></span></a></li>
+              <% else %>
+              <li><a style="font-size: 1.0em;" href="/main/sign_in">로그인<span class="sr-only"></span></a></li>
+              <% end %>
+            </ul><!-- / .nav .navbar-nav -->
+          </div><!--/.navbar-collapse -->
+        </nav><!-- / .navbar -->
+
+        <script>
+            $('#go_main').on('click',function(){
+              window.location.href = '../../main/index';
+            })
+            $('#go_condition').on('click',function(){
+              window.location.href = '../../main/condition';
+            })
+
+        </script>
+
+<style>
+  .title {
+         font-size:3.5em;
+        }
+
+  @media (max-width: 600px) {
+    h1 {
+      font-size:2em;
+    }
+    .title {
+      font-size:2em;
+    }
+ }
+</style>
+
+        <!-- ========== Page Title ========== -->
+
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <h1 class="title" style="font-family:'Nanum Myeongjo'">고소미 작성하기</h1>
+                  <span class="subheading">쉽고 빠르게, 그리고 정확하게</span>
+                </div>
+
+              </div>
+
+            </div>
+        </header>

@@ -1,0 +1,231 @@
+<!-- Copyright -->
+        <footer style="clear:both" id="aa4">
+          <div class="copyright">
+            <div class="container footer-social-links">
+              <div class="row">
+                <div class="col-md-12">
+                <div class="col-md-3"></div>
+                <ul style="padding-top:0px;padding-bottom:0px">
+                  
+                  <div class="col-md-3">
+                  <li><a href="/main/terms">회사소개 및 약관</a></li>
+                  </div>
+                  
+                  <div class="col-md-3">
+                  <li><a data-toggle="modal" data-target="#query" href="#">문의하기</a></li>
+                  </div>
+                  
+                </ul>
+                <div class="col-md-3"></div>
+                </div>
+                <div class="col-md-6">
+                  <small style="float:left;color:#777;">&copy; 2016 고소미닷컴 <a class="no-style-link" href="http://themeforest.net/user/octarinethemes" target="_blank"></a></small>
+                </div>
+
+                <div class="col-md-6">
+                  <small style="float:right"><a href="#page-top" class="pull-right to-the-top">To the top<i class="fa fa-angle-up"></i></a></small>
+                </div>
+                <div style="color:#777;"class="contact">
+        상호명 : 고소미닷컴 |
+       	사업자번호 : 618-72-00055 |
+                </div>
+
+              </div><!-- / .row -->
+            </div><!-- / .container -->
+          </div><!-- / .copyright -->
+        </footer><!-- / .footer-contact -->
+        
+        
+        <!-- == Modals == -->
+        
+        <!-- Button trigger modal -->
+
+<%#
+<!-- Modal_CompanyInfo-->
+<div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">회사 소개</h4>
+      </div>
+      <div class="modal-body">
+        저희 고소미닷컴은<br> 
+        "올바른 인터넷 문화를 지향" 이라는 슬로건 아래 '인터넷 악플 및 명예훼손'을 근절하자는 취지로 설립되었습니다. 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+%>
+
+<!-- Modal Query-->
+<div class="modal fade" id="query" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">피드백&제휴문의</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/main/email_send" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">받는사람:</label>
+            <input type="text" name="receiver" readonly value="info@gosomi.com" class="form-control" id="recipient-name">
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="control-label">보내는사람:</label>
+            <input type="text" name="giver" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">제목:</label>
+            <input type="text" name="title" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">내용:</label>
+            <textarea name="contents" rows="6" class="form-control" id="message-text"></textarea>
+          </div>
+        
+      </div>
+              
+      <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-primary">보내기</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- OTHER JS --> 
+<script src="/annova/jquery.validate.js"></script>
+<script src="/annova/jquery.placeholder.js"></script>
+<script src="/annova/jquery.tweet.min.js"></script>
+<script src="/annova/jquery.bxslider.min.js"></script>
+<script src="/annova/quantity-bt.js"></script>
+<script src="/annova/bootstrap.min.js"></script>
+<script src="/annova/retina.js"></script>
+<script src="/annova/owl.carousel.min.js"></script>
+<script src="/annova/functions.js"></script>
+
+<!-- FANCYBOX -->
+<script src="/annova/jquery.fancybox.pack.js" type="text/javascript">
+</script> 
+<script src="/annova/jquery.fancybox-media.js" type="text/javascript">
+</script> 
+<script src="/annova/fancy_func.js" type="text/javascript">
+</script> 
+
+<script>
+   var input1 = document.getElementById('input1');
+    			   var input2 = document.getElementById('input2');
+    			   var input3 = document.getElementById('input3');
+    			   var input4 = document.getElementById('input4');
+    			   var input5 = document.getElementById('input5');
+    			   var input6 = document.getElementById('input6');
+    			   var input7 = document.getElementById('input7');
+    			   var insult = document.getElementById('insult');
+    			   var input_spec = document.getElementById('input_spec');
+    			   var publicity = document.getElementById('publicity');
+    			   var sue_context = document.getElementById('sue_context');
+    			   
+    			   function auto_write(){
+    			       if (check.parentNode.className === 'iradio_square-aero checked'){
+    			       $(sue_context).append('1. "'+input1.value+'"'+ '게임 내에서 피고인의 ID는 ' + input2.value + ' 이고 저의 ID는 ' + '"'+input3.value +'"' + ' 입니다.'  + '\r\n'+ ' 본인은 ' + input4.value +'일 '+input5.value +'경 피고인에게 수차례 모욕을 당했습니다. 저는 저의 ' +input6.value+'인' + '"'+ input7.value +'"'+'와 게임을 함께하고 있는 것을 밝히며 더이상 모욕적 표현을 삼가할 것을 요청하였으나 ' +'\r\n'+ '2. ' + publicity.value + ' "'+insult.value+'"' + ' 라며 공연히 본인을 모욕하였고, 저는 이에 심각한 정신적 피해를 받았습니다.' +'\r\n'+'3. '+'따라서 피고인을 귀서에 고소하오니 철저히 조사하시어 처벌하여 주시기 바랍니다.');
+    			      location.href = "#go_write";
+    			       }
+    			       else {
+    			           $(sue_context).append('1. "'+input1.value+'"'+ '게임 내에서 피고인의 ID는 ' + input2.value + ' 이고 저의 ID는 ' + '"'+input3.value +'"'+ ' 입니다.'+'\r\n'+'본인은 ' + input4.value +'일 '+input5.value +'경 피고인에게 수차례 모욕을 당했습니다. 또한 '+ input_spec.value + ' 더이상 모욕적 표현을 삼가할 것을 요청하였으나 '+'\r\n'+ '2. ' + publicity.value + ' "'+insult.value+'"' + ' 라며 공연히 본인을 모욕하였고, 저는 이에 심각한 정신적 피해를 받았습니다.'+'\r\n'+'3.'+ '따라서 피고인을 귀서에 고소하오니 철저히 조사하시어 처벌하여 주시기 바랍니다.');
+    			       location.href = "#go_write";
+    			       }
+    			   }
+  
+</script>
+
+<!--휴대폰 -->
+<script>
+function autoHypenPhone(str){
+            str = str.replace(/[^0-9]/g, '');
+            var tmp = '';
+            if( str.length < 4){
+                return str;
+            }else if(str.length < 7){
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3);
+                return tmp;
+            }else if(str.length < 11){
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 3);
+                tmp += '-';
+                tmp += str.substr(6);
+                return tmp;
+            }else{              
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 4);
+                tmp += '-';
+                tmp += str.substr(7);
+                return tmp;
+            }
+            return str;
+        }
+
+var cellPhone = document.getElementById('cellPhone');
+cellPhone.onkeyup = function(event){
+        event = event || window.event;
+        var _val = this.value.trim();
+        this.value = autoHypenPhone(_val) ;
+}
+
+</script>
+
+
+
+<script>
+
+var script = document.createElement('script');
+script.src = "/assets/js/sue.js";
+document.getElementsByTagName('head')[0].appendChild(script);
+
+                 
+</script>
+<script>
+/*
+  jQuery(function ($) {
+    var target = $('#target');
+    $('.shoot-loading').click(function () {
+      if (target.hasClass('loading')) {
+        target.loadingOverlay('remove');
+      } else {
+        target.loadingOverlay();
+        $(target).css('margin-top', '50px');
+        $('.shoot-loading').css('display','none');
+      };
+    });
+  });
+  */
+  </script>
+  
+  <script>
+	
+
+//script구문 내부에 해당 메소드를 입력합니다.
+$(function() {
+    $( "#testDatepicker" ).datepicker({
+    });
+});
+	</script>
+</body>
+</html>
+
+
+
+

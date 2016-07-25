@@ -1,0 +1,126 @@
+
+ <!-- ========== Page Title ========== -->
+
+        <header style="background:url(http://www.octarinethemes.com/demos/definity/assets/images/pt-bg-3.jpg);background-size:cover" class="page-title pt-large pt-dark pt-plax-lg-dark" data-stellar-background-ratio="0.4">
+          <div class="container">
+              <div class="row">
+
+                <div class="col-sm-6">
+                  <h1>회원가입</h1>
+                  <span class="subheading">건전한 사이버 문화를 지향합니다</span>
+                </div>
+              </div>
+
+            </div>
+        </header>
+
+
+
+        <!-- ========== Sign_up Form ========== -->
+
+        <div class="login-2" style="
+    background: url(http://www.octarinethemes.com/demos/definity/assets/images/hero/white-city.jpg);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-position: 50%;
+    background-size: cover;
+    background-attachment: fixed;">
+          <div class="bg-overlay">
+            
+            <div class="container">
+              <div class="row ws-m">
+                <div class="col-md-offset-3 col-md-6">
+
+                  <div class="form-wrapper">
+                    <div class="form-content" style="margin-top: 60px;">
+                      <h3 class="form-header">회원가입</h3>
+
+                        <form action="/users" accept-charset="UTF-8" method="post">
+                        <input name="utf8" type="hidden" value="✓">
+                        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+                        <!-- Email -->
+                        <div class="form-group">
+                          <label for="user_email">이메일</label>
+                          <input autofocus="autofocus" type="email" name="user[email]" id="user_email" class="form-control" placeholder="이메일을 입력하세요" required>
+                          
+                        </div>
+                        <!-- Nickname -->
+                        <div class="form-group">
+                          <label for="user_nickname">닉네임</label>
+                          <input autocomplete="off" type="text" name="user[nickname]" id="user_nickname" class="form-control" placeholder="닉네임을 입력해주세요" required>
+                        </div>
+                        <!-- Password -->
+                        <div class="form-group">
+                          <label for="user_password">비밀번호<small style="color:gray">(8자 이상으로 적어주세요)</small></label>
+                          <input autocomplete="off" type="password" name="user[password]" id="user_password" class="form-control" placeholder="비밀번호를 입력하세요" onkeyup="checkPass(); return false;" required>
+                        </div>
+                        <!-- Password_Confirm -->
+                        <div class="form-group">
+                          <label for="user_password_confirmation">비밀번호 확인</label>
+                          <input type="password" autocomplete="off" type="password" name="user[password_confirmation]" id="user_password_confirmation" class="form-control" placeholder="비밀번호를 입력하세요" onkeyup="checkPass(); return false;" required>
+                          <span id="confirmMessage" class="confirmMessage"></span>
+                          
+                        </div>                        
+                        <!-- Submit -->
+                        <input style="width:100%;margin-top:30"type="submit" value="가입하기" class="btn">
+                      
+                      </form>
+                      
+                    <span class="cards-header">또는</span> 
+                    </div><!-- / .form-content -->
+                    <!-- Social Signup -->
+                   <div class="social-signup">
+                      <a style="width:100%" href="/users/auth/facebook" class="social-card fb-card">
+                        <span class="sc-lead">Facebook</span>
+                        <span class="sc-info">페이스북으로 가입하기</span>
+                        <i class="fa fa-facebook"></i>
+                      </a>
+                    </div><!-- / .social-signup -->
+                  </div><!-- / .form-wrapper -->
+
+                  
+                  <!--<a href="#" class="email-signup pull-right">Signup with email</a>-->
+
+
+                </div><!-- / .col-md-6 -->
+              </div><!-- / .row -->
+            </div><!-- / .container -->
+
+          </div><!-- / .bg-overlay -->
+        </div><!-- / .bg-login -->
+
+<script>
+
+       function checkPass()
+{
+    //Store the password field objects into variables ...
+    var user_password = document.getElementById('user_password');
+    var user_password_confirmation = document.getElementById('user_password_confirmation');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field 
+    //and the confirmation field
+    if(user_password.value == user_password_confirmation.value){
+        //The passwords match. 
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password 
+        user_password_confirmation.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "비밀번호가 일치합니다!"
+    }else{
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        user_password_confirmation.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "비밀번호가 일치하지 않습니다!"
+        
+    }
+}  
+
+</script>

@@ -1,0 +1,39 @@
+<div class="submit step" id="complete">
+				<img name="signiture" style="width:50%;" src="<%= image_path('gosomi_logo.png') %>">
+				<h2 style="margin-top:30px">작성을 완료하시겠습니까?</h2>
+		    <div class="col-md-6">
+				<a style="width:100%;margin-top:20px;font-size:2em" type="submit" name="process" id="go" class="btn btn-success shoot-loading">
+				  <i class="fa fa-send"></i>완료
+				</a>
+				</div>
+				 <div class="col-md-6">
+				<a style="width:100%;margin-top:20px;font-size:2em" href="/sue/deletes/<%=params[:id]%>" type="submit" name="process" id="go" class="btn btn-danger">
+				  <i class="fa fa-trash"></i>취소
+				</a>
+				</div>
+				
+				<input type="checkbox" id="css-input" style="display:none" checked />
+				<input style="display:none" type="text" id="sig_src" name="sig_src">
+				<div id="target"></div>
+</div><!-- end submit step -->
+<script>
+  jQuery(function ($) {
+    var target = $('#target');
+    $('.shoot-loading').click(function () {
+      if (target.hasClass('loading')) {
+        target.loadingOverlay('remove');
+      } else {
+        target.loadingOverlay();
+        $(target).css('margin-top', '50px');
+        $('.shoot-loading').css('display','none');
+      };
+      var sue_sort = $('.sue_sort').find('.checked').find('input').val();
+      var evidence_sort = $("input[name=evidence_sub]:checked").val();
+      $('.sue_sort_value').val(sue_sort);
+      $('.evidence_check').val(evidence_sort);
+      $('#police_form').submit();
+      return false;
+    });
+    
+  });
+</script>

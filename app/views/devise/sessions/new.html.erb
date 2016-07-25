@@ -1,0 +1,138 @@
+
+        
+       
+        <!-- ========== Page Title ========== -->
+
+        <header style="background:url(<%= image_url('log.jpg') %>);background-size:cover;background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                    <h1 class="title" style="font-family:'Nanum Myeongjo'">로그인</h1>
+                  <span class="subheading">건전한 사이버 문화를 지향합니다</span>
+                </div>
+                
+              </div>
+
+            </div>
+        </header>
+
+
+
+        <!-- ========== Sign_up Form ========== -->
+
+        <div class="login-2" style="background:#e8e8e8;">
+          <div class="bg-overlay">
+            
+            <div class="container">
+              <div class="row ws-m">
+                <div class="col-md-offset-3 col-md-6">
+
+                  <div class="form-wrapper">
+                    <div class="form-content" style="margin-top: 60px;padding-left:30px;padding-right:30px">
+                      <hr style="margin-bottom: 15px;">
+                      <h3 class="form-header" style="margin-bottom:0px">로그인</h3>
+                      <hr style="margin-bottom: 15px;margin-top:15px">
+                      <form action="/users/sign_in" accept-charset="UTF-8" method="post">
+                        <input name="utf8" type="hidden" value="✓">
+                        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					
+                        <!-- Email -->
+                        <div class="form-group">
+                          <label for="username-login-2">이메일</label>
+                          <input autofocus="autofocus" type="email" id="user_email" name="user[email]" class="form-control" placeholder="이메일을 입력하세요" required>
+                        </div>
+                        
+                        
+                        <!-- Password -->
+                        <div class="form-group">
+                          <label for="pass-login-2">비밀번호</label>
+                          <input autocomplete="off" id="user_password" type="password" name="user[password]" class="form-control" placeholder="비밀번호를 입력하세요" required>
+                        </div>
+                        <a href="/users/sign_up" style="display:block"><i class="fa fa-user-plus"></i>회원가입</a>
+                        <a href="/main/password" style="display:block"><i class="fa fa-exclamation-circle"></i>비밀번호 찾기</a>
+                        <!-- Submit -->
+                        <input style="width:100%;margin-top:30px"type="submit" value="로그인" class="btn">
+                      
+                      </form>
+                      <span style="margin-top:20px;margin-bottom:0px"class="cards-header">또는</span>
+                    </div><!-- / .form-content -->
+                    <!-- Social Signup -->
+                    <div class="social-signup">
+                      <a style="width:100%" href="/users/auth/facebook" class="social-card fb-card">
+                        <span class="sc-lead">Facebook</span>
+                        <span class="sc-info">페이스북으로 로그인하기</span>
+                        <i class="fa fa-facebook"></i>
+                      </a>
+                    </div><!-- / .social-signup -->
+                  </div><!-- / .form-wrapper -->
+
+                  
+                  <!--<a href="#" class="email-signup pull-right">Signup with email</a>-->
+
+
+                </div><!-- / .col-md-6 -->
+              </div><!-- / .row -->
+            </div><!-- / .container -->
+
+          </div><!-- / .bg-overlay -->
+        </div><!-- / .bg-login -->
+
+
+<%#
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+</div>
+<div class="col-md-8" style="margin-top:2em; margin-bottom:5em">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">회원 로그인</h3>
+  </div>
+  <div class="panel-body">
+				<form class="new_user cd-form" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+				<input type="hidden" name="authenticity_token" value="D8pigBRc3WQV521Oo1QTBTr7inDTDXENIciL8rYQrA9ML/1NPRV30XKRO44nsBV9YGv/8SHS462IeQfVMhcXHw==" />
+					<p class="fieldset" style="margin-top: 0px;">
+						<label class="image-replace cd-email" for="user_email">E-mail</label>
+						<input autofocus="autofocus" class="full-width has-padding has-border" id="user_email" name="user[email]" type="email" placeholder="E-mail" required>
+					</p>
+					
+					<p class="fieldset">
+						<label class="image-replace cd-password" for="user_password">Password</label>
+						<input autocomplete="off" class="full-width has-padding has-border" id="user_password" type="password" name="user[password]" placeholder="Password">
+						<a href="#0" class="hide-password">Hide</a>
+						<span class="cd-error-message">Error message here!</span>
+					</p>
+					
+					<p class="fieldset">
+						<input name="user[remember_me]" type="hidden" value="0" />
+						<input type="checkbox" id="remember-me" value="1" name="user[remember_me]" id="user_remember_me">
+						<label for="user_remember_me">Remember me</label>
+					</p>
+					<div class="col-md-12" style="text-align:center;padding-left: 0px;padding-right: 0px;">
+						<button style="background-color: #2f889a" type="submit" class="btn btn-primary btn-lg btn-block">Login</button><br />
+						</div>
+						
+				</form>
+						<div class="col-md-12" style="text-align:center;padding-left:28px;padding-right:28px">
+						<a href="/users/auth/facebook" style="text-decoration:none"><button style="background-color: #285E8E;"type="button" class="btn btn-primary btn-lg btn-block">Sign in with Facebook</button></a><br />
+						</div>
+				<script> 
+				  $('#gogogo').click(function() {
+				    document.forms['new_user'].submit();
+				  });
+				</script>
+				<div>
+				<a href="/users/password/new">Forgot your password?</a><br />
+				</div>
+
+  </div>
+</div>
+</div>
+<div class="col-md-2">
+</div>
+</div>
+</div>
+
+
+%>

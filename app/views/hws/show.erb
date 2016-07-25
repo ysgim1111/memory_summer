@@ -1,0 +1,398 @@
+<%= render partial: "hws_header" %>  
+<%x=Hw.find(params[:id])%>
+        <div class="col-md-9 mb-sm-160" style="border-left:1px solid #ccc;">
+                <!-- Blog Post -->
+                <div class="col-md-12 blog-post-single" style="margin-bottom:50px">
+
+                  <!-- Image -->
+                  <!--<img class="img-responsive post-img" src="../../assets/images/blog-post-big-1.jpg" alt="Blog Post 1">-->
+
+
+                  <!-- Title -->
+                  <h2 class="post-title" style="display:inline-block;padding-top:5px;"><%=x.title%></h2>
+                  <p style="display:inline-block;float:right;padding-top:15px"><%=x.writer%></p>
+                  <hr style="margin-top:15px">
+                   <!-- Meta data -->
+                  <div style="text-align:right;margin-top:10px;" class="post-meta">
+                    <a href="#" style="margin-right:15px" class="post-date">
+                      
+                      <i style="color:#111" class="et-alarmclock"></i>
+                      <span style="color:#111;font-size:0.9em;"><%=x.created_at.strftime("%Y-%m-%d %H:%M:%S")%></span>
+                    </a>
+                    <a href="#reply" class="post-comments">
+                      <i style="color:#111" class="fa fa-comments-o"></i>
+                      <span><%=x.hwscomments.count%>(+<%=@scc%>)</span>
+                    </a>
+                  </div><!-- / .meta -->
+
+                  <div class="blog-post-content">
+                    <!-- Intro -->
+                    <p><%=x.content%></p>
+                    <!-- List -->
+                  </div>
+                  <div class="row" style="margin-top:100px"> 
+                    <div class="col-md-3"></div>
+                    <script>
+                        var t1=<%=x.hwslikes.count%>
+                        var t2=<%=x.hwsunlikes.count%>  
+                        $(function(){
+                            $('#like').click(
+                                function(){
+                                    t1=t1+1
+                                    $('#likecal').html(t1);                      
+                                    $.ajax({ 
+                                        data: {point: <%=current_user.id%>},
+                                        url: '/hws/like/<%=params[:id]%>',
+                                        success: function(){alert('사~이다!');},
+                                        error: function(){}
+                                    });
+                                }
+                            );
+                            $('#unlike').click(
+                                function(){
+                                    t2=t2+1
+                                    $('#unlikecal').html('-'+t2);                    
+                                    $.ajax({ 
+                                        data: {point: <%=current_user.id%>},
+                                        url: '/hws/unlike/<%=params[:id]%>',
+                                        success: function(){alert('..발암');},
+                                        error: function(){}                            
+                                    });
+                                }
+                            );                     
+                        });
+                    </script> 
+                    <div class="col-md-6">
+                      <span id='like'>
+                        <a style='cursor:pointer;margin-right:15px;padding-right:15px' id="up" class="col-md-5 alert alert-info alert-dismissible">
+                          <p style="margin-top:2px;display:inline-block"><strong>사이다</strong></p> 
+                          <span class="linea-basic-paperplane"></span> 
+                          <strong id='likecal' style="margin-top:4px"><%=x.hwslikes.count%></strong>
+                        </a>
+                      </span>
+                      <span id='unlike'>
+                        <a style='cursor:pointer;padding-right:15px' id="down" class="col-md-5 alert alert-danger alert-dismissible" >
+                          <p style="margin-top:2px;display:inline-block"><strong>발암</strong></p> 
+                          <span class="et-hazardous"></span> 
+                          <strong id='unlikecal' style="margin-top:4px">-<%=x.hwsunlikes.count%></strong>
+                        </a>
+                      </span>
+                      
+                      </div>
+                      <div class="col-md-3"></div>
+                    </div>
+                    
+                    <div class="row" style="text-align:right;margin-top:50px;padding-right:15px">
+                      <a href='/hws/edit/<%=params[:id]%>'><button class="btn">수정</button></a>
+                      <a href='/hws/delete/<%=params[:id]%>'><button class="btn">삭제</button></a>
+                    </div>
+                  
+                  </div><!-- / .blog-post-single -->
+                  
+<style> 
+#up:hover {
+  background:#31708f;
+  border-color:rgba(49, 215, 235, 0.25);;
+  color:#fff;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+}
+#up span {
+ float:right;
+ font-size:1.5em;
+ display:inline-block;
+ opacity:0;
+}
+#up:hover span {
+ opacity:1;
+}
+#up strong {
+ margin-top:2px;
+ float:right;
+ opacity:1;
+}
+#up:hover strong {
+  opacity:0;
+}
+#up p strong {
+  content: "사이다";
+}
+#up:hover p strong {
+  display:none;
+}
+#up:hover p:after{
+  content: "추천하기";
+}
+
+#down:hover {
+  background:#a94442;
+  border-color:rgba(235, 84, 49, 0.25);
+  color:#fff;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+}
+#down span {
+ float:right;
+ font-size:1.5em;
+ display:inline-block;
+ opacity:0;
+}
+#down:hover span {
+ opacity:1;
+}
+#down strong {
+ margin-top:2px;
+ float:right;
+ opacity:1;
+}
+#down:hover strong {
+  opacity:0;
+}
+#down p strong {
+  content: "발암";
+}
+#down:hover p strong {
+  display:none;
+}
+#down:hover p:after{
+  content: "반대하기";
+}
+
+.comment-info {
+ margin-top: 0px; 
+}
+.comment-content {
+ margin-top: 0px;
+ margin-left: 30px;
+}
+.bp-comment {
+  padding-top: 30px;
+}
+</style>                
+
+                <!-- ========== Comments ========== -->
+
+                  <div id="reply" class="col-md-12 blog-post-comments">
+                    <h4 class="blog-section-title">댓글 <span><%=x.hwscomments.count%>(+<%=@scc%>)</span></h4>
+
+
+                    <%Hw.find(x.id).hwscomments.all.each do |xx|%>
+                    
+                      <div class="bp-comment">
+                        <div class="comment-info" >
+                          <h6 class="comment-name"><strong><%=xx.writer%></strong></h6>
+                          <span  style="margin-right:15px" class="comment-time"><%=xx.created_at.strftime("%Y-%m-%d %H:%M:%S")%></span>
+                          <a href="#" style="text-decoration:none;color:red;margin-right:15px">X</span></a>
+                          <button onclick="toggle_visibility('foo');" class="comment-replay-btn"><i class="fa fa-mail-reply-all"></i> Reply</button>
+                        </div>
+                        <p class="comment-content"><%=xx.content%></p>
+                      </div>
+                      
+                      <%xx.hwssubcomments.all.each do |xxx|%>
+                        <div  class="bp-comment-reply" style="padding-top:30px">
+                          <div class="comment-info">
+                            <h6 class="comment-name"><%=xxx.writer%></h6>
+                            <span class="comment-time"><%=xxx.created_at.strftime("%Y-%m-%d %H:%M:%S")%></span>
+                            <a href="#" style="text-decoration:none;color:red;margin-right:15px">X</span></a>
+                          </div>
+                          <p class="comment-content"><%=xxx.content%></p>
+                        </div><!-- / .bp-comment-reply -->                      
+                      <%end%>
+                      
+                      <!-- Replay Comment -->
+                      <div id="foo" class="bp-comment-reply" style="display:none">
+                        <!-- Comment -->
+                          <div  class="col-md-12 form-group no-gap" style="border-bottom: 1px solid #ececec;padding-bottom: 30px;">
+                            <form action='/hws/createsubcomment/<%=xx.id%>' method='post'>
+                              <textarea class="form-control" name="content" id="txt-forms" rows="5" placeholder=""></textarea>
+                              <!--<label for="txt-forms">Comment *</label>-->
+                              <input style="margin-top:15px" type="submit" value="댓글 작성" class="btn pull-right">                              
+                            </form>
+                          </div>
+                      </div><!-- / .bp-comment-reply -->
+                    <%end%>
+
+                    
+
+
+                    <!-- Comment example -->
+                    <!--<div class="bp-comment">
+                      <div class="comment-avatar"><img src="/assets/images/lawyer_1.png" style="width:60px;height:60px"alt="Testimonial"></div>
+                      <div class="comment-info">
+                        <h6 class="comment-name"><strong>변호사 류태근</strong></h6>
+                        <span class="comment-time">on June 23,2015, at 22:34</span>
+                        <button onclick="toggle_visibility('foo');" class="comment-replay-btn"><i class="fa fa-mail-reply-all"></i> Reply</button>
+                      </div>
+                      <p class="comment-content">ㅇㅇ 그거 됨.</p>
+                    </div><!-- / .bp-comment --> 
+
+
+
+                    <!-- Leave a comment -->
+                    <div class="comment-form">
+                      <h4 class="blog-section-title">댓글달기</h4>
+
+                      <form action='/hws/createcomment/<%=params[:id]%>' method='post'>
+                        <!-- Name -->
+                       <!-- <div class="col-md-6 form-group no-gap-left">
+                          <input type="text" class="form-control" id="inpt-name-forms" placeholder="닉네임 들어가는 곳">
+                        </div>
+                        
+                        <!-- Email -->
+                        <!--<div class="col-md-6 form-group no-gap-right">
+                          <input type="email" class="form-control" id="inpt-email-forms" placeholder="Enter your email">
+                          <label for="inpt-email-forms">Email *</label>
+                        </div>
+                        
+                        <!-- Website -->
+                        <!--<div class="col-md-12 form-group no-gap">
+                          <input type="url" class="form-control" id="inpt-web-forms" placeholder="http://...">
+                          <label for="inpt-name-forms">Website</label>
+                        </div>
+                        
+                        <!-- Comment -->
+                        <div class="col-md-12 form-group no-gap">
+                          <textarea class="form-control" name="content" id="txt-forms" rows="5" placeholder=""></textarea>
+                          <!--<label for="txt-forms">Comment *</label>-->
+                        </div>
+                        <input type="submit" value="댓글 작성" class="btn pull-right">
+                      </form>
+                    </div><!-- / .comment-form -->
+
+                  </div><!-- / .blog-post-comments -->
+                
+                <!-- Post Navigation -->
+                <div class="col-md-12" style="margin-bottom:50px">
+                  <nav class="blog-post-nav" style="padding-top:50px">
+                    <a style="font-size:1.5em;padding-left:0px" href="/hws/show/<%=@pabefore%>" class="prev-btn">이전 글</a>
+                    <a style="font-size:1.5em;padding-right:0px" href="/hws/show/<%=@paafter%>" class="next-btn">다음 글</a>
+                  </nav>
+                </div>
+                
+
+
+
+
+
+
+    <div class="col-md-12">
+    <table style="width:100%;border-collapse:none" cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+    	<tr>
+    	<th class="table_top" style="width:10%">글번호</th>
+    	<th class="table_top" style="width:50%">제목</th>
+    	<th class="table_top" style="width:15%">닉네임</th>
+    	<th class="table_top" style="width:10%;text-align:center">추천수</th>
+    	<th class="table_top" style="width:15%;text-align:center">날짜</th>
+    	</tr><!-- Table Header -->
+      <!-- 끝 -->
+      <%x1=0%>
+      <%@a.each do |x|%>  
+        <tr <%if x.id==params[:id].to_i%>id="reading" style='color:blue'<%end%>>
+        <td><%=x.id%></td>
+        <td><a <%if x.id==params[:id].to_i%>style='color:blue'<%end%> href="/hws/show/<%=x.id%>"><%=x.title%></a></td>
+        <td><%=User.find(x.user_id).nickname%></td>
+        <td id="cider"><%=x.hwslikes.count-x.hwsunlikes.count%></td>
+        <td id="date"><%= x.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td>
+        </tr>
+        <%x1=x1+1%>
+      <%end%>
+        <!--<tr class='even'><td><a href="#yep-iit-doesnt-exist">Hyperlink Example</a></td><td>80%</td><td><a href="#inexistent-id">Another</a></td><td>2015-11-12</td></tr>-->
+        
+    </table>
+    </div>
+    <!-- 공지사항 글쓰기 -->
+    <% if current_user.email == "asdf@naver.com"%>
+    <div class="col-md-12" style="text-align:right; margin-top:20px;padding-right:0px">
+           <a href="/hws/admin_write/<%=params[:id]%>"><button class="btn">공지사항 쓰기</button></a>
+    </div>
+    <% else %>
+    <!-- -->
+    <!--일반 글쓰기 -->
+    <div class="col-md-12" style="text-align:right; margin-top:20px;padding-right:15px">
+           <a href="/hws/write/<%=params[:id]%>"><button class="btn">글 쓰기</button></a>
+    </div>
+    <% end %>
+    <!-- 끝 -->
+    <div class="col-md-12" style="text-align:center;">
+           <nav class="blog-pagination">
+                <ul class="pagination">
+                  <li>
+                    <a id='minus5' aria-label="Previous">
+                      <span aria-hidden="true"><i class="fa fa-angle-double-left"></i></span>
+                    </a>
+                  </li>
+                </ul>
+                <%page=((@page.to_i-1)/5).to_i+1%>
+                <%@b.each do |y|%>
+                  <%if y.modulo(5)==1%><ul id='page<%=y/5+1%>' style='<%if page==y/5+1%><%else%>display:none<%end%>;transition:1s' class="pagination allpage"><%end%>
+                    <li><a <%if y==@page%>style='color:blue'<%end%> href='/hws/index/<%=y%>'><%=y%></a></li>
+                  <%if y.modulo(5)==0 || y==@b.count%></ul><%end%>           
+                <%end%>
+                <ul class="pagination">                
+                  <li>
+                    <a id='plus5' aria-label="Next">
+                      <span aria-hidden="true"><i class="fa fa-angle-double-right"></i></span>
+                    </a>
+                    <script>
+                      var n=<%=page%>
+                      $('#minus5').click(function() {
+                          if(n==1){
+                          n=1
+                          }else{
+                          n=n-1
+                          }
+                          $('.allpage')
+                            .css({display:'none'})
+                          $('#page'+n)
+                            .css({display:''});
+                      })                
+                      $('#plus5').click(function() {
+                          if(n==<%=(@b.count-1)/5.to_i+1%>){
+                          n=<%=(@b.count-1)/5.to_i+1%>
+                          }else{
+                          n=n+1
+                          }                        
+                          $('.allpage')
+                            .css({display:'none'})
+                          $('#page'+n)
+                            .css({display:''});
+                      });  
+                    </script>
+                  </li>
+                </ul>
+             </nav>
+    </div>
+    <div class="col-md-12" style="text-align:center; margin-top:20px">
+           <div class="form-group">
+             <div class="col-md-2"></div>
+             <div class="col-md-2">
+                <select class="form-control" name="search_target">
+                  <option value="title">제목</option>
+                  <option value="content">내용</option>
+                  <option value="title_content">제목+내용</option>
+                </select>
+              </div>
+              <div  class="col-md-4">
+              <input type="text" placeholder="Search ..." class="form-control">
+              </div>
+              <div class="col-md-2">
+              <button class="btn"><i class="fa fa-search"></i>검색</button>
+              </div>
+              <div class="col-md-2">
+              </div>
+            </div>
+    </div>
+
+
+
+
+
+
+
+                
+            </div><!-- / .col-md-8 -->
+
+</div><!-- row -->
+
+</div>
+<%= render partial: "hws_footer" %>  

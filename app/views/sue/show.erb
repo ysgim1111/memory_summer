@@ -1,0 +1,609 @@
+<link rel="stylesheet" href="/assets/button.css">
+<%dbdb=Sueform.find(params[:id])%>
+<% if dbdb.sue_sort == true %>
+<% @dual = "고소" %>
+<% else %>
+<% @dual = "진정" %>
+<% end %> 
+<style>
+	a:link:after, a:visited:after {
+		content:" ";
+		
+	}
+	@media all {
+	.page-break	{ display: none; }
+  }
+
+	@media print {
+	.page-break	{ display: block; page-break-before: always; }
+	#Header, #Footer { display: none !important; }
+	@page {
+    size: 330mm 427mm;
+    margin: 14mm;
+  }
+  .container {
+    width: 1170px;
+  }
+	}
+	@page{margin:20px auto;}
+	html, body{
+  min-height: 100%;
+}
+body{
+  position: relative;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.9); /*dim the background*/
+}	
+</style>
+<style>
+					#edit {
+						background:#337ab7;
+						border-color: #2e6da4;
+					}
+					#edit:hover {
+						background:#276192;
+					}
+					
+</style>
+  <!-- ========== Page Title ========== -->
+        <header id='aa5' style="background:url(<%= image_url('consultation.jpg') %>);background-size:cover;background-position:0% 50%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <h1 class="lead" style="font-family:'Nanum Myeongjo'">고소장 작성이<br class="mb_line_break"> 완료되었습니다</h1>
+                  <span class="sub">내용을 확인하세요</span>
+                </div>
+                
+              </div>
+
+            </div>
+        </header>
+<div class="container-fluid">
+	<div class="row">
+    	<div class="col-md-2"></div>
+
+    	<div class="col-md-8 side_pd_45 print_form mb_side_pd_15" id="aa">
+    					<% if @dual == '고소' %>
+   						<h1 class="form_header" style="text-align:center;margin-top:50px;"> 고&nbsp; &nbsp;&nbsp; &nbsp;소&nbsp; &nbsp;&nbsp; &nbsp;장 </h1>
+   						<% else %>
+   						<h1 class="form_header" style="text-align:center;margin-top:50px;"> 진&nbsp; &nbsp;&nbsp; &nbsp;정&nbsp; &nbsp;&nbsp; &nbsp;서 </h1>
+   						<% end %>
+   						<br><br>
+			<form id="sue_form"class="form-horizontal" action="/sue/complete/<%=params[:id] %>" enctype="multipart/form-data">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				  <!--표시단위-->
+				  <div id='c2'>
+				  	<h1 class="table_heading">1. <%=@dual%>인</h1> 
+				  	<!-- desktop -->
+					  <table class="table table-bordered table_contents" >
+								<tbody> 
+								<tr class="hidden-sm hidden-xs"> <th scope="row" class="text-center width_20">성명</th> <td id="my_name" class="text-center width_30"><%=dbdb.my_name%></td> <th scope="row" class="width_20 text-center">생년월일</th> <td class="text-center width_30"><%=dbdb.birth_year%>-<%=dbdb.birth_month%>-<%=dbdb.birth_day%></td> </tr> 
+								
+								<!-- 2rows line_break -->
+								<tr class="visible-sm"> <th scope="row" class="text-center width_20">성명</th> <td id="my_name" colspan="3"><%=dbdb.my_name%></td> </tr> 
+								<tr class="visible-sm"> <th scope="row" class="text-center width_20">생년월일</th> <td  colspan="3"><%=dbdb.birth_year%>-<%=dbdb.birth_month%>-<%=dbdb.birth_day%></td> </tr> 
+								<!-- 2rows line_break -->
+								
+								<tr class="hidden-xs"> <th scope="row" class="text-center">주소</th> <td colspan="3"><span id="address"><%=dbdb.address1%> <%=dbdb.address2%></span> <br>우편번호 : <span id="post_code"><%=dbdb.post_code%></span></td> </tr> 
+								<tr class="hidden-xs"> <th scope="row" class="text-center">연락처</th> <td colspan="3" id="my_phone">(휴대폰) <%=dbdb.my_phone%></td> </tr> 
+								<tr class="hidden-xs"> <th scope="row" class="text-center">이메일</th> <td colspan="3"> <%= dbdb.user.email %></td> </tr> 
+								</tbody> 
+								
+						</table>
+						<!-- desktop -->
+						<!-- mobile -->
+						<table class="table table-bordered table_contents visible-xs" >
+								<tbody> 
+								
+								<tr class="visible-xs"> <th scope="row" class="text-center width_20">성명</th></tr>
+								<tr class="visible-xs"> <td class="text-center"><%=dbdb.my_name%></td> </tr> 
+								<tr class="visible-xs"> <th scope="row" class="text-center width_20">생년월일</th></tr>
+								<tr class="visible-xs"><td class="text-center"><%=dbdb.birth_year%>-<%=dbdb.birth_month%>-<%=dbdb.birth_day%></td> </tr>
+								
+								<tr class="visible-xs"> <th scope="row" class="text-center">주소</th></tr> 
+								<tr class="visible-xs"><td class="text-center"><%=dbdb.address1%> <%=dbdb.address2%></span> <br>우편번호 : <span id="post_code"><%=dbdb.post_code%></td> </tr> 
+								<tr class="visible-xs"> <th scope="row" class="text-center">연락처</th> </tr>
+								<tr class="visible-xs"> <td class="text-center" id="my_phone"> (휴대폰) <%=dbdb.my_phone%></td> </tr>	
+								<tr class="visible-xs"> <th scope="row" class="text-center">이메일</th> </tr>
+								<tr class="visible-xs"> <td class="text-center"> <%= current_user.email %></td> </tr>	
+								</tbody> 
+						</table>
+						<!-- mobile -->
+						
+						
+						
+							<style>
+								.table-bordered:tr, th, td {
+									border:1px solid #111;
+								}
+								.width_20 {
+									width:20%;
+								}
+								.width_30 {
+									width:30%;
+								}
+								.table_contents {
+									font-size:1.5em;
+									color:#111;
+									border: 2px solid #111;
+									font-family: 'Nanum Myeongjo';
+								}
+								.normal_contents {
+									font-size:1.5em;
+									color:#111;
+									font-family: 'Nanum Myeongjo';
+								}
+								#aa {
+									border: 2px solid #111;
+									margin-top: 30px;
+								}
+								
+							</style>
+							
+								<!--<p class="intxt_bt" style="color:grey">*법정 대리인이 대신 고소를 할때에는 그에 상응하는 서류가 필요합니다.</p>-->
+					      <!--표시단위 끝-->    <br><br>
+								
+								<h1 class="table_heading">2. 피<%=@dual%>인</h1> 
+					  <table class="table table-bordered table_contents" >
+								<tbody> 
+								<% if dbdb.law_kind == '모욕' %>
+								
+									<% if dbdb.location == '게임' %>
+										<% @row_left = 'ID또는 닉네임' %>
+										<% @row_right = '게임명' %>
+									<% elsif dbdb.location == 'SNS' %>
+										<% @row_left = '대화명' %>
+										<% @row_right = 'SNS 이름' %>
+									<% else %>
+										<% @row_left = 'ID 또는 닉네임' %>
+										<% @row_right = '사이트 명' %>
+									<% end %>
+									
+								<% elsif dbdb.law_kind == '인터넷사기' %>
+									<% @row_left = '성명' %>
+									<% @row_right = '연락처' %>
+								<% elsif dbdb.law_kind == '협박' %>
+									<% @row_left = '성명' %>
+									<% @row_right = '연락처' %>	
+								<% end %>
+								<!-- desktop version -->
+									<tr class="hidden-sm hidden-xs"> <th scope="row" class="text-center width_20"><%=@row_left%></th> <td id="my_name" class="text-center width_30"><%=dbdb.you_id%></td> <th scope="row" class="width_20 text-center"><%=@row_right%></th> <td class="text-center width_30"><%=dbdb.you_url%></td> </tr> 
+								<!--2 row line_break -->
+								<tr class="visible-sm"> <th scope="row" class="text-center width_20"><%=@row_left%></th> <td colspan="3"><%=dbdb.you_id%></td> </tr> 
+								<tr class="visible-sm"> <th scope="row" class="text-center width_20"><%=@row_right%></th> <td colspan="3"><%=dbdb.you_url%></td> </tr>
+								<!--2 row line_break -->
+								<tr class="hidden-xs"> 
+									<th scope="row" class="text-center">주소</th> 
+									<td colspan="3">
+										<% unless dbdb.you_address.nil? %>
+											<%=dbdb.you_address1%> <%=dbdb.you_address2%> <br>우편번호 : <%=dbdb.you_address%>
+										<% else %>
+													불상
+										<% end %>
+									</td> 
+								</tr>
+								<tr class="hidden-xs"> 
+									<th scope="row" class="text-center">연락처</th> 
+									<td colspan="3" id="my_phone">
+										<% unless dbdb.you_phone.nil? %>
+											<%=dbdb.you_phone%>
+										<% else %>
+													불상
+										<% end %>		
+									</td> 
+								</tr>	
+								</tbody> 
+								
+							</table>
+							<!-- desktop version -->
+							
+							<table class="table table-bordered table_contents visible-xs text-center" >
+								<tbody> 
+								<!-- mobile -->
+								<tr class="visible-xs"> <th scope="row" class="text-center width_20"><%=@row_left%></th></tr>
+								<tr class="visible-xs"> <td><%=dbdb.you_id%></td> </tr> 
+								<tr class="visible-xs"> <th scope="row" class="text-center width_20"><%=@row_right%></th></tr>
+								<tr class="visible-xs"><td><%=dbdb.you_url%></td> </tr>
+								
+								<tr class="visible-xs"> <th scope="row" class="text-center">주소</th></tr> 
+								<tr class="visible-xs"><td><% unless dbdb.you_address.nil? %>
+													<%=dbdb.you_address1%> <%=dbdb.you_address2%> <br>우편번호 : <%=dbdb.you_address%>
+													<% else %>
+													불상
+													<% end %></span> </td> </tr> 
+								<tr class="visible-xs">
+								<tr class="visible-xs"> <th scope="row" class="text-center">연락처</th> </tr>
+								<tr class="visible-xs"> <td id="my_phone"> <% unless dbdb.you_phone.nil? %>
+													<%=dbdb.you_phone%>
+													<% else %>
+													불상
+													<% end %>		</td> </tr>	
+								<!-- mobile -->
+								</tbody> 
+								
+							</table>
+					     <!--3번째-->
+					     <br><br>
+					        <h1 class="table_heading">3. <%=@dual%>취지</h1>
+											<p style="white-space: pre-wrap;" class="normal_contents"><%=dbdb.sue_reason%></p>
+					     <!--4번째--><br><br>
+					     <div class="page-break"></div>
+					        <h1 class="table_heading"> 4. 범죄 사실</h1>
+											<p style="white-space: pre-wrap;" class="normal_contents"><%=dbdb.sue_content%></p>
+								<br><br>
+								<!-- 5번째 -->
+					      <h1 class="table_heading"> 5. <%=@dual%> 이유</h1>
+											<p style="white-space: pre-wrap;" class="normal_contents"><%=dbdb.sue_reason%></p>
+					     <!--5번째-->
+					     <br><br>
+								<!--6번째-->
+								<h1 class="table_heading">6. 증거자료</h1>
+					         <% if dbdb.evidence == true %>
+					         <label class="normal_contents"><input type="checkbox" disabled>진술 외에 제출할 증거가 없습니다.</label><br>
+					         <label class="normal_contents"><input type="checkbox" checked="true" disabled>진술 외에 제출할 증거가 있습니다.</label>
+									 <% else %>
+									 <label class="normal_contents"><input type="checkbox" checked="true" disabled>진술 외에 제출할 증거가 없습니다.</label><br>
+									 <label class="normal_contents"><input type="checkbox" disabled>진술 외에 제출할 증거가 있습니다.</label>
+									 <% end %>
+						 
+					  <h1 class="table_heading">7. 기타</h1> 
+					  <% if @dual == '고소' %>
+					  <p class="normal_contents">본 고소장에 기재한 내용은 고소인이 알고 있는 지식과 경험을 바탕으로 모두 사실대로 작성하였으며, 
+												   만일 허위사실을 고소하였을 때에는 형법 제156조에 의해 무고죄로 처벌받을 것임을 서약합니다.</p>
+						<% end %>						   
+					  <div class="checkbox" style="font-size:15px; margin-top:30px;text-align:center">
+							  <h3> <%= dbdb.created_at.strftime("%Y년 %m월 %d일")%></h3>
+							  <h3 style="display: inline-block;"> <%=@dual%>인 <%=dbdb.my_name%> 서명 : (인)</h3>
+							  <img style="display: inline-block;" src="<%=dbdb.sig_src%>">
+							  <h1> <%=dbdb.police_name%> 귀중</h1>
+ 						</div>
+						<h1 style="text-align:center"></h1>
+					</div>
+					<!--print img -->
+					       <% dbdb.sueimgs.each do |x| %>	
+					       <h1 class="img_print">증거자료</h1>
+					       <hr class="img_print"style="margin-bottom:10px">
+					       	<img style="margin-bottom:10px" class='img_print' src='<%=x.sueimg.url%>'>
+					       <% end %>
+					
+		</div><!--col-md-8-->
+		<div class="col-md-2"></div>
+		
+		<div class="col-md-8 col-md-offset-2 no-gap form_bottom">
+			<!--print img -->
+					<div id="aa3">
+                      <span class="btn-group">
+                      <a href="/sue/deletes/<%=params[:id]%>" class='btn btn-danger'>
+                      	<i class="fa fa-trash-o fa-lg"></i>삭제</a>
+                      <a onclick="my_page();"class="btn btn-warning">
+                      	<i class="fa fa-reply fa-lg"></i>마이 페이지로</a>
+                      </span>
+          </div>
+		</div>
+		</div><!--row-->
+</div><!-- container-fluid -->
+                <!--업로드 끝-->
+        <div id='aa2' style="text-align:center;">
+        	<div class="step row">
+		        	<div class="col-md-12">
+						  <div class="col-md-2"></div>
+							  <div class="col-md-8 no-gap">	
+							       <a id="c1" style="width:100%;height:50px;margin-top:50px;padding-top:15px;margin-bottom:60px" class="btn btn-default">인쇄하기</a>
+							  </div>
+							  <%#
+							  <div class="col-md-4">
+							       <a style="width:100%;height:50px;margin-top:50px;padding-top:15px;color:white;margin-bottom:60px;" class="nav-toggle btn btn-success btn-open">증거자료 제출 및 자동접수</a>	             
+							  </div>
+							  %>
+						  <div class="col-md-2"></div>
+					  </div>
+			    </div><!-- step row -->
+    		
+    	<%#	
+		     <div class="gray-bg collapse" id="pricing_md">		
+			    <!-- ========== Pricing Tables - 3col ========== -->
+		          <section class="container section pricing-tables" style="padding-top:60px">
+		            <div class="row">
+		              <div class="col-md-6" style="border-bottom: 1px solid #BFBFBF;margin-bottom: 50px;padding-bottom: 50px;padding-top: 50px;border-top: 1px solid #BFBFBF;">
+						        <h1>1) 증거자료가 있다면 첨부하시고</h1>
+									       <div style="margin-top:10px" id="temporary">
+										                <span class="input-group-btn">
+										                    <span class="btn btn-primary btn-file">
+										                        찾아보기&hellip; <input type="file" class="file">
+										                    </span>
+										                </span>
+										                <input type="text" class="form-control" readonly>
+										   		</div>
+						        <div class="col-md-12">
+						          <p style="margin-bottom:20px">*3MB 이하의 이미지 파일만 올릴 수 있습니다.</p>
+						          		<div class="col-md-12" style="margin-bottom:30px">
+							            <a style="width:100%" class="btn btn-danger" id="delete"><i class="fa fa-refresh"></i>목록 초기화</a>
+							            </div>
+							            <div class="col-md-12">
+							            <a style="width:100%" id="adding" class="btn btn-success"><i class="fa fa-plus"></i>파일 개수 추가</a>
+							            </div>
+						        </div>
+						        <div class="col-md-12" style="margin-top:15px">
+						          <div class="upload">
+							            <div style="margin-top:10px" id="id_group" class="input-group">
+							                <span class="input-group-btn trial">
+							                    <span onclick="refresh();"class="btn btn-primary btn-file">
+							                        찾아보기&hellip; <input type="file" class="file">
+							                    </span>
+							                </span>
+							                <input type="text" class="form-control text_input" readonly>
+							            </div>
+						          </div>
+						        </div>
+		              </div><!-- / .col-md-3 -->
+								<div class="col-md-6">
+		              <!-- Table 2 -->
+		                <div class="p-table pt-featured">
+		                	<!-- Star -->
+		                  <div class="banner">
+		                    <span class="star"><i class="fa fa-star"></i></span>
+		                  </div>
+		                  <!-- Header -->
+		                  <h4>일반</h4>
+		                  <div class="price">
+		                    <span class="currency">₩</span>
+		                    <span class="value">9,900</span>
+		                    <span class="type"></span>
+		                  </div>
+		                  <p class="desc">전문인력과 함께</p>
+		                  <hr>
+		                  <!-- Items -->
+		                  <ul class="p-items">
+		                    <li><b>관할 관서 소장 송달대행</b> </li>
+		                    <!--<li><b>2일간의 유예기간</b></li>-->
+		                    <!--<li><b>전담 변호사의 지속적인 개인상담</b></li>-->
+		                    <!--<li><b>법적대리인(변호사)의 합의대행</b></li>-->
+		                  </ul>
+		                   <hr>
+											<input type="hidden" name="payment" value="complete">
+		                  <button id="sue_go" class="btn-ghost" data-title="일반" data-price="9900">구매하기</button>
+		                </div><!-- / .p-table -->
+		            </div><!-- / .col-md-9 -->  
+					</div><!-- .row -->
+		          </section><!-- / .container -->
+		<input type="hidden" id="important" name="test" value="">
+			  	</div><!-- .gray-bg -->
+  			</form>  %>
+  		</div><!-- aa2 .container-->
+  		
+  	 						<script>
+		              	$('#sue_write').click(function(){
+		              		$('#important').val(1);
+		              		$('#pmt_check').val('no');
+		              		$('#sue_form').submit();
+		              	})
+		              	
+		              	$('#sue_with').click(function(){
+		              		$('#important').val(2);
+		              		$('#pmt_check').val('no');
+		              		$('#sue_form').submit();
+		              	})
+		            </script>	
+  		
+   		<style>
+   			.further {
+   				display: block;
+			    margin-bottom: 30px;
+			    padding: 7px 0 7px 20px;
+			    border-left: 1px solid #777;
+			    text-align:left;
+   			}
+   			.hd {
+   				display: block;
+   			  color: #ececec;
+   			}
+   			.hd_sub {
+   				display: block;
+   			  color: #999;
+   			}
+   		</style>
+ 	 
+
+
+
+
+
+<script>
+  var tem = document.getElementById('temporary');
+  $('#temporary').css({display:'none'});
+  $('#delete').click(function(){
+    $('.input-group').remove();
+    var a = $('#temporary').clone();
+    a.children().first().attr('class','input-group-btn trial');
+    a.attr('class', 'input-group').attr('id','id_group').css({display:''}).children().first().children().children().attr('type','file');
+    $('.upload').append(a);
+    refresh();
+  });
+  
+  $('#adding').click(function(){
+    var b = document.getElementsByClassName('input-group');
+    if (b.length < 5){
+    var c = $('#temporary').clone()
+    c.children().first().attr('class','input-group-btn trial');
+    c.attr('class', 'input-group').attr('id','id_group').css({display:''}).children().first().children().children().attr('type','file');
+    $('.upload').append(c);
+    refresh();
+    }
+    
+    else {
+      alert('최대 5개까지만 업로드할 수 있습니다');
+    }
+  });
+  
+</script>
+<script>
+$(document).ready(function(){
+    $(".btn-open").click(function(){
+        $(".collapse").collapse('toggle');
+    });
+    
+});
+</script>
+
+<script>
+$('.img_go')
+        .css({height:'200px',width:'100%'}); 
+$('.img_print')
+        .css({display:'none'});
+  var div = document.createElement('div');
+  var body = document.getElementById('page-top');
+  
+  body.appendChild(div);
+  
+  $('#c1').click(function() {
+  	div.className = 'overlay';
+    $('#aa1')
+        .css({display:'none'});
+    $('#aa2')
+        .css({display:'none'});
+    $('#aa3')
+        .css({display:'none'});
+    $('#aa4')
+        .css({display:'none'});
+    $('#aa5')
+        .css({display:'none'});
+    $('#aa').removeClass('side_pd_45').attr('id','');
+    $('#ev').css({display:'none'});
+    $('#evh1').css({display:'none'});
+    $('.img_print').css({display:'',height:'auto',width:'auto'}); 
+    console.log($('.img_go').css('width'));
+	 	window.print();   
+	 	$('.img_print').css({display:'none'});
+	  $('.img_go').css({height:'200px',width:'100%'});
+	  $('.print_form').attr('id','aa').addClass('side_pd_45');
+	    $('#aa1')
+	        .css({display:''});
+	      $('#aa2')
+	        .css({display:''});
+	      $('#aa3')
+	        .css({display:''});
+	      $('#aa4')
+	        .css({display:''});
+	      $('#aa5')
+	        .css({display:''});
+	      $('#ev').css({display:''}); 
+	      $('#evh1').css({display:''});
+	      div.className = '';
+  });
+ 
+//iamport payment
+$('#sue_go').click(function() {
+	var file_check = document.getElementsByClassName('file'); 
+	var a = 1;  
+        for (var i = 0;i<file_check.length;i++){
+          
+           if ( !(typeof file_check[i].files[0] == 'undefined') ) {
+               if (file_check[i].files[0].size > 30000) {
+                 console.log(file_check[i].files[0].size);
+                   
+                   alert('파일 각각의 크기는 3MB를 넘을 수 없습니다' + '\r\n' +'초과된 파일 이름 : '+ file_check[i].files[0].name);
+                   a = 0;
+                   alert(a);
+               }
+            }
+        }
+        
+        if (a==1) {
+            var $this = $(this);
+				var price = $this.data('price'),
+						title = $this.data('title');
+				IMP.init('imp35106516');
+				IMP.request_pay({
+					pay_method : 'card', // 'card':신용카드, 'trans':실시간계좌이체, 'vbank':가상계좌, 'phone':휴대폰소액결제
+			    merchant_uid : 'merchant_' + new Date().getTime(),
+			    name : title,
+			    amount : price,
+			    buyer_email : 'iamport@siot.do',
+			    buyer_name : $('#my_name').text(),
+			    buyer_tel : $('#my_phone').text(),
+			    buyer_addr : $('#address').text(),
+			    buyer_postcode : $('#post_code').text()
+				}, function(rsp) {
+					if ( !rsp.success ) {
+						alert('결제를 취소하셨습니다.');
+						location.reload();
+					}
+				})
+				
+				return false;
+            
+            
+        }
+	return false;
+})
+
+</script>
+
+<script>
+	function my_page(){
+		location.href="/main/mypage";
+	}
+</script>
+
+
+
+<style>
+	
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  background: red;
+  cursor: inherit;
+  display: block;
+}
+input[readonly] {
+  background-color: white !important;
+  cursor: text !important;
+}
+</style>
+
+<script>
+var refresh = function(){
+	$(':file').change(function(){
+
+	var filename = $(this).val().split('\\').pop();
+	var thumbext = this.value; //파일을 추가한 input 박스의 값
+
+	thumbext = thumbext.slice(thumbext.indexOf(".") + 1).toLowerCase(); //파일 확장자를 잘라내고, 비교를 위해 소문자로 만듭니다.
+
+	if(thumbext != "jpg" && thumbext != "png" &&  thumbext != "bmp"){ //확장자를 확인합니다.
+
+		alert('썸네일은 이미지 파일(jpg, png, gif, bmp)만 등록 가능합니다.');
+
+		return false;
+	}
+	else {
+		alert(filename + '가 등록되었습니다');
+		this.parentElement.parentElement.nextElementSibling.value = filename;
+	}
+	
+	
+	
+});
+}
+
+</script>

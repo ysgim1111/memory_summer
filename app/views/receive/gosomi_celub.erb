@@ -1,0 +1,206 @@
+<script src="/assets/js/loading.js"></script>
+<link rel="stylesheet" href="/assets/styles/loading.css">
+
+ <style>
+  .btn-danger {
+                            color: #fff;
+                            background-color: #922521;
+                            border-color: #8A201D;
+                          }
+                          .btn-danger:hover {
+                            color: #fff;
+                            background-color: #90332F;
+                            border-color: #90332F;
+                          }
+ </style>       
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%;padding-bottom:100px" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12" style="text-align:center">
+                  <a style="cursor:pointer" id="qna_go"><h1 class="lead" style="font-family:'Nanum Myeongjo'">유명인<br class="mb_line_break"> 악플러 제보</h1></a>
+                  <span class="sub">쉽고 빠르게, 그리고 정확하게</span>
+                </div>
+              </div>
+            </div>
+        </header>
+        <div style="background:#e8e8e8;">
+          <div class="section container blog-classic" style="padding-top:60px">
+            <div class="row">
+               <div class="col-md-12">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px">
+                  <!-- Image -->
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:20px">
+                  <form id="write_go" class="form-horizontal" action="/receive/celebrity/<%= params[:id] %>" method="POST" enctype="multipart/form-data">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                    <input name="celebrity" type="hidden">
+                    <div style="padding-right:15px;padding-left:15px" class="row">
+                      <h3 style="margin-bottom:15px"><i class="fa fa-pencil-square-o fa-lg"></i>제보하기</h3>
+                      <div class="col-md-12 comment-form" style="padding-top:15px;border-top: 1px solid #ccc;padding-left: 0px;padding-right: 0px;">
+                        <div class="form-group hidden">
+                            <p class="col-md-2 control-label">수신인</p>
+                            <div class="col-md-4">
+                                <input type="text" name="receiver" class="form-control" readonly value="gosomikorea@gmail.com">
+                                <input type="hidden" name="giver" class="form-control validation_check" value="info@gosomi.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">분류</p>
+                            <div class="col-md-4">
+                                <select name='category' class="form-control" id="select_check">
+                                    <option value='연예인'>연예인</option>
+                                    <option value='BJ'>BJ</option>
+                                    <option value='유명인'>유명인</option>
+                                    <option value='공인'>공인</option>
+                                    <option value='기타'>기타</option>
+                                </select>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <p class="col-md-2 control-label">피해자(유명인) 이름</p>
+                            <div class="col-md-4">
+                                <input type="text" name="ce_name" class="form-control validation_check combine" required>
+                            </div>
+                            <p class="col-md-2 control-label">가해자 아이디<br>(혹은 닉네임)</p>
+                            <div class="col-md-4">
+                                <input name="you_nickname" type="text" class="form-control validation_check combine" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                          <p class="col-md-2 control-label"> <span id="kind_insert"></span>사이트 명</p>
+                            <div class="col-md-4">
+                                <input name="site_name" type="text"  class="form-control validation_check combine" placeholder="ex)일간베스트, 네이버뉴스"required>
+                            </div>
+                            
+                            <p class="col-md-2 control-label">사건 발생 URL</p>
+                            <div class="col-md-4">
+                                <input type="text" name="location" class="form-control validation_check" placeholder="ex)전체 URL(주소)을 적어주세요"required>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">내용</p>
+                            <div class="col-md-10">
+                                <textarea required class="form-control combine check" rows="4" name="contents" placeholder="명예훼손, 모욕 내용을 입력해주세요"></textarea>
+                            </div>
+                        </div>
+                        <textarea style="display:none" name="bad" id="sum"></textarea>
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">증거자료</p>
+                            <div class="col-md-10">
+                              <input name="attachment[]" type="file" class="form-control file validation_check" multiple="multiple">
+                            </div>
+                        </div>
+                        <div class="text-center">
+                          <input type="checkbox" id="css-input" style="display:none" checked />
+                      				<div id="target"></div>
+                        </div>
+                      </div><!-- comment-form-->
+                    </div><!--  row -->
+                  </div>
+                  
+                  <div class="col-md-12" style="text-align: center;background: #F3F3F3;padding-top: 15px;padding-bottom: 15px;margin-bottom: 30px;box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);">
+                  <a id="write_link" class="a_link" style="cursor:pointer"><p class="q_text"><i class="fa fa-paper-plane"></i>전송</p></a>
+                  </div><!-- send -->
+                  </form>
+                </div>
+               
+               </div>
+          </div>
+          </div>
+        </div>
+        <script>
+  
+</script>
+
+        <style>
+          .q_text{
+            font-size:1.3em;
+            color:#777;
+          }
+           #write_link:hover .q_text{
+            color:#111;
+          }
+        </style>
+      
+<script>  
+  var write_go = document.getElementById('write_go');
+  var write_link = document.getElementById('write_link');
+  var select_check = document.getElementById('select_check');
+  var check = document.getElementsByClassName('check');
+  write_link.onclick = function(){
+    
+   
+    var final_check = $(".validation_check").map(function() {
+                   return $(this).val();
+                 }).get();
+                if( $.inArray( '', final_check )>=0 ){
+                  alert('입력하지 않은 부분이 있습니다');
+    			        return false;
+                }    
+    
+    
+    if (check[0].value.length < 15){
+      alert('내용을 15자 이상으로 작성해주세요');
+    }
+      
+    
+    else {
+      var final_check = $(".combine").map(function() {
+                   return $(this).val();
+                 }).get();
+      
+      
+      $('#sum').val($('#sum').val() + final_check);
+      jQuery(function ($) {
+        var target = $('#target');
+        $('.a_link').click(function () {
+          if (target.hasClass('loading')) {
+            target.loadingOverlay('remove');
+          } else {
+            target.loadingOverlay();
+            $(target).css('margin-top', '50px');
+            $('.shoot-loading').css('display','none');
+          };
+          return false;
+        });
+      });
+      write_go.submit();
+    }
+  }
+</script>
+
+<script>
+	$(':file').change(function(){
+	  
+        
+  var total = [].slice.call(this.files).map(function(x) {
+      return x.size || x.fileSize;
+  }).reduce(function(a, b) { return a + b; }, 0);
+
+  if ( total > 31457280 ) {
+      alert('파일 총합이 30mb를 넘을 수 없습니다.');
+      $(this).val('');
+      return false;
+  }
+
+
+	var filename = $(this).val().split('\\').pop();
+	var thumbext = $(this).val(); //파일을 추가한 input 박스의 값
+
+	thumbext = thumbext.slice(thumbext.lastIndexOf(".") + 1).toLowerCase(); //파일 확장자를 잘라내고, 비교를 위해 소문자로 만듭니다.
+
+	if(thumbext != "jpg" && thumbext != "png" &&  thumbext != "bmp" && thumbext != "jpeg"){ //확장자를 확인합니다.
+    $(this).val("");
+		alert('썸네일은 이미지 파일(jpg, jpeg, png, gif, bmp)만 등록 가능합니다.');
+		return false;
+	}
+	else {
+		alert(filename + '가 등록되었습니다');
+		$(this).val(filename);
+	}
+	
+	
+});
+
+</script>

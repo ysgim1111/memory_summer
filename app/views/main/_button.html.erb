@@ -1,0 +1,154 @@
+
+            <div class="row blog-classic">
+               <!-- Blog Post 4 -->
+              <div class="col-lg-6 portfolio-item game">
+                <div class="blog-post" style="background:#fff;">
+
+                  <!-- Image -->
+
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:0px">
+
+                    <div class="row">
+                      <div class="col-md-12 sidebar">
+                        <h3 style="margin-bottom:10px"><i class="fa fa-book"></i>요금<small>* VAT 별도</small></h2>
+                        <hr style="margin-bottom:20px">
+                        <div class="col-md-12 ws-s tags-widget" style="padding-left:0px;padding-bottom:30px">
+                          <h3>서비스</h3>
+                          <p  class="date">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle-thin fa-stack-2x"></i>
+                              <i class="fa fa-phone fa-stack-1x"></i>
+                            </span>  전화상담 - 무료
+                          </p>
+                          <p  class="date">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle-thin fa-stack-2x"></i>
+                              <i class="fa fa-building-o fa-stack-1x"></i>
+                            </span>  방문상담 - 1시간 당 10만원
+                          </p>
+                          <p  class="date">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle-thin fa-stack-2x"></i>
+                              <i class="fa fa-suitcase fa-stack-1x"></i>
+                            </span>  경찰,검찰 출석동행  - 30만원
+                          </p>
+                          <p  class="date">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle-thin fa-stack-2x"></i>
+                              <i class="fa fa-pencil fa-stack-1x"></i>
+                            </span> 고소장,답변서,준비서면 등 작성대행 - 50만원
+                          </p>
+                          <!--
+                          <p  class="date">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle-thin fa-stack-2x"></i>
+                              <i class="fa fa-pencil fa-stack-1x"></i>
+                            </span>  형사사건 고소장 - 100만원
+                          </p>
+                          -->
+                          <h3>수임</h3>
+                          <p  class="date">명예훼손 및 모욕 손해배상</p>
+                          <p  class="date">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-bolt fa-inverse fa-stack-1x"></i>
+                            </span> 착수금 - 250만원~
+                          </p>
+                          <p  class="date">
+                            <span class="fa-stack">
+                              <i class="fa fa-circle fa-stack-2x"></i>
+                              <i class="fa fa-krw fa-inverse fa-stack-1x"></i>
+                            </span>성공보수 - 5% ~ 10%
+                          </p>
+                          <h3>결제</h3>
+                          <p  class="date">
+                          <span class="fa-stack">
+                              <i class="fa fa-circle-thin fa-stack-2x"></i>
+                              <i class="fa fa-credit-card fa-stack-1x"></i>
+                          </span>   카드결제 가능
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- / .bp-content -->
+              </div><!-- / .blog-post -->
+
+
+              <div class="col-lg-6 portfolio-item game">
+                <div class="blog-post" style="background:#fff;">
+
+                  <!-- Image -->
+
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:0px">
+
+                    <div class="row">
+                      <div class="col-md-12 sidebar">
+                        <h3 style="margin-bottom:10px"><i class="fa fa-map-marker"></i>사무실 위치</h2>
+                        <hr style="margin-bottom:20px">
+                        <div class="col-md-12" style="padding-left:0px;padding-right:0px;padding-bottom:30px">
+                          <div id="map" style="width:100%;height:300px;border:2px solid #CCCCCC;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- / .bp-content -->
+              </div><!-- / .blog-post -->
+
+            </div><!-- .row -->
+
+
+
+  <div class="col-md-6" style="padding-left:0px;padding-right:0px;margin-top:15px">
+              <a href="lawyer" style="width:100%;font-size:2em;" class="btn btn-large"><i class="fa fa-paper-plane"></i> 질문하기</a>
+            </div>
+            <div class="col-md-6" style="padding-left:0px;padding-right:0px;margin-top:15px">
+              <a href="/" style="width:100%;font-size:2em;" id="main" class="btn btn-large"><i class="fa fa-reply"></i>뒤로가기</a>
+            </div>
+  <style>
+              #main {
+                background:#777;
+              }
+              #main:hover {
+                background:rgba(119,119,119,.8);
+              }
+  </style>
+
+  <script type="text/javascript" src="https://apis.daum.net/maps/maps3.js?apikey=d4a73a62e8adf7c7b02dee789f22d0c6"></script>
+
+  <script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+        center: new daum.maps.LatLng(37.5017116, 127.038713), // 지도의 중심좌표
+        level: 4 // 지도의 확대 레벨
+    };
+
+    var map = new daum.maps.Map(mapContainer, mapOption);
+
+    // 마우스 휠로 지도 확대,축소 가능여부를 설정합니다
+    map.setZoomable(false);
+    // 마커가 표시될 위치입니다
+    var markerPosition  = new daum.maps.LatLng(37.5017116, 127.038713);
+
+    // 마커를 생성합니다
+    var marker = new daum.maps.Marker({
+        position: markerPosition
+    });
+
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+
+    var iwContent = '<div style="padding:5px;">법무법인 예율<br><a href="http://map.daum.net/link/map/법무법인 예율,37.5017116,127.038713" style="color:blue" target="_blank">큰지도보기</a> <a href="http://map.daum.net/link/to/법무법인 예율,37.5017116,127.038713" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        iwPosition = new daum.maps.LatLng(37.5017116, 127.038713); //인포윈도우 표시 위치입니다
+
+    // 인포윈도우를 생성합니다
+    var infowindow = new daum.maps.InfoWindow({
+        position : iwPosition,
+        content : iwContent
+    });
+
+    // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+    infowindow.open(map, marker);
+
+
+  </script>

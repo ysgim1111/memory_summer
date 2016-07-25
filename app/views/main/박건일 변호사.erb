@@ -1,0 +1,136 @@
+<%= render "main/front" %>
+
+
+ <!-- ========== Page Title ========== -->
+
+        <header style="border-bottom: 2px solid gray;
+    background: url(<%= image_path('park_back.png') %>) no-repeat center center;
+    background-size: cover;
+    background-position: 10% 10%" class="page-title pt-large pt-dark pt-plax-lg-dark">
+          <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <h1 class="lead" style="font-family:'Nanum Myeongjo'">변호사 박건일</h1>
+                  <span class="sub">"법률서비스 선도에 앞장서겠습니다"</span>
+                </div>
+              </div>
+
+            </div>
+        </header>
+
+ <!-- ========== Team Layout - 4 Columns ========== -->
+
+        <div class="gray-bg" style="background:#e8e8e8">
+          <section class="container section team-4col" style="padding-top:60px">
+            <div class="row blog-classic">
+
+              <!-- Blog Post 1 -->
+              <div class="col-lg-7 portfolio-item game">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px">
+
+                  <!-- Image -->
+
+                  <div class="bp-content" style="padding-bottom:25px;">
+
+                  <div class="row">
+                    <div class="col-md-4" style="text-align:center">
+                      <img style="border-radius:100px;border:10px solid #f8f8f8;" src="<%= image_path('park_1.png') %>">
+                    </div>
+
+                   <div class="col-md-8 sidebar">
+                      <h3 style="display:inline-block"><i class="fa fa-suitcase"></i> 박건일 변호사  </h3>
+
+                        <h4 style="margin-bottom:25px;margin-top:25px;">"법률서비스 선도에 앞장서겠습니다"</h4>
+
+                      <div class="col-md-12 ws-s tags-widget" style="display: inline-block;padding-left:0px;padding-bottom: 5px;">
+                        <a href="/main/류태근 변호사" style="color:black;font-size:1em;visibility:hidden"><i class="fa fa-share-square-o"></i>프로필 보기</a>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+                  </div>
+                </div><!-- / .bp-content -->
+
+                </div><!-- / .blog-post -->
+
+                <!-- Blog Post 2 -->
+                <div class="col-lg-5 portfolio-item game">
+                  <div class="blog-post" style="background:#fff;margin-bottom:30px">
+
+                    <!-- Image -->
+
+                    <div class="bp-content" style="padding-bottom:0px">
+
+                      <div class="row">
+                        <div class="col-md-12" style="text-align:center">
+                          <img class="firm_name" style="border:10px solid #f8f8f8;" src="<%= image_path('yeyul.png') %>">
+                          <h3 style="margin-bottom:30px"><i class="fa fa-university"></i> 법무법인  예율</h2>
+                        </div>
+                      </div>
+                    </div><!-- / .bp-content -->
+                  </div><!-- / .blog-post -->
+                </div>
+              </div><!-- / .row blog-classic-->
+
+              <div class="row blog-classic">
+               <!-- Blog Post 4 -->
+              <div class="col-lg-7 portfolio-item game">
+                <div class="blog-post" style="background:#fff;">
+
+                  <!-- Image -->
+
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:0px">
+
+                    <div class="row">
+                      <div class="col-md-12 sidebar">
+                        <h3 style="margin-bottom:10px"><i class="fa fa-star"></i> 경력사항</h2>
+                        <hr style="margin-bottom:20px">
+                        <div class="col-md-12 ws-s tags-widget" style="padding-left:0px;padding-bottom:30px">
+                          <p class="date">2015~</p>
+                          <p class="box_contents">법무법인 예율</p>
+                          <p class="date">2014</p>
+                          <p class="box_contents">광주고등법원 재판연구원(제1민사부)</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- / .bp-content -->
+              </div><!-- / .blog-post -->
+
+
+               <!-- Blog Post 4 -->
+              <div class="col-md-5 portfolio-item game">
+                <div class="blog-post" style="background:#fff;">
+
+                  <!-- Image -->
+
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:0px">
+
+                    <div class="row">
+                      <div class="col-md-12 sidebar">
+                        <h3 style="margin-bottom:10px"><i class="fa fa-quote-left"></i> 기타</h2>
+                        <hr style="margin-bottom:20px">
+                        <div class="col-md-12 ws-s tags-widget" style="padding-left:0px;padding-bottom:30px">
+
+                          <p class="box_contents">-추후 추가 예정</p>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div><!-- / .bp-content -->
+              </div><!-- / .blog-post -->
+
+            </div>
+           <%= render "main/button" %>
+
+          </section><!-- / .contianer -->
+        </div><!-- / gray-bg -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"> </script>
+  <script src="/assets/js/lawyer_kth.js">
+  </script>

@@ -1,0 +1,13 @@
+<br><br><br>
+<div style='border:1px solid black'>
+    <%@a.each do |x|%>
+        <h1 style='border:1px solid black'><a href='/hws/show/<%=x.id%>'>title : <%=x.title%></a>(<%=x.hwsviews.count%>)</h1>
+    <%end%> 
+</div>
+<h4><%@b.each do |y|%><%=raw(y)%><%end%></h4>
+<div>
+    <h1><a href='/hws/write'>새글 작성</a></h1>
+    <h3>--실험실--</h3>
+    <h2 style='display:inline-block'><a href='/hws/tentime'>[10개 생성기]</a></h2>
+    <h2 style='display:inline-block'><a href='/hws/boom'>[게시판 민주화]</a></h2>
+</div> 

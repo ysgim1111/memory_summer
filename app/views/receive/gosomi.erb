@@ -1,0 +1,344 @@
+<!--달력-->
+<script language="JavaScript" src="/date_picker.js"></script>
+<!--달력 끝-->
+ <style>
+  .btn-danger {
+    color: #fff;
+    background-color: #922521;
+    border-color: #8A201D;
+  }
+  .btn-danger:hover {
+    color: #fff;
+    background-color: #90332F;
+    border-color: #90332F;
+  }
+ </style>
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%;padding-bottom:100px" class="page-title pt-large pt-dark pt-plax-lg-dark">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <a style="cursor:pointer" id="qna_go"><h1 class="lead" style="font-family:'Nanum Myeongjo'">요주의 인물 제보</h1></a>
+                  <span class="sub">쉽고 빠르게, 그리고 정확하게</span>
+                </div>
+
+              </div>
+
+            </div>
+        </header>
+
+
+        <div style="background:#e8e8e8;">
+          <div class="section container blog-classic" style="padding-top:60px">
+            <div class="row">
+
+               <div class="col-md-12">
+                <div class="blog-post" style="background:#fff;margin-bottom:30px">
+
+                  <!-- Image -->
+
+                  <div class="bp-content" style="padding-right:50px;padding-bottom:20px">
+                  <form id="write_go" class="form-horizontal" action="/receive/insult" method="POST" enctype="multipart/form-data">
+                    <input name="utf8" type="hidden" value="✓">
+
+                    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                    <input name="crimi" type="hidden">
+                    <div style="padding-right:15px;padding-left:15px" class="row">
+                      <h3 style="margin-bottom:15px"><i class="fa fa-pencil-square-o fa-lg"></i>제보하기</h3>
+                      <p style="margin-bottom:15px">*상대방을 비방할 목적으로 제보할 경우 명예훼손에 해당할 수 있습니다.</p>
+                      <div class="col-md-12 comment-form" style="
+                            padding-top:15px;
+                            border-top: 1px solid #ccc;
+                            padding-left: 0px;
+                            padding-right: 0px;">
+
+                        <p style='margin-bottom:5px' class="hidden">*문의 후 24시간 내로 변호사의 연락을 받으실 수 있습니다</p>
+                        <div class="form-group hidden">
+                            <p class="col-md-2 control-label">수신인</p>
+                            <div class="col-md-4">
+                                <input type="text" name="receiver" class="form-control" readonly value="gosomikorea@gmail.com">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="giver" class="form-control validation_check" value="info@gosomi.com" required>
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">분야</p>
+                            <div class="col-md-4">
+                                <select name='category' class="form-control" id="select_check">
+                                    <option value='게임'>게임</option>
+                                    <option value='sns'>SNS</option>
+                                    <option value='커뮤니티'>커뮤니티</option>
+                                    <option value='기타'>기타</option>
+                                </select>
+                            </div>
+                            <p class="col-md-2 control-label"><span id="kind_insert"></span>서비스명</p>
+                            <div class="col-md-4">
+                                <input type="text" name="location" class="form-control validation_check combine" placeholder="" value="리그 오브 레전드" required>
+                            </div>
+                        </div>
+
+                        <script>
+                          $.fn.selectRange = function(start, end) {
+                              return this.each(function() {
+                                   if(this.setSelectionRange) {
+                                       this.focus();
+                                       this.setSelectionRange(start, end);
+                                   } else if(this.createTextRange) {
+                                       var range = this.createTextRange();
+                                       range.collapse(true);
+                                       range.moveEnd('character', end);
+                                       range.moveStart('character', start);
+                                       range.select();
+                                   }
+                               });
+                           };
+
+                          // use like this
+                          $('input[name="location"]').focus().selectRange(0,9);
+                          $('#select_check').on('change',function(){
+                            $('input[name="location"]').val('');
+                            var select_val = $(this).val();
+                            $('#kind_insert').html(select_val);
+
+                            switch (select_val) {
+                              case '게임':
+                                var example = '리그 오브 레전드, 서든어택, 오목 등';
+                                $('.game_reason').show(500);
+                                $('.game_reason_etc').hide(500);
+                                break;
+                              case 'sns':
+                                var example = '페이스북, 트위터 등';
+                                $('.game_reason').hide(500);
+                                $('.game_reason_etc').show(500);
+                                break;
+                              case '커뮤니티':
+                                var example = '디시인사이드, 네이버카페 등';
+                                $('.game_reason').hide(500);
+                                $('.game_reason_etc').show(500);
+                                break;
+                              case '기타':
+                                var example = '기타 서비스명';
+                                $('.game_reason').hide(500);
+                                $('.game_reason_etc').show(500);
+                                break;
+                              default:
+                                var example = '서비스명을 입력해주세요';
+                                $('.game_reason').hide(500);
+                                $('.game_reason_etc').show(500);
+                                break;
+                            }
+
+                            $('input[name=location]').attr('placeholder','ex) '+example);
+
+                            });
+
+                        </script>
+
+                        <div class="form-group">
+                            <p class="col-md-2 control-label game_reason">제보이유</p>
+                            <div class="col-md-4 game_reason">
+                                <select name='game_category' class="form-control" id="game_check">
+                                    <option value='욕설'>욕설</option>
+                                    <option value='고의 트롤링'>고의 트롤링</option>
+                                    <option value='불법프로그램 사용'>불법프로그램 사용</option>
+                                    <option value='기타'>기타</option>
+                                </select>
+                            </div>
+                            <p class="col-md-2 control-label">상대방 아이디<br> 또는 닉네임</p>
+                            <div class="col-md-4">
+                                <input type="text" name="you_nickname" class="form-control validation_check combine" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group game_reason_etc">
+                            <p class="col-md-2 control-label">제보이유</p>
+                            <div class="col-md-10">
+                                <input id="shout_reason" type="text" required  maxlength="20" class="form-control check combine" name="reason" >
+                                <p style='margin-bottom:5px'>*20자 이내로 작성해 주세요. (<span id="limit"> </span> / 20)</p>
+                            </div>
+                        </div>
+                        <script>
+                          $('.game_reason_etc').hide();
+                          $('#game_check').on('change',function(){
+                            var game_select_val = $('#game_check').val();
+                            if (game_select_val === '기타') {
+                              $('.game_reason_etc').show(500);
+                              $('#shout_reason').addClass('validation_check');
+                            }
+                            else {
+                              $('.game_reason_etc').hide(500);
+                              $('#shout_reason').removeClass('validation_check').val('');
+                            }
+                          });
+                        </script>
+                        <textarea style="display:none" name="bad" id="sum"></textarea>
+
+                        <script>
+                            $('#warm_word_form').on('keyup', function(){
+                              var total1 = $(this).val().length;
+                              $(this).parent().find('span').html(total1);
+                            })
+                            $('#shout_reason').on('keyup', function(){
+                              var total2 = $(this).val().length;
+                              $(this).parent().find('span').html(total2);
+                            })
+                        </script>
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">발생 일시</p>
+                            <div class="col-md-4">
+                                <input type="text" readonly required placeholder="날짜를 입력해주세요" class="validation_check combine form-control" name="target_date">
+                            </div>
+                            <div class="col-md-2">
+                            <input type="button" style="height:44px;width:100%" value="달력보기" class="btn btn-warning" onClick="datePicker(event,'target_date')">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">증거자료</p>
+                            <div class="col-md-10">
+                              <input name="attachment" type="file" class="form-control file" multiple>
+                              <p>※증거자료가 없을 경우, 해당 사용자의 요청이 있을 때 즉시 삭제될 수 있습니다.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <p class="col-md-2 control-label">남기고 싶은 한마디</p>
+                            <div class="col-md-10" style="padding-top:7px">
+                                <div class="col-md-6 no-gap">
+                                  <input type="radio" class="warm_word_on" name="left_word"> <label for="">한마디 남기기</label>
+                                </div>
+                                <div class="col-md-6 no-gap">
+                                  <input type="radio" class="warm_word_off" name="left_word"> <label for="">한마디 남기지 않기</label>
+                                </div>
+                                <input id="warm_word_form" type="text" maxlength="30" name="contents" class="form-control validation_check check combine warm_word" required>
+                                <p style='margin-bottom:5px' class="warm_word">*30자 이내로 작성해 주세요. (<span id="limit"> </span> / 30)</p>
+                            </div>
+                        </div>
+                      </div><!-- comment-form-->
+                    </div><!--  row -->
+                  </div>
+                  <script>
+                    $('.warm_word_on').attr('checked',true);
+                    $('.warm_word_on').on('click',function(event){
+                      if ( $('.warm_word_on').is(":checked") ){
+                        $('#warm_word_form').addClass('validation_check');
+                        $('.warm_word').show(500);
+                      }
+                    });
+                    $('.warm_word_off').on('click',function(event){
+                      $('.warm_word').hide(500);
+                      $('#warm_word_form').removeClass('validation_check');
+                      $('#warm_word_form').attr('value','');
+                    })
+                  </script>
+                  <div class="col-md-12" style="text-align: center;background: #F3F3F3;padding-top: 15px;padding-bottom: 15px;margin-bottom: 30px;box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);">
+                  <a id="write_link" class="a_link" style="cursor:pointer"><p class="q_text"><i class="fa fa-paper-plane"></i>전송</p></a>
+                  </div><!-- send -->
+                  </form>
+                </div>
+
+               </div>
+          </div>
+          </div>
+        </div>
+
+        <style>
+          .q_text{
+            font-size:1.3em;
+            color:#777;
+          }
+           #write_link:hover .q_text{
+            color:#111;
+          }
+        </style>
+
+
+
+
+<script>
+  var write_go = document.getElementById('write_go');
+  var write_link = document.getElementById('write_link');
+  var select_check = document.getElementById('select_check');
+  var check = document.getElementsByClassName('check');
+  write_link.onclick = function(){
+
+    var file_check = document.getElementsByClassName('file');
+        for (var i = 0;i<file_check.length;i++){
+           if ( !(typeof file_check[i].files[0] == 'undefined') ) {
+               if (file_check[i].files[0].size > 2000000) {
+                 console.log(file_check[i].files[0].size);
+                   alert('파일 각각의 크기는 3MB를 넘을 수 없습니다' + '\r\n' +'초과된 파일 이름 : '+ file_check[i].files[0].name);
+                   $('.file').val("");
+                   return false;
+               }
+            }
+        }
+
+
+    var final_check = $(".validation_check").map(function() {
+                   return $(this).val();
+                 }).get();
+                if( $.inArray( '', final_check )>=0 ){
+                  alert('입력하지 않은 부분이 있습니다');
+    			        return false;
+                }
+
+
+    if (check[0].value.length > 20){
+      alert('제보이유는 20자 이내로 작성해주세요');
+    }
+
+    else if (check[1].value.length > 30){
+      alert('따뜻한 한마디는 30자 이내로 작성해주세요');
+    }
+
+
+    else {
+      var final_check = $(".combine").map(function() {
+                   return $(this).val();
+                 }).get();
+
+
+      $('#sum').val( $('#sum').val()+final_check);
+
+      write_go.submit();
+    }
+  }
+</script>
+
+<script>
+	$(':file').change(function(){
+
+
+    var file_check = document.getElementsByClassName('file');
+        for (var i = 0;i<file_check.length;i++){
+           if ( !(typeof file_check[i].files[0] == 'undefined') ) {
+               if (file_check[i].files[0].size > 3145728) {
+                 console.log(file_check[i].files[0].size);
+                   alert('파일 각각의 크기는 3MB를 넘을 수 없습니다' + '\r\n' +'초과된 파일 이름 : '+ file_check[i].files[0].name);
+                   $('.file').val("");
+                   return false;
+               }
+            }
+        }
+
+	var filename = $(this).val().split('\\').pop();
+	var thumbext = this.val(); //파일을 추가한 input 박스의 값
+
+	thumbext = thumbext.slice(thumbext.indexOf(".") + 1).toLowerCase(); //파일 확장자를 잘라내고, 비교를 위해 소문자로 만듭니다.
+
+	if(thumbext != "jpg" && thumbext != "png" &&  thumbext != "bmp" && thumbext != "jpeg"){ //확장자를 확인합니다.
+    this.val("");
+		alert('썸네일은 이미지 파일(jpg, jpeg, png, gif, bmp)만 등록 가능합니다.');
+		return false;
+	}
+	else {
+		alert(filename + '가 등록되었습니다');
+		this.val(filename);
+	}
+
+
+
+
+});
+
+</script>
