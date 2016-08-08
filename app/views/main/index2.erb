@@ -1,3 +1,13 @@
+<style>
+.row {
+  margin-right:0px !important;
+  margin-left:0px !important;
+}
+.container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+</style>
 <!-- ========== Preloader ========== -->
         <div class="preloader">
           <img src="<%=image_path("loader.svg")%>" alt="Loading...">
@@ -9,114 +19,25 @@
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	background-size: cover;" class="fs-video-hero landing-hero">
+	background-size: cover;height:50vh" class="fs-video-hero landing-hero">
         <div class="bg-overlay">
             <div class="hero-content-wrapper">
-              <div class="hero-content">
+              <div class="hero-content" style="vertical-align:inherit;">
                 <div class="container ft-cards">
                   <div class="row" style="margin-top:0px">
                     <!-- Heading -->
-                    <div style="padding-right:0px;text-align:center;" class="col-md-12 heading-wrapper " data-wow-duration="1.5s" data-wow-delay=".7s">
+                    <div style="padding-right:0px;text-align:center;padding-top:50px;" class="col-md-12 heading-wrapper " data-wow-duration="1.5s" data-wow-delay=".7s">
                       <img src="<%= image_path('gosomi_logo_beta.png') %>">
                         <input style="display:none" value="<%=Consult.count %>" id="goso_count" type="number">
-                            <h4 class="lead">건전한 사이버문화를 지향합니다.</small></h4>
+                            <h4 class="lead">건전한 노사관계를 지향합니다.</small></h4>
                     </div>
                   </div><!-- / .row -->
                 </div><!-- / .container -->
               </div><!-- / .hero-content -->
             </div><!-- / .hero-wrapper -->
           </div><!-- / .bg-overlay -->
-
         </div><!-- / .fs-video-hero -->
 
-
-
-          <section class="container section team-3col">
-            <div class="row">
-
-              <header class="sec-heading">
-                <h2>Meet the team</h2>
-                <span class="subheading">We are creative professionals</span>
-              </header>
-
-
-              <!-- Member 1 -->
-              <div class="col-lg-4 col-md-6 mb-sm-50">
-                <div class="t-item wow fadeIn" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
-
-                  <!-- Image -->
-                  <div class="t-image">
-                    <img src="<%= image_path('ryu_1.png') %>" alt="Team Member" class="img-responsive" style="width: 100%;">
-                    <div class="t-description">
-                      <div class="content-wrapper">
-                        <h4 class="h-alt">Hello!</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Info -->
-                  <div class="t-info">
-                    <h4 class="t-name">류태근</h4>
-                    <span class="t-role">CEO &amp; Founder</span>
-                  </div>
-
-                </div><!-- / .t-item -->
-              </div><!-- / .col-md-4 -->
-
-
-              <!-- Member 2 -->
-              <div class="col-lg-4 col-md-6 mb-sm-50">
-                <div class="t-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeIn;">
-
-                  <!-- Image -->
-                  <div class="t-image">
-                    <img src="assets/images/team-2.jpg" alt="Team Member" class="img-responsive">
-                    <div class="t-description">
-                      <div class="content-wrapper">
-                        <h4 class="h-alt">Hello!</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Info -->
-                  <div class="t-info">
-                    <h4 class="t-name">Carol Greene</h4>
-                    <span class="t-role">Art Director</span>
-                  </div>
-
-                </div><!-- / .t-item -->
-              </div><!-- / .col-md-4 -->
-
-
-              <!-- Member 3 -->
-              <div class="col-lg-4 col-md-6 mb-sm-50">
-                <div class="t-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: fadeIn;">
-
-                  <!-- Image -->
-                  <div class="t-image">
-                    <img src="assets/images/team-3.jpg" alt="Team Member" class="img-responsive">
-                    <div class="t-description">
-                      <div class="content-wrapper">
-                        <h4 class="h-alt">Hello!</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Info -->
-                  <div class="t-info">
-                    <h4 class="t-name">Tyler Owens</h4>
-                    <span class="t-role">Lead Designer</span>
-                  </div>
-
-                </div><!-- / .t-item -->
-              </div><!-- / .col-md-4 -->
-
-
-            </div><!-- / .row -->
-          </section><!-- / .contianer -->
 
 
         <div class="ft-centered" style="background:url(<%= image_path('back_2.png'); %>);border-top:5px #2b1006 outset;border-bottom:5px outset">
@@ -146,7 +67,167 @@
            </section><!-- / .container -->
          </div>
 
+         <div id="about" class="gray-bg">
+          <section class="container section team-3col">
+            <div class="row">
 
+              <header class="sec-heading">
+                <h2>변호사 노무사 소개</h2>
+              </header>
+
+
+              <!-- Member 1 -->
+              <div class="col-lg-4 col-md-6 mb-sm-50">
+                <div class="t-item wow fadeIn" data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
+
+                  <!-- Image -->
+                  <div class="t-image">
+                    <img src="<%= image_path('ryu_1.png') %>" alt="Team Member" class="img-responsive" style="width: 100%;">
+                    <div class="t-description">
+                      <div class="content-wrapper">
+                        <h4 class="h-alt">Hello!</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Info -->
+                  <div class="t-info">
+                    <h4 class="t-name">Philip Lee</h4>
+                    <span class="t-role">CEO &amp; Founder</span>
+                  </div>
+
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+
+
+              <!-- Member 2 -->
+              <div class="col-lg-4 col-md-6 mb-sm-50">
+                <div class="t-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeIn;">
+
+                  <!-- Image -->
+                  <div class="t-image">
+                    <img src="<%= image_path('son_1.png') %>" alt="Team Member" class="img-responsive" style="width: 100%;">
+                    <div class="t-description">
+                      <div class="content-wrapper">
+                        <h4 class="h-alt">Hello!</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Info -->
+                  <div class="t-info">
+                    <h4 class="t-name">Carol Greene</h4>
+                    <span class="t-role">Art Director</span>
+                  </div>
+
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+
+
+              <!-- Member 3 -->
+              <div class="col-lg-4 col-md-6 mb-sm-50">
+                <div class="t-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: fadeIn;">
+
+                  <!-- Image -->
+                  <div class="t-image">
+                    <img src="<%= image_path('choi_1.png') %>" alt="Team Member" class="img-responsive" style="width: 100%;">
+                    <div class="t-description">
+                      <div class="content-wrapper">
+                        <h4 class="h-alt">Hello!</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Info -->
+                  <div class="t-info">
+                    <h4 class="t-name">Tyler Owens</h4>
+                    <span class="t-role">Lead Designer</span>
+                  </div>
+
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+
+
+
+              <!-- Member 4 -->
+              <div class="col-lg-4 col-md-6 mb-sm-50">
+                <div class="t-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: fadeIn;">
+
+                  <!-- Image -->
+                  <div class="t-image">
+                    <img src="<%= image_path('choi_1.png') %>" alt="Team Member" class="img-responsive" style="width: 100%;">
+                    <div class="t-description">
+                      <div class="content-wrapper">
+                        <h4 class="h-alt">Hello!</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Info -->
+                  <div class="t-info">
+                    <h4 class="t-name">Tyler Owens</h4>
+                    <span class="t-role">Lead Designer</span>
+                  </div>
+
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+
+
+              <!-- Member 5 -->
+              <div class="col-lg-4 col-md-6 mb-sm-50">
+                <div class="t-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: fadeIn;">
+
+                  <!-- Image -->
+                  <div class="t-image">
+                    <img src="<%= image_path('choi_1.png') %>" alt="Team Member" class="img-responsive" style="width: 100%;">
+                    <div class="t-description">
+                      <div class="content-wrapper">
+                        <h4 class="h-alt">Hello!</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Info -->
+                  <div class="t-info">
+                    <h4 class="t-name">Tyler Owens</h4>
+                    <span class="t-role">Lead Designer</span>
+                  </div>
+
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+
+              <!-- Member 6 -->
+              <div class="col-lg-4 col-md-6 mb-sm-50">
+                <div class="t-item wow fadeIn" data-wow-duration="1s" data-wow-delay=".6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: fadeIn;">
+
+                  <!-- Image -->
+                  <div class="t-image">
+                    <img src="<%= image_path('choi_1.png') %>" alt="Team Member" class="img-responsive" style="width: 100%;">
+                    <div class="t-description">
+                      <div class="content-wrapper">
+                        <h4 class="h-alt">Hello!</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Info -->
+                  <div class="t-info">
+                    <h4 class="t-name">Tyler Owens</h4>
+                    <span class="t-role">Lead Designer</span>
+                  </div>
+
+                </div><!-- / .t-item -->
+              </div><!-- / .col-md-4 -->
+
+            </div><!-- / .row -->
+          </section><!-- / .contianer -->
+        </div>
          <!-- ========== Team Layout - 4 Columns ========== -->
 
          <div class="gray-bg" style="background:#ffffff">
@@ -223,103 +304,27 @@
           <section class="testimonials-3col">
             <div class="row section" style="padding-top:60px;">
               <header class="sec-heading" style="margin-bottom:30px;">
-                <span class="sub"><ins>명예훼손과 모욕죄 소송</ins>에 특화된 <br class="mb_line_break">법률서비스를 제공합니다</span>
+                <h2 style="font-weight:400" class="lead">자신의 소중한 <br class="mb_line_break">권리를 지키세요.</h2>
+                <span class="sub">노동법 전문, 생활 법률 서비스를 제공합니다.</span>
               </header>
-              <div class="col-md-6 testimonials_left no-gap">
-              <!-- Item 1 -->
-              <div class="col-md-6 col-sm-12 mb-sm-50">
-                <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
-                  <!-- Item 1 -->
-                  <div class="ft-item">
-                  <div class="ft-dark-spin">
-                  <span class="fa fa-pencil"></span>
-                  </div>
-                  </div>
-                  <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>고소장 작성</strong></span></p>
-                  <blockquote>
-
-                    <p style="letter-spacing: -1px;"><span style="color:black"><strong>사실관계가 복잡한 경우</strong></span><br><br>
-                    전문적인 고소장 작성<br>
-                    무고죄 예방<br>
-                    민사소송을 고려한 고소장 작성<br></p>
-
-                  </blockquote>
-                  <a href="/sue/category" style="text-decoration:none;color:#999">
-                  <span class="et-quote t-icon"></span>
-                  <p>자세히 보기</p></a>
-                  </a>
-                </div><!-- / .t-item -->
-              </div><!-- / .col-md-4 -->
-
-              <!-- Item 2 -->
-              <div class="col-md-6 col-sm-12 mb-sm-50 ">
-                <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
-                  <!-- Item 1 -->
-                  <div class="ft-item">
-                  <div class="ft-dark-spin">
-                  <span class="fa fa-magic"></span>
-                  </div>
-                  </div>
-                  <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>고소 대행</strong></span></p>
-                  <blockquote>
-
-                    <p style="letter-spacing: -1px;"><span style="color:black"><strong>고소부터 손해배상까지 포괄</strong></span><br><br>
-                    증거 자료 수집 및 가공<br>
-                    고소장 작성<br>
-                    합의 대행 및 민사소송<br></p>
-
-                  </blockquote>
-                  <a href="/main/lawyer.erb" style="text-decoration:none;color:#999">
-                    <span class="et-quote t-icon"></span><p>자세히 보기</p></a>
-                </div><!-- / .t-item -->
-              </div><!-- / .col-md-4 -->
-            </div>
-            <div class="col-md-6 no-gap">
-              <!-- Item 3 -->
-              <div class="col-md-6 col-sm-12 mb-sm-50 ">
-                <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
-                  <!-- Item 1 -->
-                  <div class="ft-item">
-                  <div class="ft-dark-spin">
-                  <span class="fa fa-briefcase"></span>
-                  </div>
-                  </div>
-                  <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>합의 대행</strong></span></p>
-                  <blockquote>
-                    <p style="letter-spacing: -1px;"><span style="color:black"><strong>기 고소 사건 합의 대행<br>
-                    이미 고소가 진행된 경우<br>
-                    피고소인이 다수인 경우</strong></span><br>
-                    전문 합의 대행<br>
-                    필요시 민사소송 진행</p>
-                  </blockquote>
-                  <a href="/main/lawyer.erb" style="text-decoration:none;color:#999"><span class="et-quote t-icon"></span><p>자세히 보기</p></a>
-                </div><!-- / .t-item -->
-              </div><!-- / .col-md-4 -->
-
-              <!-- Item 4 -->
-              <div class="col-md-6 col-sm-12 mb-sm-50">
-                <div class="t-item " data-wow-duration="1s" style="visibility: visible; animation-duration: 1s; animation-name: fadeIn;">
-                  <!-- Item 1 -->
-                  <div class="ft-item">
-                  <div class="ft-dark-spin">
-                  <span class="fa fa-balance-scale"></span>
-                  </div>
-                  </div>
-                  <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>민사 소송</strong></span></p>
-                  <blockquote>
-
-                    <p style="letter-spacing: -1px;"><span style="color:black"><strong>가해자와 일부 합의한 경우</strong></span><br><br>
-                    피고소인이 다수인 경우<br>
-                    최적의 손해배상액 측정<br>
-                    손해배상 소송 진행
-                    <br>
-                    </p>
-
-                  </blockquote>
-                  <a href="/main/lawyer.erb" style="text-decoration:none;color:#999"><span class="et-quote t-icon"></span><p>자세히 보기</p></a>
-                </div><!-- / .t-item -->
-              </div><!-- / .col-md-4 -->
+              <div class="col-md-4 col-sm-6 mb-sm-50 ft-item ft-dark-spin">
+                <span class="et-tools"></span>
+                <h5>Web Design</h5>
+                <p>Lorem ipsum dolor sit amet, ete elit consectetur adipisicing. Omnis quae, ipsam impedit eius, vero.</p>
               </div>
+
+              <div class="col-md-4 col-sm-6 mb-sm-50 ft-item ft-dark-spin">
+                <span class="et-tools"></span>
+                <h5>Web Design</h5>
+                <p>Lorem ipsum dolor sit amet, ete elit consectetur adipisicing. Omnis quae, ipsam impedit eius, vero.</p>
+              </div>
+
+              <div class="col-md-4 col-sm-6 mb-sm-50 ft-item ft-dark-spin">
+                <span class="et-tools"></span>
+                <h5>Web Design</h5>
+                <p>Lorem ipsum dolor sit amet, ete elit consectetur adipisicing. Omnis quae, ipsam impedit eius, vero.</p>
+              </div>
+
             </div><!-- / .row -->
           </section><!-- / .container -->
         </div>
@@ -334,7 +339,7 @@
           <div class="row blog-classic no-margin">
             <div class="col-md-12 no-gap bad_reply_left" style="padding-top:60px">
               <header class="sec-heading" style="margin-bottom:0px">
-                <h2 style="font-weight:400" class="lead">악플수집 서비스</h2>
+                <h2 style="font-weight:400" class="lead">대처방안 및 단계별 소송절차</h2>
               </header>
 
               <div class="col-md-12 testimonials-3col ft-centered no-gap" style="padding:0 15px;">
@@ -398,21 +403,16 @@
                   </div><!-- / .t-item -->
                 </div><!-- / .col-md-4 -->
               </div>
-              <div class="col-md-12 text-center" style="margin-bottom:60px;">
-                <h3 class="sub" style="margin-top:45px;margin-bottom:-15px;">고소미닷컴은 주요 인터넷 커뮤니티의<br class="mb_line_break"> 악플을 자동으로 수집하는<br><ins>악플 수집 프로그램</ins>을 보유하고 있습니다.</h3>
-                <div class="col-md-6 col-md-offset-3 ft-img-container" style="text-align:center;">
-                              <img src="<%= image_url('reply_bot.png') %>" style="width:100%" class="ft-img">
-                </div>
-                <div class="col-md-6 col-md-offset-3 text-center">
-                  <div class="col-md-12">
-                      <a href="/sue/query" style="width:100%" class="btn">서비스 신청하기</a>
-                  </div>
-                </div>
-              </div>
-
             </div><!-- col-md-12 -->
           </div><!-- row -->
         </section>
+
+        <div class="col-md-12" style="padding: 0px 45px;">
+          <hr style="border: 1px solid #ccc">
+          <hr style="border: 1px solid #ccc;margin-top:1.5px;">
+        </div>
+
+
         <div class="cta-link">
           <div class="bg-overlay">
 
@@ -484,7 +484,6 @@
           console.log('logo',standard_height3);
           $('.consumer_image_left').css('padding-top',sum1).css('padding-bottom',sum1);
           $('.consumer_image_right').css('padding-top',sum2).css('padding-bottom',sum2);
-
         }
         // 소비자 만족도 이미지 조절
         // 악플 제보현황
@@ -502,7 +501,6 @@
                             clearInterval(countup);
                             }
                     }, 70);
-
             }
         // 악플 제보현황
         //
@@ -532,16 +530,11 @@
         // 악플서비스 진행과정
         // 새로고침
           function ReplyRefresh(){
-
           $('#refresh').on('click',function(){
-
-
             $('#refresh').find('i').addClass("fa-spin");
-
               setTimeout(function(){
                 $('#refresh').find('i').removeClass("fa-spin");
               }, 1000)
-
           })
           }
         // 새로고침
@@ -571,7 +564,6 @@
                 user_password_confirmation.style.backgroundColor = badColor;
                 message.style.color = badColor;
                 message.innerHTML = "비밀번호가 일치하지 않습니다!"
-
             }
           }
         //비밀번호 체크

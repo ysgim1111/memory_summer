@@ -86,27 +86,11 @@
             <ul class="nav navbar-nav">
               <li><a><span class="sr-only"></span></a></li>
               <li><a style="font-size: 1.0em;" href="/sue/category">법인 소개<span class="sr-only"></span></a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li><a href="#">Separated link</a></li>
-                </ul>
-              </li>
               <li><a style="font-size: 1.0em;cursor:pointer" href="/main/lawyer">내용증명<span class="sr-only"></span></a></li>
               <li><a style="font-size: 1.0em;" href="/main/intro">자가진단 기능<span class="sr-only"></span></a></li>
               <li><a style="font-size: 1.0em;" href="/receive/gosomi_choice">대표사례 및 판례<span class="sr-only"></span></a></li>
               <li><a style="font-size: 1.0em;" href="/main/self">대처방안<span class="sr-only"></span></a></li>
               <li><a style="font-size: 1.0em;" href="/qna/index">변호사 상담<span class="sr-only"></span></a></li>
-              <!--<li><a style="font-size: 1.0em;" href="/hws/index">해우소<span class="sr-only"></span></a></li>-->
-              <%if user_signed_in?%>
-              <li><a style="font-size: 1.0em;cursor:pointer" id="nav_logout">로그아웃<span class="sr-only"></span></a></li>
-              <% else %>
-              <li><a style="font-size: 1.0em;" href="/main/sign_in">로그인<span class="sr-only"></span></a></li>
-              <% end %>
             </ul><!-- / .nav .navbar-nav -->
           </div><!--/.navbar-collapse -->
         </nav><!-- / .navbar -->

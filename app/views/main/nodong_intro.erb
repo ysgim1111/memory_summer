@@ -1,0 +1,82 @@
+  <style>
+    .ui-state-active > a {
+      background: #337ab7;
+      color: #ffffff;
+    }
+    .nav > li > a:focus {
+      background: #337ab7;
+      color: #ffffff;
+    }
+  </style>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+  } );
+  </script>
+        <header style="background:url(http://ademkliniek.eu/wp-content/uploads/2015/04/consultation1.jpg);background-size:cover;background-position:0% 50%;padding-bottom:100px" class="page-title pt-large pt-dark pt-plax-lg-dark mb_side_pd_0">
+            <div class="container">
+              <div class="row">
+
+                <div class="col-md-12" style="text-align:center">
+                  <h1 class="lead" style="font-family:'Nanum Myeongjo'">법인 소개 </h1>
+                  <p class="sub">캐치프레이즈</p>
+                </div>
+              </div>
+            </div>
+        </header>
+
+        <!-- ========== Features - Cards ========== -->
+
+      <div class="gray-bg" style="background:#fff">
+        <section class="container ft-steps-numbers ft-centered">
+          <div class="row section" style="padding-top:60px" id="tabs">
+            <div class="col-md-3">
+              <h3>법인 소개</h3>
+              <hr style="border:1px solid #ececec;margin-bottom:15px;">
+              <ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+                <li role="presentation"><a href="#tabs-1">인사말</a></li>
+                <li role="presentation"><a href="#tabs-2">구성원 소개</a></li>
+                <li role="presentation"><a href="#tabs-3">업무 분야</a></li>
+              </ul>
+            </div>
+            <div class="col-md-9" id="tabs-1">
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">인사말</h3>
+                  </div>
+                  <div class="panel-body">
+                    Panel content
+                  </div>
+                </div>
+              </div><!-- / .col-md-12 -->
+            </div>
+            <div class="col-md-9" id="tabs-2">
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">구성원 소개</h3>
+                  </div>
+                  <div class="panel-body">
+                    Panel content
+                  </div>
+                </div>
+              </div><!-- / .col-md-12 -->
+            </div>
+            <div class="col-md-9" id="tabs-3">
+              <div class="col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">업무 분야</h3>
+                  </div>
+                  <div class="panel-body">
+                    Panel content
+                  </div>
+                </div>
+              </div><!-- / .col-md-12 -->
+            </div>
+          </div><!-- / .row -->
+        </section>
+		  </div>
