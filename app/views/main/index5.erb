@@ -21,12 +21,12 @@
                         <input style="display:none" value="<%=Consult.count %>" id="goso_count" type="number">
                             <h4 class="lead">건전한 노사관계를 지향합니다.</small></h4>
                     </div>
-                    <div class="col-md-7 mb_side_pd_0 main_left">
-                      <div class="col-md-12 sub_two">
+                    <div class="col-md-12 mb_side_pd_0 main_left">
+                      <div class="col-md-12 sub_two no-gap">
                         <!-- Item 1 -->
                           <ul style="padding-top:50px;">
 
-                            <li class="further col-md-12">
+                            <li class="further col-md-4 text-center">
                               <i class="fa fa-magic fa-lg" style="color:white"></i>
                               <div>
                               <span class="hd">내용증명</span>
@@ -35,11 +35,20 @@
                               </div>
                             </li>
 
-                            <li class="further col-md-12">
+                            <li class="further col-md-4 text-center">
                               <i class="fa fa-reply fa-lg" style="color:white"></i>
                               <div>
                               <span class="hd">자가 진단</span>
                               <span class="hd_sub" style="margin-bottom:10px;">자가 진단을 할 수 있습니다.</span>
+                              <button class="btn-ghost-light btn-small">페이지 이동</button>
+                              </div>
+                            </li>
+
+                            <li class="further col-md-4 text-center">
+                              <i class="fa fa-reply fa-lg" style="color:white"></i>
+                              <div>
+                              <span class="hd">변호사 상담</span>
+                              <span class="hd_sub" style="margin-bottom:10px;">변호사 상담을 할 수 있습니다.</span>
                               <button class="btn-ghost-light btn-small">페이지 이동</button>
                               </div>
                             </li>
@@ -147,34 +156,52 @@
                      <h1 class="spacing_adj"><br class="mb_line_break">최고의 인력과 함께합니다</h1>
 
                            <div class="row lawyer_4cols">
-                             <div class="col-md-3" style="text-align:center">
-                               <div class="col-md-12">
-                                 <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('ryu_1.png') %>">
-                                 <h3><i class="fa fa-suitcase"></i> 류태근 변호사</h3>
-                                 <a target="_blank" href="/main/류태근 변호사.erb">자세히 보기</a>
+                             <div class="col-md-6">
+                               <div class="col-md-6" style="text-align:center">
+                                 <div class="col-md-12">
+                                   <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('ryu_1.png') %>">
+                                   <h3><i class="fa fa-suitcase"></i> 류태근 변호사</h3>
+                                   <a target="_blank" href="/main/류태근 변호사.erb">자세히 보기</a>
+                                 </div>
                                </div>
-                             </div>
-                             <div class="col-md-3" style="text-align:center">
-                               <div class="col-md-12">
-                                 <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('son_1.png') %>">
-                                 <h3><i class="fa fa-suitcase"></i> 손수혁 변호사 </h3>
-                                 <a target="_blank" href="/main/손수혁 변호사.erb">자세히 보기</a>
-                              </div>
-                             </div>
-                             <div class="col-md-3" style="text-align:center">
-                               <div class="col-md-12">
-                                 <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('park_1.png') %>">
-                                 <h3><i class="fa fa-suitcase"></i> 박건일 변호사 </h3>
-                                 <a target="_blank" href="/main/박건일 변호사.erb">자세히 보기</a>
+                               <div class="col-md-6" style="text-align:center">
+                                 <div class="col-md-12">
+                                   <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('son_1.png') %>">
+                                   <h3><i class="fa fa-suitcase"></i> 손수혁 변호사 </h3>
+                                   <a target="_blank" href="/main/손수혁 변호사.erb">자세히 보기</a>
+                                </div>
                                </div>
-                             </div>
-                             <div class="col-md-3" style="text-align:center">
-                               <div class="col-md-12">
-                                 <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('choi_1.png') %>">
-                                 <h3><i class="fa fa-suitcase"></i> 최용문 변호사 </h3>
-                                 <a target="_blank" href="/main/최용문 변호사.erb">자세히 보기</a>
+                               <div class="col-md-6" style="text-align:center">
+                                 <div class="col-md-12">
+                                   <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('park_1.png') %>">
+                                   <h3><i class="fa fa-suitcase"></i> 박건일 변호사 </h3>
+                                   <a target="_blank" href="/main/박건일 변호사.erb">자세히 보기</a>
+                                 </div>
                                </div>
-                             </div>
+                               <div class="col-md-6" style="text-align:center">
+                                 <div class="col-md-12">
+                                   <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('choi_1.png') %>">
+                                   <h3><i class="fa fa-suitcase"></i> 최용문 변호사 </h3>
+                                   <a target="_blank" href="/main/최용문 변호사.erb">자세히 보기</a>
+                                 </div>
+                               </div>
+                             </div><!-- .col-md-6 -->
+                             <div class="col-md-6">
+                               <div class="col-md-12" style="border:none;">
+                                    <h3 class="sub lawyer_feature">#변호사 노무사의 시너지</h3>
+                                    <div class="text-left" style="text-align:center">
+                                       <h3 style="padding:0px;"> <i class="fa fa-caret-square-o-right" style="position:relative"></i>합리적인 수임료</h3>
+                                       <h3 style="padding:0px;"> <i class="fa fa-caret-square-o-right" style="position:relative"></i>유명인 악플 및 평판 관리대행</h3>
+                                    </div>
+                               </div>
+                               <div class="col-md-12" style="border:none;">
+                                    <h3 class="sub lawyer_feature">#주요 약력</h3>
+                                    <div class="text-left">
+                                      <i class="fa fa-caret-square-o-right"></i> <h3> 모욕죄에 해당하는 악성 댓글 원칙적으로 엄정 처벌</h3>
+                                      <i class="fa fa-caret-square-o-right" style="margin-top:10px;"></i> <h3> 특정인에 대한 비하·욕설 등이 포함된 악성 댓글 원칙적으로 기소</h3>
+                                    </div>
+                               </div>
+                             </div><!-- .col-md-6 -->
                            </div><!-- .row -->
 
                      </div>
@@ -188,7 +215,7 @@
 
 
 
-         <div id="testimonials" class="gray-bg ft-centered" style="background:#ffffff">
+         <!--<div id="testimonials" class="gray-bg ft-centered" style="background:#ffffff">
             <section class="testimonials-3col">
               <div class="row section" style="padding-top:60px;">
                 <header class="sec-heading" style="margin-bottom:30px;">
@@ -209,9 +236,9 @@
                   <a href="#" class="btn">페이지 이동</a>
                 </div>
 
-              </div><!-- / .row -->
-            </section><!-- / .container -->
-          </div>
+              </div> .row
+            </section><! / .container 
+          </div>-->
 
           <div class="col-md-12" style="padding: 0px 45px;">
             <hr style="border: 1px solid #ccc">
@@ -238,11 +265,11 @@
                      <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>내용 증명</strong></span></p>
                      <blockquote>
 
-                       <p style="letter-spacing: -1px;"><span style="color:black"><strong>사실관계가 복잡한 경우</strong></span><br><br>
-                       전문적인 고소장 작성<br>
-                       무고죄 예방<br>
-                       민사소송을 고려한 고소장 작성<br></p>
-
+                       <p style="letter-spacing: -1px;"><span style="color:black"><strong>변호사의 명의로 부당해고 사실을 알려, 회사에 법적 검토를 고려한다는 것을 알리는 것입니다.</strong></span><br><br>
+                       변호사 명의 내용증명<br>
+                       법적 절차 진입 고지<br>
+                       보다 유리한 위치에서 협상을 진행<br>
+                      </p>
                      </blockquote>
                      <a href="/sue/category" style="text-decoration:none;color:#999">
                      <span class="et-quote t-icon"></span>
@@ -263,11 +290,10 @@
                        </div>
                        <p style="font-size:1.5em;line-height: 1.5;"><span style="color:black"><strong>자가 진단</strong></span></p>
                        <blockquote>
-                         <p style="letter-spacing: -1px;"><span style="color:black"><strong>기 고소 사건 합의 대행<br>
-                         이미 고소가 진행된 경우<br>
-                         피고소인이 다수인 경우</strong></span><br>
-                         전문 합의 대행<br>
-                         필요시 민사소송 진행</p>
+                         <p style="letter-spacing: -1px;"><span style="color:black"><strong>10분만의 설문만으로 부당해고 여부 판별과 내용증명서가 자동 완성됩니다<br>
+                         </strong></span><br><br>
+                         빠르고 효과적인 대응<br>
+                         필요시 민사소송 진행<br> </p>
                        </blockquote>
                        <a href="/main/lawyer.erb" style="text-decoration:none;color:#999"><span class="et-quote t-icon"></span><p>자세히 보기</p></a>
                      </div><!-- / .t-item -->
