@@ -17,7 +17,7 @@
                   <div class="row" style="margin-top:0px">
                     <!-- Heading -->
                     <div style="padding-right:0px;text-align:center;" class="col-md-12 heading-wrapper " data-wow-duration="1.5s" data-wow-delay=".7s">
-                      <img src="<%= image_path('gosomi_logo_beta.png') %>">
+                      <img src="<%= image_path('nodongja_logo_w.png') %>">
                         <input style="display:none" value="<%=Consult.count %>" id="goso_count" type="number">
                             <h4 class="lead">건전한 노사관계를 지향합니다.</small></h4>
                     </div>
@@ -25,33 +25,40 @@
                       <div class="col-md-12 sub_two no-gap">
                         <!-- Item 1 -->
                           <ul style="padding-top:50px;">
-
-                            <li class="further col-md-4 text-center">
+                          <div class="col-md-4">
+                            <li class="further col-md-12 text-center">
                               <i class="fa fa-magic fa-lg" style="color:white"></i>
                               <div>
                               <span class="hd">내용증명</span>
                               <span class="hd_sub" style="margin-bottom:10px;">내용증명을 할 수 있습니다</span>
-                              <button class="btn-ghost-light btn-small">페이지 이동</button>
+                              <button class="btn-ghost-light btn-small width_full">페이지 이동</button>
                               </div>
                             </li>
+                          </div>
 
-                            <li class="further col-md-4 text-center">
-                              <i class="fa fa-reply fa-lg" style="color:white"></i>
+                          <div class="col-md-4">
+                            <li class="further col-md-12 text-center">
+                              <i class="fa fa-magic fa-lg" style="color:white"></i>
                               <div>
-                              <span class="hd">자가 진단</span>
-                              <span class="hd_sub" style="margin-bottom:10px;">자가 진단을 할 수 있습니다.</span>
-                              <button class="btn-ghost-light btn-small">페이지 이동</button>
+                              <span class="hd">자가진단</span>
+                              <span class="hd_sub" style="margin-bottom:10px;">자가진단을 할 수 있습니다</span>
+                              <button class="btn-ghost-light btn-small width_full">페이지 이동</button>
                               </div>
                             </li>
+                          </div>
 
-                            <li class="further col-md-4 text-center">
-                              <i class="fa fa-reply fa-lg" style="color:white"></i>
+                          <div class="col-md-4">
+                            <li class="further col-md-12 text-center">
+                              <i class="fa fa-magic fa-lg" style="color:white"></i>
                               <div>
                               <span class="hd">변호사 상담</span>
-                              <span class="hd_sub" style="margin-bottom:10px;">변호사 상담을 할 수 있습니다.</span>
-                              <button class="btn-ghost-light btn-small">페이지 이동</button>
+                              <span class="hd_sub" style="margin-bottom:10px;">변호사상담을 할 수 있습니다</span>
+                              <button class="btn-ghost-light btn-small width_full">페이지 이동</button>
                               </div>
                             </li>
+                          </div>
+
+
 
                           </ul>
                       </div>
@@ -96,12 +103,13 @@
        .further {
          display: block;
          margin-bottom: 30px;
-         padding: 7px 0 7px 20px;
+         padding: 40px 30px;
          border-left: 5px solid #ffffff;
+         border-right: 5px solid #ffffff;
          border-top : 1px solid #ffffff;
-         border-right: 1px solid #ffffff;
          border-bottom: 1px solid #ffffff;
-         text-align:left;
+         text-align:center;
+         border-radius: 5px;
        }
        .hd {
          display: block;
@@ -133,7 +141,7 @@
                   </div>
                  </div>
                  <div class="col-md-4 consumer_image_right no-gap">
-                   <h2 class="sub">담당분야<br><br><span class="sub_sub cs_sub">[명예훼손/모욕/사이버스토킹/협박]</span></h2>
+                   <h2 class="sub">담당분야<br><br><span class="sub_sub cs_sub">[ 부당해고 / 정리해고 ]</span></h2>
                  </div>
 
                </header>
@@ -157,45 +165,60 @@
 
                            <div class="row lawyer_4cols">
                              <div class="col-md-6">
-                               <div class="col-md-6" style="text-align:center">
+                               <div class="col-md-4" style="text-align:center">
                                  <div class="col-md-12">
                                    <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('ryu_1.png') %>">
                                    <h3><i class="fa fa-suitcase"></i> 류태근 변호사</h3>
                                    <a target="_blank" href="/main/류태근 변호사.erb">자세히 보기</a>
                                  </div>
                                </div>
-                               <div class="col-md-6" style="text-align:center">
+                               <div class="col-md-4" style="text-align:center">
                                  <div class="col-md-12">
                                    <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('son_1.png') %>">
                                    <h3><i class="fa fa-suitcase"></i> 손수혁 변호사 </h3>
                                    <a target="_blank" href="/main/손수혁 변호사.erb">자세히 보기</a>
                                 </div>
                                </div>
-                               <div class="col-md-6" style="text-align:center">
+                               <div class="col-md-4" style="text-align:center">
                                  <div class="col-md-12">
                                    <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('park_1.png') %>">
                                    <h3><i class="fa fa-suitcase"></i> 박건일 변호사 </h3>
                                    <a target="_blank" href="/main/박건일 변호사.erb">자세히 보기</a>
                                  </div>
                                </div>
-                               <div class="col-md-6" style="text-align:center">
+                               <div class="col-md-4" style="text-align:center">
                                  <div class="col-md-12">
-                                   <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('choi_1.png') %>">
-                                   <h3><i class="fa fa-suitcase"></i> 최용문 변호사 </h3>
-                                   <a target="_blank" href="/main/최용문 변호사.erb">자세히 보기</a>
+                                   <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('ryu_1.png') %>">
+                                   <h3><i class="fa fa-suitcase"></i> 류태근 변호사</h3>
+                                   <a target="_blank" href="/main/류태근 변호사.erb">자세히 보기</a>
                                  </div>
                                </div>
+                               <div class="col-md-4" style="text-align:center">
+                                 <div class="col-md-12">
+                                   <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('son_1.png') %>">
+                                   <h3><i class="fa fa-suitcase"></i> 손수혁 변호사 </h3>
+                                   <a target="_blank" href="/main/손수혁 변호사.erb">자세히 보기</a>
+                                </div>
+                               </div>
+                               <div class="col-md-4" style="text-align:center">
+                                 <div class="col-md-12">
+                                   <img style="border-radius:100px;border:10px solid #f8f8f8;box-shadow:5px 5px 5px gray;" src="<%= image_path('park_1.png') %>">
+                                   <h3><i class="fa fa-suitcase"></i> 박건일 변호사 </h3>
+                                   <a target="_blank" href="/main/박건일 변호사.erb">자세히 보기</a>
+                                 </div>
+                               </div>
+
                              </div><!-- .col-md-6 -->
                              <div class="col-md-6">
                                <div class="col-md-12" style="border:none;">
                                     <h3 class="sub lawyer_feature">#변호사 노무사의 시너지</h3>
-                                    <div class="text-left" style="text-align:center">
-                                       <h3 style="padding:0px;"> <i class="fa fa-caret-square-o-right" style="position:relative"></i>합리적인 수임료</h3>
-                                       <h3 style="padding:0px;"> <i class="fa fa-caret-square-o-right" style="position:relative"></i>유명인 악플 및 평판 관리대행</h3>
+                                    <div class="text-left">
+                                       <h3 style="padding:0px;" class="text-left"> <i class="fa fa-caret-square-o-right" style="position:relative"></i>합리적인 수임료</h3>
+                                       <h3 style="padding:0px;"> <i class="fa fa-caret-square-o-right" style="position:relative"></i>노동법률 특화 솔루션</h3>
                                     </div>
                                </div>
                                <div class="col-md-12" style="border:none;">
-                                    <h3 class="sub lawyer_feature">#주요 약력</h3>
+                                    <h3 class="sub lawyer_feature" class="text-left">#주요 약력</h3>
                                     <div class="text-left">
                                       <i class="fa fa-caret-square-o-right"></i> <h3> 모욕죄에 해당하는 악성 댓글 원칙적으로 엄정 처벌</h3>
                                       <i class="fa fa-caret-square-o-right" style="margin-top:10px;"></i> <h3> 특정인에 대한 비하·욕설 등이 포함된 악성 댓글 원칙적으로 기소</h3>
@@ -237,7 +260,7 @@
                 </div>
 
               </div> .row
-            </section><! / .container 
+            </section><! / .container
           </div>-->
 
           <div class="col-md-12" style="padding: 0px 45px;">
@@ -246,7 +269,7 @@
           </div>
 
 
-          <div id="testimonials" class="gray-bg ft-centered" style="background:#ffffff">
+          <div id="testimonials" class="gray-bg ft-centered container" style="background:#ffffff">
              <section class="testimonials-3col">
                <div class="row section" style="padding-top:60px;">
                  <header class="sec-heading" style="margin-bottom:30px;">

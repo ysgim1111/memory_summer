@@ -928,6 +928,10 @@
 
 @media (max-width: 770px) {
   /*추가 */
+  .width_full_mb {
+    width: 100%;
+    max-width: none;
+  }
   .sue_query_form {
     padding-left:15px !important;
     padding-right:15px !important;;
