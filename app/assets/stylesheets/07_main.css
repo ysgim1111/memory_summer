@@ -929,6 +929,9 @@ _____________________________________________________
   font-size: 13px;
   letter-spacing: 0.2px;
 }
+.sub_sub.four_btn_header {
+  font-size: 16px;
+}
 .cs_sub {
   font-size: 25px !important;
   letter-spacing: 0.2px;
@@ -988,7 +991,7 @@ _____________________________________________________
 }
 /*추가 끝*/
 .sub_two {
-  padding: 0px 80px;
+  padding: 0px;
 }
 hr {
   margin-top: 0;
@@ -3224,7 +3227,7 @@ fieldset[disabled] .form-control:hover {
 }
 
 .ft-cards .ft-item p {
-  padding: 0;
+  padding: 10px 0px;
   margin: 0;
 }
 
