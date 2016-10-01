@@ -173,6 +173,15 @@ _____________________________________________________
 -------------------------------------------------- */
 /*@import url(https://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
 /*@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+/* certifiate */
+.certificate .certificate_img > img {
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  transform: translateY(-10px);
+  box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
+  width:100%;max-height:607px;
+  }
+/* certifiate */
 
 /* condition */
 .ft-steps-numbers.condition_tip .ft-item.year_tip .ft-nbr{
