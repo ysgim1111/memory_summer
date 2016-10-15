@@ -1,7 +1,10 @@
 class SueController < ApplicationController
     before_action :authenticate_user!, only: [:new, :show, :edit, :cate1, :cate2, :create1]
     before_filter :require_permission, only: [:edit_confirm, :delete, :deletes]
-    
+
+    def self_check
+        render layout: false
+    end
     def sue_sns
         render layout: false
     end
@@ -14,29 +17,29 @@ class SueController < ApplicationController
     def sue_game
         render layout: false
     end
-    
+
     def sue_loan
         render layout: false
     end
-    
+
     def sue_force
         render layout: false
     end
-    
+
     def sue_forgery
         render layout: false
     end
-    
+
     def agreement
-    
+
     end
-    
+
     def write_agreement
-    
+
     end
-    
+
     def create1
-        
+
         dbdb=Sueform.find(params[:id])
         dbdb.police_name = params[:police_name]
         if params[:sue_sort]
@@ -57,7 +60,7 @@ class SueController < ApplicationController
         dbdb.sig_src = params[:sig_src]
         dbdb.post_code = params[:post_code]
         dbdb.address1 = params[:address1]
-        dbdb.address2 = params[:address2] 
+        dbdb.address2 = params[:address2]
         dbdb.sue_reason = params[:sue_reason]
         dbdb.sue_content = params[:sue_content]
         dbdb.evidence = params[:evidence]
@@ -87,26 +90,26 @@ class SueController < ApplicationController
             end
         end
         dbdb.save
-        
+
         unless params[:sueimg].nil?
             params[:sueimg].each do |a|
-                dbdb=Sueimg.new            
+                dbdb=Sueimg.new
                 dbdb.sueform_id=params[:id]
                 dbdb.sueimg=a
-                dbdb.save           
+                dbdb.save
             end
         end
-                       
+
         redirect_to "/sue/show/#{params[:id]}"
-    end 
-    
+    end
+
     def edit_test
         @db = Sueform.all
         render layout: false
     end
-    
+
     def edit_confirm
-        
+
         dbdb=Sueform.find(params[:id])
         dbdb.police_name = params[:police_name]
         dbdb.you_url = params[:you_url]
@@ -116,26 +119,26 @@ class SueController < ApplicationController
         dbdb.my_name = params[:my_name]
         dbdb.my_game_name = params[:my_game_name]
         dbdb.my_phone = params[:my_phone]
-        
+
         dbdb.post_code = params[:post_code]
         dbdb.address1 = params[:address1]
-        dbdb.address2 = params[:address2] 
-        
+        dbdb.address2 = params[:address2]
+
         dbdb.sue_reason = params[:sue_reason]
-        dbdb.sue_content = params[:sue_content]  
-        
+        dbdb.sue_content = params[:sue_content]
+
         dbdb.save
         unless params[:sueimg].nil?
             params[:sueimg].each do |a|
-                dbdb=Sueimg.new            
+                dbdb=Sueimg.new
                 dbdb.sueform_id=params[:id]
                 dbdb.sueimg=a
-                dbdb.save           
+                dbdb.save
             end
         end
         redirect_to "/sue/show/#{params[:id]}"
     end
-    
+
     def cate1
         if params[:choice]=='insult'
             db=Sueform.new
@@ -166,7 +169,7 @@ class SueController < ApplicationController
             redirect_to "/sue/sue_force/#{@idid}"
         end
     end
-    
+
     def cate2
         if params[:choice]=='community'
             dbdb=Sueform.find(params[:id])
@@ -201,26 +204,26 @@ class SueController < ApplicationController
         dbdb=Sueform.find(params[:id])
         dbdb.destroy
         redirect_to "/main/mypage"
-    end            
+    end
     def delete
         dbdb=Sueimg.find(params[:id])
         dbdb.destroy
         redirect_to "/sue/edit_test/#{dbdb.sueform_id}"
-    end       
+    end
     def show
-        
+
         if dbdb=Sueform.where(:id => params[:id]).nil?
             redirect_to '/'
         else
-            if current_user == Sueform.find(params[:id]).user || current_user.check == 1 
+            if current_user == Sueform.find(params[:id]).user || current_user.check == 1
                 dbdb=Sueform.where(:id => params[:id]).take
             else
                 redirect_to '/'
             end
-        end        
-    end    
-        
-    
+        end
+    end
+
+
     def edit
         dbdb=Sueform.where(:id => params[:id]).take
         if dbdb.nil?
@@ -229,18 +232,18 @@ class SueController < ApplicationController
             unless dbdb.user_id == current_user.id
                 redirect_to '/'
             end
-            render layout: false                                    
+            render layout: false
         end
-    end    
-    def complete 
+    end
+    def complete
         @p = Sueform.find(params[:id])
     end
-    
-    
+
+
     private
     def require_permission
-    
-      if current_user != Sueform.find(params[:id]).user   
+
+      if current_user != Sueform.find(params[:id]).user
         flash[:notice] = "권한이 없습니다."
         redirect_to root_path
       end

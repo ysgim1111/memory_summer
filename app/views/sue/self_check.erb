@@ -1,0 +1,751 @@
+<%dbdb=Sueform.find(params[:id])%>
+<%= render 'sue/forward' %>
+<section class="container" id="main" style="padding-bottom:0px">
+<!-- Start Survey container -->
+<div id="survey_container" style="margin-top:100px">
+<style>
+.ui-widget-header {
+    background: #CFD20C;
+}
+</style>
+<style>
+  .styled-select {
+  border: 2px solid rgb(136, 130, 125) !important;
+  background-color:white !important;
+  }
+  .styled-select select {
+  border: none !important;
+  }
+
+
+  input.form-control, textarea.form-control {
+  border: 2px solid rgb(136, 130, 125);
+  background-color: white !important;
+  }
+  		    .strike {
+      display: block;
+      text-align: center;
+      overflow: hidden;
+      white-space: nowrap;
+  }
+
+  .strike > span {
+      position: relative;
+      display: inline-block;
+  }
+
+  .strike > span:before,
+  .strike > span:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 9999px;
+      height: 1px;
+      background: #777;
+  }
+
+  .strike > span:before {
+      right: 100%;
+      margin-right: 15px;
+  }
+
+  .strike > span:after {
+      left: 100%;
+      margin-left: 15px;
+  }
+  </style>
+
+
+  	<div id="top-wizard" style="background-color:#402E1F">
+  		<strong style="color:white">Progress<span id="location"></span></strong>
+  		<div id="progressbar"></div>
+  		<div class="shadow"></div>
+  	</div><!-- end top-wizard -->
+
+
+    <!--첨부파일 끝-->
+    <form class="new_test" id="police_form" enctype="multipart/form-data"  action="/sue/create1/<%=params[:id]%>" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <!--첨부파일-->
+
+    	<div id="middle-wizard" class="over_self">
+        <!-- first wizard -->
+    		<div class="step">
+    			<div class="row">
+    				<div class="col-md-6">
+            	<h3 class="check_header">회사명</h3>
+    					<ul class="data-list">
+    						<li>
+    						  <input type="text" class=" form-control sbj_select" name="firm_name" placeholder="회사명을 입력해주세요">
+    						</li>
+    					</ul>
+    				</div><!-- col-md-6 -->
+            <div class="col-md-6">
+              <h3 class="check_header">근로자 수</h3>
+    					<ul class="data-list">
+    						<li>
+    						  <input type="text" class=" form-control sbj_select" name="firm_name" placeholder="근로자 수를 입력해주세요">
+    						</li>
+    					</ul>
+    				</div><!-- end col-md-6 -->
+    			</div>
+    			<div class="row">
+            <div class="col-md-6">
+              <h3 class="check_header">직업 및 직책</h3>
+    					<ul class="data-list">
+    						<li>
+    						  <input type="text" class=" form-control sbj_select" name="firm_name" placeholder="직업 및 직책을 입력해주세요">
+    						</li>
+    					</ul>
+    				</div><!-- end col-md-6 -->
+            <div class="col-md-12">
+              <h3 class="check_header">계약형태</h3>
+              <ul class="data-list ob_question floated clearfix">
+    					    <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="regular">
+    					         <label class="label_gender">정규직</label>
+    					    </li>
+    					    <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="contract">
+    					         <label class="label_gender">계약직</label>
+    					    </li>
+                  <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">수습</label>
+    					    </li>
+    					    <li class="obj_etc_parent" style="margin-bottom:22px;width:100%;" >
+    					         <input name="first_check" type="radio" class=" check_radio">
+    					         <label id="checking2" class="label_gender">기타</label>
+    					         <input type="text"  style="display: inline-block;"name="sns_etc" class="form-control obj_etc col-md-10" placeholder="그렇게 생각하는 이유를 적어주세요">
+    					    </li>
+    					</ul>
+            </div>
+            <div class="col-md-12 no-gap">
+            <div class="col-md-6 col-md-offset">
+              <h3 class="check_header">기본급 및 고정급 유무</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li style="margin-bottom:22px" class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 있음</label>
+    					    </li>
+    					    <li style="margin-bottom:22px" class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 없음</label>
+    					    </li>
+                  <input type="text" name="my_duo_relation" class="x_pop form-control" placeholder="본인과의 관계를 입력해 주세요 ex)직장동료,친구,선후배">
+    					</ul>
+    				</div><!-- end col-md-6 -->
+            </div>
+            <div class="col-md-6">
+              <h3 class="check_header">근무기간</h3>
+    					<ul class="data-list">
+    						<li>
+    						  <input type="text" class=" form-control sbj_select" name="firm_name" placeholder="Ex) 3개월, 10년 등..">
+    						</li>
+    					</ul>
+    				</div><!-- end col-md-6 -->
+            <div class="col-md-6">
+              <h3 class="check_header">해고날짜</h3>
+			        <div class="col-md-9" style="padding-left:0px">
+				        <ul class="data-list">
+					        <li>
+                    <input type="text" readonly placeholder="날짜를 입력해주세요" class="auto_ form-control" name="target_date">
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-3 no-gap">
+                <input type="button" style="height:44px" value="달력보기" class="btn btn-warning width_full" onClick="datePicker(event,'target_date')">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <h3 class="check_header">업무내용</h3>
+    					<ul class="data-list">
+    						<li>
+                  <textarea name="work" rows="4" class="form-control self_textarea" placeholder="근무시간 근무장소 업무내용 등의 전반적인 사항을 간략하게 적어주세요"></textarea>
+    						</li>
+    					</ul>
+    				</div><!-- end col-md-12 -->
+            <div class="col-md-12 no-gap">
+              <div class="col-md-6 col-md-offset">
+                <h3 class="check_header">근로소득세 원천징수 유무</h3>
+      					<ul class="data-list floated ob_question clearfix">
+      					    <li style="margin-bottom:22px" class="ox_condition_o">
+      					         <input name="gender" type="radio" class=" check_radio" value="yes">
+      					         <label class="label_gender"> 있음</label>
+      					    </li>
+      					    <li style="margin-bottom:22px" class="ox_condition_x">
+      					         <input name="gender" type="radio" class=" check_radio" value="no">
+      					         <label class="label_gender"> 없음</label>
+      					    </li>
+                    <input type="text" name="my_duo_relation" class="x_pop form-control" placeholder="본인과의 관계를 입력해 주세요 ex)직장동료,친구,선후배">
+      					</ul>
+      				</div><!-- end col-md-6 -->
+            </div>
+
+            <div class="col-md-6 condition_set">
+              <h3 class="check_header">30일 전에 해고통보 유무</h3>
+    					<ul class="data-list floated ob_question clearfix add_condition">
+    					    <li style="margin-bottom:22px" class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 있음</label>
+    					    </li>
+    					    <li style="margin-bottom:22px" class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 없음</label>
+    					    </li>
+                  <input type="text" name="my_duo_relation" class="x_pop form-control" placeholder="본인과의 관계를 입력해 주세요 ex)직장동료,친구,선후배">
+    					</ul>
+    				</div>
+            <!-- 조건부 -->
+            <div class="col-md-6 condition_pop">
+              <h3 class="check_header">해고 예고수당 수령 여부</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li style="margin-bottom:22px" class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 있음</label>
+    					    </li>
+    					    <li style="margin-bottom:22px" class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 없음</label>
+    					    </li>
+                  <input type="text" name="my_duo_relation" class="x_pop form-control" placeholder="본인과의 관계를 입력해 주세요 ex)직장동료,친구,선후배">
+    					</ul>
+    				</div>
+            <!-- 조건부 -->
+            <script>
+            // ox 스크립트
+              $(window).load(function(){
+               $('.x_pop').hide();
+                $('.ox_condition_o').find('ins').on('click', function(event){
+                    $(this).closest('ul').find('.x_pop').show();
+                    $(this).closest('ul').find('.x_pop').focus();
+                })
+                $('.ox_condition_x').find('ins').on('click', function(event){
+                  $(this).closest('ul').find('.x_pop').hide();
+                  $(this).closest('ul').find('.x_pop').val('');
+                })
+              })
+            </script>
+
+            <script>
+            // 객관식 기타 script
+        	  $(window).load(function(){
+        	    $('.obj_etc').attr('disabled','').hide();
+        	    $('.obj_etc_parent').find('ins').on('click', function(event){
+        	      if ($(this).closest('.obj_etc_parent').find('div').hasClass('checked')){
+                  $(this).closest('ul').find('.obj_etc').show('fast');
+        	        $(this).closest('ul').find('.obj_etc').removeAttr('disabled');
+        	        $(this).closest('ul').find('.obj_etc').focus();
+        	      }
+                else {
+                  $(this).closest('ul').find('.obj_etc').attr('disabled','');
+                }
+        	    })
+        	    $('.obj_select').find('ins').on('click', function(event){
+                $(this).closest('ul').find('.obj_etc').hide('fast');
+        	      $(this).closest('ul').find('.obj_etc').attr('disabled','').val('');
+        	    })
+        	  })
+        	  </script>
+
+            <div class="col-md-12">
+              <h3 class="check_header">해고통보방식</h3>
+              <ul class="data-list ob_question floated clearfix">
+    					    <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="regular">
+    					         <label class="label_gender">정규직</label>
+    					    </li>
+    					    <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="contract">
+    					         <label class="label_gender">계약직</label>
+    					    </li>
+                  <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">수습</label>
+    					    </li>
+    					    <li class="obj_etc_parent" style="margin-bottom:22px;width:100%;" >
+    					         <input name="first_check" type="radio" class=" check_radio">
+    					         <label id="checking2" class="label_gender">기타</label>
+    					         <input type="text"  style="display: inline-block;"name="sns_etc" class="form-control obj_etc col-md-10" placeholder="그렇게 생각하는 이유를 적어주세요">
+    					    </li>
+    					</ul>
+            </div>
+            <div class="col-md-12">
+              <h3 class="check_header">해고당시 상태</h3>
+              <ul class="data-list ob_question floated clearfix">
+    					    <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="regular">
+    					         <label class="label_gender">근무중</label>
+    					    </li>
+    					    <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="contract">
+    					         <label class="label_gender">휴직중</label>
+    					    </li>
+                  <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">휴직 이후 1개월 이내</label>
+    					    </li>
+                  <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">정직</label>
+    					    </li>
+    					    <li class="obj_etc_parent" style="margin-bottom:22px;width:100%;" >
+    					         <input name="first_check" type="radio" class=" check_radio">
+    					         <label id="checking2" class="label_gender">기타</label>
+    					         <input type="text"  style="display: inline-block;"name="sns_etc" class="form-control obj_etc col-md-10" placeholder="그렇게 생각하는 이유를 적어주세요">
+    					    </li>
+    					</ul>
+            </div>
+
+            <div class="col-md-12">
+              <h3 class="check_header">해고사유</h3>
+              <ul class="data-list ob_question floated clearfix">
+    					    <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="regular">
+    					         <label class="label_gender">개인의 질병</label>
+    					    </li>
+    					    <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="contract">
+    					         <label class="label_gender">징계</label>
+    					    </li>
+                  <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">산재</label>
+    					    </li>
+                  <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">출산</label>
+    					    </li>
+                  <li class="obj_select col-xs-3">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">권고사직</label>
+    					    </li>
+    					    <li class="obj_etc_parent" style="margin-bottom:22px;width:100%;" >
+    					         <input name="first_check" type="radio" class=" check_radio">
+    					         <label id="checking2" class="label_gender">기타</label>
+    					         <input type="text"  style="display: inline-block;" name="sns_etc" class="form-control obj_etc col-md-10" placeholder="그렇게 생각하는 이유를 적어주세요">
+    					    </li>
+    					</ul>
+            </div>
+
+    			</div><!-- .row -->
+          <input id="website" name="website" type="hidden" value="" >
+    		</div><!-- end step-->
+
+        <!-- step 2 -->
+    		<div class="step">
+          <div class="row">
+            <div class="col-md-12 condition_set">
+              <h3 class="check_header">취업 규칙 및 협약에 해고 및 징계에 관한 내용의 포함 유무</h3>
+    					<ul class="data-list floated ob_question clearfix add_condition">
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 있음</label>
+    					    </li>
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 없음</label>
+    					    </li>
+    					</ul>
+    				</div>
+            <!-- 조건부 -->
+            <div class="col-md-12 condition_pop">
+              <h3 class="check_header">해당 절차에 의거해서 진행되었습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li style="margin-bottom:22px" class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 예</label>
+    					    </li>
+    					    <li style="margin-bottom:22px" class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 아니오</label>
+    					    </li>
+                  <input type="text" name="my_duo_relation" class="x_pop form-control" placeholder="그렇게 생각하는 이유를 적어주세요">
+    					</ul>
+    				</div><!-- .col-md-6 -->
+
+            <div class="col-md-12">
+              <h3 class="check_header">변론기회가 있었습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 예</label>
+    					    </li>
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 아니오</label>
+    					    </li>
+    					</ul>
+    				</div>
+
+            <!-- 징계 -->
+            <div class="col-md-12">
+              <h3 class="check_header">징계사유를 사전 통지 받은 적이 있습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 예</label>
+    					    </li>
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 아니오</label>
+    					    </li>
+    					</ul>
+    				</div>
+            <div class="col-md-12 condition_set">
+              <h3 class="check_header">징계위가 구성된 적이 있습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix add_condition">
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 있음</label>
+    					    </li>
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 없음</label>
+    					    </li>
+    					</ul>
+    				</div>
+            <!-- 조건부 -->
+            <div class="col-md-12 condition_pop">
+              <h3 class="check_header">징계위가 노동자의 입장을 대변했습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li style="margin-bottom:22px" class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 예</label>
+    					    </li>
+    					    <li style="margin-bottom:22px" class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 아니오</label>
+    					    </li>
+                  <input type="text" name="my_duo_relation" class="x_pop form-control" placeholder="그렇게 생각하는 이유를 적어주세요">
+    					</ul>
+    				</div><!-- .col-md-6 -->
+            <!-- 징계 끝 -->
+
+            <div class="col-md-12">
+              <h3 class="check_header">본인이 생각하는 해고 이유</h3>
+    					<ul class="data-list">
+    						<li>
+                  <textarea name="work" rows="4" class="form-control self_textarea"></textarea>
+    						</li>
+    					</ul>
+    				</div><!-- end col-md-12 -->
+
+            <!-- 징계 시작 -->
+            <div class="col-md-12">
+              <h3 class="check_header">과거 징계 유무</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 예</label>
+    					    </li>
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 아니오</label>
+    					    </li>
+    					</ul>
+    				</div>
+
+            <div class="col-md-12 condition_set">
+              <h3 class="check_header">징계 사유</h3>
+              <ul class="data-list ob_question floated clearfix">
+    					    <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="regular">
+    					         <label class="label_gender">폭력 행사</label>
+    					    </li>
+    					    <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="contract">
+    					         <label class="label_gender">회사에 대한 손해 야기</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">업무능력부족 및 근무실적 부진</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">근무 태만</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">인사명령 불응</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">업무명령 위반</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">회사에 대한 비방</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">사생활상 비행</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">형사사건 유죄 판결</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_x">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">노동능력 상실</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_x">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">이력서 허위기재</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">노조 활동</label>
+    					    </li>
+                  <li class="obj_select col-xs-3 ox_condition_o">
+    					         <input name="first_check" type="radio" class=" check_radio" value="probation">
+    					         <label class="label_gender">쟁의 행위</label>
+    					    </li>
+    					    <li class="obj_etc_parent" style="margin-bottom:22px;width:100%;" >
+    					         <input name="first_check" type="radio" class=" check_radio">
+    					         <label id="checking2" class="label_gender">기타</label>
+    					         <input type="text"  style="display: inline-block;" name="sns_etc" class="form-control obj_etc col-md-10" placeholder="그렇게 생각하는 이유를 적어주세요">
+    					    </li>
+    					</ul>
+            </div>
+            <!-- 조건부 -->
+            <div class="condition_pop col-md-12 col-xs-12 no-gap">
+              <div class="col-md-12">
+                <h3 class="check_header">상실경위</h3>
+      					<ul class="data-list">
+      						<li>
+                    <textarea name="work" rows="4" class="form-control self_textarea"></textarea>
+      						</li>
+      					</ul>
+      				</div>
+              <div class="col-md-12">
+                <h3 class="check_header">복귀위한 사측의 배려가 있었습니까?</h3>
+      					<ul class="data-list floated ob_question clearfix">
+      					    <li class="ox_condition_o">
+      					         <input name="gender" type="radio" class=" check_radio" value="yes">
+      					         <label class="label_gender"> 예</label>
+      					    </li>
+      					    <li class="ox_condition_x">
+      					         <input name="gender" type="radio" class=" check_radio" value="no">
+      					         <label class="label_gender"> 아니오</label>
+      					    </li>
+      					</ul>
+      				</div>
+            </div>
+            <div class="col-md-12">
+              <h3 class="check_header">징계사유관련 행위내용</h3>
+              <ul class="data-list">
+                <li>
+                  <textarea name="work" rows="4" class="form-control self_textarea"></textarea>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-md-12">
+              <h3 class="check_header">통지받은 징계사유가 규칙에 있습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 예</label>
+    					    </li>
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 아니오</label>
+    					    </li>
+    					</ul>
+    				</div>
+            <!-- 징계 끝 -->
+
+            <script>
+            // condition_pop 스크립트
+              $(window).load(function(){
+               $('.condition_pop').hide();
+                $('.add_condition').find($('.ox_condition_o')).find('ins').on('click', function(event){
+                  $(this).closest('.condition_set').next('.condition_pop').hide();
+                })
+                $('.add_condition').find($('.ox_condition_x')).find('ins').on('click', function(event){
+                  $(this).closest('.condition_set').next('.condition_pop').show();
+                })
+              })
+            </script>
+            <!-- 조건부 -->
+
+          </div>
+        </div><!-- end step -->
+
+        <div class="step">
+          <div class="row">
+
+            <div class="col-md-12 condition_set">
+              <h3 class="check_header">계약만료 이후 노무를 제공한 적 있습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix add_condition">
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 있음</label>
+    					    </li>
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 없음</label>
+    					    </li>
+    					</ul>
+    				</div>
+            <!-- 조건부 -->
+            <div class="col-md-12 condition_pop">
+              <h3 class="check_header">사용자 측에서 이의를 제기한 적 있습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 예</label>
+    					    </li>
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 아니오</label>
+    					    </li>
+                  <input type="text" name="my_duo_relation" class="x_pop form-control" placeholder="그렇게 생각하는 이유를 적어주세요">
+    					</ul>
+    				</div><!-- .col-md-6 -->
+
+            <div class="col-md-12 condition_set">
+              <h3 class="check_header">사직서를 제출한 적 있습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix add_condition">
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 있음</label>
+    					    </li>
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 없음</label>
+    					    </li>
+    					</ul>
+    				</div>
+            <!-- 조건부 -->
+            <div class="col-md-12 condition_pop">
+              <h3 class="check_header">제출 경위를 적어주세요</h3>
+              <ul class="data-list">
+                <li>
+                  <textarea name="work" rows="4" class="form-control self_textarea"></textarea>
+                </li>
+              </ul>
+    				</div><!-- .col-md-6 -->
+
+            <div class="col-md-12">
+              <h3 class="check_header">해고가 삶에 미친 영향을 적어주세요</h3>
+              <ul class="data-list">
+                <li>
+                  <textarea name="work" rows="4" class="form-control self_textarea"></textarea>
+                </li>
+              </ul>
+    				</div>
+
+            <div class="col-md-12">
+              <h3 class="check_header">해고가 부당하다고 생각하는 이유를 적어주세요</h3>
+              <ul class="data-list">
+                <li>
+                  <textarea name="work" rows="4" class="form-control self_textarea"></textarea>
+                </li>
+              </ul>
+    				</div>
+
+            <div class="col-md-12">
+    					<h3 class="check_header">해당하는 것에 체크해주세요</h3>
+    					<ul class="data-list-2 floated ob_question clearfix">
+    						<li class="obj_select col-xs-3 ox_condition_o">
+                  <input name="" type="checkbox" class=" check_radio" value="Google">
+                  <label>부당해고구제신청</label>
+                </li>
+                <li class="obj_select col-xs-3 ox_condition_o">
+                  <input name="" type="checkbox" class=" check_radio" value="Google">
+                  <label>퇴직금 신청</label>
+                </li>
+                <li class="obj_select col-xs-3 ox_condition_o">
+                  <input name="" type="checkbox" class=" check_radio" value="Google">
+                  <label>퇴직금 수령시 이의제기 경험</label>
+                </li>
+    					</ul>
+    				</div>
+
+            <div class="col-md-12">
+              <h3 class="check_header">해고항의를 한 증거가 있습니까?</h3>
+    					<ul class="data-list floated ob_question clearfix">
+    					    <li class="ox_condition_o">
+    					         <input name="gender" type="radio" class=" check_radio" value="yes">
+    					         <label class="label_gender"> 예</label>
+    					    </li>
+    					    <li class="ox_condition_x">
+    					         <input name="gender" type="radio" class=" check_radio" value="no">
+    					         <label class="label_gender"> 아니오</label>
+    					    </li>
+    					</ul>
+    				</div>
+
+            <div class="col-md-12">
+              <h3 class="check_header">사용자에게 바라는 점을 적어주세요</h3>
+              <ul class="data-list">
+                <li>
+                  <textarea name="work" rows="4" class="form-control self_textarea"></textarea>
+                </li>
+              </ul>
+    				</div>
+
+          </div><!-- .row -->
+        </div><!-- step -->
+      <%= render "sue/submit" %>
+
+
+    	</div><!-- end middle-wizard -->
+
+		<div id="bottom-wizard">
+			<button type="button" name="backward" class="backward">이전</button>
+			<button type="button" name="forward" class="forward">다음</button>
+		</div><!-- end bottom-wizard -->
+	</form>
+
+</div><!-- end Survey container -->
+</section>
+<script>
+/*
+    $('.forward').on('click',function(){
+        $('input.form-control').css('border','2px solid rgb(136, 130, 125)');
+        $('h3.col-md-10').css('color','rgb(17, 17, 17)');
+        console.log('foward진입');
+        $('.step').each(function(){
+            console.log('step');
+            if ($(this).css('display') === 'block') {
+              var b = 1;
+                console.log('if진입');
+                $(this).find('.').each(function(){
+                    if ( !$(this).val() ){
+                        $('html, body').animate({
+                            scrollTop: $(this).offset().top-100
+                        }, 1000);
+                        $(this).css('border','2px solid rgb(227, 79, 79)');
+                        $(this).closest('.row').find('h3').css('color','rgb(227, 79, 79)');
+                        alert('채우지 않은 부분이 있습니다');
+                        b = 0;
+                        return false;
+                    }
+                })
+                if (b === 0){
+                   return false;
+                }
+                else {
+                    $(this).find('.data-list.floated.clearfix').find('[type=radio]').each(function(){
+                      if ( !$(this).closest('ul').find('div').hasClass('checked') ) {
+                          $('html, body').animate({
+                              scrollTop: $(this).closest('.row').parent().find('h3').offset().top-100
+                          }, 1000);
+                          $(this).closest('.row').find('h3').css('color','rgb(227, 79, 79)');
+                          alert('체크하지 않은 부분이 있습니다');
+                          return false;
+                      }
+                    })
+                }
+            }
+        })
+    })
+    // $('#testing').parentsUntil('.row').find('h3')*/
+</script>
+
+
+<%= render "sue/backward_sns" %>
